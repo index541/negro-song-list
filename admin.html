@@ -344,11 +344,27 @@ commitSongs("曲を削除: " + s.title)
 .then(function () { renderSongs(); toast("削除しました。公開ページへの反映は1分ほどかかります"); })
 .catch(function (e) { setStatus("save-status", e.message || "削除に失敗しました。", false); loadSongs().catch(function () {}); });
 }
+function normTitleBasic(t) { return String(t || "").toLowerCase().replace(/\s+/g, ""); }
+function normTitleLoose(t) { return normTitleBasic(t).replace(/《[^》]*》/g, "").replace(/〈[^〉]*〉/g, ""); }
+function findSimilarSongs(title, excludeId) {
+var basic = normTitleBasic(title);
+var loose = normTitleLoose(title);
+return songs.filter(function (s) {
+if (excludeId && s.id === excludeId) return false;
+return normTitleBasic(s.title) === basic || normTitleLoose(s.title) === loose;
+});
+}
 $("song-save").addEventListener("click", function () {
 var title = $("f-title").value.trim();
 var artist = $("f-artist").value.trim();
 if (!title || !artist) { setStatus("save-status", "曲名とアーティストは必須です。", false); return; }
 var id = $("f-id").value;
+var similar = findSimilarSongs(title, id);
+if (similar.length) {
+var lines = similar.map(function (s) { return "・" + s.title + " ／ " + s.artist + "（" + s.keyLabel + "）"; });
+var msg = "既に似た曲の登録があります：\n\n" + lines.join("\n") + "\n\nこのまま登録を続けますか？";
+if (!confirm(msg)) { setStatus("save-status", "登録をやめました。", null); return; }
+}
 var keyLabel = $("f-keylabel").value.trim() || "原曲キー";
 var obj = {
 id: id || ("s" + Date.now().toString(36)),
