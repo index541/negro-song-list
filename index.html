@@ -29,7 +29,7 @@ button, [role="button"], select, summary, input:not([type="checkbox"], [type="ra
 }
 * { box-sizing: border-box;}
 html { scroll-behavior: smooth;}
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif; -webkit-font-smoothing: antialiased;}
+body { margin: 0; background: var(--bg); background-image: radial-gradient(color-mix(in srgb, var(--ink) 5%, transparent) 1px, transparent 1.4px); background-size: 22px 22px; color: var(--ink); font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif; -webkit-font-smoothing: antialiased;}
 .latin { font-family: "Archivo", "Zen Kaku Gothic New", sans-serif;}
 #skeleton { position: fixed; inset: 0; z-index: 60; background: var(--bg); padding: 28px 20px; transition: opacity.45s ease, visibility.45s;}
 #skeleton.done { opacity: 0; visibility: hidden;}
@@ -47,13 +47,26 @@ header.hero { padding: 40px 0 8px;}
 h1 { margin: 14px 0 10px; font-size: clamp(34px, 7.5vw, 52px); font-weight: 900; line-height: 1.12; letter-spacing:.01em;}
 h1 .accent { color: var(--accent);}
 .lead { margin: 0; font-size: 16px; line-height: 1.8; color: var(--ink-2); max-width: 34em;}
-.sample-note { margin-top: 18px; display: flex; gap: 10px; align-items: flex-start; background: var(--accent-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 16px; font-size: 14px; line-height: 1.7;}
-.sample-note strong { color: var(--accent); white-space: nowrap;}
-.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 26px 0 6px;}
-.step { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px;}
-.step .num { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 13px; color: var(--accent); letter-spacing:.12em;}
-.step p { margin: 8px 0 0; font-size: 14px; line-height: 1.65; font-weight: 700;}
-.step span { display: block; margin-top: 4px; font-size: 12.5px; font-weight: 500; color: var(--ink-2); line-height: 1.6;}
+.marquee-band { margin: 24px 0 2px; border-top: 1.5px dashed var(--line); border-bottom: 1.5px dashed var(--line); overflow: hidden; padding: 9px 0;}
+.marquee-track { display: inline-flex; white-space: nowrap; animation: marquee 38s linear infinite; font-size: 12.5px; font-weight: 900; letter-spacing:.22em; color: var(--ink-3);}
+.marquee-track span { padding-right: 3.2em;}
+@keyframes marquee { from { transform: translateX(0);} to { transform: translateX(-50%);} }
+.hero-anim { animation: heroUp.7s cubic-bezier(.25,.9,.3,1) both;}
+@keyframes heroUp { from { opacity: 0; transform: translateY(16px);} to { opacity: 1; transform: none;} }
+.chip.on { animation: chipPop.25s ease;}
+@keyframes chipPop { 0% { transform: scale(.92);} 60% { transform: scale(1.05);} 100% { transform: scale(1);} }
+.count-line b.tick { animation: tickPop.3s ease; display: inline-block;}
+@keyframes tickPop { 0% { transform: scale(1.4);} 100% { transform: scale(1);} }
+.tile img { opacity: 0; transition: opacity.45s ease;}
+.tile img.ld { opacity: 1;}
+img.thumb { opacity: 0; transition: opacity.45s ease;}
+img.thumb.ld { opacity: 1;}
+.load-dots { display: flex; gap: 9px; justify-content: center; margin: 26px 0 10px;}
+.load-dots i { width: 11px; height: 11px; border-radius: 50%; background: var(--accent); display: block; animation: bounce.9s ease-in-out infinite;}
+.load-dots i:nth-child(2) { animation-delay:.15s; background: var(--duet);}
+.load-dots i:nth-child(3) { animation-delay:.3s; background: var(--gold);}
+@keyframes bounce { 0%, 100% { transform: translateY(0);} 40% { transform: translateY(-11px);} }
+.load-text { text-align: center; font-size: 13.5px; font-weight: 900; letter-spacing:.14em; color: var(--ink-3); margin: 0 0 22px;}
 .toolbar { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 18px 0 12px; margin-top: 18px;}
 .search-row { display: flex; gap: 10px;}
 .search-box { flex: 1; display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1.5px solid var(--line); border-radius: 999px; padding: 0 18px; transition: border-color.2s;}
@@ -149,7 +162,7 @@ footer a { color: var(--ink-2); font-weight: 700;}
 .btn-copy-inline { margin-top: 10px; font: inherit; font-weight: 900; font-size: 14px; background: var(--ink); color: var(--bg); border: 0; border-radius: 12px; padding: 10px 18px; min-height: 2.75rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;}
 .sheet-backdrop { position: fixed; inset: 0; z-index: 40; background: rgba(10, 10, 8,.48); opacity: 0; visibility: hidden; transition: opacity.3s, visibility.3s;}
 .sheet-backdrop.open { opacity: 1; visibility: visible;}
-.sheet { position: fixed; left: 50%; bottom: 0; transform: translate(-50%, 105%); width: min(680px, 100%); max-height: 88vh; overflow-y: auto; z-index: 41; background: var(--surface); border-radius: 20px 20px 0 0; box-shadow: var(--shadow); padding: 14px 22px 30px; transition: transform.35s cubic-bezier(.32,.9,.35,1);}
+.sheet { position: fixed; left: 50%; bottom: 0; transform: translate(-50%, 105%); width: min(680px, 100%); max-height: 88vh; overflow-y: auto; z-index: 41; background: var(--surface); border-radius: 20px 20px 0 0; box-shadow: var(--shadow); padding: 14px 22px 30px; transition: transform.38s cubic-bezier(.3,1.15,.4,1);}
 .sheet.open { transform: translate(-50%, 0);}
 .sheet-grip { width: 44px; height: 5px; border-radius: 99px; background: var(--line); margin: 0 auto 16px;}
 .sheet-head { display: flex; gap: 16px; align-items: flex-start;}
@@ -158,9 +171,6 @@ footer a { color: var(--ink-2); font-weight: 700;}
 .sheet-title { margin: 0; font-size: 24px; font-weight: 900; line-height: 1.3;}
 .sheet-artist { margin: 4px 0 0; font-size: 14.5px; color: var(--ink-2); font-weight: 700;}
 @media (max-width: 560px) {
-.steps { grid-template-columns: 1fr;}
-.step { display: flex; gap: 14px; align-items: flex-start;}
-.step p { margin-top: 2px;}
 .song { padding: 18px 16px;}
 .song-title { font-size: 20px;}
 .search-row { flex-direction: column;}
@@ -180,6 +190,8 @@ html { scroll-behavior: auto;}
 <body>
 <div id="skeleton" aria-hidden="true">
 <div class="sk-wrap">
+<div class="load-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+<p class="load-text">読み込み中</p>
 <div class="sk sk-title"></div>
 <div class="sk sk-line"></div>
 <div class="sk sk-bar"></div>
@@ -191,29 +203,12 @@ html { scroll-behavior: auto;}
 
 <div class="page">
 <header class="hero">
-<div class="who"><span class="dot latin">N</span>ネグロ ─ 歌い手</div>
-<h1>歌える曲<span class="accent">リスト</span></h1>
-<p class="lead">ネグロがカラオケやオフ会で歌える曲の一覧です。気になる曲が見つかったら、そのままリクエストできます。「一緒に歌いたい」はデュエットのお誘い用です。</p>
-<div class="sample-note">
-<strong>お知らせ</strong>
-<span>いまは表示の確認用にサンプル曲を載せています。本人のレパートリーがそろい次第、順次差し替えていきます。</span>
-</div>
+<div class="who hero-anim"><span class="dot latin">N</span>ネグロ</div>
+<h1 class="hero-anim" style="animation-delay:.08s">歌える曲<span class="accent">リスト</span></h1>
+<p class="lead hero-anim" style="animation-delay:.16s">ネグロがカラオケで歌える曲の一覧です。気になる曲が見つかったら、そのままリクエストできます。「一緒に歌いたい」はデュエットのお誘い用です。</p>
 </header>
 
-<section class="steps" aria-label="リクエストの流れ">
-<div class="step">
-<div class="num latin">STEP 1</div>
-<p>曲を探す<span>曲名・アーティストで検索したり、ジャンルやアーティストで絞り込めます。</span></p>
-</div>
-<div class="step">
-<div class="num latin">STEP 2</div>
-<p>ボタンを押す<span>「歌ってほしい」か「一緒に歌いたい」を選んでください。</span></p>
-</div>
-<div class="step">
-<div class="num latin">STEP 3</div>
-<p>名前を書いて送信<span>曲の下に名前を書いて押すだけ。この画面のまま送れます。</span></p>
-</div>
-</section>
+<div class="marquee-band" aria-hidden="true"><div class="marquee-track" id="marquee-track"></div></div>
 
 <div class="toolbar">
 <div class="search-row">
@@ -268,17 +263,17 @@ html { scroll-behavior: auto;}
 // 本番データは songs.json（管理ページから堅斗だけが更新できる）。
 // 読み込めない環境（ローカル確認など）では下のサンプルで表示する。
 var FALLBACK_SONGS = [
-{ id: "s1", title: "GALLOWS BELL", artist: "buzzG", genre: "ボカロ", keyLabel: "原曲 −2", keyShift: -2, level: 3, memo: "サビの高音と疾走感が得意な一曲。カラオケでも鉄板。", jacket: "", addedAt: "2026-11-12"},
-{ id: "s2", title: "シャルル", artist: "バルーン", genre: "ボカロ", keyLabel: "原曲 −2", keyShift: -2, level: 3, memo: "低音からサビまでの流れを気持ちよく歌えます。", jacket: "", addedAt: "2026-11-12"},
-{ id: "s3", title: "千本桜", artist: "黒うさP feat. 初音ミク", genre: "ボカロ", keyLabel: "原曲キー", keyShift: 0, level: 2, memo: "テンポが速いので、勢いのある場面向け。", jacket: "", addedAt: "2026-11-12"},
-{ id: "s4", title: "残酷な天使のテーゼ", artist: "高橋洋子", genre: "アニソン", keyLabel: "原曲キー", keyShift: 0, level: 3, memo: "みんなで盛り上がれる定番。サビは一緒にどうぞ。", jacket: "", addedAt: "2026-11-12"},
-{ id: "s5", title: "紅蓮華", artist: "LiSA", genre: "アニソン", keyLabel: "原曲 −2", keyShift: -2, level: 2, memo: "力強いサビが持ち味。キーを下げて歌います。", jacket: "", addedAt: "2026-11-12"},
-{ id: "s6", title: "夜に駆ける", artist: "YOASOBI", genre: "J-POP", keyLabel: "原曲 −3", keyShift: -3, level: 2, memo: "早口パート多め。静かな入りから一気に駆け上がります。", jacket: "", addedAt: "2026-11-12"},
-{ id: "s7", title: "ドライフラワー", artist: "優里", genre: "J-POP", keyLabel: "原曲キー", keyShift: 0, level: 3, memo: "しっとり聴かせる系ならこれ。感情を込めて歌います。", jacket: "", addedAt: "2026-11-12"},
-{ id: "s8", title: "Lemon", artist: "米津玄師", genre: "J-POP", keyLabel: "原曲キー", keyShift: 0, level: 2, memo: "バラード枠。落ちサビの表現が好きな曲。", jacket: "", addedAt: "2026-11-12"},
-{ id: "s9", title: "Pretender", artist: "Official髭男dism", genre: "J-POP", keyLabel: "原曲キー", keyShift: 0, level: 2, memo: "ピアノロックの王道。転調後のサビが見せ場。", jacket: "", addedAt: "2026-11-12"},
-{ id: "s10", title: "マリーゴールド", artist: "あいみょん", genre: "J-POP", keyLabel: "原曲 +1", keyShift: 1, level: 1, memo: "やわらかい雰囲気で。キーを少し上げて歌います。", jacket: "", addedAt: "2026-11-12"},
-{ id: "s11", title: "紅", artist: "X JAPAN", genre: "ロック", keyLabel: "原曲キー", keyShift: 0, level: 2, memo: "シャウト気味に攻める一曲。場が熱くなるタイプ。", jacket: "", addedAt: "2026-11-12"}
+{ id: "s1", title: "GALLOWS BELL", artist: "buzzG", genre: "ボカロ", keyLabel: "原曲 −2", keyShift: -2, memo: "サビの高音と疾走感が得意な一曲。カラオケでも鉄板。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s2", title: "シャルル", artist: "バルーン", genre: "ボカロ", keyLabel: "原曲 −2", keyShift: -2, memo: "低音からサビまでの流れを気持ちよく歌えます。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s3", title: "千本桜", artist: "黒うさP feat. 初音ミク", genre: "ボカロ", keyLabel: "原曲キー", keyShift: 0, memo: "テンポが速いので、勢いのある場面向け。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s4", title: "残酷な天使のテーゼ", artist: "高橋洋子", genre: "アニソン", keyLabel: "原曲キー", keyShift: 0, memo: "みんなで盛り上がれる定番。サビは一緒にどうぞ。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s5", title: "紅蓮華", artist: "LiSA", genre: "アニソン", keyLabel: "原曲 −2", keyShift: -2, memo: "力強いサビが持ち味。キーを下げて歌います。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s6", title: "夜に駆ける", artist: "YOASOBI", genre: "J-POP", keyLabel: "原曲 −3", keyShift: -3, memo: "早口パート多め。静かな入りから一気に駆け上がります。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s7", title: "ドライフラワー", artist: "優里", genre: "J-POP", keyLabel: "原曲キー", keyShift: 0, memo: "しっとり聴かせる系ならこれ。感情を込めて歌います。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s8", title: "Lemon", artist: "米津玄師", genre: "J-POP", keyLabel: "原曲キー", keyShift: 0, memo: "バラード枠。落ちサビの表現が好きな曲。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s9", title: "Pretender", artist: "Official髭男dism", genre: "J-POP", keyLabel: "原曲キー", keyShift: 0, memo: "ピアノロックの王道。転調後のサビが見せ場。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s10", title: "マリーゴールド", artist: "あいみょん", genre: "J-POP", keyLabel: "原曲 +1", keyShift: 1, memo: "やわらかい雰囲気で。キーを少し上げて歌います。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s11", title: "紅", artist: "X JAPAN", genre: "ロック", keyLabel: "原曲キー", keyShift: 0, memo: "シャウト気味に攻める一曲。場が熱くなるタイプ。", jacket: "", addedAt: "2026-11-12"}
 ];
 var SONGS = FALLBACK_SONGS.slice();
 
@@ -300,15 +295,9 @@ function jacketHTML(s, big) {
 if (s.jacket) return '<img class="' + (big ? "" : "thumb") + '" src="' + esc(s.jacket) + '" alt="" loading="lazy" onerror="this.outerHTML=\'<div class=\\\'thumb-ph\\\'>' + esc(firstChar(s.title)) + '</div>\'" />';
 return '<div class="thumb-ph" aria-hidden="true">' + esc(firstChar(s.title)) + "</div>";
 }
-function stars(level) {
-var s = "";
-for (var i = 1; i <= 3; i++) s += '<span class="' + (i <= level ? "" : "off") + '">★</span>';
-return '<span class="stars" role="img" aria-label="得意度 ' + level + ' / 3">' + s + "</span>";
-}
 function metaHTML(s) {
 return '<span class="tag key"><span class="k-label">KEY</span>' + esc(s.keyLabel) + "</span>" +
-'<span class="tag">' + esc(s.genre) + "</span>" +
-'<span class="tag">' + stars(s.level) + '<span style="font-size:12px">得意度</span></span>';
+'<span class="tag">' + esc(s.genre) + "</span>";
 }
 
 function buildGenreChips() {
@@ -360,7 +349,7 @@ if (state.sort === "title") arr.sort(function (a, b) { return a.title.localeComp
 else if (state.sort === "artist") arr.sort(function (a, b) { return a.artist.localeCompare(b.artist, "ja") || a.title.localeCompare(b.title, "ja"); });
 else if (state.sort === "key") arr.sort(function (a, b) { return a.keyShift - b.keyShift; });
 else if (state.sort === "new") arr.sort(function (a, b) { return String(b.addedAt || "").localeCompare(String(a.addedAt || "")) || a.title.localeCompare(b.title, "ja"); });
-else arr.sort(function (a, b) { return b.level - a.level || a.title.localeCompare(b.title, "ja"); });
+/* reco = おすすめ順：データの並び順（管理ページで並べた順）そのまま */
 return arr;
 }
 
@@ -370,6 +359,7 @@ var ICON_DUET = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" str
 function render() {
 var arr = filtered();
 countEl.textContent = arr.length;
+countEl.classList.remove("tick"); void countEl.offsetWidth; countEl.classList.add("tick");
 emptyEl.hidden = arr.length > 0;
 document.getElementById("view-list").classList.toggle("on", state.view === "list");
 document.getElementById("view-tile").classList.toggle("on", state.view === "tile");
@@ -416,7 +406,7 @@ t.className = "tile";
 t.style.animationDelay = Math.min(i * 40, 320) + "ms";
 t.setAttribute("aria-label", s.title + " / " + s.artist + " の詳細を開く");
 t.innerHTML =
-(s.jacket ? '<img src="' + esc(s.jacket) + '" alt="" loading="lazy" onerror="this.outerHTML=\'<div class=\\\'t-ph\\\'>' + esc(firstChar(s.title)) + '</div>\'" />' : '<div class="t-ph" aria-hidden="true">' + esc(firstChar(s.title)) + "</div>") +
+(s.jacket ? '<img src="' + esc(s.jacket) + '" alt="" loading="lazy" onload="this.classList.add(\'ld\')" onerror="this.outerHTML=\'<div class=\\\'t-ph\\\'>' + esc(firstChar(s.title)) + '</div>\'" />' : '<div class="t-ph" aria-hidden="true">' + esc(firstChar(s.title)) + "</div>") +
 '<p class="tile-title"></p><p class="tile-artist"></p>' +
 '<div class="tile-meta"><span class="tag key"><span class="k-label">KEY</span>' + esc(s.keyLabel) + '</span><span class="tag">' + esc(s.genre) + "</span></div>";
 t.querySelector(".tile-title").textContent = s.title;
@@ -469,11 +459,11 @@ var html =
 '<form class="panel-form" novalidate data-formkey="' + esc(key) + '">' +
 '<div class="field' + (st.nameError ? " invalid" : "") + '">' +
 '<label for="' + idBase + '-name">あなたのお名前<span class="req">必須</span></label>' +
-'<input id="' + idBase + '-name" class="p-name" type="text" placeholder="例：やえ" autocomplete="name"' + (sending ? " disabled" : "") + " />" +
+'<input id="' + idBase + '-name" class="p-name" type="text" placeholder="お名前を入力してください" autocomplete="name"' + (sending ? " disabled" : "") + " />" +
 '<p class="err">お名前を入れてください。</p></div>' +
 '<div class="field">' +
 '<label for="' + idBase + '-msg">' + (isDuet ? "メッセージ・希望パート" : "メッセージ") + '<span class="opt">任意</span></label>' +
-'<textarea id="' + idBase + '-msg" class="p-msg" placeholder="' + (isDuet ? "例：ハモリをやりたい／サビだけ一緒に、など" : "例：カラオケで聴きたい、など自由にどうぞ") + '"' + (sending ? " disabled" : "") + "></textarea></div>";
+'<textarea id="' + idBase + '-msg" class="p-msg" placeholder="ご自由にご記入ください"' + (sending ? " disabled" : "") + "></textarea></div>";
 if (st.phase === "error") {
 html +=
 '<div class="panel-error"><p>送信できませんでした。お手数ですが、下の文をコピーして X の DM（@negro_niconico）で送ってください。</p>' +
@@ -668,9 +658,19 @@ if (focusName) { var ni = panel.querySelector(".p-name"); if (ni) ni.focus(); }
 document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeAllForms(); });
 
 // ===== Data load =====
+function buildMarquee() {
+var track = document.getElementById("marquee-track");
+if (!track) return;
+var items = ["カラオケで歌える曲", "リクエスト受付中"];
+var seen = {};
+SONGS.forEach(function (s) { if (!seen[s.genre]) { seen[s.genre] = true; items.push(s.genre); } });
+var half = items.map(function (t) { return "<span>" + esc(t) + " ♪</span>"; }).join("");
+track.innerHTML = half + half;
+}
 function ready() {
 buildGenreChips();
 buildArtistOptions();
+buildMarquee();
 render();
 var sk = document.getElementById("skeleton");
 if (sk) sk.classList.add("done");

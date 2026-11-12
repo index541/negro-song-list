@@ -103,7 +103,7 @@ details.howto ol { margin:8px 0 0; padding-left:1.4em; }
 <p class="desc">曲名（できればアーティスト名も）を入れて探すと、候補のジャケットが出ます。気に入ったものを押すと、下の編集フォームに反映されます。</p>
 <div class="field">
 <label for="cover-q">検索のことば</label>
-<input id="cover-q" type="search" placeholder="例：GALLOWS BELL buzzG" autocomplete="off" />
+<input id="cover-q" type="search" placeholder="曲名やアーティスト名で検索" autocomplete="off" />
 </div>
 <div class="btn-row">
 <button type="button" class="btn duet" id="search-itunes">iTunes で探す</button>
@@ -119,37 +119,29 @@ details.howto ol { margin:8px 0 0; padding-left:1.4em; }
 <input type="hidden" id="f-id" />
 <div class="field">
 <label for="f-title">曲名<span class="req">必須</span></label>
-<input id="f-title" type="text" placeholder="例：GALLOWS BELL" />
+<input id="f-title" type="text"  />
 </div>
 <div class="field">
 <label for="f-artist">アーティスト<span class="req">必須</span></label>
-<input id="f-artist" type="text" placeholder="例：buzzG" />
+<input id="f-artist" type="text"  />
 </div>
-<div class="grid3">
+<div class="grid2">
 <div class="field">
 <label for="f-genre">ジャンル</label>
-<input id="f-genre" type="text" list="genre-list" placeholder="例：ボカロ" />
+<input id="f-genre" type="text" list="genre-list" placeholder="ボカロ" />
 <datalist id="genre-list"></datalist>
 </div>
 <div class="field">
 <label for="f-keylabel">キー表示</label>
-<input id="f-keylabel" type="text" list="key-list" placeholder="例：原曲 −2" />
+<input id="f-keylabel" type="text" list="key-list" placeholder="原曲 −2" />
 <datalist id="key-list">
 <option value="原曲キー"></option><option value="原曲 −1"></option><option value="原曲 −2"></option><option value="原曲 −3"></option><option value="原曲 −4"></option><option value="原曲 +1"></option><option value="原曲 +2"></option>
 </datalist>
 </div>
-<div class="field">
-<label for="f-level">得意度</label>
-<select id="f-level">
-<option value="3">★★★ とても得意</option>
-<option value="2" selected>★★☆ ふつう</option>
-<option value="1">★☆☆ たまに</option>
-</select>
-</div>
 </div>
 <div class="field">
 <label for="f-memo">一言メモ</label>
-<textarea id="f-memo" placeholder="例：サビの高音が得意な一曲"></textarea>
+<textarea id="f-memo" placeholder="ご自由にご記入ください"></textarea>
 </div>
 <div class="field">
 <label for="f-jacket">ジャケット画像 URL</label>
@@ -269,7 +261,7 @@ else setStatus("token-status", "接続できませんでした（" + r.status + 
 // ===== Editor =====
 function clearEditor() {
 $("f-id").value = ""; $("f-title").value = ""; $("f-artist").value = ""; $("f-genre").value = "";
-$("f-keylabel").value = ""; $("f-level").value = "2"; $("f-memo").value = ""; $("f-jacket").value = "";
+$("f-keylabel").value = ""; $("f-memo").value = ""; $("f-jacket").value = "";
 $("f-preview").style.display = "none";
 setStatus("save-status", "", null);
 }
@@ -285,7 +277,7 @@ var s = null;
 songs.forEach(function (x) { if (x.id === id) s = x; });
 if (!s) return;
 $("f-id").value = s.id; $("f-title").value = s.title; $("f-artist").value = s.artist;
-$("f-genre").value = s.genre; $("f-keylabel").value = s.keyLabel; $("f-level").value = String(s.level || 2);
+$("f-genre").value = s.genre; $("f-keylabel").value = s.keyLabel;
 $("f-memo").value = s.memo || ""; $("f-jacket").value = s.jacket || "";
 $("f-jacket").dispatchEvent(new Event("input"));
 $("f-title").scrollIntoView({ behavior: "smooth", block: "center" });
@@ -312,7 +304,6 @@ id: id || ("s" + Date.now().toString(36)),
 title: title, artist: artist,
 genre: $("f-genre").value.trim() || "その他",
 keyLabel: keyLabel, keyShift: keyShiftFromLabel(keyLabel),
-level: parseInt($("f-level").value, 10) || 2,
 memo: $("f-memo").value.trim(),
 jacket: $("f-jacket").value.trim(),
 addedAt: todayJST()
