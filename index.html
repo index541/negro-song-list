@@ -12,24 +12,25 @@
 <style>
 button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]), textarea { min-height: 2.25rem;}
 :root {
---bg: #fbfbf9; --surface: #ffffff; --surface-2: #f1f0ec;
---ink: #1b1a17; --ink-2: #55534c; --ink-3: #8a877d; --line: #e3e1d9;
---accent: #e03c1f; --accent-ink: #ffffff; --accent-soft: #fdeeea;
---duet: #0e7a6d; --duet-soft: #e6f4f1; --gold: #c98a12;
---shadow: 0 10px 30px rgba(27, 26, 23, 0.10); --radius: 14px;
+--bg: #f6f6f6; --surface: #ffffff; --surface-2: #f1f1f1;
+--ink: #1c1c1c; --ink-2: #50504c; --ink-3: #7d7d78; --line: #dcdcdc;
+--accent: #e83531; --accent-ink: #ffffff; --accent-soft: #ffe2e2;
+--duet: #0095d9; --duet-soft: #e0f2fb; --gold: #c98a12;
+--shadow: 0 10px 30px rgba(28, 28, 28, 0.10); --radius: 14px;
 }
 @media (prefers-color-scheme: dark) {
 :root {
---bg: #131311; --surface: #1d1d1a; --surface-2: #26261f;
---ink: #f3f1ea; --ink-2: #b9b5a8; --ink-3: #8a877d; --line: #34332c;
---accent: #ff5a3c; --accent-ink: #1b0f0b; --accent-soft: #3a1d15;
---duet: #3ec9b6; --duet-soft: #123330; --gold: #e0aa3e;
+--bg: #141518; --surface: #1e2023; --surface-2: #26282c;
+--ink: #f5f5f2; --ink-2: #c4c4be; --ink-3: #8f8f89; --line: #3a3c40;
+--accent: #ff5147; --accent-ink: #ffffff; --accent-soft: #40201d;
+--duet: #3db2ec; --duet-soft: #17303e; --gold: #e0aa3e;
 --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
 }
 }
 * { box-sizing: border-box;}
 html { scroll-behavior: smooth;}
-body { margin: 0; background: var(--bg); background-image: radial-gradient(color-mix(in srgb, var(--ink) 5%, transparent) 1px, transparent 1.4px); background-size: 22px 22px; color: var(--ink); font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif; -webkit-font-smoothing: antialiased;}
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif; -webkit-font-smoothing: antialiased;}
+body::before { content: ""; display: block; height: 10px; background: var(--accent);}
 .latin { font-family: "Archivo", "Zen Kaku Gothic New", sans-serif;}
 #skeleton { position: fixed; inset: 0; z-index: 60; background: var(--bg); padding: 28px 20px; transition: opacity.45s ease, visibility.45s;}
 #skeleton.done { opacity: 0; visibility: hidden;}
@@ -43,14 +44,12 @@ body { margin: 0; background: var(--bg); background-image: radial-gradient(color
 .page { max-width: 880px; margin: 0 auto; padding: 0 20px 72px;}
 header.hero { padding: 40px 0 8px;}
 .who { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 14px; color: var(--ink-2); letter-spacing:.04em;}
-.who .dot { width: 34px; height: 34px; border-radius: 50%; background: var(--ink); color: var(--bg); display: grid; place-items: center; font-family: "Archivo", sans-serif; font-weight: 800; font-size: 16px; flex: none;}
-h1 { margin: 14px 0 10px; font-size: clamp(34px, 7.5vw, 52px); font-weight: 900; line-height: 1.12; letter-spacing:.01em;}
-h1 .accent { color: var(--accent);}
+.who .dot { width: 34px; height: 34px; border-radius: 10px; background: var(--accent); color: #ffffff; display: grid; place-items: center; font-family: "Archivo", sans-serif; font-weight: 800; font-size: 16px; flex: none;}
+h1 { margin: 14px 0 10px; font-size: clamp(34px, 7.5vw, 52px); font-weight: 900; line-height: 1.12; letter-spacing:.01em; display: inline-block; border-bottom: 7px solid var(--accent); padding-bottom: 7px;}
 .lead { margin: 0; font-size: 16px; line-height: 1.8; color: var(--ink-2); max-width: 34em;}
-.marquee-band { margin: 24px 0 2px; border-top: 1.5px dashed var(--line); border-bottom: 1.5px dashed var(--line); overflow: hidden; padding: 9px 0;}
-.marquee-track { display: inline-flex; white-space: nowrap; animation: marquee 38s linear infinite; font-size: 12.5px; font-weight: 900; letter-spacing:.22em; color: var(--ink-3);}
-.marquee-track span { padding-right: 3.2em;}
-@keyframes marquee { from { transform: translateX(0);} to { transform: translateX(-50%);} }
+.info-band { margin: 24px 0 2px; background: var(--accent); color: #ffffff; border-radius: 12px; padding: 11px 16px; display: flex; gap: 8px 14px; flex-wrap: wrap; align-items: center; justify-content: center; font-size: 13.5px; font-weight: 900; letter-spacing:.05em; text-align: center;}
+.info-band .ib-sep { opacity:.65; font-weight: 700;}
+.info-band b { font-family: "Archivo", sans-serif; font-size: 15px;}
 .hero-anim { animation: heroUp.7s cubic-bezier(.25,.9,.3,1) both;}
 @keyframes heroUp { from { opacity: 0; transform: translateY(16px);} to { opacity: 1; transform: none;} }
 .chip.on { animation: chipPop.25s ease;}
@@ -79,7 +78,7 @@ img.thumb.ld { opacity: 1;}
 .artist-select { flex: 1; min-width: 150px;}
 .view-toggle { display: inline-flex; background: var(--surface-2); border-radius: 999px; padding: 3px; gap: 2px;}
 .view-toggle button { font: inherit; font-size: 13.5px; font-weight: 900; border: 0; background: transparent; color: var(--ink-2); border-radius: 999px; padding: 6px 16px; min-height: 2.25rem; cursor: pointer;}
-.view-toggle button.on { background: var(--ink); color: var(--bg);}
+.view-toggle button.on { background: var(--accent); color: #ffffff;}
 .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px;}
 .genre-row { margin-top: 10px;}
 .genre-select { flex: 1; width: 100%;}
@@ -101,7 +100,7 @@ img.thumb.ld { opacity: 1;}
 .count-line { margin: 14px 2px 0; font-size: 13px; color: var(--ink-3); font-weight: 700; letter-spacing:.05em;}
 .count-line b { color: var(--accent); font-size: 15px;}
 .song-list { display: flex; flex-direction: column; gap: 14px; margin-top: 6px;}
-.song { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; animation: rise.5s both;}
+.song { background: var(--surface); border: 1.5px solid var(--line); border-left: 8px solid var(--gc, var(--line)); border-radius: var(--radius); padding: 20px 22px; animation: rise.5s both;}
 @keyframes rise { from { opacity: 0; transform: translateY(14px);} to { opacity: 1; transform: none;}}
 .song-head { display: flex; align-items: flex-start; gap: 14px;}
 .thumb { width: 68px; height: 68px; border-radius: 12px; object-fit: cover; flex: none; background: var(--surface-2);}
@@ -113,6 +112,7 @@ img.thumb.ld { opacity: 1;}
 .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;}
 .tag { display: inline-flex; align-items: center; gap: 6px; background: var(--surface-2); border-radius: 8px; padding: 5px 11px; font-size: 13px; font-weight: 700; color: var(--ink-2);}
 .tag.key { background: var(--accent-soft); color: var(--accent);}
+.tag.genre { color: #ffffff;}
 .tag .k-label { font-size: 11px; font-weight: 700; opacity:.75; letter-spacing:.06em;}
 .stars { color: var(--gold); letter-spacing: 2px; font-size: 13px;}
 .stars .off { color: var(--line);}
@@ -122,11 +122,11 @@ img.thumb.ld { opacity: 1;}
 .req-btn:active { transform: scale(.97);}
 .req-btn.solo { background: var(--accent); color: var(--accent-ink);}
 .req-btn.solo:hover { filter: brightness(1.08);}
-.req-btn.duet { background: var(--duet-soft); color: var(--duet); border: 1.5px solid var(--duet);}
-.req-btn.duet:hover { filter: brightness(1.04);}
+.req-btn.duet { background: var(--duet); color: #ffffff; border: 0;}
+.req-btn.duet:hover { filter: brightness(1.08);}
 .song-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr)); gap: 14px; margin-top: 6px;}
-.tile { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px; cursor: pointer; font: inherit; text-align: left; color: var(--ink); animation: rise.5s both; transition: transform.15s, box-shadow.15s; min-width: 0;}
-.tile:hover { transform: translateY(-2px); box-shadow: var(--shadow);}
+.tile { background: var(--surface); border: 1.5px solid var(--line); border-top: 6px solid var(--gc, var(--line)); border-radius: var(--radius); padding: 10px; cursor: pointer; font: inherit; text-align: left; color: var(--ink); animation: rise.5s both; transition: transform.15s; min-width: 0;}
+.tile:hover { transform: translateY(-2px);}
 .tile:active { transform: scale(.98);}
 .tile img { width: 100%; max-width: 100%; aspect-ratio: 1; border-radius: 9px; object-fit: cover; display: block; background: var(--surface-2);}
 .tile .t-ph { width: 100%; aspect-ratio: 1; border-radius: 9px; background: var(--surface-2); color: var(--ink-3); display: grid; place-items: center; font-family: "Archivo", sans-serif; font-weight: 800; font-size: 40px;}
@@ -162,7 +162,7 @@ footer a { color: var(--ink-2); font-weight: 700;}
 .btn-close { font: inherit; font-weight: 700; font-size: 15px; background: var(--surface-2); color: var(--ink-2); border: 0; border-radius: 12px; padding: 12px 20px; min-height: 3.25rem; cursor: pointer;}
 .btn-send { flex: 1; font: inherit; font-weight: 900; font-size: 15px; border: 0; border-radius: 12px; padding: 12px; min-height: 3.25rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: filter.15s, transform.15s;}
 .btn-send.solo { background: var(--accent); color: var(--accent-ink);}
-.btn-send.duet { background: var(--duet); color: var(--bg);}
+.btn-send.duet { background: var(--duet); color: #ffffff;}
 .btn-send:hover { filter: brightness(1.07);}
 .btn-send:active { transform: scale(.98);}
 .btn-send[disabled] { opacity:.65; cursor: default; transform: none; filter: none;}
@@ -217,11 +217,11 @@ html { scroll-behavior: auto;}
 <div class="page">
 <header class="hero">
 <div class="who hero-anim"><span class="dot latin">N</span>ネグロ</div>
-<h1 class="hero-anim" style="animation-delay:.08s">歌える曲<span class="accent">リスト</span><span class="h1-note">(随時更新中)</span></h1>
+<h1 class="hero-anim" style="animation-delay:.08s">歌える曲リスト<span class="h1-note">(随時更新中)</span></h1>
 <p class="lead hero-anim" style="animation-delay:.16s">ネグロが歌える曲の一覧です。<br />リクエストもできます(うろ覚えの可能性あり)。<br />「一緒に歌いたい」はデュエットのお誘い用です。</p>
 </header>
 
-<div class="marquee-band" aria-hidden="true"><div class="marquee-track" id="marquee-track"></div></div>
+<div class="info-band"><span>リクエスト受付中</span><span class="ib-sep">♪</span><span>全 <b id="ib-count">0</b> 曲</span><span class="ib-sep">♪</span><span>ジャンル <b id="ib-genres">0</b> 種類</span></div>
 
 <div class="toolbar">
 <div class="search-row">
@@ -298,9 +298,20 @@ function jacketHTML(s, big) {
 if (s.jacket) return '<img class="' + (big ? "" : "thumb") + '" src="' + esc(s.jacket) + '" alt="" loading="lazy" onload="this.classList.add(\'ld\')" onerror="this.outerHTML=\'<div class=\\\'thumb-ph\\\'>' + esc(firstChar(s.title)) + '</div>\'" />';
 return '<div class="thumb-ph" aria-hidden="true">' + esc(firstChar(s.title)) + "</div>";
 }
+var GENRE_COLORS = { "J-POP": "#e83531", "アニソン": "#e50a84", "ボカロ": "#0891b2", "ロック": "#ff6e1f", "ゲーム": "#00ac57", "歌謡曲": "#c98a12", "エレクトロニック": "#5053f0", "K-Pop": "#ef65c0", "その他": "#8a8a84" };
+var GENRE_PALETTE = ["#e83531", "#e50a84", "#ff6e1f", "#00ac57", "#0095d9", "#5053f0", "#c98a12", "#0891b2"];
+function genreColor(g) {
+if (GENRE_COLORS[g]) return GENRE_COLORS[g];
+var h = 0;
+for (var i = 0; i < (g || "").length; i++) h = (h * 31 + g.charCodeAt(i)) >>> 0;
+return GENRE_PALETTE[h % GENRE_PALETTE.length];
+}
+function genreTag(s) {
+return '<span class="tag genre" style="background:' + genreColor(s.genre) + '">' + esc(s.genre) + "</span>";
+}
 function metaHTML(s) {
 return '<span class="tag key"><span class="k-label">KEY</span>' + esc(s.keyLabel) + "</span>" +
-'<span class="tag">' + esc(s.genre) + "</span>";
+genreTag(s);
 }
 var MEM_COLORS = ["#e2483d", "#ef7d1a", "#f2b01e", "#8fbf3f", "#28a35c"];
 function memoryHTML(s) {
@@ -381,6 +392,7 @@ listEl.innerHTML = "";
 arr.forEach(function (s, i) {
 var card = document.createElement("article");
 card.className = "song";
+card.style.setProperty("--gc", genreColor(s.genre));
 card.style.animationDelay = Math.min(i * 60, 360) + "ms";
 card.innerHTML =
 '<div class="song-head">' + jacketHTML(s) +
@@ -412,12 +424,13 @@ arr.forEach(function (s, i) {
 var t = document.createElement("button");
 t.type = "button";
 t.className = "tile";
+t.style.setProperty("--gc", genreColor(s.genre));
 t.style.animationDelay = Math.min(i * 40, 320) + "ms";
 t.setAttribute("aria-label", s.title + " / " + s.artist + " の詳細を開く");
 t.innerHTML =
 (s.jacket ? '<img src="' + esc(s.jacket) + '" alt="" loading="lazy" onload="this.classList.add(\'ld\')" onerror="this.outerHTML=\'<div class=\\\'t-ph\\\'>' + esc(firstChar(s.title)) + '</div>\'" />' : '<div class="t-ph" aria-hidden="true">' + esc(firstChar(s.title)) + "</div>") +
 '<p class="tile-title"></p><p class="tile-artist"></p>' +
-'<div class="tile-meta"><span class="tag key"><span class="k-label">KEY</span>' + esc(s.keyLabel) + '</span><span class="tag">' + esc(s.genre) + "</span></div>" +
+'<div class="tile-meta"><span class="tag key"><span class="k-label">KEY</span>' + esc(s.keyLabel) + "</span>" + genreTag(s) + "</div>" +
 memoryHTML(s);
 t.querySelector(".tile-title").textContent = s.title;
 t.querySelector(".tile-artist").textContent = s.artist;
@@ -668,19 +681,20 @@ if (focusName) { var ni = panel.querySelector(".p-name"); if (ni) ni.focus(); }
 document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeAllForms(); });
 
 // ===== Data load =====
-function buildMarquee() {
-var track = document.getElementById("marquee-track");
-if (!track) return;
-var items = ["歌える曲", "リクエスト受付中"];
+function buildInfoBand() {
+var c = document.getElementById("ib-count");
+var g = document.getElementById("ib-genres");
+if (c) c.textContent = SONGS.length;
+if (g) {
 var seen = {};
-SONGS.forEach(function (s) { if (!seen[s.genre]) { seen[s.genre] = true; items.push(s.genre); } });
-var half = items.map(function (t) { return "<span>" + esc(t) + " ♪</span>"; }).join("");
-track.innerHTML = half + half;
+SONGS.forEach(function (s) { seen[s.genre] = true; });
+g.textContent = Object.keys(seen).length;
+}
 }
 function ready() {
 buildGenreChips();
 buildArtistOptions();
-buildMarquee();
+buildInfoBand();
 render();
 var sk = document.getElementById("skeleton");
 if (sk) sk.classList.add("done");
