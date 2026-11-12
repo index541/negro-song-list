@@ -81,6 +81,8 @@ img.thumb.ld { opacity: 1;}
 .view-toggle button { font: inherit; font-size: 13.5px; font-weight: 900; border: 0; background: transparent; color: var(--ink-2); border-radius: 999px; padding: 6px 16px; min-height: 2.25rem; cursor: pointer;}
 .view-toggle button.on { background: var(--ink); color: var(--bg);}
 .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px;}
+.genre-row { margin-top: 10px;}
+.genre-select { flex: 1; width: 100%;}
 .chip { border: 1.5px solid var(--line); background: var(--surface); color: var(--ink-2); border-radius: 999px; font: inherit; font-size: 14px; font-weight: 700; padding: 6px 16px; cursor: pointer; min-height: 2.5rem; transition: all.18s;}
 .chip:hover { border-color: var(--ink-3);}
 .chip.on { background: var(--ink); color: var(--bg); border-color: var(--ink);}
@@ -233,7 +235,9 @@ html { scroll-behavior: auto;}
 <button type="button" id="view-tile">タイル</button>
 </div>
 </div>
-<div class="chips" id="genre-chips" role="group" aria-label="ジャンルで絞り込み"></div>
+<div class="filter-row genre-row">
+<select id="genre-filter" class="sort-select genre-select" aria-label="ジャンルで絞り込み"></select>
+</div>
 <p class="count-line"><b id="count">0</b> 曲 見つかりました</p>
 </div>
 
@@ -272,7 +276,7 @@ var listEl = document.getElementById("song-list");
 var gridEl = document.getElementById("song-grid");
 var emptyEl = document.getElementById("empty");
 var countEl = document.getElementById("count");
-var chipsEl = document.getElementById("genre-chips");
+var genreSel = document.getElementById("genre-filter");
 var artistSel = document.getElementById("artist-filter");
 
 function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]; }); }
@@ -291,24 +295,22 @@ return '<span class="tag key"><span class="k-label">KEY</span>' + esc(s.keyLabel
 function buildGenreChips() {
 var counts = {};
 SONGS.forEach(function (s) { counts[s.genre] = (counts[s.genre] || 0) + 1; });
-var genres = ["すべて"].concat(Object.keys(counts).sort(function (a, b) { return a.localeCompare(b, "ja"); }));
+var genres = Object.keys(counts).sort(function (a, b) { return a.localeCompare(b, "ja"); });
 if (genres.indexOf(state.genre) === -1) state.genre = "すべて";
-chipsEl.innerHTML = "";
+genreSel.innerHTML = "";
+var all = document.createElement("option");
+all.value = "すべて";
+all.textContent = "すべてのジャンル（" + SONGS.length + "）";
+genreSel.appendChild(all);
 genres.forEach(function (g) {
-var b = document.createElement("button");
-b.type = "button";
-b.className = "chip" + (g === state.genre ? " on" : "");
-b.setAttribute("aria-pressed", g === state.genre ? "true" : "false");
-b.innerHTML = esc(g) + '<span class="n">' + (g === "すべて" ? SONGS.length : counts[g]) + "</span>";
-b.addEventListener("click", function () {
-state.genre = g;
-chipsEl.querySelectorAll(".chip").forEach(function (c) { c.classList.remove("on"); c.setAttribute("aria-pressed", "false"); });
-b.classList.add("on"); b.setAttribute("aria-pressed", "true");
-render();
+var o = document.createElement("option");
+o.value = g;
+o.textContent = g + "（" + counts[g] + "）";
+genreSel.appendChild(o);
 });
-chipsEl.appendChild(b);
-});
+genreSel.value = state.genre;
 }
+genreSel.addEventListener("change", function () { state.genre = genreSel.value; render(); });
 function buildArtistOptions() {
 var seen = {};
 SONGS.forEach(function (s) { seen[s.artist] = true; });
