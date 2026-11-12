@@ -28,6 +28,14 @@ h1 .accent { color:var(--accent); }
 .card.collapsed > h2 { margin-bottom:0; }
 .card.collapsed > h2::after { transform:translateY(-50%) rotate(-45deg); }
 .card.collapsed > *:not(h2) { display:none !important; }
+.modal-overlay { position:fixed; inset:0; background:rgba(22,20,15,.52); display:none; align-items:flex-end; justify-content:center; z-index:80; }
+.modal-overlay.open { display:flex; }
+.modal-sheet { background:var(--surface); width:100%; max-width:660px; max-height:92dvh; overflow-y:auto; border-radius:20px 20px 0 0; padding:18px 22px 30px; animation:sheetUp .3s cubic-bezier(.25,.9,.3,1.15); }
+@media (min-width:680px) { .modal-overlay { align-items:center; padding:20px; } .modal-sheet { border-radius:20px; } }
+@keyframes sheetUp { from { transform:translateY(26px); opacity:.3; } to { transform:none; opacity:1; } }
+.sheet-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:6px; }
+.sheet-head h2 { margin:0; font-size:18px; font-weight:900; }
+.sheet-close { font:inherit; font-size:20px; font-weight:900; line-height:1; width:40px; height:40px; border:0; border-radius:999px; background:var(--surface-2); color:var(--ink-2); cursor:pointer; flex:none; }
 .card .desc { margin:0 0 14px; font-size:13.5px; line-height:1.75; color:var(--ink-2); }
 .field { margin-bottom:14px; }
 .field label { display:block; font-size:13.5px; font-weight:900; margin-bottom:7px; }
@@ -325,6 +333,49 @@ h2.addEventListener("click", function () { setCardCollapsed(sec.id, !sec.classLi
 }
 })();
 
+// ===== 編集ポップアップ =====
+var editorOverlay = null;
+function openEditor() {
+if (!editorOverlay) return;
+editorOverlay.classList.add("open");
+document.body.style.overflow = "hidden";
+}
+function closeEditor() {
+if (!editorOverlay) return;
+editorOverlay.classList.remove("open");
+document.body.style.overflow = "";
+}
+(function initEditorModal() {
+var editCard = document.getElementById("edit-card");
+if (!editCard) return;
+editorOverlay = document.createElement("div");
+editorOverlay.className = "modal-overlay";
+editorOverlay.id = "editor-overlay";
+var sheet = document.createElement("div");
+sheet.className = "modal-sheet";
+var head = document.createElement("div");
+head.className = "sheet-head";
+head.innerHTML = "<h2 id=\"sheet-title\">曲の編集</h2><button type=\"button\" class=\"sheet-close\" id=\"sheet-close\" aria-label=\"閉じる\">×</button>";
+sheet.appendChild(head);
+var toMove = [];
+for (var i = 0; i < editCard.childNodes.length; i++) {
+var n = editCard.childNodes[i];
+if (n.nodeType === 1 && n.tagName !== "H2" && !(n.classList && n.classList.contains("desc"))) toMove.push(n);
+}
+for (var j = 0; j < toMove.length; j++) sheet.appendChild(toMove[j]);
+editorOverlay.appendChild(sheet);
+document.body.appendChild(editorOverlay);
+var openBtn = document.createElement("button");
+openBtn.type = "button";
+openBtn.className = "btn primary";
+openBtn.textContent = "入力フォームを開く（新規追加もこちら）";
+openBtn.addEventListener("click", function () { openEditor(); });
+editCard.appendChild(openBtn);
+document.getElementById("sheet-close").addEventListener("click", closeEditor);
+editorOverlay.addEventListener("click", function (e) { if (e.target === editorOverlay) closeEditor(); });
+document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeEditor(); });
+})();
+
 // ===== Token =====
 $("token-input").value = token;
 if (token) setStatus("token-status", "トークンは保存済みです。「接続テスト」で確認できます。", true);
@@ -357,6 +408,8 @@ else setStatus("token-status", "接続できませんでした（" + r.status + 
 
 // ===== Editor =====
 function clearEditor() {
+var st = document.getElementById("sheet-title");
+if (st) st.textContent = "曲の編集";
 $("f-id").value = ""; $("f-title").value = ""; $("f-artist").value = ""; $("f-genre").value = "";
 $("f-keylabel").value = ""; $("f-memory").value = ""; $("f-memo").value = ""; $("f-jacket").value = "";
 $("f-preview").style.display = "none";
@@ -370,7 +423,6 @@ if (v) { p.src = v; p.style.display = "block"; p.onerror = function () { p.style
 else p.style.display = "none";
 });
 function editSong(id) {
-expandCard("edit-card");
 var s = null;
 songs.forEach(function (x) { if (x.id === id) s = x; });
 if (!s) return;
@@ -379,8 +431,10 @@ $("f-genre").value = s.genre; $("f-keylabel").value = s.keyLabel;
 $("f-memory").value = (s.memory === null || s.memory === undefined) ? "" : String(s.memory);
 $("f-memo").value = s.memo || ""; $("f-jacket").value = s.jacket || "";
 $("f-jacket").dispatchEvent(new Event("input"));
-$("f-title").scrollIntoView({ behavior: "smooth", block: "center" });
-setStatus("save-status", "「" + s.title + "」を編集中です。直して保存してください。", null);
+var st = document.getElementById("sheet-title");
+if (st) st.textContent = "「" + s.title + "」を編集";
+setStatus("save-status", "", null);
+openEditor();
 }
 function deleteSong(id) {
 var s = null;
@@ -439,6 +493,7 @@ commitSongs((isNew ? "曲を追加: " : "曲を更新: ") + title)
 btn.disabled = false;
 renderSongs();
 clearEditor();
+closeEditor();
 toast("保存しました。公開ページへの反映は1分ほどかかります");
 setStatus("save-status", "保存できました。", true);
 })
@@ -468,13 +523,13 @@ grid.appendChild(b);
 });
 }
 function applyCandidate(c) {
-expandCard("edit-card");
 $("f-jacket").value = c.full;
 $("f-jacket").dispatchEvent(new Event("input"));
 if (c.title) $("f-title").value = c.title;
 if (c.artist) $("f-artist").value = c.artist;
 if (c.genre) $("f-genre").value = GENRE_MAP[c.genre] || c.genre;
 toast(c.genre ? "ジャケット・曲名・アーティスト・ジャンルを反映しました" : "ジャケット・曲名・アーティストを反映しました");
+openEditor();
 }
 function applyCandidateSmart(c) {
 if (c.source === "Deezer" && c.albumId && !c.genreChecked) {
