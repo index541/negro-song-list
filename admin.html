@@ -205,6 +205,14 @@ body.has-bulk-float { padding-bottom:86px; }
 <input id="f-jacket" type="url" placeholder="https://…" />
 </div>
 <img id="f-preview" class="preview" alt="" style="display:none" />
+<div class="field">
+<label for="f-ytlink">サビ試聴リンク（YouTube、任意）</label>
+<input id="f-ytlink" type="url" placeholder="https://www.youtube.com/watch?v=…" />
+</div>
+<div class="field">
+<label for="f-ytstart">サビの開始秒（任意）</label>
+<input id="f-ytstart" type="number" min="0" step="1" placeholder="62" />
+</div>
 <div class="btn-row" style="margin-top:16px">
 <button type="button" class="btn primary" id="song-save">保存する</button>
 <button type="button" class="btn sub" id="song-clear">新規入力に戻す</button>
@@ -525,6 +533,7 @@ var st = document.getElementById("sheet-title");
 if (st) st.textContent = "曲の編集";
 $("f-id").value = ""; $("f-title").value = ""; $("f-artist").value = ""; $("f-genre").value = "";
 $("f-keylabel").value = ""; $("f-memory").value = ""; $("f-memo").value = ""; $("f-jacket").value = "";
+$("f-ytlink").value = ""; $("f-ytstart").value = "";
 $("f-preview").style.display = "none";
 setStatus("save-status", "", null);
 }
@@ -543,6 +552,7 @@ $("f-id").value = s.id; $("f-title").value = s.title; $("f-artist").value = s.ar
 $("f-genre").value = s.genre; $("f-keylabel").value = s.keyLabel;
 $("f-memory").value = (s.memory === null || s.memory === undefined) ? "" : String(s.memory);
 $("f-memo").value = s.memo || ""; $("f-jacket").value = s.jacket || "";
+$("f-ytlink").value = s.ytLink || ""; $("f-ytstart").value = (s.ytStart === null || s.ytStart === undefined) ? "" : String(s.ytStart);
 $("f-jacket").dispatchEvent(new Event("input"));
 var st = document.getElementById("sheet-title");
 if (st) st.textContent = "「" + s.title + "」を編集";
@@ -652,11 +662,14 @@ memory: $("f-memory").value === "" ? null : parseInt($("f-memory").value, 10),
 jacket: $("f-jacket").value.trim(),
 addedAt: todayJST()
 };
+var ytLinkV = $("f-ytlink").value.trim();
+var ytStartV = parseInt($("f-ytstart").value, 10);
+if (ytLinkV) { obj.ytLink = ytLinkV; if (!isNaN(ytStartV) && ytStartV > 0) obj.ytStart = ytStartV; }
 var isNew = !id;
 if (id) {
 var old = null;
 songs.forEach(function (x) { if (x.id === id) old = x; });
-if (old) obj.addedAt = old.addedAt || obj.addedAt;
+if (old) { obj.addedAt = old.addedAt || obj.addedAt; if (old.preview) obj.preview = old.preview; }
 songs = songs.map(function (x) { return x.id === id ? obj : x; });
 } else songs.push(obj);
 var btn = $("song-save");

@@ -125,7 +125,7 @@ img.thumb.ld { opacity: 1;}
 .req-btn.duet { background: var(--duet); color: #ffffff; border: 0;}
 .req-btn.duet:hover { filter: brightness(1.08);}
 .song-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr)); gap: 14px; margin-top: 6px;}
-.tile { background: var(--surface); border: 1.5px solid var(--line); border-top: 6px solid var(--gc, var(--line)); border-radius: var(--radius); padding: 10px; cursor: pointer; font: inherit; text-align: left; color: var(--ink); animation: rise.5s both; transition: transform.15s; min-width: 0;}
+.tile { position: relative; background: var(--surface); border: 1.5px solid var(--line); border-top: 6px solid var(--gc, var(--line)); border-radius: var(--radius); padding: 10px; cursor: pointer; font: inherit; text-align: left; color: var(--ink); animation: rise.5s both; transition: transform.15s; min-width: 0;}
 .tile:hover { transform: translateY(-2px);}
 .tile:active { transform: scale(.98);}
 .tile img { width: 100%; max-width: 100%; aspect-ratio: 1; border-radius: 9px; object-fit: cover; display: block; background: var(--surface-2);}
@@ -141,6 +141,18 @@ img.thumb.ld { opacity: 1;}
 footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--ink-3); line-height: 1.8;}
 footer a { color: var(--ink-2); font-weight: 700;}
 .foot-link { display: inline-flex; align-items: center; min-height: 2rem;}
+.listen-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 12px;}
+.listen-btn { font: inherit; font-size: 13px; font-weight: 900; border-radius: 999px; padding: 8px 14px; min-height: 2.4rem; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; text-decoration: none; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink-2); transition: filter.15s, transform.15s;}
+.listen-btn:hover { filter: brightness(1.04);}
+.listen-btn:active { transform: scale(.97);}
+.listen-btn.pv { background: var(--ink); color: var(--bg); border-color: var(--ink);}
+.listen-btn.pv.playing { background: var(--accent); border-color: var(--accent); color: #ffffff;}
+.listen-btn.chorus { background: var(--accent); border-color: var(--accent); color: #ffffff;}
+.pv-progress { display: none; height: 4px; border-radius: 99px; background: var(--surface-2); overflow: hidden; margin-top: 8px;}
+.pv-progress.on { display: block;}
+.pv-progress i { display: block; height: 100%; width: 0%; background: var(--accent);}
+.tile-pv { position: absolute; top: 15px; right: 15px; width: 34px; height: 34px; border-radius: 50%; background: rgba(28, 28, 28,.8); color: #ffffff; display: grid; place-items: center; font-size: 12px; z-index: 2;}
+.tile-pv.playing { background: var(--accent);}
 .req-panel { margin-top: 16px; border-top: 1px dashed var(--line); padding-top: 16px; animation: rise.35s both;}
 .type-pill { display: inline-block; margin-bottom: 12px; font-size: 12.5px; font-weight: 900; letter-spacing:.05em; border-radius: 999px; padding: 4px 13px;}
 .type-pill.solo { background: var(--accent-soft); color: var(--accent);}
@@ -320,6 +332,64 @@ return GENRE_PALETTE[h % GENRE_PALETTE.length];
 function genreTag(s) {
 return '<span class="tag genre" style="background:' + genreColor(s.genre) + '">' + esc(s.genre) + "</span>";
 }
+function ytSearchURL(s) { return "https://www.youtube.com/results?search_query=" + encodeURIComponent(s.title + " " + s.artist); }
+function nicoSearchURL(s) { return "https://www.nicovideo.jp/search/" + encodeURIComponent(s.title + " " + s.artist); }
+function chorusURL(s) {
+if (!s.ytLink) return "";
+var start = parseInt(s.ytStart, 10);
+if (start > 0) return s.ytLink + (s.ytLink.indexOf("?") >= 0 ? "&" : "?") + "t=" + start + "s";
+return s.ytLink;
+}
+function listenHTML(s) {
+var h = '<div class="listen-row">';
+var c = chorusURL(s);
+if (c) h += '<a class="listen-btn chorus" href="' + esc(c) + '" target="_blank" rel="noopener">♪ サビを聴く</a>';
+if (s.preview) h += '<button type="button" class="listen-btn pv" data-pv="' + esc(s.id) + '">▶ 試聴（30秒）</button>';
+h += '<a class="listen-btn" href="' + esc(ytSearchURL(s)) + '" target="_blank" rel="noopener">YouTubeで探す</a>';
+h += '<a class="listen-btn" href="' + esc(nicoSearchURL(s)) + '" target="_blank" rel="noopener">ニコニコで探す</a>';
+h += "</div>";
+if (s.preview) h += '<div class="pv-progress" data-pvbar="' + esc(s.id) + '"><i></i></div>';
+return h;
+}
+var pvAudio = new Audio();
+pvAudio.preload = "none";
+var pvId = null;
+function pvUI() {
+var playing = pvId && !pvAudio.paused && !pvAudio.ended;
+document.querySelectorAll("[data-pv]").forEach(function (b) {
+var on = playing && b.getAttribute("data-pv") === pvId;
+b.classList.toggle("playing", !!on);
+if (b.classList.contains("listen-btn")) b.textContent = on ? "⏸ 停止" : "▶ 試聴（30秒）";
+else b.textContent = on ? "⏸" : "▶";
+});
+document.querySelectorAll("[data-pvbar]").forEach(function (bar) {
+bar.classList.toggle("on", bar.getAttribute("data-pvbar") === pvId && (playing || pvAudio.currentTime > 0));
+});
+}
+function togglePreview(id) {
+var s = songById(id);
+if (!s || !s.preview) return;
+if (pvId === id && !pvAudio.paused) { pvAudio.pause(); pvUI(); return; }
+if (pvId !== id) { pvAudio.src = s.preview; pvId = id; }
+var p = pvAudio.play();
+if (p && p.catch) p.catch(function () {});
+pvUI();
+}
+pvAudio.addEventListener("timeupdate", function () {
+if (!pvId || !pvAudio.duration) return;
+var bar = document.querySelector('[data-pvbar="' + pvId + '"] i');
+if (bar) bar.style.width = (pvAudio.currentTime / pvAudio.duration * 100) + "%";
+});
+pvAudio.addEventListener("play", pvUI);
+pvAudio.addEventListener("pause", pvUI);
+pvAudio.addEventListener("ended", pvUI);
+document.addEventListener("click", function (e) {
+var t = e.target && e.target.closest ? e.target.closest("[data-pv]") : null;
+if (!t) return;
+e.preventDefault();
+e.stopPropagation();
+togglePreview(t.getAttribute("data-pv"));
+}, true);
 function metaHTML(s) {
 return '<span class="tag key"><span class="k-label">KEY</span>' + esc(s.keyLabel) + "</span>" +
 genreTag(s);
@@ -396,6 +466,7 @@ document.getElementById("view-tile").classList.toggle("on", state.view === "tile
 listEl.hidden = state.view !== "list";
 gridEl.hidden = state.view !== "tile";
 if (state.view === "list") renderList(arr); else renderGrid(arr);
+pvUI();
 }
 function renderList(arr) {
 gridEl.innerHTML = "";
@@ -416,6 +487,7 @@ memoryHTML(s) +
 '<button type="button" class="req-btn solo" data-key="' + esc(s.id) + ':solo" data-id="' + esc(s.id) + '" data-type="solo">' + ICON_MIC + "歌ってほしい</button>" +
 '<button type="button" class="req-btn duet" data-key="' + esc(s.id) + ':duet" data-id="' + esc(s.id) + '" data-type="duet">' + ICON_DUET + "一緒に歌いたい</button>" +
 "</div>" +
+listenHTML(s) +
 '<div class="req-slot" data-slot="' + esc(s.id) + '"></div>';
 card.querySelector(".song-title").textContent = s.title;
 card.querySelector(".song-artist").textContent = s.artist;
@@ -439,6 +511,7 @@ t.style.setProperty("--gc", genreColor(s.genre));
 t.style.animationDelay = Math.min(i * 40, 320) + "ms";
 t.setAttribute("aria-label", s.title + " / " + s.artist + " の詳細を開く");
 t.innerHTML =
+(s.preview ? '<span class="tile-pv" data-pv="' + esc(s.id) + '" aria-hidden="true">▶</span>' : "") +
 (s.jacket ? '<img src="' + esc(s.jacket) + '" alt="" loading="lazy" onload="this.classList.add(\'ld\')" onerror="this.outerHTML=\'<div class=\\\'t-ph\\\'>' + esc(firstChar(s.title)) + '</div>\'" />' : '<div class="t-ph" aria-hidden="true">' + esc(firstChar(s.title)) + "</div>") +
 '<p class="tile-title"></p><p class="tile-artist"></p>' +
 '<div class="tile-meta"><span class="tag key"><span class="k-label">KEY</span>' + esc(s.keyLabel) + "</span>" + genreTag(s) + "</div>" +
@@ -649,6 +722,7 @@ var html =
 '<button type="button" class="req-btn solo" data-skey="' + esc(song.id) + ':solo">' + ICON_MIC + "歌ってほしい</button>" +
 '<button type="button" class="req-btn duet" data-skey="' + esc(song.id) + ':duet">' + ICON_DUET + "一緒に歌いたい</button>" +
 "</div>" +
+listenHTML(song) +
 '<div id="sheet-form"></div>';
 sheetBody.innerHTML = html;
 sheetBody.querySelector(".sheet-title").textContent = song.title;
