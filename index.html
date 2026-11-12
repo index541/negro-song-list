@@ -153,6 +153,11 @@ footer a { color: var(--ink-2); font-weight: 700;}
 .pv-track i { display: block; height: 100%; width: var(--p); background: var(--accent);}
 .pv-knob { position: absolute; top: 50%; left: var(--p); width: 15px; height: 15px; border-radius: 50%; background: var(--accent); transform: translate(-50%, -50%); box-shadow: 0 1px 4px rgba(0, 0, 0,.25); pointer-events: none;}
 .pv-progress:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 8px;}
+.pv-key { display: inline-flex; align-items: center; gap: 2px; border: 1.5px solid var(--line); border-radius: 999px; padding: 2px; background: var(--surface);}
+.pv-key-btn { font: inherit; font-size: 15px; font-weight: 900; width: 32px; height: 32px; border: 0; border-radius: 50%; background: var(--surface-2); color: var(--ink); cursor: pointer; display: grid; place-items: center;}
+.pv-key-btn:active { transform: scale(.94);}
+.pv-key-btn:disabled { opacity:.35; cursor: default;}
+.pv-key-label { font-size: 12.5px; font-weight: 900; color: var(--ink-2); min-width: 4.8em; text-align: center; font-variant-numeric: tabular-nums;}
 .tile-pv { position: absolute; top: 15px; right: 15px; width: 34px; height: 34px; border-radius: 50%; background: rgba(28, 28, 28,.8); color: #ffffff; display: grid; place-items: center; font-size: 12px; z-index: 2;}
 .tile-pv.playing { background: var(--accent);}
 .cmodal-backdrop { position: fixed; inset: 0; z-index: 50; background: rgba(10, 10, 8,.55); opacity: 0; visibility: hidden; transition: opacity.3s, visibility.3s;}
@@ -363,7 +368,8 @@ return s.ytLink;
 function listenHTML(s) {
 var h = '<div class="listen-row">';
 if (s.ytLink) h += '<button type="button" class="listen-btn chorus" data-chorus="' + esc(s.id) + '">♪ サビを聴く</button>';
-if (s.preview) h += '<button type="button" class="listen-btn pv" data-pv="' + esc(s.id) + '">▶ 試聴（30秒）</button>';
+if (s.preview) h += '<button type="button" class="listen-btn pv" data-pv="' + esc(s.id) + '">▶ 試聴（30秒）</button>' +
+'<span class="pv-key"><button type="button" class="pv-key-btn" data-pvkey="-1" aria-label="キーを下げる">−</button><span class="pv-key-label" data-pvkey-label>原曲キー</span><button type="button" class="pv-key-btn" data-pvkey="1" aria-label="キーを上げる">＋</button></span>';
 h += '<a class="listen-btn" href="' + esc(ytSearchURL(s)) + '" target="_blank" rel="noopener">YouTubeで探す</a>';
 h += '<a class="listen-btn" href="' + esc(nicoSearchURL(s)) + '" target="_blank" rel="noopener">ニコニコで探す</a>';
 h += "</div>";
@@ -396,12 +402,27 @@ if (id) document.querySelectorAll('[data-pvbar="' + id + '"]').forEach(function 
 pvUI();
 });
 }
+var pvKeyShift = 0;
+function pvKeyUI() {
+document.querySelectorAll("[data-pvkey-label]").forEach(function (el) {
+el.textContent = pvKeyShift === 0 ? "原曲キー" : (pvKeyShift > 0 ? "+" + pvKeyShift : "−" + (-pvKeyShift)) + "キー";
+});
+document.querySelectorAll("[data-pvkey]").forEach(function (b) {
+var d = parseInt(b.getAttribute("data-pvkey"), 10);
+b.disabled = (d < 0 && pvKeyShift <= -6) || (d > 0 && pvKeyShift >= 6);
+});
+}
+function pvApplyKey() {
+try { pvAudio.preservesPitch = false; pvAudio.mozPreservesPitch = false; pvAudio.webkitPreservesPitch = false; } catch (e) {}
+pvAudio.playbackRate = Math.pow(2, pvKeyShift / 12);
+}
 function startPv(id) {
 var s = songById(id);
 if (!s || !s.preview) return;
 pvId = id;
 pvFadingOut = false;
 pvAudio.src = s.preview;
+pvApplyKey();
 try { pvAudio.volume = 0; } catch (e) {}
 var p = pvAudio.play();
 if (p && p.catch) p.catch(function () {});
@@ -419,6 +440,7 @@ else b.textContent = on ? "⏸" : "▶";
 document.querySelectorAll("[data-pvbar]").forEach(function (bar) {
 if (bar.getAttribute("data-pvbar") !== pvId) bar.style.setProperty("--p", "0%");
 });
+pvKeyUI();
 }
 function togglePreview(id) {
 var s = songById(id);
@@ -504,6 +526,16 @@ try { pvAudio.currentTime = Math.min(pvAudio.duration, Math.max(0, pvAudio.curre
 });
 document.addEventListener("click", function (e) {
 if (!e.target || !e.target.closest) return;
+var k = e.target.closest("[data-pvkey]");
+if (k) {
+e.preventDefault();
+e.stopPropagation();
+var d = parseInt(k.getAttribute("data-pvkey"), 10);
+pvKeyShift = Math.max(-6, Math.min(6, pvKeyShift + d));
+pvApplyKey();
+pvKeyUI();
+return;
+}
 var c = e.target.closest("[data-chorus]");
 if (c) { e.preventDefault(); e.stopPropagation(); openChorus(c.getAttribute("data-chorus")); return; }
 var t = e.target.closest("[data-pv]");
