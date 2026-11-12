@@ -50,6 +50,16 @@ h1 { margin: 14px 0 10px; font-size: clamp(34px, 7.5vw, 52px); font-weight: 900;
 .info-band { margin: 24px 0 2px; background: var(--accent); color: #ffffff; border-radius: 12px; padding: 11px 16px; display: flex; gap: 8px 14px; flex-wrap: wrap; align-items: center; justify-content: center; font-size: 13.5px; font-weight: 900; letter-spacing:.05em; text-align: center;}
 .info-band .ib-sep { opacity:.65; font-weight: 700;}
 .info-band b { font-family: "Archivo", sans-serif; font-size: 15px;}
+.sec-head { display: flex; align-items: baseline; gap: 8px; margin: 20px 0 2px; padding: 8px 14px; background: var(--accent-soft); color: var(--accent); border-radius: 10px; font-weight: 900; scroll-margin-top: 10px;}
+.sec-head b { font-size: 20px; line-height: 1.2;}
+.sec-head span { font-size: 12.5px;}
+.song-list .sec-head:first-child { margin-top: 0;}
+.song-grid .sec-head { grid-column: 1 / -1; margin: 12px 0 0;}
+#kana-index { position: fixed; right: 6px; top: 50%; transform: translateY(-50%); z-index: 30; display: flex; flex-direction: column; gap: 3px;}
+#kana-index button { font: inherit; font-size: 12px; font-weight: 900; width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink-2); cursor: pointer; opacity:.95; padding: 0; display: grid; place-items: center;}
+#kana-index button:active { background: var(--accent); color: #ffffff; border-color: var(--accent);}
+#to-top { position: fixed; right: 14px; bottom: 14px; z-index: 30; width: 46px; height: 46px; border-radius: 50%; border: 0; background: var(--ink); color: var(--bg); font-size: 19px; font-weight: 900; cursor: pointer; box-shadow: var(--shadow); opacity: 0; visibility: hidden; transition: opacity.25s, visibility.25s;}
+#to-top.show { opacity: 1; visibility: visible;}
 .hero-anim { animation: heroUp.7s cubic-bezier(.25,.9,.3,1) both;}
 @keyframes heroUp { from { opacity: 0; transform: translateY(16px);} to { opacity: 1; transform: none;} }
 .chip.on { animation: chipPop.25s ease;}
@@ -309,6 +319,9 @@ html { scroll-behavior: auto;}
 </footer>
 </div>
 
+<nav id="kana-index" style="display:none" aria-label="頭文字の索引"></nav>
+<button type="button" id="to-top" aria-label="一番上に戻る">↑</button>
+
 <div class="cmodal-backdrop" id="cmodal-backdrop"></div>
 <section class="cmodal" id="cmodal" aria-hidden="true" aria-label="サビ試聴">
 <div class="cmodal-head"><span id="cmodal-title">サビ試聴</span><button type="button" class="cmodal-close" id="cmodal-close" aria-label="閉じる">×</button></div>
@@ -548,6 +561,18 @@ function ytIdFromUrl(u) {
 var m = String(u || "").match(/(?:youtube\.com\/(?:watch\?[^#]*v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/);
 return m ? m[1] : "";
 }
+var chorusPlayer = null, chorusTimer = null, chorusEndSec = 0;
+function loadYtApiPub(cb) {
+if (window.YT && YT.Player) { cb(); return; }
+var prev = window.onYouTubeIframeAPIReady;
+window.onYouTubeIframeAPIReady = function () { if (prev) prev(); cb(); };
+if (!document.getElementById("yt-api")) {
+var tag = document.createElement("script");
+tag.id = "yt-api"; tag.src = "https://www.youtube.com/iframe_api";
+document.head.appendChild(tag);
+}
+}
+function stopChorusTimer() { if (chorusTimer) { clearInterval(chorusTimer); chorusTimer = null; } }
 function openChorus(id) {
 var s = songById(id);
 if (!s || !s.ytLink) return;
@@ -556,13 +581,44 @@ if (!vid) { window.open(chorusURL(s), "_blank"); return; }
 if (pvId && !pvAudio.paused) pvStop(true);
 var st = parseInt(s.ytStart, 10); if (isNaN(st) || st < 0) st = 0;
 var en = parseInt(s.ytEnd, 10);
-var src = "https://www.youtube-nocookie.com/embed/" + vid + "?autoplay=1&rel=0" + (st > 0 ? "&start=" + st : "") + (!isNaN(en) && en > st ? "&end=" + en : "");
+chorusEndSec = (!isNaN(en) && en > st) ? en : 0;
 document.getElementById("cmodal-title").textContent = s.title + " ／ " + s.artist;
 document.getElementById("cmodal-ext").href = chorusURL(s);
-document.getElementById("cmodal-frame").innerHTML = '<iframe src="' + src + '" title="サビ試聴" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+var frame = document.getElementById("cmodal-frame");
+frame.innerHTML = "";
+var holder = document.createElement("div");
+holder.id = "chorus-player";
+frame.appendChild(holder);
 document.getElementById("cmodal").classList.add("open");
 document.getElementById("cmodal-backdrop").classList.add("open");
 document.getElementById("cmodal").setAttribute("aria-hidden", "false");
+loadYtApiPub(function () {
+if (!document.getElementById("cmodal").classList.contains("open")) return;
+if (chorusPlayer && chorusPlayer.destroy) { try { chorusPlayer.destroy(); } catch (e) {} chorusPlayer = null; }
+var holder2 = document.createElement("div");
+holder2.id = "chorus-player";
+var frame2 = document.getElementById("cmodal-frame");
+frame2.innerHTML = "";
+frame2.appendChild(holder2);
+chorusPlayer = new YT.Player("chorus-player", {
+videoId: vid, width: "100%", height: "100%",
+playerVars: { autoplay: 1, rel: 0, start: st },
+events: {
+onReady: function (ev) { try { ev.target.playVideo(); } catch (e) {} },
+onStateChange: function (ev) { if (window.YT && ev.data === YT.PlayerState.ENDED) stopChorusTimer(); }
+}
+});
+stopChorusTimer();
+if (chorusEndSec > 0) {
+chorusTimer = setInterval(function () {
+if (!chorusPlayer || !chorusPlayer.getCurrentTime) return;
+if (chorusPlayer.getCurrentTime() >= chorusEndSec) {
+try { chorusPlayer.pauseVideo(); } catch (e) {}
+stopChorusTimer();
+}
+}, 250);
+}
+});
 }
 function closeChorus() {
 var m = document.getElementById("cmodal");
@@ -570,6 +626,8 @@ if (!m || !m.classList.contains("open")) return;
 m.classList.remove("open");
 document.getElementById("cmodal-backdrop").classList.remove("open");
 m.setAttribute("aria-hidden", "true");
+stopChorusTimer();
+if (chorusPlayer && chorusPlayer.destroy) { try { chorusPlayer.destroy(); } catch (e) {} chorusPlayer = null; }
 document.getElementById("cmodal-frame").innerHTML = "";
 }
 document.getElementById("cmodal-close").addEventListener("click", closeChorus);
@@ -619,6 +677,85 @@ artistSel.appendChild(o);
 });
 }
 
+// ===== 五十音の見出しと索引 =====
+var SMALL_KANA = { "ぁ": "あ", "ぃ": "い", "ぅ": "う", "ぇ": "え", "ぉ": "お", "ゃ": "や", "ゅ": "ゆ", "ょ": "よ", "っ": "つ", "ゎ": "わ" };
+function kanaNorm(str) {
+var out = "";
+var s = String(str || "");
+for (var i = 0; i < s.length; i++) {
+var c = s.charAt(i);
+var code = s.charCodeAt(i);
+if (code >= 0x30A1 && code <= 0x30F6) c = String.fromCharCode(code - 0x60);
+if (SMALL_KANA[c]) c = SMALL_KANA[c];
+out += c;
+}
+return out;
+}
+function initialOf(text, yomi) {
+var base = kanaNorm(yomi || text || "");
+for (var i = 0; i < base.length; i++) {
+var c = base.charAt(i);
+if (c >= "ぁ" && c <= "ん") return c;
+if (/[a-zA-Z0-9]/.test(c)) return c.toUpperCase();
+}
+var raw = String(text || "");
+for (var j = 0; j < raw.length; j++) {
+var r = raw.charAt(j);
+if (/[a-zA-Z0-9]/.test(r)) return r.toUpperCase();
+}
+return "";
+}
+var KANA_ROWS = [["あ", "あいうえお"], ["か", "かきくけこがぎぐげご"], ["さ", "さしすせそざじずぜぞ"], ["た", "たちつてとだぢづでど"], ["な", "なにぬねの"], ["は", "はひふへほばびぶべぼぱぴぷぺぽ"], ["ま", "まみむめも"], ["や", "やゆよ"], ["ら", "らりるれろ"], ["わ", "わをん"]];
+function sectionOf(s, mode) {
+var text = mode === "artist" ? s.artist : s.title;
+var yomi = mode === "artist" ? s.artistYomi : s.titleYomi;
+var ini = initialOf(text, yomi);
+if (!ini) return { key: "other", label: "その他", row: "他" };
+if (/[A-Z0-9]/.test(ini)) return { key: "az-" + ini, label: ini, row: "英" };
+for (var i = 0; i < KANA_ROWS.length; i++) {
+if (KANA_ROWS[i][1].indexOf(ini) >= 0) return { key: "kana-" + ini, label: ini, row: KANA_ROWS[i][0] };
+}
+return { key: "other", label: "その他", row: "他" };
+}
+function yomiSortKey(text, yomi) {
+var ini = initialOf(text, yomi);
+if (ini && ini >= "ぁ" && ini <= "ん") return "1" + kanaNorm(yomi || text || "");
+if (ini) return "2" + String(text || "").toUpperCase();
+return "3" + String(text || "");
+}
+function cmpStr(x, y) { return x < y ? -1 : x > y ? 1 : 0; }
+var currentSections = [];
+function groupingActive() { return state.sort === "title" || state.sort === "artist"; }
+function makeSecHead(sec) {
+var head = document.createElement("div");
+head.className = "sec-head";
+head.id = "sec-" + sec.key;
+head.setAttribute("data-row", sec.row);
+head.innerHTML = "<b>" + esc(sec.label) + "</b><span>" + (state.sort === "artist" ? "から始まるアーティスト" : "から始まる曲") + "</span>";
+return head;
+}
+function buildKanaIndex() {
+var nav = document.getElementById("kana-index");
+if (!nav) return;
+if (!groupingActive() || currentSections.length < 2) { nav.style.display = "none"; nav.innerHTML = ""; return; }
+var rowOrder = ["あ", "か", "さ", "た", "な", "は", "ま", "や", "ら", "わ", "英", "他"];
+var firstByRow = {};
+currentSections.forEach(function (sec) { if (!firstByRow[sec.row]) firstByRow[sec.row] = sec.key; });
+nav.innerHTML = "";
+rowOrder.forEach(function (row) {
+if (!firstByRow[row]) return;
+var b = document.createElement("button");
+b.type = "button";
+b.textContent = row;
+b.setAttribute("aria-label", row + "の見出しへ移動");
+b.addEventListener("click", function () {
+var el = document.getElementById("sec-" + firstByRow[row]);
+if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+nav.appendChild(b);
+});
+nav.style.display = nav.children.length ? "" : "none";
+}
 function filtered() {
 var arr = SONGS.filter(function (s) {
 if (state.genre !== "すべて" && s.genre !== state.genre) return false;
@@ -630,8 +767,16 @@ for (var i = 0; i < terms.length; i++) if (terms[i] && hay.indexOf(terms[i]) ===
 }
 return true;
 });
-if (state.sort === "title") arr.sort(function (a, b) { return a.title.localeCompare(b.title, "ja"); });
-else if (state.sort === "artist") arr.sort(function (a, b) { return a.artist.localeCompare(b.artist, "ja") || a.title.localeCompare(b.title, "ja"); });
+if (state.sort === "title") arr.sort(function (a, b) {
+return cmpStr(yomiSortKey(a.title, a.titleYomi), yomiSortKey(b.title, b.titleYomi)) ||
+cmpStr(yomiSortKey(a.artist, a.artistYomi), yomiSortKey(b.artist, b.artistYomi)) ||
+cmpStr(a.id, b.id);
+});
+else if (state.sort === "artist") arr.sort(function (a, b) {
+return cmpStr(yomiSortKey(a.artist, a.artistYomi), yomiSortKey(b.artist, b.artistYomi)) ||
+cmpStr(yomiSortKey(a.title, a.titleYomi), yomiSortKey(b.title, b.titleYomi)) ||
+cmpStr(a.id, b.id);
+});
 else if (state.sort === "key") arr.sort(function (a, b) { return a.keyShift - b.keyShift; });
 else if (state.sort === "new") arr.sort(function (a, b) { return String(b.addedAt || "").localeCompare(String(a.addedAt || "")) || a.title.localeCompare(b.title, "ja"); });
 /* reco = おすすめ順：データの並び順（管理ページで並べた順）そのまま */
@@ -652,11 +797,18 @@ listEl.hidden = state.view !== "list";
 gridEl.hidden = state.view !== "tile";
 if (state.view === "list") renderList(arr); else renderGrid(arr);
 pvUI();
+buildKanaIndex();
 }
 function renderList(arr) {
 gridEl.innerHTML = "";
 listEl.innerHTML = "";
+currentSections = [];
+var lastSecKey = "";
 arr.forEach(function (s, i) {
+if (groupingActive()) {
+var sec = sectionOf(s, state.sort);
+if (sec.key !== lastSecKey) { lastSecKey = sec.key; currentSections.push(sec); listEl.appendChild(makeSecHead(sec)); }
+}
 var card = document.createElement("article");
 card.className = "song";
 card.style.setProperty("--gc", genreColor(s.genre));
@@ -688,7 +840,13 @@ renderPanel(false);
 function renderGrid(arr) {
 listEl.innerHTML = "";
 gridEl.innerHTML = "";
+currentSections = [];
+var lastSecKey = "";
 arr.forEach(function (s, i) {
+if (groupingActive()) {
+var sec = sectionOf(s, state.sort);
+if (sec.key !== lastSecKey) { lastSecKey = sec.key; currentSections.push(sec); gridEl.appendChild(makeSecHead(sec)); }
+}
 var t = document.createElement("button");
 t.type = "button";
 t.className = "tile";
@@ -950,6 +1108,15 @@ if (focusName) { var ni = panel.querySelector(".p-name"); if (ni) ni.focus(); }
 }
 
 document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeAllForms(); });
+
+// ===== 一番上に戻るボタン =====
+var toTopBtn = document.getElementById("to-top");
+if (toTopBtn) {
+toTopBtn.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+window.addEventListener("scroll", function () {
+toTopBtn.classList.toggle("show", window.scrollY > 600);
+}, { passive: true });
+}
 
 // ===== Data load =====
 function buildInfoBand() {

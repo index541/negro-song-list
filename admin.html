@@ -640,8 +640,16 @@ syncYtLabels();
 });
 }
 $("f-ytlink").addEventListener("change", setupChorusPlayer);
-$("f-ytstart-r").addEventListener("input", function () { $("f-ytstart").value = $("f-ytstart-r").value; syncYtLabels(); });
-$("f-ytend-r").addEventListener("input", function () { $("f-ytend").value = $("f-ytend-r").value; syncYtLabels(); });
+$("f-ytstart-r").addEventListener("input", function () {
+var er = $("f-ytend-r");
+if (parseInt(er.value, 10) < parseInt($("f-ytstart-r").value, 10)) { er.value = $("f-ytstart-r").value; $("f-ytend").value = er.value; }
+$("f-ytstart").value = $("f-ytstart-r").value; syncYtLabels();
+});
+$("f-ytend-r").addEventListener("input", function () {
+var sr = $("f-ytstart-r");
+if (parseInt($("f-ytend-r").value, 10) < parseInt(sr.value, 10)) { sr.value = $("f-ytend-r").value; $("f-ytstart").value = sr.value; }
+$("f-ytend").value = $("f-ytend-r").value; syncYtLabels();
+});
 $("f-ytstart").addEventListener("input", function () { var v = parseInt($("f-ytstart").value, 10); if (!isNaN(v)) { $("f-ytstart-r").value = v; syncYtLabels(); } });
 $("f-ytend").addEventListener("input", function () { var v = parseInt($("f-ytend").value, 10); if (!isNaN(v)) { $("f-ytend-r").value = v; syncYtLabels(); } });
 $("yt-audition").addEventListener("click", function () {
@@ -769,7 +777,7 @@ var isNew = !id;
 if (id) {
 var old = null;
 songs.forEach(function (x) { if (x.id === id) old = x; });
-if (old) { obj.addedAt = old.addedAt || obj.addedAt; if (old.preview) obj.preview = old.preview; }
+if (old) { obj.addedAt = old.addedAt || obj.addedAt; if (old.preview) obj.preview = old.preview; if (old.titleYomi && old.title === title) obj.titleYomi = old.titleYomi; if (old.artistYomi && old.artist === artist) obj.artistYomi = old.artistYomi; }
 songs = songs.map(function (x) { return x.id === id ? obj : x; });
 } else songs.push(obj);
 var btn = $("song-save");
