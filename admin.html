@@ -100,13 +100,14 @@ details.howto ol { margin:8px 0 0; padding-left:1.4em; }
 
 <section class="card">
 <h2>2. ジャケットを探す</h2>
-<p class="desc">曲名（できればアーティスト名も）を入れて探すと、候補のジャケットが出ます。気に入ったものを押すと、下の編集フォームに反映されます。</p>
+<p class="desc">曲名（できればアーティスト名も）を入れて探すと、候補のジャケットが出ます。気に入ったものを押すと、ジャケットと一緒に曲名・アーティスト名、取れる場合はジャンルまで下の編集フォームに入ります。</p>
 <div class="field">
 <label for="cover-q">検索のことば</label>
 <input id="cover-q" type="search" placeholder="曲名やアーティスト名で検索" autocomplete="off" />
 </div>
 <div class="btn-row">
 <button type="button" class="btn duet" id="search-itunes">iTunes で探す</button>
+<button type="button" class="btn sub" id="search-deezer">Deezer で探す</button>
 <button type="button" class="btn sub" id="search-mb">MusicBrainz で探す</button>
 </div>
 <p class="status" id="cover-status"></p>
@@ -333,7 +334,7 @@ setStatus("save-status", e.message || "保存に失敗しました。トーク�
 });
 
 // ===== Jacket search =====
-var GENRE_MAP = { "J-Pop": "J-POP", "Pop": "J-POP", "Anime": "アニソン", "Rock": "ロック", "Alternative": "ロック", "Vocaloid": "ボカロ", "Soundtrack": "アニソン" };
+var GENRE_MAP = { "J-Pop": "J-POP", "Pop": "J-POP", "Anime": "アニソン", "Rock": "ロック", "Alternative": "ロック", "Vocaloid": "ボカロ", "Soundtrack": "アニソン", "Rock / Metal": "ロック", "Metal": "ロック", "Dance": "ダンス", "vocaloid": "ボカロ", "anime": "アニソン", "j-pop": "J-POP", "jpop": "J-POP", "rock": "ロック", "pop": "J-POP", "anison": "アニソン" };
 function renderCandidates(list) {
 var grid = $("cand-grid");
 grid.innerHTML = "";
@@ -347,7 +348,7 @@ b.innerHTML = '<img src="' + esc(c.img) + '" alt="" loading="lazy" /><p></p><spa
 b.querySelector("p").textContent = c.title;
 b.querySelector("span").textContent = c.artist + "（" + c.source + "）";
 b.querySelector("img").addEventListener("error", function () { b.remove(); });
-b.addEventListener("click", function () { applyCandidate(c); });
+b.addEventListener("click", function () { applyCandidateSmart(c); });
 grid.appendChild(b);
 });
 }
@@ -356,8 +357,22 @@ $("f-jacket").value = c.full;
 $("f-jacket").dispatchEvent(new Event("input"));
 if (c.title) $("f-title").value = c.title;
 if (c.artist) $("f-artist").value = c.artist;
-if (c.genre && !$("f-genre").value.trim()) $("f-genre").value = GENRE_MAP[c.genre] || c.genre;
-toast("ジャケットと曲情報を反映しました");
+if (c.genre) $("f-genre").value = GENRE_MAP[c.genre] || c.genre;
+toast(c.genre ? "ジャケット・曲名・アーティスト・ジャンルを反映しました" : "ジャケット・曲名・アーティストを反映しました");
+}
+function applyCandidateSmart(c) {
+if (c.source === "Deezer" && c.albumId && !c.genreChecked) {
+c.genreChecked = true;
+fetch("https://api.deezer.com/album/" + c.albumId)
+.then(function (r) { return r.json(); })
+.then(function (d) {
+if (d && d.genres && d.genres.data && d.genres.data.length) c.genre = d.genres.data[0].name || "";
+applyCandidate(c);
+})
+.catch(function () { applyCandidate(c); });
+return;
+}
+applyCandidate(c);
 }
 $("search-itunes").addEventListener("click", function () {
 var q = ($("cover-q").value.trim() || ($("f-title").value + " " + $("f-artist").value).trim());
@@ -373,6 +388,20 @@ renderCandidates(list);
 })
 .catch(function () { setStatus("cover-status", "iTunes へ通信できませんでした。", false); });
 });
+$("search-deezer").addEventListener("click", function () {
+var q = ($("cover-q").value.trim() || ($("f-title").value + " " + $("f-artist").value).trim());
+if (!q) { setStatus("cover-status", "先に検索のことばを入れてください。", false); return; }
+setStatus("cover-status", "Deezer で探しています…", null);
+fetch("https://api.deezer.com/search?q=" + encodeURIComponent(q) + "&limit=12")
+.then(function (r) { return r.json(); })
+.then(function (d) {
+var list = (d.data || []).filter(function (x) { return x.album && x.album.cover_medium; }).map(function (x) {
+return { img: x.album.cover_medium, full: x.album.cover_xl || x.album.cover_big || x.album.cover_medium, title: x.title || "", artist: (x.artist && x.artist.name) || "", genre: "", source: "Deezer", albumId: x.album.id, genreChecked: false };
+});
+renderCandidates(list);
+})
+.catch(function () { setStatus("cover-status", "Deezer へ通信できませんでした。", false); });
+});
 $("search-mb").addEventListener("click", function () {
 var q = ($("cover-q").value.trim() || $("f-title").value.trim());
 if (!q) { setStatus("cover-status", "先に検索のことばを入れてください。", false); return; }
@@ -384,7 +413,12 @@ var list = [];
 (d.recordings || []).forEach(function (rec) {
 if (!rec.releases || !rec.releases.length) return;
 var rid = rec.releases[0].id;
-list.push({ img: "https://coverartarchive.org/release/" + rid + "/front-250", full: "https://coverartarchive.org/release/" + rid + "/front-500", title: rec.title || "", artist: (rec["artist-credit"] && rec["artist-credit"][0] && rec["artist-credit"][0].name) || "", genre: "", source: "MusicBrainz" });
+var tagGenre = "";
+if (rec.tags && rec.tags.length) {
+var sorted = rec.tags.slice().sort(function (a, b) { return (b.count || 0) - (a.count || 0); });
+for (var i = 0; i < sorted.length; i++) { if (GENRE_MAP[sorted[i].name]) { tagGenre = sorted[i].name; break; } }
+}
+list.push({ img: "https://coverartarchive.org/release/" + rid + "/front-250", full: "https://coverartarchive.org/release/" + rid + "/front-500", title: rec.title || "", artist: (rec["artist-credit"] && rec["artist-credit"][0] && rec["artist-credit"][0].name) || "", genre: tagGenre, source: "MusicBrainz" });
 });
 renderCandidates(list);
 })
