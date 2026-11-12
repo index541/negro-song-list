@@ -71,6 +71,13 @@ details.howto ol { margin:8px 0 0; padding-left:1.4em; }
 .song-row .t { font-weight:900; font-size:15px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .song-row .a { font-size:12.5px; color:var(--ink-2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .song-row .mini { font:inherit; font-size:12.5px; font-weight:900; border:0; border-radius:9px; padding:8px 13px; min-height:2.4rem; cursor:pointer; }
+.song-row .sel { width:24px; height:24px; accent-color:var(--accent); flex:none; cursor:pointer; margin:0; }
+.song-row.selected { box-shadow:inset 4px 0 0 var(--accent); }
+.bulk-bar { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:8px 0 2px; }
+.bulk-bar .mini { font:inherit; font-size:12.5px; font-weight:900; border:0; border-radius:9px; padding:8px 13px; min-height:2.4rem; cursor:pointer; background:var(--surface-2); color:var(--ink-2); }
+.bulk-bar .bulk-count { font-size:13px; font-weight:700; color:var(--ink-2); }
+.bulk-bar .bulk-del { background:var(--accent); color:var(--accent-ink); margin-left:auto; }
+.bulk-bar .bulk-del:disabled { opacity:.4; cursor:default; }
 .preview { width:96px; height:96px; border-radius:12px; object-fit:cover; background:var(--surface-2); display:block; }
 #toast { position:fixed; left:50%; bottom:22px; transform:translate(-50%,80px); background:var(--ink); color:var(--bg); font-size:14px; font-weight:900; border-radius:999px; padding:12px 22px; opacity:0; transition:all.35s; z-index:50; max-width:92vw; text-align:center; }
 #toast.show { transform:translate(-50%,0); opacity:1; }
@@ -182,7 +189,7 @@ details.howto ol { margin:8px 0 0; padding-left:1.4em; }
 
 <section class="card" id="list-card">
 <h2>いまの曲リスト（<span id="song-count">0</span>曲）</h2>
-<p class="desc">「編集」で読み込んで直せます。「削除」は取り消せないので注意してください。ここの検索と並び替えは探すためだけのもので、公開ページの並び順そのものは変わりません。</p>
+<p class="desc">「編集」で読み込んで直せます。「削除」は取り消せないので注意してください。まとめて消したいときは、各曲の左のチェックで選んで「選択した曲を削除」を押してください（検索やジャンルで絞ってから「表示中をすべて選択」を使うと便利です）。ここの検索と並び替えは探すためだけのもので、公開ページの並び順そのものは変わりません。</p>
 <div class="field">
 <label for="adm-q">曲をさがす</label>
 <input id="adm-q" type="search" placeholder="曲名・アーティストで検索" autocomplete="off" />
@@ -205,6 +212,12 @@ details.howto ol { margin:8px 0 0; padding-left:1.4em; }
 </div>
 </div>
 <p class="status" id="adm-count"></p>
+<div class="bulk-bar">
+<button type="button" class="mini" id="bulk-all">表示中をすべて選択</button>
+<button type="button" class="mini" id="bulk-none">選択を解除</button>
+<span class="bulk-count" id="bulk-count">選択中 0曲</span>
+<button type="button" class="mini bulk-del" id="bulk-del" disabled>選択した曲を削除</button>
+</div>
 <div id="song-rows"></div>
 </section>
 
@@ -246,6 +259,15 @@ return fetch("songs.json", { cache: "no-store" })
 .then(function (d) { songs = d; renderSongs(); });
 }
 var admState = { q: "", genre: "", sort: "order" };
+var selectedIds = {};
+function selectedCount() { var n = 0; for (var k in selectedIds) if (selectedIds[k]) n++; return n; }
+function updateBulkBar() {
+var n = selectedCount();
+$("bulk-count").textContent = "選択中 " + n + "曲";
+var d = $("bulk-del");
+d.disabled = n === 0;
+d.textContent = n ? "選択した" + n + "曲を削除" : "選択した曲を削除";
+}
 function adminViewSongs() {
 var arr = songs.filter(function (s) {
 if (admState.genre && s.genre !== admState.genre) return false;
@@ -265,6 +287,9 @@ return arr;
 }
 function renderSongs() {
 $("song-count").textContent = songs.length;
+var alive = {};
+songs.forEach(function (s) { alive[s.id] = true; });
+for (var sk in selectedIds) if (!alive[sk]) delete selectedIds[sk];
 var genreSel = $("adm-genre");
 var seenAll = {};
 songs.forEach(function (s) { seenAll[s.genre] = true; });
@@ -279,14 +304,22 @@ wrap.innerHTML = "";
 if (!view.length) wrap.innerHTML = '<p class="desc" style="margin-top:10px">見つかりませんでした。検索のことばを短くするか、ジャンルを「すべて」に戻してください。</p>';
 view.forEach(function (s) {
 var row = document.createElement("div");
-row.className = "song-row";
+row.className = "song-row" + (selectedIds[s.id] ? " selected" : "");
 row.innerHTML =
+'<input type="checkbox" class="sel" aria-label="この曲を選択" />' +
 (s.jacket ? '<img src="' + esc(s.jacket) + '" alt="" loading="lazy" />' : '<div class="ph">' + esc((s.title || "?").charAt(0)) + "</div>") +
 '<div class="main"><div class="t"></div><div class="a"></div></div>' +
 '<button type="button" class="mini" style="background:var(--surface-2);color:var(--ink-2)" data-act="edit">編集</button>' +
 '<button type="button" class="mini" style="background:var(--accent-soft);color:var(--accent)" data-act="del">削除</button>';
 row.querySelector(".t").textContent = s.title;
 row.querySelector(".a").textContent = s.artist + " ／ " + s.genre + " ／ " + s.keyLabel;
+var cb = row.querySelector(".sel");
+cb.checked = !!selectedIds[s.id];
+cb.addEventListener("change", function () {
+if (cb.checked) selectedIds[s.id] = true; else delete selectedIds[s.id];
+row.classList.toggle("selected", cb.checked);
+updateBulkBar();
+});
 row.querySelector('[data-act="edit"]').addEventListener("click", function () { editSong(s.id); });
 row.querySelector('[data-act="del"]').addEventListener("click", function () { deleteSong(s.id); });
 wrap.appendChild(row);
@@ -294,6 +327,7 @@ wrap.appendChild(row);
 var seen = {};
 songs.forEach(function (s) { seen[s.genre] = true; });
 $("genre-list").innerHTML = Object.keys(seen).map(function (g) { return '<option value="' + esc(g) + '"></option>'; }).join("");
+updateBulkBar();
 }
 function commitSongs(message) {
 if (!token) { setStatus("save-status", "先にトークンを保存してください。", false); return Promise.reject(new Error("no token")); }
@@ -443,6 +477,29 @@ if (!confirm("「" + s.title + "」を削除しますか？")) return;
 songs = songs.filter(function (x) { return x.id !== id; });
 commitSongs("曲を削除: " + s.title)
 .then(function () { renderSongs(); toast("削除しました。公開ページへの反映は1分ほどかかります"); })
+.catch(function (e) { setStatus("save-status", e.message || "削除に失敗しました。", false); loadSongs().catch(function () {}); });
+}
+$("bulk-all").addEventListener("click", function () {
+adminViewSongs().forEach(function (s) { selectedIds[s.id] = true; });
+renderSongs();
+});
+$("bulk-none").addEventListener("click", function () {
+selectedIds = {};
+renderSongs();
+});
+$("bulk-del").addEventListener("click", function () { bulkDelete(); });
+function bulkDelete() {
+var targets = songs.filter(function (s) { return selectedIds[s.id]; });
+if (!targets.length) return;
+var names = targets.slice(0, 20).map(function (s) { return "・" + s.title + " ／ " + s.artist; });
+var msg = "選択した " + targets.length + " 曲を削除しますか？\n\n" + names.join("\n") + (targets.length > 20 ? "\n…ほか " + (targets.length - 20) + " 曲" : "") + "\n\n削除は取り消せません。";
+if (!confirm(msg)) return;
+var ids = {};
+targets.forEach(function (s) { ids[s.id] = true; });
+songs = songs.filter(function (s) { return !ids[s.id]; });
+selectedIds = {};
+commitSongs("曲を一括削除: " + targets.length + "曲")
+.then(function () { renderSongs(); toast(targets.length + "曲を削除しました。公開ページへの反映は1分ほどかかります"); })
 .catch(function (e) { setStatus("save-status", e.message || "削除に失敗しました。", false); loadSongs().catch(function () {}); });
 }
 function normTitleBasic(t) { return String(t || "").toLowerCase().replace(/\s+/g, ""); }
