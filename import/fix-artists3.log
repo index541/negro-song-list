@@ -1,0 +1,11 @@
+targets: 403
+progress 100/403
+progress 200/403
+progress 300/403
+progress 400/403
+prefix_fixed: 49
+artist_changed: 218
+unmatched(kept): 185
+merged: 51
+total: 1261 -> 1210
+DRY RUN (not applied)

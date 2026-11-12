@@ -1950,7 +1950,7 @@
   {
     "id": "w004",
     "title": "吉原ラメント",
-    "artist": "96猫",
+    "artist": "亜沙",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -2203,7 +2203,7 @@
   {
     "id": "w059",
     "title": "アイのシナリオ",
-    "artist": "Gero",
+    "artist": "CHiCO with HoneyWorks",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -2214,7 +2214,7 @@
   {
     "id": "w060",
     "title": "ジャガーノート",
-    "artist": "Gero",
+    "artist": "ナナホシ管弦楽団",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -2225,7 +2225,7 @@
   {
     "id": "w061",
     "title": "ヒバナ",
-    "artist": "Gero",
+    "artist": "DECO*27",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -2236,7 +2236,7 @@
   {
     "id": "w062",
     "title": "砂の惑星",
-    "artist": "Gero",
+    "artist": "ハチ",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -2256,20 +2256,9 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w064",
-    "title": "吉原ラメント",
-    "artist": "Gero",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/63/6f/af/636faf79-2f86-4e80-fca8-a7d108a4dcde/PA00210296_0_237780_jacket.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w065",
     "title": "二息歩行",
-    "artist": "Gero",
+    "artist": "DECO*27",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -2280,7 +2269,7 @@
   {
     "id": "w067",
     "title": "From Y to Y",
-    "artist": "Gero",
+    "artist": "ジミーサムP",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -2291,7 +2280,7 @@
   {
     "id": "w068",
     "title": "つけまつける",
-    "artist": "Gero",
+    "artist": "きゃりーぱみゅぱみゅ",
     "genre": "エレクトロニック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -2302,7 +2291,7 @@
   {
     "id": "w069",
     "title": "PONPONPON",
-    "artist": "Gero",
+    "artist": "きゃりーぱみゅぱみゅ",
     "genre": "エレクトロニック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -2313,7 +2302,7 @@
   {
     "id": "w070",
     "title": "チルノのパーフェクトさんすう教室",
-    "artist": "Gero",
+    "artist": "IOSYS",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -2610,7 +2599,7 @@
   {
     "id": "w097",
     "title": "天国へ行こう",
-    "artist": "iciko",
+    "artist": "きくお",
     "genre": "エレクトロニック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -2632,7 +2621,7 @@
   {
     "id": "w099",
     "title": "Nyanyanyanyanyanyanya!",
-    "artist": "iciko",
+    "artist": "daniwellP",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -2654,7 +2643,7 @@
   {
     "id": "w101",
     "title": "ぼくらはみんな意味不明",
-    "artist": "iciko&よるきち",
+    "artist": "ピノキオピー",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -2841,7 +2830,7 @@
   {
     "id": "w131",
     "title": "チルドレンレコード",
-    "artist": "kradness",
+    "artist": "じん",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -2850,9 +2839,9 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w132",
+    "id": "w1081",
     "title": "六兆年と一夜物語",
-    "artist": "kradness",
+    "artist": "kemu",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -3072,7 +3061,7 @@
   {
     "id": "w152",
     "title": "Just a game",
-    "artist": "nero",
+    "artist": "祭屋",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -3089,17 +3078,6 @@
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/51/9f/73/519f73e3-9fc1-bb97-48c3-74a2c582e96b/VICL-64257.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w154",
-    "title": "Bad Apple!!",
-    "artist": "nomico",
-    "genre": "ダンス",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5f/be/9c/5fbe9c14-5145-59d7-9295-2ccd4d3a1295/4580547311594.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
@@ -3457,7 +3435,7 @@
   {
     "id": "w205",
     "title": "ブリキノダンス",
-    "artist": "SymaG",
+    "artist": "日向電工",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -3468,7 +3446,7 @@
   {
     "id": "w206",
     "title": "オリオンをなぞる",
-    "artist": "taiga&やまだん",
+    "artist": "UNISON SQUARE GARDEN",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -3479,7 +3457,7 @@
   {
     "id": "w207",
     "title": "キッチンでカッパがタニシ茹でてる",
-    "artist": "teksy",
+    "artist": "家の裏でマンボウが死んでるP",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -3521,9 +3499,9 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w211",
+    "id": "w1102",
     "title": "神のまにまに",
-    "artist": "un-c&まふまふ",
+    "artist": "れるりり",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -3974,7 +3952,7 @@
   {
     "id": "w252",
     "title": "Face down",
-    "artist": "Vin",
+    "artist": "嵐",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4018,7 +3996,7 @@
   {
     "id": "w257",
     "title": "Corruption Garden",
-    "artist": "Vin",
+    "artist": "CAZ",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4051,7 +4029,7 @@
   {
     "id": "w260",
     "title": "Episode.0",
-    "artist": "Vin",
+    "artist": "GACKT",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4062,7 +4040,7 @@
   {
     "id": "w261",
     "title": "バイビーベイビーサヨウナラ",
-    "artist": "Vin",
+    "artist": "saiB",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4073,7 +4051,7 @@
   {
     "id": "w262",
     "title": "Get Back Your Everything",
-    "artist": "Vin",
+    "artist": "NoisyCell",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4128,7 +4106,7 @@
   {
     "id": "w267",
     "title": "Last moment",
-    "artist": "Vin",
+    "artist": "SPYAIR",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4139,7 +4117,7 @@
   {
     "id": "w268",
     "title": "Lost Story",
-    "artist": "Vin",
+    "artist": "ゆよゆっぺ",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4161,7 +4139,7 @@
   {
     "id": "w270",
     "title": "Psychopath",
-    "artist": "Vin",
+    "artist": "BOØWY",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4183,7 +4161,7 @@
   {
     "id": "w272",
     "title": "You and beautiful world",
-    "artist": "Vin",
+    "artist": "ゆよゆっぺ",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4194,7 +4172,7 @@
   {
     "id": "w273",
     "title": "害虫",
-    "artist": "Vin",
+    "artist": "Khaki",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4227,7 +4205,7 @@
   {
     "id": "w276",
     "title": "生霊",
-    "artist": "Vin",
+    "artist": "犬神サアカス團",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4260,7 +4238,7 @@
   {
     "id": "w279",
     "title": "文学少女インセイン",
-    "artist": "Vin",
+    "artist": "カラスヤサボウ",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4271,7 +4249,7 @@
   {
     "id": "w280",
     "title": "文学少年の憂鬱",
-    "artist": "Vin",
+    "artist": "Lyu:Lyu",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4282,7 +4260,7 @@
   {
     "id": "w281",
     "title": "円尾坂の仕立屋",
-    "artist": "Vin",
+    "artist": "mothy_悪ノP",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4304,7 +4282,7 @@
   {
     "id": "w283",
     "title": "奈落の花",
-    "artist": "Vin",
+    "artist": "島みやえい子",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4354,17 +4332,6 @@
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/a2/1e/b4/a21eb48e-05ac-ace3-00f5-c1cb53e74e58/720841217305_Cover.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w288",
-    "title": "PONPONPON",
-    "artist": "Vin&ナノ",
-    "genre": "エレクトロニック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/5c/61/2f/5c612fab-a339-c73d-effa-421af12dfe32/mzi.bwctlpjm.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
@@ -4599,9 +4566,9 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w310",
+    "id": "w1132",
     "title": "紅蓮の弓矢",
-    "artist": "あるふぁきゅん。",
+    "artist": "Linked Horizon",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4623,7 +4590,7 @@
   {
     "id": "w312",
     "title": "SPiCa",
-    "artist": "うさ",
+    "artist": "とくP",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4645,7 +4612,7 @@
   {
     "id": "w314",
     "title": "ハロ／ハワユ",
-    "artist": "うさ",
+    "artist": "ナノウ",
     "genre": "その他",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4678,7 +4645,7 @@
   {
     "id": "w317",
     "title": "悪ノ娘",
-    "artist": "うさ",
+    "artist": "mothy_悪ノP",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4731,20 +4698,9 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w322",
-    "title": "only my railgun",
-    "artist": "ぐるたみん",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/38/60/52/38605250-190a-edeb-5439-2710686db617/5021732653086.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w323",
     "title": "Foolish13People",
-    "artist": "こいろ",
+    "artist": "CAZ",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -4951,17 +4907,6 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w343",
-    "title": "つけまつける",
-    "artist": "そらる",
-    "genre": "エレクトロニック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/e9/95/66/e99566e8-5082-1a6c-7036-6d4cff858474/190295960759.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w344",
     "title": "時報を歌にしてみたら原形がなくなった的な感じ風のノリみたいなアレ",
     "artist": "たかび",
@@ -4974,8 +4919,8 @@
   },
   {
     "id": "w345",
-    "title": "00-ナイショの話",
-    "artist": "ちせちゃん",
+    "title": "ナイショの話",
+    "artist": "ClariS",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -5151,7 +5096,7 @@
   {
     "id": "w361",
     "title": "シャルル",
-    "artist": "にね&ネグロ",
+    "artist": "バルーン",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -5195,7 +5140,7 @@
   {
     "id": "w365",
     "title": "Just Be Friends",
-    "artist": "ばずぱんだ",
+    "artist": "灯油",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -5206,7 +5151,7 @@
   {
     "id": "w366",
     "title": "愛のうた",
-    "artist": "ばずぱんだ",
+    "artist": "倖田來未",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -5228,7 +5173,7 @@
   {
     "id": "w368",
     "title": "Starduster",
-    "artist": "ばずぱんだ",
+    "artist": "ジミーサムP",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -5237,20 +5182,9 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w369",
-    "title": "ハロ／ハワユ",
-    "artist": "ばずぱんだ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://cdn-images.dzcdn.net/images/cover/4ca4d08e31eae8fa9c58eeecab3e30bd/1000x1000-000000-80-0-0.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w370",
     "title": "変わらないもの",
-    "artist": "ばずぱんだ",
+    "artist": "奥 華子",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -5360,7 +5294,7 @@
   {
     "id": "w381",
     "title": "Palette",
-    "artist": "ふくめん",
+    "artist": "ゆよゆっぺ",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -5371,7 +5305,7 @@
   {
     "id": "w382",
     "title": "ブラック★ロックシューター",
-    "artist": "ふくめん",
+    "artist": "ryo (supercell)",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -5382,7 +5316,7 @@
   {
     "id": "w383",
     "title": "炉心融解",
-    "artist": "ふくめん",
+    "artist": "iroha(sasaki)",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -5437,7 +5371,7 @@
   {
     "id": "w388",
     "title": "ふゆびより",
-    "artist": "ふさ",
+    "artist": "佐々木恵梨",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -5448,7 +5382,7 @@
   {
     "id": "w389",
     "title": "ようこそジャパリパークへ",
-    "artist": "ふさ",
+    "artist": "オーイシマサヨシ",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -5569,7 +5503,7 @@
   {
     "id": "w400",
     "title": "Last Night, Good Night",
-    "artist": "みゐや",
+    "artist": "livetune feat. 初音ミク",
     "genre": "エレクトロニック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -5602,7 +5536,7 @@
   {
     "id": "w403",
     "title": "回る空うさぎ",
-    "artist": "めありー",
+    "artist": "Orangestar",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -5611,9 +5545,9 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w404",
+    "id": "w1009",
     "title": "ローリンガール",
-    "artist": "やまだん",
+    "artist": "wowaka",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -5635,7 +5569,7 @@
   {
     "id": "w406",
     "title": "Mrs Pumpkinの滑稽な夢",
-    "artist": "よっぺい",
+    "artist": "ハチ",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -5657,23 +5591,12 @@
   {
     "id": "w408",
     "title": "ダブルラリアット",
-    "artist": "よっぺい",
+    "artist": "アゴアニキ",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/bb/1b/95/bb1b950e-b167-d3af-fa36-464bca31d6de/PA00087358_0_128947_jacket.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w409",
-    "title": "炉心融解",
-    "artist": "よっぺい",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/50/9f/d0/509fd0a5-c405-54c3-6993-54440fcb2f03/mzi.xwncebkj.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
@@ -5685,17 +5608,6 @@
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/41/61/aa/4161aa40-c111-56c2-2347-5cec7233efc2/08UMGIM02300.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w411",
-    "title": "Starduster",
-    "artist": "りぶ",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/d0/18/cf/d018cf2a-74e6-eb37-2380-f8187658425c/4547366766790.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
@@ -5721,20 +5633,20 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w414",
+    "id": "w1041",
     "title": "如月アテンション",
-    "artist": "りぶ",
-    "genre": "J-POP",
+    "artist": "じん",
+    "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/86/47/ec/8647ecaf-7f28-ff19-d843-799945047dca/VICL-64094.jpg/600x600bb.jpg",
+    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/f6/5b/57/f65b5760-739b-b207-9f1d-42fdbabb1580/4582290382272_cover.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
     "id": "w415",
     "title": "ピエロ",
-    "artist": "りぶ",
+    "artist": "KEI",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -5743,9 +5655,9 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w416",
+    "id": "w1099",
     "title": "敗北の少年",
-    "artist": "りぶ",
+    "artist": "PENGUIN RESEARCH",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -5789,7 +5701,7 @@
   {
     "id": "w420",
     "title": "メランコリック",
-    "artist": "ろん",
+    "artist": "Junky",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -5809,20 +5721,9 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w422",
-    "title": "PONPONPON",
-    "artist": "ろん",
-    "genre": "エレクトロニック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/5c/61/2f/5c612fab-a339-c73d-effa-421af12dfe32/mzi.bwctlpjm.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w423",
+    "id": "w1057",
     "title": "おちゃめ機能",
-    "artist": "ろん＆96猫",
+    "artist": "ゴジマジP feat. 重音テト",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -5942,7 +5843,7 @@
   },
   {
     "id": "w435",
-    "title": "01_ Cosmos Adventure",
+    "title": "Cosmos Adventure",
     "artist": "アーティスト名なし",
     "genre": "その他",
     "keyLabel": "原曲キー",
@@ -5953,7 +5854,7 @@
   },
   {
     "id": "w436",
-    "title": "02_ Twinkle Twinkle Wink ~Onegai Shooting Star~",
+    "title": "Twinkle Twinkle Wink ~Onegai Shooting Star~",
     "artist": "アーティスト名なし",
     "genre": "その他",
     "keyLabel": "原曲キー",
@@ -6097,7 +5998,7 @@
   {
     "id": "w450",
     "title": "小さなてのひら",
-    "artist": "アーティスト名なし",
+    "artist": "Lia",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -6108,7 +6009,7 @@
   {
     "id": "w451",
     "title": "晴れてハレルヤ",
-    "artist": "アーティスト名なし",
+    "artist": "奥井亜紀",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -6251,7 +6152,7 @@
   {
     "id": "w464",
     "title": "皆殺しのマジック",
-    "artist": "ウォルピスカーター",
+    "artist": "鬱P",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -6262,7 +6163,7 @@
   {
     "id": "w465",
     "title": "スーパーマーケット☆フィーバー",
-    "artist": "ウォルピスカーター&けーぽん",
+    "artist": "カルロス袴田(サイゼP)",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -6766,17 +6667,6 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w511",
-    "title": "Episode.0",
-    "artist": "ネグロ",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/50/13/94/mzi.klxewctm.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w512",
     "title": "Foolish”13”People",
     "artist": "ネグロ",
@@ -6823,7 +6713,7 @@
   {
     "id": "w518",
     "title": "アイラ",
-    "artist": "ネグロ",
+    "artist": "n-buna",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -6834,7 +6724,7 @@
   {
     "id": "w521",
     "title": "ゴーストルール",
-    "artist": "ネグロ",
+    "artist": "DECO*27",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -6845,7 +6735,7 @@
   {
     "id": "w523",
     "title": "スーサイドパレヱド",
-    "artist": "ネグロ",
+    "artist": "ユリイ・カノン",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -6887,20 +6777,9 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w529",
-    "title": "前前前世",
-    "artist": "ネグロ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ad/4b/b8/ad4bb84d-85f9-8902-6876-c7dd2f93c24a/25UM1IM78298.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w530",
     "title": "桜ノ雨",
-    "artist": "ネグロ",
+    "artist": "halyosy",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -6931,28 +6810,6 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w535",
-    "title": "キッチンでカッパがタニシ茹でてる",
-    "artist": "ネグロ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/3c/c2/2e/3cc22ea1-e9dc-8c2b-d451-6b34ebe33c33/VICL-63861.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w539",
-    "title": "ようこそジャパリパークへ",
-    "artist": "ネグロ",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music117/v4/b7/f7/df/b7f7df2d-d8a1-2b9e-2be2-3928e303c25e/4538182694671_cov.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w540",
     "title": "DAN DAN心ひかれてく",
     "artist": "ネグロ",
@@ -6966,7 +6823,7 @@
   {
     "id": "w541",
     "title": "SATSUGAI",
-    "artist": "ネグロ",
+    "artist": "デトロイト・メタル・シティ",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -6976,9 +6833,9 @@
   },
   {
     "id": "w545",
-    "title": "00-Bad Apple!!",
-    "artist": "ネグロ",
-    "genre": "インストゥルメンタル",
+    "title": "Bad Apple!!",
+    "artist": "のみこ",
+    "genre": "ダンス",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -6986,42 +6843,9 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w546",
-    "title": "00-Butter-Fly",
-    "artist": "ネグロ",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/02/48/b0/0248b084-163b-d446-2384-62da75c939cf/COKM-30816.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w547",
-    "title": "00-CHA-LA HEAD-CHA-LA",
-    "artist": "ネグロ",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Features124/v4/3a/f2/dd/3af2dd4e-f7c9-1fe3-7c7c-c8bdca855e05/dj.ihqmxgio.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w548",
-    "title": "00-Diaryはフォルテシモ",
-    "artist": "ネグロ",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/c0/2d/c5/mzi.cgeelpdz.png/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w549",
-    "title": "00-echo",
-    "artist": "ネグロ",
+    "title": "echo",
+    "artist": "CIRCRUSH(Circus-P + Crusher-P)feat.Gumi English",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -7030,20 +6854,9 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w550",
-    "title": "00-from Y to Y",
-    "artist": "ネグロ",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/f1/88/43/f1884377-d29e-29ed-9283-9109d444f74c/00602557480221.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w551",
-    "title": "00-GLAMOROUS SKY",
-    "artist": "ネグロ",
+    "title": "GLAMOROUS SKY",
+    "artist": "NANA & 中島 美嘉",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -7052,19 +6865,8 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w552",
-    "title": "00-K",
-    "artist": "ネグロ",
-    "genre": "オルタナティブ",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/8c/67/52/8c67529f-a204-8790-a458-ba85898e2200/artwork.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w553",
-    "title": "00-kagayake!GIRLS",
+    "title": "kagayake!GIRLS",
     "artist": "ネグロ",
     "genre": "その他",
     "keyLabel": "原曲キー",
@@ -7074,19 +6876,8 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w554",
-    "title": "00-Last Night, Good Night",
-    "artist": "ネグロ",
-    "genre": "オルタナティブ",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/53/61/7e/53617edb-16bf-6390-f109-1fd7806cd87d/198001422898.png/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w555",
-    "title": "00-maximum the hormone",
+    "title": "maximum the hormone",
     "artist": "ネグロ",
     "genre": "ハウス",
     "keyLabel": "原曲キー",
@@ -7096,31 +6887,9 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w556",
-    "title": "00-only human",
-    "artist": "ネグロ",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/b1/14/7f/b1147f9b-6a1f-51bf-18f0-269c6af0d6d7/jacket_SRCL06221B00Z_550.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w557",
-    "title": "00-READY STEADY GO",
-    "artist": "ネグロ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/33/06/7c/33067ccf-6375-c9bf-1ed9-36059d5f8bd8/jacket_KSCL00858B00Z_550.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w558",
-    "title": "00-Spirit",
-    "artist": "ネグロ",
+    "title": "Spirit",
+    "artist": "Project DMM",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -7130,7 +6899,7 @@
   },
   {
     "id": "w559",
-    "title": "00-THE DYING MESSEGE",
+    "title": "THE DYING MESSEGE",
     "artist": "ネグロ",
     "genre": "その他",
     "keyLabel": "原曲キー",
@@ -7141,7 +6910,7 @@
   },
   {
     "id": "w562",
-    "title": "00-くるみ☆ぽんちお",
+    "title": "くるみ☆ぽんちお",
     "artist": "ネグロ",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
@@ -7152,7 +6921,7 @@
   },
   {
     "id": "w563",
-    "title": "00-はてなのはね",
+    "title": "はてなのはね",
     "artist": "ネグロ",
     "genre": "その他",
     "keyLabel": "原曲キー",
@@ -7162,30 +6931,8 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w564",
-    "title": "00-はなまるぴっぴはよいこだけ",
-    "artist": "ネグロ",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/01/41/00/0141001e-2b33-700e-e709-0dd7233317ce/mzm.sbjsfqvh.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w565",
-    "title": "00-ふ・れ・ん・ど・し・た・い",
-    "artist": "ネグロ",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/f3/5a/c2/f35ac257-0970-0365-490c-5c28729f0e95/5021732649539.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w566",
-    "title": "00-ぶっ生き返す",
+    "title": "ぶっ生き返す",
     "artist": "ネグロ",
     "genre": "その他",
     "keyLabel": "原曲キー",
@@ -7196,41 +6943,30 @@
   },
   {
     "id": "w567",
-    "title": "00-またあした",
-    "artist": "ネグロ",
+    "title": "またあした",
+    "artist": "Every Little Thing",
     "genre": "その他",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w568",
-    "title": "00-イマジネーション",
-    "artist": "ネグロ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
+    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music69/v4/76/5c/c2/765cc2a7-49e5-8451-b4c0-a3c73fb9d190/ANTCD-16960.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
     "id": "w569",
-    "title": "00-ウィーアー!",
-    "artist": "ネグロ",
+    "title": "ウィーアー!",
+    "artist": "きただにひろし",
     "genre": "その他",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "",
+    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/1e/40/79/1e4079db-c461-baca-462c-6e5583af0f01/CODC-1806.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
     "id": "w570",
-    "title": "00-オトナのオモチャ",
-    "artist": "ネグロ",
+    "title": "オトナのオモチャ",
+    "artist": "ヒステリックパニック",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -7239,52 +6975,19 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w571",
-    "title": "00-オリオンをなぞる",
-    "artist": "ネグロ",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/4e/82/ba/4e82ba1b-997c-f715-24d1-53f370887d49/4547366640427.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w572",
-    "title": "00-カルマ",
-    "artist": "ネグロ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w573",
-    "title": "00-キラリ",
-    "artist": "ネグロ",
+    "title": "キラリ",
+    "artist": "いきものがかり",
     "genre": "その他",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "",
+    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/4a/9a/44/4a9a4425-de3a-de9a-5e47-6c2448d294f6/jacket_ESXX01061B00Z_550.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
     "id": "w574",
-    "title": "00-キラリ2",
-    "artist": "ネグロ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w575",
-    "title": "00-ダンデライオン",
+    "title": "キラリ2",
     "artist": "ネグロ",
     "genre": "その他",
     "keyLabel": "原曲キー",
@@ -7295,8 +6998,8 @@
   },
   {
     "id": "w576",
-    "title": "00-ナイトオブナイツ",
-    "artist": "ネグロ",
+    "title": "ナイトオブナイツ",
+    "artist": "ビートまりお",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -7305,53 +7008,20 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w577",
-    "title": "00-ヒステリ",
-    "artist": "ネグロ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w578",
-    "title": "00-ピエロ",
-    "artist": "ネグロ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w579",
-    "title": "00-ブルーウォーター",
-    "artist": "ネグロ",
+    "title": "ブルーウォーター",
+    "artist": "森川美穂",
     "genre": "その他",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w580",
-    "title": "00-ラフメイカー",
-    "artist": "ネグロ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
+    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/93/26/10/9326101f-c68d-528a-fa93-652f6172357a/TKCA-74590.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
     "id": "w581",
-    "title": "00-上を向いて歩こう",
-    "artist": "ネグロ",
+    "title": "上を向いて歩こう",
+    "artist": "坂本九",
     "genre": "歌謡曲",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -7361,7 +7031,7 @@
   },
   {
     "id": "w582",
-    "title": "00-初音ミクの激唱",
+    "title": "初音ミクの激唱",
     "artist": "ネグロ",
     "genre": "その他",
     "keyLabel": "原曲キー",
@@ -7372,41 +7042,19 @@
   },
   {
     "id": "w583",
-    "title": "00-愛がひとりぼっち",
-    "artist": "ネグロ",
+    "title": "愛がひとりぼっち",
+    "artist": "岩崎良美",
     "genre": "その他",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w584",
-    "title": "00-愛をこめて花束を",
-    "artist": "ネグロ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/a8/b4/a0/mzi.snoeojdw.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w585",
-    "title": "00-日曜日の太陽",
-    "artist": "ネグロ",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/ab/40/a4/ab40a413-5382-fadd-4b8a-0e4a0ce9c253/006663_4571293000405.jpg/600x600bb.jpg",
+    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/60/da/07/60da07e6-e0f1-ebc1-baf6-c28667071d83/PCSP_02821.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
     "id": "w587",
-    "title": "00-桜",
-    "artist": "ネグロ",
+    "title": "桜",
+    "artist": "コブクロ",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -7416,7 +7064,7 @@
   },
   {
     "id": "w588",
-    "title": "00-神様のすみか",
+    "title": "神様のすみか",
     "artist": "ネグロ",
     "genre": "その他",
     "keyLabel": "原曲キー",
@@ -7427,7 +7075,7 @@
   },
   {
     "id": "w589",
-    "title": "00-私の恋はホッチキス",
+    "title": "私の恋はホッチキス",
     "artist": "ネグロ",
     "genre": "その他",
     "keyLabel": "原曲キー",
@@ -7438,7 +7086,7 @@
   },
   {
     "id": "w590",
-    "title": "00-空中庭園",
+    "title": "空中庭園",
     "artist": "ネグロ",
     "genre": "その他",
     "keyLabel": "原曲キー",
@@ -7449,8 +7097,8 @@
   },
   {
     "id": "w592",
-    "title": "00-紅一葉",
-    "artist": "ネグロ",
+    "title": "紅一葉",
+    "artist": "中 孝介",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -7459,31 +7107,9 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w594",
-    "title": "00-飴か夢",
-    "artist": "ネグロ",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/a2/b1/b7/a2b1b7be-a603-102f-df60-8ffa7a665ae3/PA00124503_0_171725_jacket.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w598",
-    "title": "00-魂のルフラン",
-    "artist": "ネグロ",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/ee/b3/14/mzi.zzmlmfof.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w603",
     "title": "廃都アトリエスタにて",
-    "artist": "ネグロ&たわくし",
+    "artist": "cosMo@暴走P",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -7494,7 +7120,7 @@
   {
     "id": "w604",
     "title": "Smiling",
-    "artist": "ネグロ&先日の百瀬&ななゃん&ピゑロ&Asu&ない太&てらけん&Mr.WanWan",
+    "artist": "halyosy",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -7538,7 +7164,7 @@
   {
     "id": "w608",
     "title": "VOiCE",
-    "artist": "バルシェ",
+    "artist": "ラヴリーP",
     "genre": "オルタナティブ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -7549,34 +7175,12 @@
   {
     "id": "w609",
     "title": "トウキョウト・ロック・シティ",
-    "artist": "バルシェ",
+    "artist": "のど飴",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music7/v4/70/3b/3a/703b3a1a-e0f1-f492-d80a-8feaf61f6f1d/QWCE_00198_itunes.png/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w610",
-    "title": "ブラック★ロックシューター",
-    "artist": "バルシェ",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/9d/3d/71/9d3d717d-a7c6-1a5c-afcd-6f5ad095409c/a6584c78-346a-4d60-925e-c524e31e2da8.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w611",
-    "title": "シャルル",
-    "artist": "バルーン",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ca/bd/1b/cabd1b6e-a99d-b8ea-28b3-76b1c640243f/4589686423939_cover.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
@@ -7764,17 +7368,6 @@
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/85/ff/9a/85ff9ad8-6978-aba8-d7b2-864ee72a8d26/4580547325010.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w629",
-    "title": "Just Be Friends",
-    "artist": "ピコ",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/02/bc/7c/02bc7caa-725f-ae83-9518-c63236262f02/QWCE_00447_itunes.png/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
@@ -8385,23 +7978,12 @@
   {
     "id": "w685",
     "title": "クワガタにチョップしたらタイムスリップした",
-    "artist": "ヤマイ",
+    "artist": "家の裏でマンボウが死んでるP",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/3c/c2/2e/3cc22ea1-e9dc-8c2b-d451-6b34ebe33c33/VICL-63861.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w686",
-    "title": "紅一葉",
-    "artist": "ヤマイ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/94/55/17/945517eb-0a00-26fc-39c3-105f68516291/22UMGIM81445.rgb.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
@@ -8418,7 +8000,7 @@
   {
     "id": "w688",
     "title": "恋は戦争",
-    "artist": "ヤマイ",
+    "artist": "ryo (supercell)",
     "genre": "歌謡曲",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -8440,7 +8022,7 @@
   {
     "id": "w690",
     "title": "悪ノ召使",
-    "artist": "ヤマイ",
+    "artist": "mothy_悪ノP",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -8473,7 +8055,7 @@
   {
     "id": "w693",
     "title": "メルト",
-    "artist": "ヤマイ",
+    "artist": "ryo (supercell)",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -8495,7 +8077,7 @@
   {
     "id": "w695",
     "title": "人柱アリス",
-    "artist": "ヤマイ&トゥライ&Re_A&歌和サクラ&うさ",
+    "artist": "ゆがみP",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -9144,7 +8726,7 @@
   {
     "id": "w758",
     "title": "スイートフロートアパート",
-    "artist": "リツカ",
+    "artist": "家の裏でマンボウが死んでるP",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -9155,7 +8737,7 @@
   {
     "id": "w759",
     "title": "ワールドイズマイン",
-    "artist": "リツカ",
+    "artist": "ryo (supercell)",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -9188,7 +8770,7 @@
   {
     "id": "w762",
     "title": "sign",
-    "artist": "ルシュカ",
+    "artist": "FLOW",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -9265,7 +8847,7 @@
   {
     "id": "w769",
     "title": "会いたい",
-    "artist": "ヲタみん",
+    "artist": "澤田知可子",
     "genre": "歌謡曲",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -9276,7 +8858,7 @@
   {
     "id": "w770",
     "title": "トゥインクル",
-    "artist": "ヲタみん",
+    "artist": "原田郁子",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -9287,7 +8869,7 @@
   {
     "id": "w771",
     "title": "泣キ虫カレシ",
-    "artist": "ヲタみん＆TaMU",
+    "artist": "HoneyWorks",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -10574,7 +10156,7 @@
   {
     "id": "w890",
     "title": "小夜子",
-    "artist": "大根",
+    "artist": "みきとP",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -10596,7 +10178,7 @@
   {
     "id": "w892",
     "title": "うそつき",
-    "artist": "大根",
+    "artist": "緑黄色社会",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -10607,7 +10189,7 @@
   {
     "id": "w893",
     "title": "サイノウサンプラー",
-    "artist": "大根",
+    "artist": "koyori",
     "genre": "エレクトロニック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -10618,7 +10200,7 @@
   {
     "id": "w894",
     "title": "罪と罰",
-    "artist": "大根",
+    "artist": "椎名林檎",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -10640,7 +10222,7 @@
   {
     "id": "w896",
     "title": "告白予行練習",
-    "artist": "大根",
+    "artist": "HoneyWorks",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -10673,17 +10255,6 @@
   {
     "id": "w899",
     "title": "勇気の鐘～晴れてハレルヤII～",
-    "artist": "奥井亜紀",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/b5/e5/5f/b5e55f9d-94b4-da34-69e4-686c7317d19a/5054197539633.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w900",
-    "title": "晴れてハレルヤ",
     "artist": "奥井亜紀",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
@@ -10794,7 +10365,7 @@
   {
     "id": "w910",
     "title": "Hello, Worker",
-    "artist": "少年T",
+    "artist": "KEI",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -10816,7 +10387,7 @@
   {
     "id": "w912",
     "title": "心拍数♯0822",
-    "artist": "少年Ｔ",
+    "artist": "蝶々P",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -11177,8 +10748,8 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w945",
-    "title": "GO! GO! MANIAC",
+    "id": "w1129",
+    "title": "GO!GO!MANIAC",
     "artist": "放課後ティータイム",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
@@ -11344,7 +10915,7 @@
   {
     "id": "w960",
     "title": "clock lock works",
-    "artist": "栗プリン",
+    "artist": "ハチ",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -11355,23 +10926,12 @@
   {
     "id": "w961",
     "title": "火葬曲",
-    "artist": "栗プリン",
+    "artist": "No.D",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/68/55/99/68559901-5592-0b1b-84c8-05bbf0db83a6/QWCE_00118_itunes.png/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w962",
-    "title": "ブルーウォーター",
-    "artist": "森川美穂",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/93/26/10/9326101f-c68d-528a-fa93-652f6172357a/TKCA-74590.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
@@ -11509,7 +11069,7 @@
   {
     "id": "w976",
     "title": "マジLOVEレボリューションズ",
-    "artist": "湯毛&KOOL&やまだん&タイ焼き屋&taiga&鋼兵&Gero&ゴー☆ジャス",
+    "artist": "ST☆RISH",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -11520,7 +11080,7 @@
   {
     "id": "w977",
     "title": "マジLOVE2000%",
-    "artist": "湯毛&やまだん&taiga&KOOL&タイ焼き屋&鋼兵&Gero",
+    "artist": "ST☆RISH",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -11531,7 +11091,7 @@
   {
     "id": "w978",
     "title": "マジLOVE1000%",
-    "artist": "湯毛＆やまだん＆taiga＆KOOL＆タイ焼き屋＆鋼兵",
+    "artist": "ST☆RISH",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -11870,17 +11430,6 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w1009",
-    "title": "ローリンガール",
-    "artist": "秋赤音",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/5f/a7/5b/5fa75b2c-f3f9-dd33-61ae-bf532980c268/4538182196076.png/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w1010",
     "title": "バイビーベイビーサヨウナラ",
     "artist": "秋 赤音",
@@ -12114,7 +11663,7 @@
   {
     "id": "w1033",
     "title": "Fire◎Flower",
-    "artist": "赤ティン",
+    "artist": "halyosy",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12136,7 +11685,7 @@
   {
     "id": "w1035",
     "title": "命のユースティティア",
-    "artist": "赤ティン",
+    "artist": "Neru",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12158,7 +11707,7 @@
   {
     "id": "w1037",
     "title": "Souvenir",
-    "artist": "赤ティン",
+    "artist": "BUMP OF CHICKEN",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12169,7 +11718,7 @@
   {
     "id": "w1038",
     "title": "オツキミリサイタル",
-    "artist": "赤ティン",
+    "artist": "じん",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12180,7 +11729,7 @@
   {
     "id": "w1039",
     "title": "想像フォレスト",
-    "artist": "赤ティン",
+    "artist": "じん",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12191,23 +11740,12 @@
   {
     "id": "w1040",
     "title": "天ノ弱",
-    "artist": "赤ティン",
+    "artist": "164",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/59/b9/99/59b9994b-2f2c-50c6-8454-2966e1bea186/SCGA-00081.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w1041",
-    "title": "如月アテンション",
-    "artist": "赤ティン",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/f6/5b/57/f65b5760-739b-b207-9f1d-42fdbabb1580/4582290382272_cover.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
@@ -12246,7 +11784,7 @@
   {
     "id": "w1045",
     "title": "てんしょう　しょうてんしょう",
-    "artist": "足首",
+    "artist": "きくお",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12323,7 +11861,7 @@
   {
     "id": "w1052",
     "title": "アイネクライネ",
-    "artist": "針鼠",
+    "artist": "米津玄師",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12376,20 +11914,9 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w1057",
-    "title": "おちゃめ機能",
-    "artist": "鋼兵",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/7f/12/61/7f1261b0-de22-e103-012c-0563a654da69/825646170524.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w1058",
     "title": "オーヴァークロック",
-    "artist": "鋼兵",
+    "artist": "Neru",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12433,7 +11960,7 @@
   {
     "id": "w1062",
     "title": "恋愛裁判",
-    "artist": "鋼兵",
+    "artist": "40mP feat. 初音ミク",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12444,7 +11971,7 @@
   {
     "id": "w1063",
     "title": "GALLOWS BELL",
-    "artist": "鋼兵",
+    "artist": "buzzG & 初音ミク",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12466,7 +11993,7 @@
   {
     "id": "w1065",
     "title": "さよならレシェノルティア",
-    "artist": "鋼兵",
+    "artist": "ナナホシ管弦楽団",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12499,7 +12026,7 @@
   {
     "id": "w1068",
     "title": "カミサマネジマキ",
-    "artist": "鋼兵",
+    "artist": "kemu",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12510,7 +12037,7 @@
   {
     "id": "w1069",
     "title": "ドーナツホール",
-    "artist": "鋼兵",
+    "artist": "ハチ",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12521,7 +12048,7 @@
   {
     "id": "w1070",
     "title": "ユカユカ☆ヘヴンリーナイト",
-    "artist": "鋼兵",
+    "artist": "samfree",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12541,20 +12068,9 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w1072",
-    "title": "命のユースティティア",
-    "artist": "鋼兵",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/59/b9/99/59b9994b-2f2c-50c6-8454-2966e1bea186/SCGA-00081.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w1073",
     "title": "地球最後の告白を",
-    "artist": "鋼兵",
+    "artist": "kemu",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12565,7 +12081,7 @@
   {
     "id": "w1074",
     "title": "夜咄ディセイブ",
-    "artist": "鋼兵",
+    "artist": "じん",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12587,7 +12103,7 @@
   {
     "id": "w1076",
     "title": "アスミライ",
-    "artist": "鋼兵",
+    "artist": "Slingshot Million2",
     "genre": "パンク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12598,7 +12114,7 @@
   {
     "id": "w1077",
     "title": "サイバーサンダーサイダー",
-    "artist": "鋼兵",
+    "artist": "EZFG",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12631,7 +12147,7 @@
   {
     "id": "w1080",
     "title": "リンカーネイション",
-    "artist": "鋼兵",
+    "artist": "kemu",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12640,20 +12156,9 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w1081",
-    "title": "六兆年と一夜物語",
-    "artist": "鋼兵",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/84/61/6e/84616e69-253c-252a-c6ac-755a88fd38dc/25UMGIM91047.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w1082",
     "title": "千本桜",
-    "artist": "鋼兵",
+    "artist": "黒うさP",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12686,7 +12191,7 @@
   {
     "id": "w1085",
     "title": "イカサマライフゲイム",
-    "artist": "鋼兵",
+    "artist": "kemu",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12697,7 +12202,7 @@
   {
     "id": "w1086",
     "title": "セツナトリップ",
-    "artist": "鋼兵",
+    "artist": "Last Note.",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12719,7 +12224,7 @@
   {
     "id": "w1088",
     "title": "マネマネサイコトロピック",
-    "artist": "鋼兵",
+    "artist": "かいりきベア",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12739,17 +12244,6 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w1090",
-    "title": "ローリンガール",
-    "artist": "鋼兵",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/5f/a7/5b/5fa75b2c-f3f9-dd33-61ae-bf532980c268/4538182196076.png/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w1091",
     "title": "㍆㌋㌉㌏㌉㌸㌾㌋㌞㌹㌅",
     "artist": "鋼兵",
@@ -12763,7 +12257,7 @@
   {
     "id": "w1092",
     "title": "アンハッピーリフレイン",
-    "artist": "鋼兵",
+    "artist": "wowaka",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12774,7 +12268,7 @@
   {
     "id": "w1093",
     "title": "インビジブル",
-    "artist": "鋼兵",
+    "artist": "kemu",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12785,7 +12279,7 @@
   {
     "id": "w1094",
     "title": "メグメグ★ファイアーエンドレスナイト",
-    "artist": "鋼兵",
+    "artist": "samfree",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12796,7 +12290,7 @@
   {
     "id": "w1095",
     "title": "命短し恋せよ乙女",
-    "artist": "鋼兵",
+    "artist": "MOSHIMO",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12807,7 +12301,7 @@
   {
     "id": "w1096",
     "title": "Flashback",
-    "artist": "鋼兵",
+    "artist": "MIYAVI & KenKen",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12818,7 +12312,7 @@
   {
     "id": "w1097",
     "title": "リリリリ★バーニングナイト",
-    "artist": "鋼兵",
+    "artist": "samfree",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12829,23 +12323,12 @@
   {
     "id": "w1098",
     "title": "人生リセットボタン",
-    "artist": "鋼兵",
+    "artist": "kemu",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/09/c2/39/09c239e4-cc91-0580-6077-a2bdd807badf/jacket_KSCL02177B00Z_550.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w1099",
-    "title": "敗北の少年",
-    "artist": "鋼兵",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/78/cb/36/78cb3675-8f4c-4b79-056a-7663d48cb4fb/jacket_ZMCL01055B00Z_550.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
@@ -12871,20 +12354,9 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w1102",
-    "title": "神のまにまに",
-    "artist": "鋼兵",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/ab/8f/af/ab8faf2a-cb3d-9811-1a1c-121e1bfb9522/VICL-65647.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w1103",
     "title": "聖槍爆裂ボーイ",
-    "artist": "鋼兵",
+    "artist": "れるりり&もじゃ(大柴広己)",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12895,7 +12367,7 @@
   {
     "id": "w1104",
     "title": "西へ行く",
-    "artist": "鋼兵",
+    "artist": "ゐづ",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12939,7 +12411,7 @@
   {
     "id": "w1108",
     "title": "僕はまだ本気出してないだけ",
-    "artist": "鋼兵",
+    "artist": "あらいやかしこ",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12950,7 +12422,7 @@
   {
     "id": "w1109",
     "title": "わすれんぼう",
-    "artist": "鋼兵",
+    "artist": "アゴアニキ",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -12961,7 +12433,7 @@
   {
     "id": "w1110",
     "title": "妄想スケッチ",
-    "artist": "鋼兵",
+    "artist": "40mP",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -13005,7 +12477,7 @@
   {
     "id": "w1114",
     "title": "ストリーミングハート",
-    "artist": "鋼兵",
+    "artist": "DECO*27",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -13038,7 +12510,7 @@
   {
     "id": "w1117",
     "title": "ロミオとシンデレラ",
-    "artist": "鋼兵",
+    "artist": "doriko",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -13049,7 +12521,7 @@
   {
     "id": "w1118",
     "title": "Imitation",
-    "artist": "鋼兵",
+    "artist": "LUNA SEA",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -13060,7 +12532,7 @@
   {
     "id": "w1119",
     "title": "フレイムハート",
-    "artist": "鋼兵",
+    "artist": "デスおはぎ",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -13071,7 +12543,7 @@
   {
     "id": "w1120",
     "title": "ラブアトミック・トランスファー",
-    "artist": "鋼兵",
+    "artist": "KANAKO",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -13082,7 +12554,7 @@
   {
     "id": "w1121",
     "title": "ロストワンの号哭",
-    "artist": "鋼兵",
+    "artist": "Neru",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -13104,7 +12576,7 @@
   {
     "id": "w1123",
     "title": "Desire",
-    "artist": "鋼兵",
+    "artist": "Puma Blue",
     "genre": "エレクトロニック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -13157,28 +12629,6 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w1128",
-    "title": "only my railgun",
-    "artist": "鋼兵",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/38/60/52/38605250-190a-edeb-5439-2710686db617/5021732653086.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w1129",
-    "title": "GO!GO!MANIAC",
-    "artist": "鋼兵",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5a/1d/10/5a1d109b-d9fd-dd0c-b5f4-3f7c0b51b30d/mzi.orfbcrkv.png/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w1130",
     "title": "さくらんぼキック",
     "artist": "鋼兵",
@@ -13192,23 +12642,12 @@
   {
     "id": "w1131",
     "title": "ドナドナ",
-    "artist": "鋼兵",
+    "artist": "NHK東京児童合唱団",
     "genre": "歌謡曲",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/2a/80/3e/2a803e6f-aea2-f841-c064-bf0a282ed739/COCP-39201.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w1132",
-    "title": "紅蓮の弓矢",
-    "artist": "鋼兵",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/68/3d/2b/683d2b87-f72d-9aa1-c6a5-956d3d25c80e/PCCA_03837_itunes.png/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
@@ -13247,7 +12686,7 @@
   {
     "id": "w1136",
     "title": "BREAKER!BREAKER!",
-    "artist": "鋼兵",
+    "artist": "GZA",
     "genre": "ヒップホップ／ラップ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -13258,7 +12697,7 @@
   {
     "id": "w1137",
     "title": "自由の翼",
-    "artist": "鋼兵&YAMA-B",
+    "artist": "Linked Horizon",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -13269,7 +12708,7 @@
   {
     "id": "w1138",
     "title": "Preserved Roses",
-    "artist": "鋼兵&茶茶子",
+    "artist": "T.M.Revolution & 水樹奈々",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -13280,23 +12719,12 @@
   {
     "id": "w1139",
     "title": "一触即発☆禅ガール",
-    "artist": "鋼兵&赤ティン",
+    "artist": "相対性理論",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music49/v4/10/a4/16/10a4168e-e016-e7ab-577a-7c322f893b96/ACAD-001Z_vol1_2.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w1140",
-    "title": "ローリンガール",
-    "artist": "鋼兵＆NoB",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/5f/a7/5b/5fa75b2c-f3f9-dd33-61ae-bf532980c268/4538182196076.png/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
@@ -13698,7 +13126,7 @@
   {
     "id": "w1177",
     "title": "しねばいいのに",
-    "artist": "Ｋ太",
+    "artist": "どぶウサギ",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -13742,7 +13170,7 @@
   {
     "id": "w1181",
     "title": "さんかく",
-    "artist": "ネグロ",
+    "artist": "てれかす",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -13764,7 +13192,7 @@
   {
     "id": "w1183",
     "title": "サリシノハラ",
-    "artist": "ネグロ",
+    "artist": "みきとP",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -13775,7 +13203,7 @@
   {
     "id": "w1184",
     "title": "ラプンツェル",
-    "artist": "ネグロ",
+    "artist": "n-buna",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -13797,7 +13225,7 @@
   {
     "id": "w1186",
     "title": "スケッチスイッチ",
-    "artist": "ネグロ",
+    "artist": "石田燿子",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
@@ -13808,7 +13236,7 @@
   {
     "id": "w1187",
     "title": "君じゃなきゃダメみたい",
-    "artist": "ネグロ",
+    "artist": "オーイシマサヨシ",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,

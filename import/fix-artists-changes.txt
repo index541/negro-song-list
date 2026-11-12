@@ -1,0 +1,512 @@
+曲リストの表記修正 一覧
+
+■ タイトルの番号を外した曲（49件）
+  00-ナイショの話 → ナイショの話
+  01_ Cosmos Adventure → Cosmos Adventure
+  02_ Twinkle Twinkle Wink ~Onegai Shooting Star~ → Twinkle Twinkle Wink ~Onegai Shooting Star~
+  00-Bad Apple!! → Bad Apple!!
+  00-Butter-Fly → Butter-Fly
+  00-CHA-LA HEAD-CHA-LA → CHA-LA HEAD-CHA-LA
+  00-Diaryはフォルテシモ → Diaryはフォルテシモ
+  00-echo → echo
+  00-from Y to Y → from Y to Y
+  00-GLAMOROUS SKY → GLAMOROUS SKY
+  00-K → K
+  00-kagayake!GIRLS → kagayake!GIRLS
+  00-Last Night, Good Night → Last Night, Good Night
+  00-maximum the hormone → maximum the hormone
+  00-only human → only human
+  00-READY STEADY GO → READY STEADY GO
+  00-Spirit → Spirit
+  00-THE DYING MESSEGE → THE DYING MESSEGE
+  00-くるみ☆ぽんちお → くるみ☆ぽんちお
+  00-はてなのはね → はてなのはね
+  00-はなまるぴっぴはよいこだけ → はなまるぴっぴはよいこだけ
+  00-ふ・れ・ん・ど・し・た・い → ふ・れ・ん・ど・し・た・い
+  00-ぶっ生き返す → ぶっ生き返す
+  00-またあした → またあした
+  00-イマジネーション → イマジネーション
+  00-ウィーアー! → ウィーアー!
+  00-オトナのオモチャ → オトナのオモチャ
+  00-オリオンをなぞる → オリオンをなぞる
+  00-カルマ → カルマ
+  00-キラリ → キラリ
+  00-キラリ2 → キラリ2
+  00-ダンデライオン → ダンデライオン
+  00-ナイトオブナイツ → ナイトオブナイツ
+  00-ヒステリ → ヒステリ
+  00-ピエロ → ピエロ
+  00-ブルーウォーター → ブルーウォーター
+  00-ラフメイカー → ラフメイカー
+  00-上を向いて歩こう → 上を向いて歩こう
+  00-初音ミクの激唱 → 初音ミクの激唱
+  00-愛がひとりぼっち → 愛がひとりぼっち
+  00-愛をこめて花束を → 愛をこめて花束を
+  00-日曜日の太陽 → 日曜日の太陽
+  00-桜 → 桜
+  00-神様のすみか → 神様のすみか
+  00-私の恋はホッチキス → 私の恋はホッチキス
+  00-空中庭園 → 空中庭園
+  00-紅一葉 → 紅一葉
+  00-飴か夢 → 飴か夢
+  00-魂のルフラン → 魂のルフラン
+
+■ アーティスト名を直した曲（213件）
+  吉原ラメント ／ 96猫 → 亜沙
+  アイのシナリオ ／ Gero → CHiCO with HoneyWorks
+  ジャガーノート ／ Gero → ナナホシ管弦楽団
+  ヒバナ ／ Gero → DECO*27
+  砂の惑星 ／ Gero → ハチ
+  吉原ラメント ／ Gero → 亜沙
+  二息歩行 ／ Gero → DECO*27
+  From Y to Y ／ Gero → ジミーサムP
+  つけまつける ／ Gero → きゃりーぱみゅぱみゅ
+  PONPONPON ／ Gero → きゃりーぱみゅぱみゅ
+  チルノのパーフェクトさんすう教室 ／ Gero → IOSYS
+  天国へ行こう ／ iciko → きくお
+  Nyanyanyanyanyanyanya! ／ iciko → daniwellP
+  ぼくらはみんな意味不明 ／ iciko&よるきち → ピノキオピー
+  チルドレンレコード ／ kradness → じん
+  六兆年と一夜物語 ／ kradness → kemu
+  Just a game ／ nero → 祭屋
+  ブリキノダンス ／ SymaG → 日向電工
+  オリオンをなぞる ／ taiga&やまだん → UNISON SQUARE GARDEN
+  キッチンでカッパがタニシ茹でてる ／ teksy → 家の裏でマンボウが死んでるP
+  神のまにまに ／ un-c&まふまふ → れるりり
+  Face down ／ Vin → 嵐
+  Corruption Garden ／ Vin → CAZ
+  Episode.0 ／ Vin → GACKT
+  バイビーベイビーサヨウナラ ／ Vin → saiB
+  Get Back Your Everything ／ Vin → NoisyCell
+  Last moment ／ Vin → SPYAIR
+  Lost Story ／ Vin → ゆよゆっぺ
+  Psychopath ／ Vin → BOØWY
+  You and beautiful world ／ Vin → ゆよゆっぺ
+  害虫 ／ Vin → Khaki
+  生霊 ／ Vin → 犬神サアカス團
+  文学少女インセイン ／ Vin → カラスヤサボウ
+  文学少年の憂鬱 ／ Vin → Lyu:Lyu
+  円尾坂の仕立屋 ／ Vin → mothy_悪ノP
+  奈落の花 ／ Vin → 島みやえい子
+  PONPONPON ／ Vin&ナノ → きゃりーぱみゅぱみゅ
+  紅蓮の弓矢 ／ あるふぁきゅん。 → Linked Horizon
+  SPiCa ／ うさ → とくP
+  ハロ／ハワユ ／ うさ → ナノウ
+  悪ノ娘 ／ うさ → mothy_悪ノP
+  only my railgun ／ ぐるたみん → fripSide
+  Foolish13People ／ こいろ → CAZ
+  つけまつける ／ そらる → きゃりーぱみゅぱみゅ
+  ナイショの話 ／ ちせちゃん → ClariS
+  シャルル ／ にね&ネグロ → バルーン
+  Just Be Friends ／ ばずぱんだ → 灯油
+  愛のうた ／ ばずぱんだ → 倖田來未
+  Starduster ／ ばずぱんだ → ジミーサムP
+  ハロ／ハワユ ／ ばずぱんだ → ナノウ
+  変わらないもの ／ ばずぱんだ → 奥 華子
+  Palette ／ ふくめん → ゆよゆっぺ
+  ブラック★ロックシューター ／ ふくめん → ryo (supercell)
+  炉心融解 ／ ふくめん → iroha(sasaki)
+  ふゆびより ／ ふさ → 佐々木恵梨
+  ようこそジャパリパークへ ／ ふさ → オーイシマサヨシ
+  Last Night, Good Night ／ みゐや → livetune feat. 初音ミク
+  回る空うさぎ ／ めありー → Orangestar
+  ローリンガール ／ やまだん → wowaka
+  Mrs Pumpkinの滑稽な夢 ／ よっぺい → ハチ
+  ダブルラリアット ／ よっぺい → アゴアニキ
+  炉心融解 ／ よっぺい → iroha(sasaki)
+  Starduster ／ りぶ → ジミーサムP
+  如月アテンション ／ りぶ → じん
+  ピエロ ／ りぶ → KEI
+  敗北の少年 ／ りぶ → PENGUIN RESEARCH
+  メランコリック ／ ろん → Junky
+  PONPONPON ／ ろん → きゃりーぱみゅぱみゅ
+  おちゃめ機能 ／ ろん＆96猫 → ゴジマジP feat. 重音テト
+  小さなてのひら ／ アーティスト名なし → Lia
+  晴れてハレルヤ ／ アーティスト名なし → 奥井亜紀
+  皆殺しのマジック ／ ウォルピスカーター → 鬱P
+  スーパーマーケット☆フィーバー ／ ウォルピスカーター&けーぽん → カルロス袴田(サイゼP)
+  Episode.0 ／ ネグロ → GACKT
+  アイラ ／ ネグロ → n-buna
+  ゴーストルール ／ ネグロ → DECO*27
+  スーサイドパレヱド ／ ネグロ → ユリイ・カノン
+  前前前世 ／ ネグロ → RADWIMPS
+  桜ノ雨 ／ ネグロ → halyosy
+  キッチンでカッパがタニシ茹でてる ／ ネグロ → 家の裏でマンボウが死んでるP
+  ようこそジャパリパークへ ／ ネグロ → オーイシマサヨシ
+  SATSUGAI ／ ネグロ → デトロイト・メタル・シティ
+  Bad Apple!! ／ ネグロ → のみこ
+  Butter-Fly ／ ネグロ → 和田光司
+  CHA-LA HEAD-CHA-LA ／ ネグロ → 影山ヒロノブ
+  Diaryはフォルテシモ ／ ネグロ → 琴吹紬(CV:寿美菜子)
+  echo ／ ネグロ → CIRCRUSH(Circus-P + Crusher-P)feat.Gumi English
+  from Y to Y ／ ネグロ → ジミーサムP
+  GLAMOROUS SKY ／ ネグロ → NANA & 中島 美嘉
+  K ／ ネグロ → BUMP OF CHICKEN
+  Last Night, Good Night ／ ネグロ → livetune feat. 初音ミク
+  only human ／ ネグロ → K
+  READY STEADY GO ／ ネグロ → L'Arc-en-Ciel
+  Spirit ／ ネグロ → Project DMM
+  はなまるぴっぴはよいこだけ ／ ネグロ → A応P
+  ふ・れ・ん・ど・し・た・い ／ ネグロ → 学園生活部
+  またあした ／ ネグロ → Every Little Thing
+  イマジネーション ／ ネグロ → SPYAIR
+  ウィーアー! ／ ネグロ → きただにひろし
+  オトナのオモチャ ／ ネグロ → ヒステリックパニック
+  オリオンをなぞる ／ ネグロ → UNISON SQUARE GARDEN
+  カルマ ／ ネグロ → BUMP OF CHICKEN
+  キラリ ／ ネグロ → いきものがかり
+  ダンデライオン ／ ネグロ → BUMP OF CHICKEN
+  ナイトオブナイツ ／ ネグロ → ビートまりお
+  ヒステリ ／ ネグロ → クワガタP
+  ピエロ ／ ネグロ → KEI
+  ブルーウォーター ／ ネグロ → 森川美穂
+  ラフメイカー ／ ネグロ → BUMP OF CHICKEN
+  上を向いて歩こう ／ ネグロ → 坂本九
+  愛がひとりぼっち ／ ネグロ → 岩崎良美
+  愛をこめて花束を ／ ネグロ → Superfly
+  日曜日の太陽 ／ ネグロ → THE NEUTRAL
+  桜 ／ ネグロ → コブクロ
+  紅一葉 ／ ネグロ → 中 孝介
+  飴か夢 ／ ネグロ → doriko
+  魂のルフラン ／ ネグロ → 高橋洋子
+  廃都アトリエスタにて ／ ネグロ&たわくし → cosMo@暴走P
+  Smiling ／ ネグロ&先日の百瀬&ななゃん&ピゑロ&Asu&ない太&てらけん&Mr.WanWan → halyosy
+  VOiCE ／ バルシェ → ラヴリーP
+  トウキョウト・ロック・シティ ／ バルシェ → のど飴
+  ブラック★ロックシューター ／ バルシェ → ryo (supercell)
+  Just Be Friends ／ ピコ → 灯油
+  クワガタにチョップしたらタイムスリップした ／ ヤマイ → 家の裏でマンボウが死んでるP
+  紅一葉 ／ ヤマイ → 中 孝介
+  恋は戦争 ／ ヤマイ → ryo (supercell)
+  悪ノ召使 ／ ヤマイ → mothy_悪ノP
+  メルト ／ ヤマイ → ryo (supercell)
+  人柱アリス ／ ヤマイ&トゥライ&Re_A&歌和サクラ&うさ → ゆがみP
+  スイートフロートアパート ／ リツカ → 家の裏でマンボウが死んでるP
+  ワールドイズマイン ／ リツカ → ryo (supercell)
+  sign ／ ルシュカ → FLOW
+  会いたい ／ ヲタみん → 澤田知可子
+  トゥインクル ／ ヲタみん → 原田郁子
+  泣キ虫カレシ ／ ヲタみん＆TaMU → HoneyWorks
+  小夜子 ／ 大根 → みきとP
+  うそつき ／ 大根 → 緑黄色社会
+  サイノウサンプラー ／ 大根 → koyori
+  罪と罰 ／ 大根 → 椎名林檎
+  告白予行練習 ／ 大根 → HoneyWorks
+  Hello, Worker ／ 少年T → KEI
+  心拍数♯0822 ／ 少年Ｔ → 蝶々P
+  clock lock works ／ 栗プリン → ハチ
+  火葬曲 ／ 栗プリン → No.D
+  マジLOVEレボリューションズ ／ 湯毛&KOOL&やまだん&タイ焼き屋&taiga&鋼兵&Gero&ゴー☆ジャス → ST☆RISH
+  マジLOVE2000% ／ 湯毛&やまだん&taiga&KOOL&タイ焼き屋&鋼兵&Gero → ST☆RISH
+  マジLOVE1000% ／ 湯毛＆やまだん＆taiga＆KOOL＆タイ焼き屋＆鋼兵 → ST☆RISH
+  ローリンガール ／ 秋赤音 → wowaka
+  Fire◎Flower ／ 赤ティン → halyosy
+  命のユースティティア ／ 赤ティン → Neru
+  Souvenir ／ 赤ティン → BUMP OF CHICKEN
+  オツキミリサイタル ／ 赤ティン → じん
+  想像フォレスト ／ 赤ティン → じん
+  天ノ弱 ／ 赤ティン → 164
+  如月アテンション ／ 赤ティン → じん
+  てんしょう　しょうてんしょう ／ 足首 → きくお
+  アイネクライネ ／ 針鼠 → 米津玄師
+  おちゃめ機能 ／ 鋼兵 → ゴジマジP feat. 重音テト
+  オーヴァークロック ／ 鋼兵 → Neru
+  恋愛裁判 ／ 鋼兵 → 40mP feat. 初音ミク
+  GALLOWS BELL ／ 鋼兵 → buzzG & 初音ミク
+  さよならレシェノルティア ／ 鋼兵 → ナナホシ管弦楽団
+  カミサマネジマキ ／ 鋼兵 → kemu
+  ドーナツホール ／ 鋼兵 → ハチ
+  ユカユカ☆ヘヴンリーナイト ／ 鋼兵 → samfree
+  命のユースティティア ／ 鋼兵 → Neru
+  地球最後の告白を ／ 鋼兵 → kemu
+  夜咄ディセイブ ／ 鋼兵 → じん
+  アスミライ ／ 鋼兵 → Slingshot Million2
+  サイバーサンダーサイダー ／ 鋼兵 → EZFG
+  リンカーネイション ／ 鋼兵 → kemu
+  六兆年と一夜物語 ／ 鋼兵 → kemu
+  千本桜 ／ 鋼兵 → 黒うさP
+  イカサマライフゲイム ／ 鋼兵 → kemu
+  セツナトリップ ／ 鋼兵 → Last Note.
+  マネマネサイコトロピック ／ 鋼兵 → かいりきベア
+  ローリンガール ／ 鋼兵 → wowaka
+  アンハッピーリフレイン ／ 鋼兵 → wowaka
+  インビジブル ／ 鋼兵 → kemu
+  メグメグ★ファイアーエンドレスナイト ／ 鋼兵 → samfree
+  命短し恋せよ乙女 ／ 鋼兵 → MOSHIMO
+  Flashback ／ 鋼兵 → MIYAVI & KenKen
+  リリリリ★バーニングナイト ／ 鋼兵 → samfree
+  人生リセットボタン ／ 鋼兵 → kemu
+  敗北の少年 ／ 鋼兵 → PENGUIN RESEARCH
+  神のまにまに ／ 鋼兵 → れるりり
+  聖槍爆裂ボーイ ／ 鋼兵 → れるりり&もじゃ(大柴広己)
+  西へ行く ／ 鋼兵 → ゐづ
+  僕はまだ本気出してないだけ ／ 鋼兵 → あらいやかしこ
+  わすれんぼう ／ 鋼兵 → アゴアニキ
+  妄想スケッチ ／ 鋼兵 → 40mP
+  ストリーミングハート ／ 鋼兵 → DECO*27
+  ロミオとシンデレラ ／ 鋼兵 → doriko
+  Imitation ／ 鋼兵 → LUNA SEA
+  フレイムハート ／ 鋼兵 → デスおはぎ
+  ラブアトミック・トランスファー ／ 鋼兵 → KANAKO
+  ロストワンの号哭 ／ 鋼兵 → Neru
+  Desire ／ 鋼兵 → Puma Blue
+  only my railgun ／ 鋼兵 → fripSide
+  GO!GO!MANIAC ／ 鋼兵 → 放課後ティータイム
+  ドナドナ ／ 鋼兵 → NHK東京児童合唱団
+  紅蓮の弓矢 ／ 鋼兵 → Linked Horizon
+  BREAKER!BREAKER! ／ 鋼兵 → GZA
+  自由の翼 ／ 鋼兵&YAMA-B → Linked Horizon
+  Preserved Roses ／ 鋼兵&茶茶子 → T.M.Revolution & 水樹奈々
+  一触即発☆禅ガール ／ 鋼兵&赤ティン → 相対性理論
+  ローリンガール ／ 鋼兵＆NoB → wowaka
+  しねばいいのに ／ Ｋ太 → どぶウサギ
+  さんかく ／ ネグロ → てれかす
+  サリシノハラ ／ ネグロ → みきとP
+  ラプンツェル ／ ネグロ → n-buna
+  スケッチスイッチ ／ ネグロ → 石田燿子
+  君じゃなきゃダメみたい ／ ネグロ → オーイシマサヨシ
+
+■ 重複で統合した曲（51件）
+  飴か夢 ／ doriko（u009 に統合）
+  イマジネーション ／ SPYAIR（u017 に統合）
+  Only Human ／ K（u041 に統合）
+  カルマ ／ BUMP OF CHICKEN（u049 に統合）
+  K ／ BUMP OF CHICKEN（u064 に統合）
+  Diaryはフォルテシモ ／ 琴吹紬(寿美菜子)（u100 に統合）
+  魂のルフラン ／ 高橋洋子（u104 に統合）
+  ダンデライオン ／ BUMP OF CHICKEN（u107 に統合）
+  CHA-LA HEAD-CHA-LA ／ 影山ヒロノブ（u109 に統合）
+  Butter-Fly ／ 和田光司（u134 に統合）
+  はなまるぴっぴはよいこだけ ／ A応P（u139 に統合）
+  ヒステリ ／ クワガタP feat.GUMI（u149 に統合）
+  ふ・れ・ん・ど・し・た・い ／ 学園生活部（u160 に統合）
+  ラフ・メイカー ／ BUMP OF CHICKEN（u187 に統合）
+  READY STEADY GO ／ L'Arc-en-Ciel（u196 に統合）
+  吉原ラメント ／ 亜沙（w004 に統合）
+  only my railgun ／ fripSide（w055 に統合）
+  only my railgun ／ fripSide（w055 に統合）
+  From Y to Y ／ ジミーサムP（w067 に統合）
+  つけまつける ／ きゃりーぱみゅぱみゅ（w068 に統合）
+  PONPONPON ／ きゃりーぱみゅぱみゅ（w069 に統合）
+  PONPONPON ／ きゃりーぱみゅぱみゅ（w069 に統合）
+  六兆年と一夜物語 ／ kemu（w1081 に統合）
+  前前前世 ／ RADWIMPS（w183 に統合）
+  愛をこめて花束を ／ Superfly（w203 に統合）
+  オリオンをなぞる ／ UNISON SQUARE GARDEN（w206 に統合）
+  キッチンでカッパがタニシ茹でてる ／ 家の裏でマンボウが死んでるP（w207 に統合）
+  日曜日の太陽 ／ THE NEUTRAL（w210 に統合）
+  神のまにまに ／ れるりり（w1102 に統合）
+  Episode.0 ／ GACKT（w260 に統合）
+  紅蓮の弓矢 ／ Linked Horizon（w1132 に統合）
+  ハロ／ハワユ ／ ナノウ（w314 に統合）
+  シャルル ／ バルーン（w361 に統合）
+  Just Be Friends ／ 灯油（w365 に統合）
+  Starduster ／ ジミーサムP（w368 に統合）
+  ブラック★ロックシューター ／ ryo (supercell)（w382 に統合）
+  炉心融解 ／ iroha(sasaki)（w383 に統合）
+  ようこそジャパリパークへ ／ オーイシマサヨシ（w389 に統合）
+  Last Night, Good Night ／ livetune feat. 初音ミク（w400 に統合）
+  ローリンガール ／ wowaka（w1009 に統合）
+  ローリンガール ／ wowaka（w1009 に統合）
+  ローリンガール ／ wowaka（w1009 に統合）
+  如月アテンション ／ じん（w1041 に統合）
+  ピエロ ／ KEI（w415 に統合）
+  敗北の少年 ／ PENGUIN RESEARCH（w1099 に統合）
+  おちゃめ機能 ／ ゴジマジP feat. 重音テト（w1057 に統合）
+  晴れてハレルヤ ／ 奥井亜紀（w451 に統合）
+  ブルーウォーター ／ 森川美穂（w579 に統合）
+  紅一葉 ／ 中 孝介（w592 に統合）
+  GO!GO!MANIAC ／ 放課後ティータイム（w1129 に統合）
+  命のユースティティア ／ Neru（w1035 に統合）
+
+■ 照合できず元の名義のまま残した曲（190件）
+  Ib ／ 96猫
+  ＊ハロー、プラネット。 ／ ASK
+  HALO ／ Gero
+  RAINBOW GIRL ／ Gero&ろん
+  ショタショタ★ナイトフィーバー ／ Gero＆roro
+  Sky High ／ iciko
+  L'azur ／ iciko
+  行きます！カラオケ一曲目 ／ recog
+  Help me, TOUMAAAAA!! ／ recog
+  ニコニコ観測ββ ／ recog
+  彼女をください ／ recog
+  なでなで1 ／ roro
+  ブリキノダンス-DIVELA REMIX ／ SymaG
+  正義粉砕 ／ teksy
+  MA-SPER HEAD-CHA-LA ／ やまだん
+  ニセカノ ／ ななひら
+  ハクタク幻想 ／ 湯毛
+  cloud ／ Vin
+  Blind ／ Vin
+  Blue ／ Vin
+  COLOR ／ Vin
+  Despair ／ Vin
+  Emotion&Reason ／ Vin
+  girlfriend ／ Vin
+  Holography ／ Vin
+  I am a super man. ／ Vin
+  magenta ／ Vin
+  Track ／ Vin
+  君と世界をつなぐもの ／ Vin
+  声 ／ Vin
+  想イ出カケラ ／ Vin
+  蓮 ／ Vin
+  夢喰い白黒バク ／ Vin
+  DIARRHEA ／ Vin&DEATH姫
+  かくさしゃかい ／ Vin&DEATH姫&ホリゾン&ｙｔｍｎ&パナップォ&犬ロック
+  ブラックホールアーティスト ／ Vin&Gero
+  cry ／ Vin&neko
+  trick art ! ／ Vin&初心者F
+  初音ミクの暴走 ／ vip店長
+  般若心経ロックvip店長 ／ vip店長
+  makeup - 追試 - ／ YACA
+  メリーメリー ／ あさまる
+  Dear ／ うさ
+  Wish ／ うさ
+  トエト ／ うさ
+  カノンロック-失恋疾走曲- ／ くるみ餅
+  乙倉悠貴ちゃんの脇汗なめたい ／ こばたん
+  前川みくにゃんのしっぽ貪りたい ／ こばたん
+  島村卯月ちゃんのパンツになりたい ／ こばたん
+  本田未央ちゃんのパンツになりたい ／ こばたん
+  渋谷凛ちゃんのパンツになりたい ／ こばたん
+  田中摩美々ちゃんと援助交際したい ／ こばたん
+  爆発!ラブパニック! ／ ななひら
+  物凄いコロシアムでアリスが物凄いうた ／ ななひら
+  物凄い狂っとるフランちゃんが物凄いうた ／ ななひら
+  物凄いあややがぶっちゃけ物凄いうた ／ ななひら
+  物凄いバーニングで魔理沙が物凄いうた ／ ななひら
+  物凄い勢いでけーねが物凄いうた ／ ななひら
+  物凄いライブでチルノがそこはかとなく物凄いうた ／ ななひら
+  rain stops, good-bye ／ ばずぱんだ
+  girlfriend ／ ばずぱんだ
+  Alice ／ ばずぱんだ&スケベ
+  Afterglow ／ ぱなまん
+  かなしみのなみにおぼれる ／ ぱなまん
+  私は人間じゃないから ／ ふくめん
+  脱げばいいってモンじゃない！ ／ ふくめん
+  鮮紅ノ龍啼ク箱庭拠リ ／ ふくめん
+  けものParade ／ ふさ
+  おおかみは赤ずきんに恋をした ／ ぽこた&花たん
+  スケープゴート・アンプリファー ／ まふまふ
+  ニビョウカン ／ まふまふ
+  ぼくのフレンド ／ みゆはん
+  マダラカルト ／ みゐや
+  アサガオの散る頃に ／ めありー
+  蜜蜂 ／ よっぺい
+  うたうたいのうた ／ りぶ
+  ダヴィンチの告白 ／ りぶ
+  「普通」の街～フェアリーランド～ ／ りぶ
+  イーガー♥ビリーバー ／ ろん
+  男の娘メモラブル ／ ろん
+  Cosmos Adventure ／ アーティスト名なし
+  Twinkle Twinkle Wink ~Onegai Shooting Star~ ／ アーティスト名なし
+  Genki dashite yo 「元気だしてよ」 ／ アーティスト名なし
+  GS美神　ＯＰ Full 「GHOST SWEEPER」 ／ アーティスト名なし
+  Kitera mitera ／ アーティスト名なし
+  Kuroi Hitomi - Junko Takeuchi ／ アーティスト名なし
+  Kuromi Rondo - Junko Takeuchi ／ アーティスト名なし
+  Power of MUSIC キー変更 ／ アーティスト名なし
+  Totteoki No Kimochi ／ アーティスト名なし
+  あずきちゃんop　素敵な君full ／ アーティスト名なし
+  ようこそジャパリパークへ メタル オケ コーラス ／ アーティスト名なし
+  ようこそジャパリパークへ メタル オケ ／ アーティスト名なし
+  オトメロディー クロミ ／ アーティスト名なし
+  ヤバイTシャツ屋さん - 「無線LANばり便利」Music Video ／ アーティスト名なし
+  野沢あや Everybody地図のない旅『ベイベーばあちゃんOP』 ／ アーティスト名なし
+  カラス ／ アーティスト名なし
+  目覚まし ／ アーティスト名なし
+  暴風 ／ アーティスト名なし
+  雄々しくて ／ タイ焼き屋
+  とっとこハム太郎 ／ タイ焼き屋
+  Foolish”13”People ／ ネグロ
+  rain stops, good-bye アカペラ ／ ネグロ
+  sweet So sweet ／ ネグロ
+  Track ／ ネグロ
+  スーサイドパレヱド2 ／ ネグロ
+  ハイパーリアリティショウ ／ ネグロ
+  ハッ ／ ネグロ
+  理解感 ／ ネグロ
+  踊る恐竜さん ／ ネグロ
+  DAN DAN心ひかれてく ／ ネグロ
+  kagayake!GIRLS ／ ネグロ
+  maximum the hormone ／ ネグロ
+  THE DYING MESSEGE ／ ネグロ
+  くるみ☆ぽんちお ／ ネグロ
+  はてなのはね ／ ネグロ
+  ぶっ生き返す ／ ネグロ
+  キラリ2 ／ ネグロ
+  初音ミクの激唱 ／ ネグロ
+  神様のすみか ／ ネグロ
+  私の恋はホッチキス ／ ネグロ
+  空中庭園 ／ ネグロ
+  お願いマッスル　左右 ／ ネグロ&蒼空とねす
+  ggrks-ググれカス ／ バルシェ
+  え？あぁ、そう。 ／ ヤマイ
+  Sorry ／ ヤマイ
+  夕日坂 ／ ヤマイ
+  さよならのかわりに、花束を ／ ヤマイ
+  rain stops, good-bye ／ ヤマイ
+  夢みることり ／ ヤマイ＆うさ
+  heavenly blue(カバー) ／ ルシュカ
+  レンラクマダー? ／ ヲタみん
+  ハッピーエンドグレーテル ／ 大根
+  銀のフルーフ ／ 大根
+  世界の真ん中 ／ 天月-あまつき-
+  La, La, Love You ／ 少年T
+  姉がブラック★会社に勤めているようです ／ 弟の姉
+  姉がデスノートを拾ったようです ／ 弟の姉
+  姉がオタになったようです ／ 弟の姉
+  「ロミオとシンデレラ」を１ミリも知らない弟の姉が想像で歌ってみた ／ 弟の姉
+  GO! GO! HELLOWORK ／ 弟の姉
+  Miyouyo!!GENJITSU ／ 弟の姉
+  Hatarake!BOYS ／ 弟の姉
+  ニート ／ 弟の姉
+  電脳シュール ／ 赤ティン
+  lllトゥルティンアンテナlll ／ 赤ティン
+  馬鹿はアノマリーに憧れる ／ 赤ティン&電池切れ
+  食事 ／ 赤飯
+  言葉のいらない約束 ／ 鋼兵
+  セ　フ　レ ／ 鋼兵
+  デリヘル呼んだら君が来た ／ 鋼兵
+  幻想奇行 ／ 鋼兵
+  くるみ☆ぽんちお ／ 鋼兵
+  イアイア★ナイトオブデザイア ／ 鋼兵
+  オマーン湖 ／ 鋼兵
+  再生 ／ 鋼兵
+  ＮＥＥＴＧＥＮＥＲＡTＩＯＮ ／ 鋼兵
+  ネコネコ★スーパーフィーバーナイト ／ 鋼兵
+  マイリスダメー！ ／ 鋼兵
+  脳漿炸裂ガール ／ 鋼兵
+  WAVE ／ 鋼兵
+  ピコピコ★レジェンドオブザナイト ／ 鋼兵
+  ラズベリー＊モンスター ／ 鋼兵
+  ㍆㌋㌉㌏㌉㌸㌾㌋㌞㌹㌅ ／ 鋼兵
+  ミキミキ★ロマンティックナイト ／ 鋼兵
+  壊セ壊セ ／ 鋼兵
+  つよく、もっと力を ／ 鋼兵
+  インターネットカラオケマン ／ 鋼兵
+  ショットガン・ラヴァーズ ／ 鋼兵
+  オマーン湖 2013ver ／ 鋼兵
+  恋愛勇者 ／ 鋼兵
+  UNBALANCE ／ 鋼兵
+  孤独の果て ／ 鋼兵
+  アルビノ ／ 鋼兵
+  Es～dirty aspiration～ ／ 鋼兵
+  自己嫌悪 ／ 鋼兵
+  初音ミクの分裂→破壊 ／ 鋼兵
+  初音ミクの戸惑 ／ 鋼兵
+  ファッ！？として桃源郷 ／ 鋼兵
+  さくらんぼキック ／ 鋼兵
+  Sweet Home 新日暮里 ／ 鋼兵
+  人生リセットボタン×インビジブル ／ 鋼兵
+  激熱！帝国火撃団 ／ 鋼兵
+  エモノの恋愛タイガ→☆ ／ ？
+  ポニョロック ／ ？
+  日本史のアクエリオン ／ ？
+  物凄いヴァイブスで魔理沙が物凄いラップ ／ ｙｔｒ
+  キティ 2 ／ ネグロ
+  negro_hystery_1 ／ ネグロ
+  Neguro_song02 ／ ネグロ
+  Neguro_song02_INST_136BPM ／ ネグロ
