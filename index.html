@@ -262,19 +262,7 @@ html { scroll-behavior: auto;}
 // ===== Song data =====
 // 本番データは songs.json（管理ページから堅斗だけが更新できる）。
 // 読み込めない環境（ローカル確認など）では下のサンプルで表示する。
-var FALLBACK_SONGS = [
-{ id: "s1", title: "GALLOWS BELL", artist: "buzzG", genre: "ボカロ", keyLabel: "原曲 −2", keyShift: -2, memo: "サビの高音と疾走感が得意な一曲。カラオケでも鉄板。", jacket: "", addedAt: "2026-11-12", sample: true},
-{ id: "s2", title: "シャルル", artist: "バルーン", genre: "ボカロ", keyLabel: "原曲 −2", keyShift: -2, memo: "低音からサビまでの流れを気持ちよく歌えます。", jacket: "", addedAt: "2026-11-12", sample: true},
-{ id: "s3", title: "千本桜", artist: "黒うさP feat. 初音ミク", genre: "ボカロ", keyLabel: "原曲キー", keyShift: 0, memo: "テンポが速いので、勢いのある場面向け。", jacket: "", addedAt: "2026-11-12", sample: true},
-{ id: "s4", title: "残酷な天使のテーゼ", artist: "高橋洋子", genre: "アニソン", keyLabel: "原曲キー", keyShift: 0, memo: "みんなで盛り上がれる定番。サビは一緒にどうぞ。", jacket: "", addedAt: "2026-11-12", sample: true},
-{ id: "s5", title: "紅蓮華", artist: "LiSA", genre: "アニソン", keyLabel: "原曲 −2", keyShift: -2, memo: "力強いサビが持ち味。キーを下げて歌います。", jacket: "", addedAt: "2026-11-12", sample: true},
-{ id: "s6", title: "夜に駆ける", artist: "YOASOBI", genre: "J-POP", keyLabel: "原曲 −3", keyShift: -3, memo: "早口パート多め。静かな入りから一気に駆け上がります。", jacket: "", addedAt: "2026-11-12", sample: true},
-{ id: "s7", title: "ドライフラワー", artist: "優里", genre: "J-POP", keyLabel: "原曲キー", keyShift: 0, memo: "しっとり聴かせる系ならこれ。感情を込めて歌います。", jacket: "", addedAt: "2026-11-12", sample: true},
-{ id: "s8", title: "Lemon", artist: "米津玄師", genre: "J-POP", keyLabel: "原曲キー", keyShift: 0, memo: "バラード枠。落ちサビの表現が好きな曲。", jacket: "", addedAt: "2026-11-12", sample: true},
-{ id: "s9", title: "Pretender", artist: "Official髭男dism", genre: "J-POP", keyLabel: "原曲キー", keyShift: 0, memo: "ピアノロックの王道。転調後のサビが見せ場。", jacket: "", addedAt: "2026-11-12", sample: true},
-{ id: "s10", title: "マリーゴールド", artist: "あいみょん", genre: "J-POP", keyLabel: "原曲 +1", keyShift: 1, memo: "やわらかい雰囲気で。キーを少し上げて歌います。", jacket: "", addedAt: "2026-11-12", sample: true},
-{ id: "s11", title: "紅", artist: "X JAPAN", genre: "ロック", keyLabel: "原曲キー", keyShift: 0, memo: "シャウト気味に攻める一曲。場が熱くなるタイプ。", jacket: "", addedAt: "2026-11-12", sample: true}
-];
+var FALLBACK_SONGS = [];
 var SONGS = FALLBACK_SONGS.slice();
 
 var state = { q: "", genre: "すべて", artist: "", sort: "reco", view: "list"};
