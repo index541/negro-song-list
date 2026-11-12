@@ -392,6 +392,8 @@ return h;
 var pvAudio = new Audio();
 pvAudio.preload = "none";
 var pvId = null;
+var pvPlaying = false;
+var pvMode = "element";
 var pvFadeTimer = null, pvFadingOut = false;
 function pvRamp(target, ms, done) {
 if (pvFadeTimer) { clearInterval(pvFadeTimer); pvFadeTimer = null; }
@@ -404,15 +406,157 @@ try { pvAudio.volume = Math.min(1, Math.max(0, from + (target - from) * (i / ste
 if (i >= steps) { clearInterval(pvFadeTimer); pvFadeTimer = null; if (done) done(); }
 }, 50);
 }
+// ===== テンポを変えずにキーだけ変える再生（SoundTouch / LGPL 2.1, soundtouch.js） =====
+var StModule = null, stLoadFailed = false;
+function loadStModule() {
+if (StModule) return Promise.resolve(StModule);
+if (stLoadFailed) return Promise.reject(new Error("soundtouch unavailable"));
+return import("./soundtouch.js").then(function (m) { StModule = m; return m; }).catch(function (e) { stLoadFailed = true; throw e; });
+}
+var waCtx = null, waGain = null, waShifter = null, waBuffer = null;
+var waOffset = 0, waPlayedBase = 0, waPlayEventCtx = 0;
+var waTimer = null, waFadingOut = false, waStopTimeout = null;
+var pvBufferCache = {};
+function waEnsure() {
+if (!waCtx) {
+var AC = window.AudioContext || window.webkitAudioContext;
+if (!AC) return false;
+waCtx = new AC();
+waGain = waCtx.createGain();
+waGain.gain.value = 1;
+waGain.connect(waCtx.destination);
+}
+if (waCtx.state === "suspended") { var p = waCtx.resume(); if (p && p.catch) p.catch(function () {}); }
+return true;
+}
+function waPos() {
+if (!waBuffer) return waOffset;
+var t = waPlayedBase + (waCtx.currentTime - waPlayEventCtx);
+return Math.max(waOffset, Math.min(waOffset + t, waBuffer.duration));
+}
+function waDisconnectShifter() {
+if (waShifter) {
+try { waShifter.off(); } catch (e) {}
+try { waShifter.disconnect(); } catch (e) {}
+waShifter = null;
+}
+if (waTimer) { clearInterval(waTimer); waTimer = null; }
+}
+function sliceBuffer(buf, fromSec) {
+if (!fromSec || fromSec <= 0.02) return buf;
+var sr = buf.sampleRate;
+var start = Math.floor(fromSec * sr);
+var len = buf.length - start;
+if (len <= 0) return buf;
+var out = waCtx.createBuffer(buf.numberOfChannels, len, sr);
+for (var ch = 0; ch < buf.numberOfChannels; ch++) out.copyToChannel(buf.getChannelData(ch).subarray(start), ch);
+return out;
+}
+function waStart(id, fromSec, fadeInMs) {
+waDisconnectShifter();
+if (waStopTimeout) { clearTimeout(waStopTimeout); waStopTimeout = null; }
+var buf = pvBufferCache[id];
+if (!buf) return;
+waBuffer = buf;
+waOffset = fromSec || 0;
+waPlayedBase = 0;
+waPlayEventCtx = waCtx.currentTime;
+waShifter = new StModule.PitchShifter(waCtx, sliceBuffer(buf, waOffset), 4096);
+waShifter.pitchSemitones = pvKeyShift;
+waShifter.tempo = 1;
+waShifter.on("play", function (detail) {
+waPlayedBase = detail.timePlayed;
+waPlayEventCtx = waCtx.currentTime;
+});
+try {
+waGain.gain.cancelScheduledValues(waCtx.currentTime);
+waGain.gain.setValueAtTime(0, waCtx.currentTime);
+waGain.gain.linearRampToValueAtTime(1, waCtx.currentTime + (fadeInMs || 900) / 1000);
+} catch (e) {}
+waShifter.connect(waGain);
+waFadingOut = false;
+pvPlaying = true;
+waTimer = setInterval(waTick, 100);
+pvUI();
+}
+function waTick() {
+if (!waShifter || !waBuffer || !pvId) return;
+var pos = waPos(), dur = waBuffer.duration;
+var pct = dur ? (pos / dur * 100) + "%" : "0%";
+document.querySelectorAll('[data-pvbar="' + pvId + '"]').forEach(function (bar) {
+bar.style.setProperty("--p", pct);
+bar.setAttribute("aria-valuenow", Math.round(pos));
+});
+var remain = dur - pos;
+if (!waFadingOut && remain <= 1.3 && remain > 0.05) {
+waFadingOut = true;
+try {
+waGain.gain.cancelScheduledValues(waCtx.currentTime);
+waGain.gain.setValueAtTime(waGain.gain.value, waCtx.currentTime);
+waGain.gain.linearRampToValueAtTime(0, waCtx.currentTime + remain);
+} catch (e) {}
+}
+if (remain <= 0.05) pvEnded();
+}
+function waStop(fast, done) {
+var was = waShifter;
+if (waTimer) { clearInterval(waTimer); waTimer = null; }
+pvPlaying = false;
+if (!was) { if (done) done(); return; }
+try {
+waGain.gain.cancelScheduledValues(waCtx.currentTime);
+waGain.gain.setValueAtTime(waGain.gain.value, waCtx.currentTime);
+waGain.gain.linearRampToValueAtTime(0, waCtx.currentTime + (fast ? 0.2 : 0.3));
+} catch (e) {}
+if (waStopTimeout) clearTimeout(waStopTimeout);
+waStopTimeout = setTimeout(function () {
+waStopTimeout = null;
+if (waShifter === was) waDisconnectShifter();
+try { waGain.gain.value = 1; } catch (e) {}
+if (done) done();
+}, fast ? 210 : 310);
+}
+function waLoadAndStart(s, frac) {
+loadStModule().then(function () {
+if (!waEnsure()) throw new Error("no AudioContext");
+if (pvBufferCache[s.id]) { waStart(s.id, (frac || 0) * pvBufferCache[s.id].duration, 900); return null; }
+return fetch(s.preview).then(function (r) {
+if (!r.ok) throw new Error("fetch failed");
+return r.arrayBuffer();
+}).then(function (ab) { return waCtx.decodeAudioData(ab); }).then(function (buf) {
+pvBufferCache[s.id] = buf;
+if (pvId === s.id && pvMode === "web") waStart(s.id, (frac || 0) * buf.duration, 900);
+});
+}).catch(function () {
+pvMode = "element";
+elementStart(s);
+});
+}
+function pvDuration() { return pvMode === "web" && waBuffer ? waBuffer.duration : (pvAudio.duration || 0); }
+function pvCurrentPos() { return pvMode === "web" ? waPos() : (pvAudio.currentTime || 0); }
+function pvEnded() {
+if (pvMode === "web") { waDisconnectShifter(); try { waGain.gain.value = 1; } catch (e) {} }
+try { pvAudio.volume = 1; } catch (e) {}
+pvPlaying = false;
+pvFadingOut = false;
+waFadingOut = false;
+pvId = null;
+pvUI();
+}
 function pvStop(fast) {
 var id = pvId;
+function finish() {
+if (id) document.querySelectorAll('[data-pvbar="' + id + '"]').forEach(function (b) { b.style.setProperty("--p", "0%"); });
+pvUI();
+}
+if (pvMode === "web") { waStop(fast, function () { pvFadingOut = false; finish(); }); return; }
 pvRamp(0, fast ? 200 : 300, function () {
 pvAudio.pause();
 try { pvAudio.currentTime = 0; } catch (e) {}
 try { pvAudio.volume = 1; } catch (e) {}
+pvPlaying = false;
 pvFadingOut = false;
-if (id) document.querySelectorAll('[data-pvbar="' + id + '"]').forEach(function (b) { b.style.setProperty("--p", "0%"); });
-pvUI();
+finish();
 });
 }
 var pvKeyShift = 0;
@@ -429,21 +573,56 @@ function pvApplyKey() {
 try { pvAudio.preservesPitch = false; pvAudio.mozPreservesPitch = false; pvAudio.webkitPreservesPitch = false; } catch (e) {}
 pvAudio.playbackRate = Math.pow(2, pvKeyShift / 12);
 }
-function startPv(id) {
-var s = songById(id);
-if (!s || !s.preview) return;
-pvId = id;
+function pvKeyChanged() {
+if (pvMode === "web") {
+if (waShifter) { try { waShifter.pitchSemitones = pvKeyShift; } catch (e) {} }
+return;
+}
+if (!pvId) return;
+if (pvKeyShift !== 0 && pvPlaying) {
+var s = songById(pvId);
+if (!s) { pvApplyKey(); return; }
+var frac = pvAudio.duration ? pvAudio.currentTime / pvAudio.duration : 0;
+pvRamp(0, 150, function () {
+pvAudio.pause();
+pvPlaying = false;
+pvMode = "web";
+waLoadAndStart(s, frac);
+});
+return;
+}
+pvApplyKey();
+}
+var pvPendingSeek = null;
+function elementStart(s) {
 pvFadingOut = false;
 pvAudio.src = s.preview;
 pvApplyKey();
 try { pvAudio.volume = 0; } catch (e) {}
 var p = pvAudio.play();
 if (p && p.catch) p.catch(function () {});
+pvPlaying = true;
 pvRamp(1, 900);
 pvUI();
 }
+function startPv(id, frac) {
+var s = songById(id);
+if (!s || !s.preview) return;
+pvId = id;
+pvFadingOut = false;
+if (pvKeyShift !== 0) {
+pvMode = "web";
+pvPendingSeek = null;
+waLoadAndStart(s, frac || 0);
+pvUI();
+return;
+}
+pvMode = "element";
+pvPendingSeek = (typeof frac === "number") ? frac : null;
+elementStart(s);
+}
 function pvUI() {
-var playing = pvId && !pvAudio.paused && !pvAudio.ended;
+var playing = pvId && pvPlaying;
 document.querySelectorAll("[data-pv]").forEach(function (b) {
 var on = playing && b.getAttribute("data-pv") === pvId;
 b.classList.toggle("playing", !!on);
@@ -459,16 +638,17 @@ function togglePreview(id) {
 var s = songById(id);
 if (!s || !s.preview) return;
 closeChorus();
-if (pvId === id && !pvAudio.paused) { pvStop(false); return; }
-if (pvId && pvId !== id && !pvAudio.paused) {
+if (pvId === id && pvPlaying) { pvStop(false); return; }
+if (pvId && pvId !== id && pvPlaying) {
 var nid = id;
-pvRamp(0, 200, function () { pvAudio.pause(); startPv(nid); });
+if (pvMode === "web") { waStop(true, function () { startPv(nid); }); }
+else pvRamp(0, 200, function () { pvAudio.pause(); pvPlaying = false; startPv(nid); });
 return;
 }
 startPv(id);
 }
 pvAudio.addEventListener("timeupdate", function () {
-if (!pvId || !pvAudio.duration) return;
+if (pvMode !== "element" || !pvId || !pvAudio.duration) return;
 var pct = (pvAudio.currentTime / pvAudio.duration * 100) + "%";
 document.querySelectorAll('[data-pvbar="' + pvId + '"]').forEach(function (bar) {
 bar.style.setProperty("--p", pct);
@@ -477,15 +657,9 @@ bar.setAttribute("aria-valuenow", Math.round(pvAudio.currentTime));
 var remain = pvAudio.duration - pvAudio.currentTime;
 if (!pvFadingOut && remain <= 1.3 && remain > 0) { pvFadingOut = true; pvRamp(0, 1200); }
 });
-pvAudio.addEventListener("play", pvUI);
-pvAudio.addEventListener("pause", pvUI);
-pvAudio.addEventListener("ended", function () {
-try { pvAudio.volume = 1; } catch (e) {}
-pvFadingOut = false;
-pvId = null;
-pvUI();
-});
-var pvPendingSeek = null;
+pvAudio.addEventListener("play", function () { if (pvMode === "element") pvPlaying = true; pvUI(); });
+pvAudio.addEventListener("pause", function () { if (pvMode === "element") pvPlaying = false; pvUI(); });
+pvAudio.addEventListener("ended", function () { pvEnded(); });
 pvAudio.addEventListener("loadedmetadata", function () {
 if (pvPendingSeek !== null && pvAudio.duration) {
 try { pvAudio.currentTime = pvPendingSeek * pvAudio.duration; } catch (e) {}
@@ -495,7 +669,13 @@ pvPendingSeek = null;
 function pvSeekTo(id, frac) {
 var s = songById(id);
 if (!s || !s.preview) return;
-if (pvId !== id) { pvPendingSeek = frac; startPv(id); return; }
+if (pvId !== id) { startPv(id, frac); return; }
+if (pvMode === "web") {
+if (!waBuffer) return;
+try { waStart(id, frac * waBuffer.duration, pvPlaying ? 150 : 900); }
+catch (e) { pvMode = "element"; pvPendingSeek = frac; elementStart(s); }
+return;
+}
 if (pvAudio.duration) { try { pvAudio.currentTime = frac * pvAudio.duration; } catch (e) {} }
 if (pvAudio.paused) {
 var p = pvAudio.play();
@@ -532,10 +712,12 @@ bar.addEventListener("pointercancel", up);
 document.addEventListener("keydown", function (e) {
 var bar = e.target && e.target.closest ? e.target.closest("[data-pvbar]") : null;
 if (!bar || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
-if (pvId !== bar.getAttribute("data-pvbar") || !pvAudio.duration) return;
+if (pvId !== bar.getAttribute("data-pvbar")) return;
+var dur = pvDuration();
+if (!dur) return;
 e.preventDefault();
 var d = e.key === "ArrowRight" ? 2 : -2;
-try { pvAudio.currentTime = Math.min(pvAudio.duration, Math.max(0, pvAudio.currentTime + d)); } catch (err) {}
+pvSeekTo(pvId, Math.min(1, Math.max(0, (pvCurrentPos() + d) / dur)));
 });
 document.addEventListener("click", function (e) {
 if (!e.target || !e.target.closest) return;
@@ -545,7 +727,7 @@ e.preventDefault();
 e.stopPropagation();
 var d = parseInt(k.getAttribute("data-pvkey"), 10);
 pvKeyShift = Math.max(-6, Math.min(6, pvKeyShift + d));
-pvApplyKey();
+pvKeyChanged();
 pvKeyUI();
 return;
 }
@@ -578,7 +760,7 @@ var s = songById(id);
 if (!s || !s.ytLink) return;
 var vid = ytIdFromUrl(s.ytLink);
 if (!vid) { window.open(chorusURL(s), "_blank"); return; }
-if (pvId && !pvAudio.paused) pvStop(true);
+if (pvPlaying) pvStop(true);
 var st = parseInt(s.ytStart, 10); if (isNaN(st) || st < 0) st = 0;
 var en = parseInt(s.ytEnd, 10);
 chorusEndSec = (!isNaN(en) && en > st) ? en : 0;
