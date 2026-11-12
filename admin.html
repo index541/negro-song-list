@@ -23,6 +23,11 @@ h1 .accent { color:var(--accent); }
 .lead { margin:0; font-size:14.5px; line-height:1.8; color:var(--ink-2); }
 .card { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:20px 22px; margin-top:18px; }
 .card h2 { margin:0 0 6px; font-size:18px; font-weight:900; }
+.card > h2 { position:relative; padding-right:30px; cursor:pointer; user-select:none; -webkit-tap-highlight-color:transparent; }
+.card > h2::after { content:""; position:absolute; right:5px; top:50%; width:9px; height:9px; border-right:2.5px solid var(--ink-3); border-bottom:2.5px solid var(--ink-3); transform:translateY(-70%) rotate(45deg); transition:transform .25s ease; }
+.card.collapsed > h2 { margin-bottom:0; }
+.card.collapsed > h2::after { transform:translateY(-50%) rotate(-45deg); }
+.card.collapsed > *:not(h2) { display:none !important; }
 .card .desc { margin:0 0 14px; font-size:13.5px; line-height:1.75; color:var(--ink-2); }
 .field { margin-bottom:14px; }
 .field label { display:block; font-size:13.5px; font-weight:900; margin-bottom:7px; }
@@ -98,7 +103,7 @@ details.howto ol { margin:8px 0 0; padding-left:1.4em; }
 </details>
 </section>
 
-<section class="card">
+<section class="card" id="jacket-card">
 <h2>2. ジャケットを探す</h2>
 <p class="desc">曲名（できればアーティスト名も）を入れて探すと、候補のジャケットが出ます。気に入ったものを押すと、ジャケットと一緒に曲名・アーティスト名、取れる場合はジャンルまで下の編集フォームに入ります。</p>
 <div class="field">
@@ -114,7 +119,7 @@ details.howto ol { margin:8px 0 0; padding-left:1.4em; }
 <div class="cand-grid" id="cand-grid"></div>
 </section>
 
-<section class="card">
+<section class="card" id="edit-card">
 <h2>3. 曲の編集</h2>
 <p class="desc">保存すると公開ページに反映されます（反映まで1分ほどかかります）。</p>
 <input type="hidden" id="f-id" />
@@ -168,7 +173,7 @@ details.howto ol { margin:8px 0 0; padding-left:1.4em; }
 <p class="status" id="save-status"></p>
 </section>
 
-<section class="card">
+<section class="card" id="list-card">
 <h2>いまの曲リスト（<span id="song-count">0</span>曲）</h2>
 <p class="desc">「編集」で読み込んで直せます。「削除」は取り消せないので注意してください。ここの検索と並び替えは探すためだけのもので、公開ページの並び順そのものは変わりません。</p>
 <div class="field">
@@ -292,6 +297,34 @@ return fetch("https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/"
 .then(function (d) { fileSha = d.content.sha; });
 }
 
+// ===== 折りたたみ =====
+var COLLAPSE_KEY = "nsl.collapsed";
+function getCollapsedMap() { try { return JSON.parse(localStorage.getItem(COLLAPSE_KEY) || "{}"); } catch (e) { return {}; } }
+function saveCollapsedMap(m) { try { localStorage.setItem(COLLAPSE_KEY, JSON.stringify(m)); } catch (e) {} }
+function setCardCollapsed(id, collapsed) {
+var sec = document.getElementById(id);
+if (!sec) return;
+sec.classList.toggle("collapsed", collapsed);
+var m = getCollapsedMap(); m[id] = collapsed; saveCollapsedMap(m);
+}
+function expandCard(id) { setCardCollapsed(id, false); }
+function collapseCard(id) { setCardCollapsed(id, true); }
+(function initCollapse() {
+var m = getCollapsedMap();
+var secs = document.querySelectorAll("section.card");
+for (var i = 0; i < secs.length; i++) {
+(function (sec) {
+if (!sec.id) return;
+var collapsed = (sec.id in m) ? !!m[sec.id] : (sec.id === "token-card" && !!token);
+if (collapsed) sec.classList.add("collapsed");
+var h2 = sec.querySelector("h2");
+if (!h2) return;
+h2.title = "押すと開いたり閉じたりできます";
+h2.addEventListener("click", function () { setCardCollapsed(sec.id, !sec.classList.contains("collapsed")); });
+})(secs[i]);
+}
+})();
+
 // ===== Token =====
 $("token-input").value = token;
 if (token) setStatus("token-status", "トークンは保存済みです。「接続テスト」で確認できます。", true);
@@ -301,6 +334,7 @@ if (!token) { setStatus("token-status", "トークンが空です。", false); r
 try { localStorage.setItem("nsl.token", token); } catch (e) {}
 fileSha = null;
 setStatus("token-status", "保存しました。接続テストを押してみてください。", true);
+collapseCard("token-card");
 loadSongs().catch(function () {});
 });
 $("token-clear").addEventListener("click", function () {
@@ -336,6 +370,7 @@ if (v) { p.src = v; p.style.display = "block"; p.onerror = function () { p.style
 else p.style.display = "none";
 });
 function editSong(id) {
+expandCard("edit-card");
 var s = null;
 songs.forEach(function (x) { if (x.id === id) s = x; });
 if (!s) return;
@@ -433,6 +468,7 @@ grid.appendChild(b);
 });
 }
 function applyCandidate(c) {
+expandCard("edit-card");
 $("f-jacket").value = c.full;
 $("f-jacket").dispatchEvent(new Event("input"));
 if (c.title) $("f-title").value = c.title;
