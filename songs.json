@@ -8,7 +8,8 @@
     "keyLabel": "原曲 −2",
     "keyShift": -2,
     "memo": "サビの高音と疾走感が得意な一曲。カラオケでも鉄板。",
-    "title": "GALLOWS BELL"
+    "title": "GALLOWS BELL",
+    "sample": true
   },
   {
     "addedAt": "2026-11-12",
@@ -19,7 +20,8 @@
     "keyLabel": "原曲 −2",
     "keyShift": -2,
     "memo": "低音からサビまでの流れを気持ちよく歌えます。",
-    "title": "シャルル"
+    "title": "シャルル",
+    "sample": true
   },
   {
     "addedAt": "2026-11-12",
@@ -30,7 +32,8 @@
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "テンポが速いので、勢いのある場面向け。",
-    "title": "千本桜"
+    "title": "千本桜",
+    "sample": true
   },
   {
     "addedAt": "2026-11-12",
@@ -41,7 +44,8 @@
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "みんなで盛り上がれる定番。サビは一緒にどうぞ。",
-    "title": "残酷な天使のテーゼ"
+    "title": "残酷な天使のテーゼ",
+    "sample": true
   },
   {
     "addedAt": "2026-11-12",
@@ -52,7 +56,8 @@
     "keyLabel": "原曲 −2",
     "keyShift": -2,
     "memo": "力強いサビが持ち味。キーを下げて歌います。",
-    "title": "紅蓮華"
+    "title": "紅蓮華",
+    "sample": true
   },
   {
     "addedAt": "2026-11-12",
@@ -63,7 +68,8 @@
     "keyLabel": "原曲 −3",
     "keyShift": -3,
     "memo": "早口パート多め。静かな入りから一気に駆け上がります。",
-    "title": "夜に駆ける"
+    "title": "夜に駆ける",
+    "sample": true
   },
   {
     "addedAt": "2026-11-12",
@@ -74,7 +80,8 @@
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "しっとり聴かせる系ならこれ。感情を込めて歌います。",
-    "title": "ドライフラワー"
+    "title": "ドライフラワー",
+    "sample": true
   },
   {
     "addedAt": "2026-11-12",
@@ -85,7 +92,8 @@
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "バラード枠。落ちサビの表現が好きな曲。",
-    "title": "Lemon"
+    "title": "Lemon",
+    "sample": true
   },
   {
     "addedAt": "2026-11-12",
@@ -96,7 +104,8 @@
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "ピアノロックの王道。転調後のサビが見せ場。",
-    "title": "Pretender"
+    "title": "Pretender",
+    "sample": true
   },
   {
     "addedAt": "2026-11-12",
@@ -107,7 +116,8 @@
     "keyLabel": "原曲 +1",
     "keyShift": 1,
     "memo": "やわらかい雰囲気で。キーを少し上げて歌います。",
-    "title": "マリーゴールド"
+    "title": "マリーゴールド",
+    "sample": true
   },
   {
     "addedAt": "2026-11-12",
@@ -118,6 +128,7 @@
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "シャウト気味に攻める一曲。場が熱くなるタイプ。",
-    "title": "紅"
+    "title": "紅",
+    "sample": true
   }
 ]
