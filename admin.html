@@ -158,7 +158,29 @@ details.howto ol { margin:8px 0 0; padding-left:1.4em; }
 
 <section class="card">
 <h2>いまの曲リスト（<span id="song-count">0</span>曲）</h2>
-<p class="desc">「編集」で読み込んで直せます。「削除」は取り消せないので注意してください。</p>
+<p class="desc">「編集」で読み込んで直せます。「削除」は取り消せないので注意してください。ここの検索と並び替えは探すためだけのもので、公開ページの並び順そのものは変わりません。</p>
+<div class="field">
+<label for="adm-q">曲をさがす</label>
+<input id="adm-q" type="search" placeholder="曲名・アーティストで検索" autocomplete="off" />
+</div>
+<div class="grid2">
+<div class="field">
+<label for="adm-genre">ジャンルで絞り込み</label>
+<select id="adm-genre"><option value="">すべてのジャンル</option></select>
+</div>
+<div class="field">
+<label for="adm-sort">並び替え</label>
+<select id="adm-sort">
+<option value="order">並んでいる順（公開のおすすめ順）</option>
+<option value="title">曲名順</option>
+<option value="artist">アーティスト順</option>
+<option value="genre">ジャンル順</option>
+<option value="new">新しい順</option>
+<option value="key">キー順（低い→高い）</option>
+</select>
+</div>
+</div>
+<p class="status" id="adm-count"></p>
 <div id="song-rows"></div>
 </section>
 
@@ -199,11 +221,39 @@ return fetch("songs.json", { cache: "no-store" })
 .then(function (r) { if (!r.ok) throw new Error("local"); return r.json(); })
 .then(function (d) { songs = d; renderSongs(); });
 }
+var admState = { q: "", genre: "", sort: "order" };
+function adminViewSongs() {
+var arr = songs.filter(function (s) {
+if (admState.genre && s.genre !== admState.genre) return false;
+if (admState.q) {
+var hay = (s.title + " " + s.artist + " " + s.genre + " " + (s.memo || "")).toLowerCase();
+var terms = admState.q.split(/\s+/);
+for (var i = 0; i < terms.length; i++) if (terms[i] && hay.indexOf(terms[i]) === -1) return false;
+}
+return true;
+});
+if (admState.sort === "title") arr.sort(function (a, b) { return a.title.localeCompare(b.title, "ja"); });
+else if (admState.sort === "artist") arr.sort(function (a, b) { return a.artist.localeCompare(b.artist, "ja") || a.title.localeCompare(b.title, "ja"); });
+else if (admState.sort === "genre") arr.sort(function (a, b) { return a.genre.localeCompare(b.genre, "ja") || a.title.localeCompare(b.title, "ja"); });
+else if (admState.sort === "new") arr.sort(function (a, b) { return String(b.addedAt || "").localeCompare(String(a.addedAt || "")); });
+else if (admState.sort === "key") arr.sort(function (a, b) { return (a.keyShift || 0) - (b.keyShift || 0); });
+return arr;
+}
 function renderSongs() {
 $("song-count").textContent = songs.length;
+var genreSel = $("adm-genre");
+var seenAll = {};
+songs.forEach(function (s) { seenAll[s.genre] = true; });
+var curGenre = genreSel.value;
+genreSel.innerHTML = '<option value="">すべてのジャンル</option>' + Object.keys(seenAll).sort(function (a, b) { return a.localeCompare(b, "ja"); }).map(function (g) { return '<option value="' + esc(g) + '">' + esc(g) + "</option>"; }).join("");
+genreSel.value = seenAll[curGenre] ? curGenre : "";
+admState.genre = genreSel.value;
+var view = adminViewSongs();
+$("adm-count").textContent = "表示中 " + view.length + "曲 / 全" + songs.length + "曲";
 var wrap = $("song-rows");
 wrap.innerHTML = "";
-songs.forEach(function (s) {
+if (!view.length) wrap.innerHTML = '<p class="desc" style="margin-top:10px">見つかりませんでした。検索のことばを短くするか、ジャンルを「すべて」に戻してください。</p>';
+view.forEach(function (s) {
 var row = document.createElement("div");
 row.className = "song-row";
 row.innerHTML =
@@ -424,6 +474,10 @@ renderCandidates(list);
 })
 .catch(function () { setStatus("cover-status", "MusicBrainz へ通信できませんでした。", false); });
 });
+
+$("adm-q").addEventListener("input", function () { admState.q = $("adm-q").value.trim().toLowerCase(); renderSongs(); });
+$("adm-genre").addEventListener("change", function () { admState.genre = $("adm-genre").value; renderSongs(); });
+$("adm-sort").addEventListener("change", function () { admState.sort = $("adm-sort").value; renderSongs(); });
 
 loadSongs().catch(function () { setStatus("save-status", "曲リストを読み込めませんでした。", false); });
 </script>
