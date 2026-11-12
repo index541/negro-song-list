@@ -153,6 +153,17 @@ footer a { color: var(--ink-2); font-weight: 700;}
 .pv-progress i { display: block; height: 100%; width: 0%; background: var(--accent);}
 .tile-pv { position: absolute; top: 15px; right: 15px; width: 34px; height: 34px; border-radius: 50%; background: rgba(28, 28, 28,.8); color: #ffffff; display: grid; place-items: center; font-size: 12px; z-index: 2;}
 .tile-pv.playing { background: var(--accent);}
+.cmodal-backdrop { position: fixed; inset: 0; z-index: 50; background: rgba(10, 10, 8,.55); opacity: 0; visibility: hidden; transition: opacity.3s, visibility.3s;}
+.cmodal-backdrop.open { opacity: 1; visibility: visible;}
+.cmodal { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -46%); opacity: 0; visibility: hidden; width: min(680px, calc(100% - 24px)); z-index: 51; background: var(--surface); border-radius: 16px; box-shadow: var(--shadow); padding: 14px 16px 16px; transition: opacity.28s, transform.28s, visibility.28s;}
+.cmodal.open { transform: translate(-50%, -50%); opacity: 1; visibility: visible;}
+.cmodal-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px;}
+.cmodal-head span { font-weight: 900; font-size: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.cmodal-close { font: inherit; font-size: 18px; font-weight: 900; width: 40px; height: 40px; border: 0; border-radius: 50%; background: var(--surface-2); color: var(--ink-2); cursor: pointer; flex: none;}
+.cmodal-frame { aspect-ratio: 16/9; background: #000; border-radius: 10px; overflow: hidden;}
+.cmodal-frame iframe { width: 100%; height: 100%; display: block; border: 0;}
+.cmodal-note { margin: 10px 0 0; font-size: 12.5px; color: var(--ink-3); font-weight: 700;}
+.cmodal-note a { color: var(--accent); font-weight: 900;}
 .req-panel { margin-top: 16px; border-top: 1px dashed var(--line); padding-top: 16px; animation: rise.35s both;}
 .type-pill { display: inline-block; margin-bottom: 12px; font-size: 12.5px; font-weight: 900; letter-spacing:.05em; border-radius: 999px; padding: 4px 13px;}
 .type-pill.solo { background: var(--accent-soft); color: var(--accent);}
@@ -291,6 +302,13 @@ html { scroll-behavior: auto;}
 </footer>
 </div>
 
+<div class="cmodal-backdrop" id="cmodal-backdrop"></div>
+<section class="cmodal" id="cmodal" aria-hidden="true" aria-label="サビ試聴">
+<div class="cmodal-head"><span id="cmodal-title">サビ試聴</span><button type="button" class="cmodal-close" id="cmodal-close" aria-label="閉じる">×</button></div>
+<div class="cmodal-frame" id="cmodal-frame"></div>
+<p class="cmodal-note">動画が再生できない場合は <a id="cmodal-ext" href="#" target="_blank" rel="noopener">YouTubeで開く</a> からどうぞ。</p>
+</section>
+
 <div class="sheet-backdrop" id="sheet-backdrop"></div>
 <section class="sheet" id="sheet" aria-hidden="true" aria-label="曲の詳細とリクエスト">
 <div class="sheet-grip"></div>
@@ -342,8 +360,7 @@ return s.ytLink;
 }
 function listenHTML(s) {
 var h = '<div class="listen-row">';
-var c = chorusURL(s);
-if (c) h += '<a class="listen-btn chorus" href="' + esc(c) + '" target="_blank" rel="noopener">♪ サビを聴く</a>';
+if (s.ytLink) h += '<button type="button" class="listen-btn chorus" data-chorus="' + esc(s.id) + '">♪ サビを聴く</button>';
 if (s.preview) h += '<button type="button" class="listen-btn pv" data-pv="' + esc(s.id) + '">▶ 試聴（30秒）</button>';
 h += '<a class="listen-btn" href="' + esc(ytSearchURL(s)) + '" target="_blank" rel="noopener">YouTubeで探す</a>';
 h += '<a class="listen-btn" href="' + esc(nicoSearchURL(s)) + '" target="_blank" rel="noopener">ニコニコで探す</a>';
@@ -354,6 +371,39 @@ return h;
 var pvAudio = new Audio();
 pvAudio.preload = "none";
 var pvId = null;
+var pvFadeTimer = null, pvFadingOut = false;
+function pvRamp(target, ms, done) {
+if (pvFadeTimer) { clearInterval(pvFadeTimer); pvFadeTimer = null; }
+var from = 1;
+try { from = pvAudio.volume; } catch (e) {}
+var steps = Math.max(1, Math.round(ms / 50)), i = 0;
+pvFadeTimer = setInterval(function () {
+i++;
+try { pvAudio.volume = Math.min(1, Math.max(0, from + (target - from) * (i / steps))); } catch (e) {}
+if (i >= steps) { clearInterval(pvFadeTimer); pvFadeTimer = null; if (done) done(); }
+}, 50);
+}
+function pvStop(fast) {
+pvRamp(0, fast ? 200 : 300, function () {
+pvAudio.pause();
+try { pvAudio.currentTime = 0; } catch (e) {}
+try { pvAudio.volume = 1; } catch (e) {}
+pvFadingOut = false;
+pvUI();
+});
+}
+function startPv(id) {
+var s = songById(id);
+if (!s || !s.preview) return;
+pvId = id;
+pvFadingOut = false;
+pvAudio.src = s.preview;
+try { pvAudio.volume = 0; } catch (e) {}
+var p = pvAudio.play();
+if (p && p.catch) p.catch(function () {});
+pvRamp(1, 900);
+pvUI();
+}
 function pvUI() {
 var playing = pvId && !pvAudio.paused && !pvAudio.ended;
 document.querySelectorAll("[data-pv]").forEach(function (b) {
@@ -371,27 +421,70 @@ if (!on) { var i = bar.querySelector("i"); if (i) i.style.width = "0%"; }
 function togglePreview(id) {
 var s = songById(id);
 if (!s || !s.preview) return;
-if (pvId === id && !pvAudio.paused) { pvAudio.pause(); try { pvAudio.currentTime = 0; } catch (e) {} pvUI(); return; }
-if (pvId !== id) { pvAudio.src = s.preview; pvId = id; }
-var p = pvAudio.play();
-if (p && p.catch) p.catch(function () {});
-pvUI();
+closeChorus();
+if (pvId === id && !pvAudio.paused) { pvStop(false); return; }
+if (pvId && pvId !== id && !pvAudio.paused) {
+var nid = id;
+pvRamp(0, 200, function () { pvAudio.pause(); startPv(nid); });
+return;
+}
+startPv(id);
 }
 pvAudio.addEventListener("timeupdate", function () {
 if (!pvId || !pvAudio.duration) return;
 var bar = document.querySelector('[data-pvbar="' + pvId + '"] i');
 if (bar) bar.style.width = (pvAudio.currentTime / pvAudio.duration * 100) + "%";
+var remain = pvAudio.duration - pvAudio.currentTime;
+if (!pvFadingOut && remain <= 1.3 && remain > 0) { pvFadingOut = true; pvRamp(0, 1200); }
 });
 pvAudio.addEventListener("play", pvUI);
 pvAudio.addEventListener("pause", pvUI);
-pvAudio.addEventListener("ended", pvUI);
+pvAudio.addEventListener("ended", function () {
+try { pvAudio.volume = 1; } catch (e) {}
+pvFadingOut = false;
+pvUI();
+});
 document.addEventListener("click", function (e) {
-var t = e.target && e.target.closest ? e.target.closest("[data-pv]") : null;
+if (!e.target || !e.target.closest) return;
+var c = e.target.closest("[data-chorus]");
+if (c) { e.preventDefault(); e.stopPropagation(); openChorus(c.getAttribute("data-chorus")); return; }
+var t = e.target.closest("[data-pv]");
 if (!t) return;
 e.preventDefault();
 e.stopPropagation();
 togglePreview(t.getAttribute("data-pv"));
 }, true);
+function ytIdFromUrl(u) {
+var m = String(u || "").match(/(?:youtube\.com\/(?:watch\?[^#]*v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/);
+return m ? m[1] : "";
+}
+function openChorus(id) {
+var s = songById(id);
+if (!s || !s.ytLink) return;
+var vid = ytIdFromUrl(s.ytLink);
+if (!vid) { window.open(chorusURL(s), "_blank"); return; }
+if (pvId && !pvAudio.paused) pvStop(true);
+var st = parseInt(s.ytStart, 10); if (isNaN(st) || st < 0) st = 0;
+var en = parseInt(s.ytEnd, 10);
+var src = "https://www.youtube-nocookie.com/embed/" + vid + "?autoplay=1&rel=0" + (st > 0 ? "&start=" + st : "") + (!isNaN(en) && en > st ? "&end=" + en : "");
+document.getElementById("cmodal-title").textContent = s.title + " ／ " + s.artist;
+document.getElementById("cmodal-ext").href = chorusURL(s);
+document.getElementById("cmodal-frame").innerHTML = '<iframe src="' + src + '" title="サビ試聴" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+document.getElementById("cmodal").classList.add("open");
+document.getElementById("cmodal-backdrop").classList.add("open");
+document.getElementById("cmodal").setAttribute("aria-hidden", "false");
+}
+function closeChorus() {
+var m = document.getElementById("cmodal");
+if (!m || !m.classList.contains("open")) return;
+m.classList.remove("open");
+document.getElementById("cmodal-backdrop").classList.remove("open");
+m.setAttribute("aria-hidden", "true");
+document.getElementById("cmodal-frame").innerHTML = "";
+}
+document.getElementById("cmodal-close").addEventListener("click", closeChorus);
+document.getElementById("cmodal-backdrop").addEventListener("click", closeChorus);
+document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeChorus(); });
 function metaHTML(s) {
 return '<span class="tag key"><span class="k-label">KEY</span>' + esc(s.keyLabel) + "</span>" +
 genreTag(s);

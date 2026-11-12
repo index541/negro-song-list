@@ -51,6 +51,12 @@ h1 { margin:10px 0 8px; font-size:clamp(28px,6vw,40px); font-weight:900; line-he
 .btn.danger { background:var(--accent-soft); color:var(--accent); }
 .btn[disabled] { opacity:.6; cursor:default; }
 .btn-row { display:flex; gap:10px; flex-wrap:wrap; }
+.yt-frame { aspect-ratio: 16/9; background: var(--surface-2); border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
+.yt-frame iframe { width: 100%; height: 100%; display: block; }
+.yt-range-row { display: flex; align-items: center; gap: 10px; margin: 6px 0; }
+.yt-range-row input[type="range"] { flex: 1; accent-color: var(--accent); min-height: 2rem; }
+.yt-cap { font-size: 12.5px; font-weight: 900; color: var(--ink-2); width: 2.2em; }
+.yt-time { font-size: 12.5px; font-weight: 700; color: var(--ink-2); font-variant-numeric: tabular-nums; min-width: 3.2em; }
 .status { margin-top:12px; font-size:13.5px; line-height:1.7; font-weight:700; }
 .status.ok { color:var(--duet); }
 .status.ng { color:var(--accent); }
@@ -212,6 +218,21 @@ body.has-bulk-float { padding-bottom:86px; }
 <div class="field">
 <label for="f-ytstart">サビの開始秒（任意）</label>
 <input id="f-ytstart" type="number" min="0" step="1" placeholder="62" />
+</div>
+<div class="field">
+<label for="f-ytend">サビの終了秒（任意）</label>
+<input id="f-ytend" type="number" min="0" step="1" placeholder="92" />
+</div>
+<div class="field" id="yt-tools" style="display:none">
+<label>サビの範囲をスライダーで設定</label>
+<div class="yt-frame"><div id="yt-player"></div></div>
+<div class="yt-range-row"><span class="yt-cap">開始</span><input type="range" id="f-ytstart-r" min="0" max="0" step="1" value="0" /><span class="yt-time" id="yt-start-t">0:00</span></div>
+<div class="yt-range-row"><span class="yt-cap">終了</span><input type="range" id="f-ytend-r" min="0" max="0" step="1" value="0" /><span class="yt-time" id="yt-end-t">0:00</span></div>
+<div class="btn-row">
+<button type="button" class="btn sub" id="yt-audition">この範囲を再生する</button>
+<span class="yt-time" id="yt-dur"></span>
+</div>
+<p class="desc">スライダーを動かすと秒の欄にも反映されます。「この範囲を再生する」で確かめながら合わせられます。</p>
 </div>
 <div class="btn-row" style="margin-top:16px">
 <button type="button" class="btn primary" id="song-save">保存する</button>
@@ -533,7 +554,9 @@ var st = document.getElementById("sheet-title");
 if (st) st.textContent = "曲の編集";
 $("f-id").value = ""; $("f-title").value = ""; $("f-artist").value = ""; $("f-genre").value = "";
 $("f-keylabel").value = ""; $("f-memory").value = ""; $("f-memo").value = ""; $("f-jacket").value = "";
-$("f-ytlink").value = ""; $("f-ytstart").value = "";
+$("f-ytlink").value = ""; $("f-ytstart").value = ""; $("f-ytend").value = "";
+$("yt-tools").style.display = "none"; ytPlayerId = "";
+if (ytPlayer && ytPlayer.pauseVideo) { try { ytPlayer.pauseVideo(); } catch (e) {} }
 $("f-preview").style.display = "none";
 setStatus("save-status", "", null);
 }
@@ -553,12 +576,88 @@ $("f-genre").value = s.genre; $("f-keylabel").value = s.keyLabel;
 $("f-memory").value = (s.memory === null || s.memory === undefined) ? "" : String(s.memory);
 $("f-memo").value = s.memo || ""; $("f-jacket").value = s.jacket || "";
 $("f-ytlink").value = s.ytLink || ""; $("f-ytstart").value = (s.ytStart === null || s.ytStart === undefined) ? "" : String(s.ytStart);
+$("f-ytend").value = (s.ytEnd === null || s.ytEnd === undefined) ? "" : String(s.ytEnd);
+setupChorusPlayer();
 $("f-jacket").dispatchEvent(new Event("input"));
 var st = document.getElementById("sheet-title");
 if (st) st.textContent = "「" + s.title + "」を編集";
 setStatus("save-status", "", null);
 openEditor();
 }
+// ===== Chorus (サビ) slider tools =====
+var ytPlayer = null, ytPlayerId = "", ytDur = 0, ytAuditionTimer = null;
+function ytIdFromUrl(u) {
+var m = String(u || "").match(/(?:youtube\.com\/(?:watch\?[^#]*v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/);
+return m ? m[1] : "";
+}
+function fmtTime(sec) {
+sec = Math.max(0, Math.floor(sec || 0));
+return Math.floor(sec / 60) + ":" + ("0" + (sec % 60)).slice(-2);
+}
+function loadYtApi(cb) {
+if (window.YT && YT.Player) { cb(); return; }
+var prev = window.onYouTubeIframeAPIReady;
+window.onYouTubeIframeAPIReady = function () { if (prev) prev(); cb(); };
+if (!document.getElementById("yt-api")) {
+var tag = document.createElement("script");
+tag.id = "yt-api"; tag.src = "https://www.youtube.com/iframe_api";
+document.head.appendChild(tag);
+}
+}
+function syncYtLabels() {
+$("yt-start-t").textContent = fmtTime(parseInt($("f-ytstart-r").value, 10) || 0);
+$("yt-end-t").textContent = fmtTime(parseInt($("f-ytend-r").value, 10) || 0);
+$("yt-dur").textContent = ytDur ? "動画の長さ " + fmtTime(ytDur) : "";
+}
+function setupChorusPlayer() {
+var id = ytIdFromUrl($("f-ytlink").value.trim());
+var tools = $("yt-tools");
+if (ytPlayer && ytPlayer.pauseVideo) { try { ytPlayer.pauseVideo(); } catch (e) {} }
+if (!id) { tools.style.display = "none"; ytPlayerId = ""; return; }
+tools.style.display = "";
+if (id === ytPlayerId && ytPlayer) return;
+ytPlayerId = id;
+loadYtApi(function () {
+if (ytPlayerId !== id) return;
+if (ytPlayer && ytPlayer.destroy) { try { ytPlayer.destroy(); } catch (e) {} ytPlayer = null; }
+var frame = document.querySelector(".yt-frame");
+frame.innerHTML = "";
+var holder = document.createElement("div");
+holder.id = "yt-player";
+frame.appendChild(holder);
+ytPlayer = new YT.Player("yt-player", {
+videoId: id, width: "100%", height: "100%",
+events: { onReady: function () {
+ytDur = Math.floor(ytPlayer.getDuration() || 0);
+var sr = $("f-ytstart-r"), er = $("f-ytend-r");
+sr.max = ytDur; er.max = ytDur;
+var sv = parseInt($("f-ytstart").value, 10); if (isNaN(sv)) sv = 0;
+var ev = parseInt($("f-ytend").value, 10); if (isNaN(ev) || ev <= 0) ev = ytDur;
+sr.value = Math.min(sv, ytDur); er.value = Math.min(ev, ytDur);
+syncYtLabels();
+} }
+});
+});
+}
+$("f-ytlink").addEventListener("change", setupChorusPlayer);
+$("f-ytstart-r").addEventListener("input", function () { $("f-ytstart").value = $("f-ytstart-r").value; syncYtLabels(); });
+$("f-ytend-r").addEventListener("input", function () { $("f-ytend").value = $("f-ytend-r").value; syncYtLabels(); });
+$("f-ytstart").addEventListener("input", function () { var v = parseInt($("f-ytstart").value, 10); if (!isNaN(v)) { $("f-ytstart-r").value = v; syncYtLabels(); } });
+$("f-ytend").addEventListener("input", function () { var v = parseInt($("f-ytend").value, 10); if (!isNaN(v)) { $("f-ytend-r").value = v; syncYtLabels(); } });
+$("yt-audition").addEventListener("click", function () {
+if (!ytPlayer || !ytPlayer.seekTo) return;
+var st = parseInt($("f-ytstart-r").value, 10) || 0;
+var en = parseInt($("f-ytend-r").value, 10) || 0;
+ytPlayer.seekTo(st, true);
+ytPlayer.playVideo();
+if (ytAuditionTimer) clearInterval(ytAuditionTimer);
+if (en > st) {
+ytAuditionTimer = setInterval(function () {
+if (!ytPlayer || !ytPlayer.getCurrentTime) { clearInterval(ytAuditionTimer); return; }
+if (ytPlayer.getCurrentTime() >= en) { ytPlayer.pauseVideo(); clearInterval(ytAuditionTimer); }
+}, 250);
+}
+});
 function deleteSong(id) {
 var s = null;
 songs.forEach(function (x) { if (x.id === id) s = x; });
@@ -664,7 +763,8 @@ addedAt: todayJST()
 };
 var ytLinkV = $("f-ytlink").value.trim();
 var ytStartV = parseInt($("f-ytstart").value, 10);
-if (ytLinkV) { obj.ytLink = ytLinkV; if (!isNaN(ytStartV) && ytStartV > 0) obj.ytStart = ytStartV; }
+var ytEndV = parseInt($("f-ytend").value, 10);
+if (ytLinkV) { obj.ytLink = ytLinkV; if (!isNaN(ytStartV) && ytStartV > 0) obj.ytStart = ytStartV; if (!isNaN(ytEndV) && ytEndV > 0 && (isNaN(ytStartV) || ytEndV > ytStartV)) obj.ytEnd = ytEndV; }
 var isNew = !id;
 if (id) {
 var old = null;
