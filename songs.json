@@ -2751,149 +2751,6 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w110",
-    "title": "00-001-2302",
-    "artist": "Imported Files",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w111",
-    "title": "00-002-2305",
-    "artist": "Imported Files",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w112",
-    "title": "00-003-2307",
-    "artist": "Imported Files",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w113",
-    "title": "00-003-2339",
-    "artist": "Imported Files",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w114",
-    "title": "00-005-2347",
-    "artist": "Imported Files",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w115",
-    "title": "00-014-1729",
-    "artist": "Imported Files",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w116",
-    "title": "00-038-1427",
-    "artist": "Imported Files",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w117",
-    "title": "00-039-1855",
-    "artist": "Imported Files",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w118",
-    "title": "00-040-1913",
-    "artist": "Imported Files",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w119",
-    "title": "00-043-2251",
-    "artist": "Imported Files",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w120",
-    "title": "00-046-0112",
-    "artist": "Imported Files",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w121",
-    "title": "00-047-2237",
-    "artist": "Imported Files",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w122",
-    "title": "006-2026-03-17 00_05_42",
-    "artist": "Imported Files",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w123",
     "title": "JAMがもってった！セーラーふく",
     "artist": "JAM Project",
@@ -3254,204 +3111,6 @@
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/99/32/8a/99328a84-9761-137a-6ed3-23d11edce5ef/NORISTRY_COVER.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w156",
-    "title": "001-1148",
-    "artist": "NWWM_REC",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w157",
-    "title": "002-1207",
-    "artist": "NWWM_REC",
-    "genre": "ニューエイジ",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ed/32/58/ed3258ca-aa28-dab6-2435-dbac46877032/artwork.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w158",
-    "title": "003-1234",
-    "artist": "NWWM_REC",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w159",
-    "title": "004-1303",
-    "artist": "NWWM_REC",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w160",
-    "title": "005-1354",
-    "artist": "NWWM_REC",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w161",
-    "title": "006-1359",
-    "artist": "NWWM_REC",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w162",
-    "title": "001-1414",
-    "artist": "NWWM_REC",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w163",
-    "title": "002-1440",
-    "artist": "NWWM_REC",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/6b/cb/48/6bcb4878-10f5-33d0-4340-e1396c334323/artwork.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w164",
-    "title": "001-1518",
-    "artist": "NWWM_REC",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w165",
-    "title": "001-1502",
-    "artist": "NWWM_REC",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w166",
-    "title": "002-1522",
-    "artist": "NWWM_REC",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w167",
-    "title": "003-1538",
-    "artist": "NWWM_REC",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w168",
-    "title": "004-1558",
-    "artist": "NWWM_REC",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w169",
-    "title": "005-1617",
-    "artist": "NWWM_REC",
-    "genre": "ニューエイジ",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/68/3d/0e/683d0e3b-e48a-6b40-20fe-4b397b7b1099/192562615430.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w170",
-    "title": "006-1634",
-    "artist": "NWWM_REC",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w171",
-    "title": "001-1305",
-    "artist": "NWWM_REC",
-    "genre": "クリスチャンミュージック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music111/v4/fe/fc/b5/fefcb5af-863f-2f52-2424-4f7a3730fe22/789577763623.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w172",
-    "title": "001-1320",
-    "artist": "NWWM_REC",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://cdn-images.dzcdn.net/images/cover/941faad07ca534f3db60ea68408fa7ea/1000x1000-000000-80-0-0.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w173",
-    "title": "001-1400",
-    "artist": "NWWM_REC",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
     "addedAt": "2026-11-12"
   },
   {
@@ -4321,17 +3980,6 @@
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/87/ec/d0/87ecd02f-e258-6ca1-557a-c875c8ac7f0b/194491543761.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w253",
-    "title": "「Ｓ」",
-    "artist": "Vin",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
     "addedAt": "2026-11-12"
   },
   {
@@ -5622,17 +5270,6 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w372",
-    "title": "＊Tear＊",
-    "artist": "ばずぱんだ",
-    "genre": "K-Pop",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/05/87/25/05872588-2962-ed0f-9eaa-aff9f1197dc5/18UMGIM53261.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w373",
     "title": "Alice",
     "artist": "ばずぱんだ&スケベ",
@@ -6394,17 +6031,6 @@
   {
     "id": "w443",
     "title": "Totteoki No Kimochi",
-    "artist": "アーティスト名なし",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w444",
-    "title": "【ウォルピスカーター】きみはだいじょうぶ 歌ってみました【けーぽん】",
     "artist": "アーティスト名なし",
     "genre": "その他",
     "keyLabel": "原曲キー",
@@ -7305,17 +6931,6 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w533",
-    "title": "｢普通｣の街_フェアリーランド",
-    "artist": "ネグロ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w535",
     "title": "キッチンでカッパがタニシ茹でてる",
     "artist": "ネグロ",
@@ -7357,39 +6972,6 @@
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/16/61/62/mzi.bznwszjm.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w542",
-    "title": "00-001-2127",
-    "artist": "ネグロ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w543",
-    "title": "00-001-2134",
-    "artist": "ネグロ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w544",
-    "title": "00-001-2222",
-    "artist": "ネグロ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
     "addedAt": "2026-11-12"
   },
   {
@@ -7555,28 +7137,6 @@
     "keyShift": 0,
     "memo": "",
     "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w560",
-    "title": "00-「S」",
-    "artist": "ネグロ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w561",
-    "title": "00-「S」2",
-    "artist": "ネグロ",
-    "genre": "ヒップホップ／ラップ",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/60/5d/34/605d34d8-9c0e-fb91-784d-5dc9bf6c1ddf/8809658316738_Cover.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
@@ -7844,17 +7404,6 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w586",
-    "title": "00-林檎華憐歌",
-    "artist": "ネグロ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w587",
     "title": "00-桜",
     "artist": "ネグロ",
@@ -7899,17 +7448,6 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w591",
-    "title": "00-粉雪",
-    "artist": "ネグロ",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/05/e0/62/05e062ac-fd29-fa8e-3f8e-c18798913190/ANTCD-A0000007612.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w592",
     "title": "00-紅一葉",
     "artist": "ネグロ",
@@ -7921,17 +7459,6 @@
     "addedAt": "2026-11-12"
   },
   {
-    "id": "w593",
-    "title": "00-裏切りの夕焼け",
-    "artist": "ネグロ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/07/e8/20/07e820f3-a427-8917-c6e9-3a9b8638fb5d/jacket_ESCL03377B00Z_550.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
     "id": "w594",
     "title": "00-飴か夢",
     "artist": "ネグロ",
@@ -7940,39 +7467,6 @@
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/a2/b1/b7/a2b1b7be-a603-102f-df60-8ffa7a665ae3/PA00124503_0_171725_jacket.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w595",
-    "title": "00-馬鹿はアノマリーに憧れる",
-    "artist": "ネグロ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w596",
-    "title": "00-馬鹿はアノマリーに憧れる2",
-    "artist": "ネグロ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w597",
-    "title": "00-馬鹿はアノマリーに憧れる3",
-    "artist": "ネグロ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
     "addedAt": "2026-11-12"
   },
   {
@@ -9920,17 +9414,6 @@
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/0d/fd/9b/mzi.mtecrdfe.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w783",
-    "title": "「笑うが勝ち!」でGo!",
-    "artist": "五條真由美",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/e7/7d/c0/e77dc097-a71a-168a-0c1b-5174c4ca6e8b/mzi.xzggtnzw.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
@@ -11922,17 +11405,6 @@
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/46/c5/4a/46c54a19-c686-f283-e4e4-1891958ec21f/4580547325003.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w966",
-    "title": "♯キボウレインボウ♯",
-    "artist": "池田彩",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/09/42/70/094270c5-e0c2-430b-2480-0448af3f0810/4538182225349.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12"
   },
   {
@@ -14359,50 +13831,6 @@
     "id": "w1189",
     "title": "Neguro_song02_INST_136BPM",
     "artist": "ネグロ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w1190",
-    "title": "①ようこそジャパリパークへ",
-    "artist": "ライブ",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music117/v4/b7/f7/df/b7f7df2d-d8a1-2b9e-2be2-3928e303c25e/4538182694671_cov.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w1191",
-    "title": "②Fire◎Flower",
-    "artist": "ライブ",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/47/fb/3f/47fb3f10-b813-ab86-cdbe-4ad2538e34e0/QWCE_00654.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w1192",
-    "title": "③皆殺しのマジック",
-    "artist": "ライブ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/94/2e/da/942edac7-0f95-d462-adc4-1662673653b8/4511820-95133.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12"
-  },
-  {
-    "id": "w1193",
-    "title": "④「Ｓ」",
-    "artist": "ライブ",
     "genre": "その他",
     "keyLabel": "原曲キー",
     "keyShift": 0,
