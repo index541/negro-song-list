@@ -11,315 +11,152 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet" />
 <style>
 button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]), textarea { min-height: 2.25rem;}
-
 :root {
---bg: #fbfbf9;
---surface: #ffffff;
---surface-2: #f1f0ec;
---ink: #1b1a17;
---ink-2: #55534c;
---ink-3: #8a877d;
---line: #e3e1d9;
---accent: #e03c1f;
---accent-ink: #ffffff;
---accent-soft: #fdeeea;
---duet: #0e7a6d;
---duet-soft: #e6f4f1;
---gold: #c98a12;
---shadow: 0 10px 30px rgba(27, 26, 23, 0.10);
---radius: 14px;
+--bg: #fbfbf9; --surface: #ffffff; --surface-2: #f1f0ec;
+--ink: #1b1a17; --ink-2: #55534c; --ink-3: #8a877d; --line: #e3e1d9;
+--accent: #e03c1f; --accent-ink: #ffffff; --accent-soft: #fdeeea;
+--duet: #0e7a6d; --duet-soft: #e6f4f1; --gold: #c98a12;
+--shadow: 0 10px 30px rgba(27, 26, 23, 0.10); --radius: 14px;
 }
 @media (prefers-color-scheme: dark) {
 :root {
---bg: #131311;
---surface: #1d1d1a;
---surface-2: #26261f;
---ink: #f3f1ea;
---ink-2: #b9b5a8;
---ink-3: #8a877d;
---line: #34332c;
---accent: #ff5a3c;
---accent-ink: #1b0f0b;
---accent-soft: #3a1d15;
---duet: #3ec9b6;
---duet-soft: #123330;
---gold: #e0aa3e;
+--bg: #131311; --surface: #1d1d1a; --surface-2: #26261f;
+--ink: #f3f1ea; --ink-2: #b9b5a8; --ink-3: #8a877d; --line: #34332c;
+--accent: #ff5a3c; --accent-ink: #1b0f0b; --accent-soft: #3a1d15;
+--duet: #3ec9b6; --duet-soft: #123330; --gold: #e0aa3e;
 --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
 }
 }
-
 * { box-sizing: border-box;}
 html { scroll-behavior: smooth;}
-body {
-margin: 0;
-background: var(--bg);
-color: var(--ink);
-font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif;
--webkit-font-smoothing: antialiased;
-}
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif; -webkit-font-smoothing: antialiased;}
 .latin { font-family: "Archivo", "Zen Kaku Gothic New", sans-serif;}
-
-/* ---------- skeleton ---------- */
-#skeleton {
-position: fixed; inset: 0; z-index: 60;
-background: var(--bg);
-padding: 28px 20px;
-transition: opacity.45s ease, visibility.45s;
-}
+#skeleton { position: fixed; inset: 0; z-index: 60; background: var(--bg); padding: 28px 20px; transition: opacity.45s ease, visibility.45s;}
 #skeleton.done { opacity: 0; visibility: hidden;}
 .sk-wrap { max-width: 880px; margin: 0 auto;}
-.sk {
-border-radius: 10px;
-background: linear-gradient(100deg, var(--surface-2) 40%, var(--line) 50%, var(--surface-2) 60%);
-background-size: 200% 100%;
-animation: sk-shimmer 1.2s infinite linear;
-}
+.sk { border-radius: 10px; background: linear-gradient(100deg, var(--surface-2) 40%, var(--line) 50%, var(--surface-2) 60%); background-size: 200% 100%; animation: sk-shimmer 1.2s infinite linear;}
 @keyframes sk-shimmer { from { background-position: 120% 0;} to { background-position: -80% 0;}}
 .sk-title { height: 44px; width: 62%; margin-bottom: 14px;}
 .sk-line { height: 16px; width: 88%; margin-bottom: 26px;}
 .sk-bar { height: 52px; margin-bottom: 22px;}
 .sk-card { height: 118px; margin-bottom: 14px;}
-
-/* ---------- layout ---------- */
 .page { max-width: 880px; margin: 0 auto; padding: 0 20px 72px;}
-
 header.hero { padding: 40px 0 8px;}
-.who {
-display: flex; align-items: center; gap: 10px;
-font-weight: 700; font-size: 14px; color: var(--ink-2);
-letter-spacing:.04em;
-}
-.who .dot {
-width: 34px; height: 34px; border-radius: 50%;
-background: var(--ink); color: var(--bg);
-display: grid; place-items: center;
-font-family: "Archivo", sans-serif; font-weight: 800; font-size: 16px;
-flex: none;
-}
-h1 {
-margin: 14px 0 10px;
-font-size: clamp(34px, 7.5vw, 52px);
-font-weight: 900; line-height: 1.12; letter-spacing:.01em;
-}
-h1.accent { color: var(--accent);}
+.who { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 14px; color: var(--ink-2); letter-spacing:.04em;}
+.who .dot { width: 34px; height: 34px; border-radius: 50%; background: var(--ink); color: var(--bg); display: grid; place-items: center; font-family: "Archivo", sans-serif; font-weight: 800; font-size: 16px; flex: none;}
+h1 { margin: 14px 0 10px; font-size: clamp(34px, 7.5vw, 52px); font-weight: 900; line-height: 1.12; letter-spacing:.01em;}
+h1 .accent { color: var(--accent);}
 .lead { margin: 0; font-size: 16px; line-height: 1.8; color: var(--ink-2); max-width: 34em;}
-.sample-note {
-margin-top: 18px;
-display: flex; gap: 10px; align-items: flex-start;
-background: var(--accent-soft);
-border: 1px solid var(--line);
-border-radius: var(--radius);
-padding: 12px 16px;
-font-size: 14px; line-height: 1.7;
-}
+.sample-note { margin-top: 18px; display: flex; gap: 10px; align-items: flex-start; background: var(--accent-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 16px; font-size: 14px; line-height: 1.7;}
 .sample-note strong { color: var(--accent); white-space: nowrap;}
-
-/* ---------- how it works ---------- */
-.steps {
-display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
-margin: 26px 0 6px;
-}
-.step {
-background: var(--surface);
-border: 1px solid var(--line);
-border-radius: var(--radius);
-padding: 16px;
-}
-.step .num {
-font-family: "Archivo", sans-serif; font-weight: 800; font-size: 13px;
-color: var(--accent); letter-spacing:.12em;
-}
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 26px 0 6px;}
+.step { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px;}
+.step .num { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 13px; color: var(--accent); letter-spacing:.12em;}
 .step p { margin: 8px 0 0; font-size: 14px; line-height: 1.65; font-weight: 700;}
 .step span { display: block; margin-top: 4px; font-size: 12.5px; font-weight: 500; color: var(--ink-2); line-height: 1.6;}
-
-/* ---------- toolbar ---------- */
-.toolbar {
-position: sticky; top: 0; z-index: 20;
-background: color-mix(in srgb, var(--bg) 88%, transparent);
-backdrop-filter: blur(10px);
--webkit-backdrop-filter: blur(10px);
-padding: 18px 0 12px;
-margin-top: 18px;
-}
+.toolbar { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 18px 0 12px; margin-top: 18px;}
 .search-row { display: flex; gap: 10px;}
-.search-box {
-flex: 1; display: flex; align-items: center; gap: 10px;
-background: var(--surface);
-border: 1.5px solid var(--line);
-border-radius: 999px;
-padding: 0 18px;
-transition: border-color.2s;
-}
+.search-box { flex: 1; display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1.5px solid var(--line); border-radius: 999px; padding: 0 18px; transition: border-color.2s;}
 .search-box:focus-within { border-color: var(--accent);}
 .search-box svg { flex: none; color: var(--ink-3);}
-.search-box input {
-flex: 1; border: 0; outline: 0; background: transparent;
-font: inherit; font-size: 16px; color: var(--ink);
-min-height: 3rem; min-width: 0;
-}
+.search-box input { flex: 1; border: 0; outline: 0; background: transparent; font: inherit; font-size: 16px; color: var(--ink); min-height: 3rem; min-width: 0;}
 .search-box input::placeholder { color: var(--ink-3);}
-.sort-select {
-border: 1.5px solid var(--line); border-radius: 999px;
-background: var(--surface); color: var(--ink);
-font: inherit; font-size: 14px; font-weight: 700;
-padding: 0 14px; min-height: 3rem; cursor: pointer;
-}
+.sort-select { border: 1.5px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; font-size: 14px; font-weight: 700; padding: 0 14px; min-height: 3rem; cursor: pointer;}
+.filter-row { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; align-items: center;}
+.artist-select { flex: 1; min-width: 150px;}
+.view-toggle { display: inline-flex; background: var(--surface-2); border-radius: 999px; padding: 3px; gap: 2px;}
+.view-toggle button { font: inherit; font-size: 13.5px; font-weight: 900; border: 0; background: transparent; color: var(--ink-2); border-radius: 999px; padding: 6px 16px; min-height: 2.25rem; cursor: pointer;}
+.view-toggle button.on { background: var(--ink); color: var(--bg);}
 .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px;}
-.chip {
-border: 1.5px solid var(--line); background: var(--surface);
-color: var(--ink-2); border-radius: 999px;
-font: inherit; font-size: 14px; font-weight: 700;
-padding: 6px 16px; cursor: pointer; min-height: 2.5rem;
-transition: all.18s;
-}
+.chip { border: 1.5px solid var(--line); background: var(--surface); color: var(--ink-2); border-radius: 999px; font: inherit; font-size: 14px; font-weight: 700; padding: 6px 16px; cursor: pointer; min-height: 2.5rem; transition: all.18s;}
 .chip:hover { border-color: var(--ink-3);}
 .chip.on { background: var(--ink); color: var(--bg); border-color: var(--ink);}
+.chip .n { font-size: 11.5px; opacity:.65; margin-left: 5px; font-family: "Archivo", sans-serif;}
 .count-line { margin: 14px 2px 0; font-size: 13px; color: var(--ink-3); font-weight: 700; letter-spacing:.05em;}
 .count-line b { color: var(--accent); font-size: 15px;}
-
-/* ---------- song cards ---------- */
 .song-list { display: flex; flex-direction: column; gap: 14px; margin-top: 6px;}
-.song {
-background: var(--surface);
-border: 1px solid var(--line);
-border-radius: var(--radius);
-padding: 20px 22px;
-animation: rise.5s both;
-}
+.song { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; animation: rise.5s both;}
 @keyframes rise { from { opacity: 0; transform: translateY(14px);} to { opacity: 1; transform: none;}}
-.song-head { display: flex; align-items: flex-start; gap: 12px;}
+.song-head { display: flex; align-items: flex-start; gap: 14px;}
+.thumb { width: 68px; height: 68px; border-radius: 12px; object-fit: cover; flex: none; background: var(--surface-2);}
+.thumb-ph { width: 68px; height: 68px; border-radius: 12px; flex: none; background: var(--surface-2); color: var(--ink-3); display: grid; place-items: center; font-family: "Archivo", sans-serif; font-weight: 800; font-size: 26px;}
 .song-main { flex: 1; min-width: 0;}
 .song-title { margin: 0; font-size: 22px; font-weight: 900; line-height: 1.3;}
 .song-artist { margin: 4px 0 0; font-size: 14.5px; color: var(--ink-2); font-weight: 700;}
-.badge-sample {
-flex: none;
-font-family: "Archivo", sans-serif; font-size: 10.5px; font-weight: 800; letter-spacing:.14em;
-color: var(--gold); border: 1.5px solid var(--gold);
-border-radius: 6px; padding: 3px 8px; margin-top: 4px;
-}
+.badge-sample { flex: none; font-family: "Archivo", sans-serif; font-size: 10.5px; font-weight: 800; letter-spacing:.14em; color: var(--gold); border: 1.5px solid var(--gold); border-radius: 6px; padding: 3px 8px; margin-top: 4px;}
 .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;}
-.tag {
-display: inline-flex; align-items: center; gap: 6px;
-background: var(--surface-2); border-radius: 8px;
-padding: 5px 11px; font-size: 13px; font-weight: 700; color: var(--ink-2);
-}
+.tag { display: inline-flex; align-items: center; gap: 6px; background: var(--surface-2); border-radius: 8px; padding: 5px 11px; font-size: 13px; font-weight: 700; color: var(--ink-2);}
 .tag.key { background: var(--accent-soft); color: var(--accent);}
 .tag .k-label { font-size: 11px; font-weight: 700; opacity:.75; letter-spacing:.06em;}
 .stars { color: var(--gold); letter-spacing: 2px; font-size: 13px;}
 .stars .off { color: var(--line);}
 .memo { margin: 12px 0 0; font-size: 14px; line-height: 1.7; color: var(--ink-2);}
 .req-row { display: flex; gap: 10px; margin-top: 18px;}
-.req-btn {
-flex: 1;
-display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-font: inherit; font-size: 15px; font-weight: 900;
-border-radius: 12px; padding: 12px 10px; min-height: 3.25rem;
-cursor: pointer; border: 0;
-transition: transform.15s, filter.15s;
-}
+.req-btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: inherit; font-size: 15px; font-weight: 900; border-radius: 12px; padding: 12px 10px; min-height: 3.25rem; cursor: pointer; border: 0; transition: transform.15s, filter.15s;}
 .req-btn:active { transform: scale(.97);}
 .req-btn.solo { background: var(--accent); color: var(--accent-ink);}
 .req-btn.solo:hover { filter: brightness(1.08);}
 .req-btn.duet { background: var(--duet-soft); color: var(--duet); border: 1.5px solid var(--duet);}
 .req-btn.duet:hover { filter: brightness(1.04);}
-
-.empty {
-text-align: center; padding: 56px 20px;
-border: 1.5px dashed var(--line); border-radius: var(--radius);
-color: var(--ink-2);
-}
+.song-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; margin-top: 6px;}
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px; cursor: pointer; font: inherit; text-align: left; color: var(--ink); animation: rise.5s both; transition: transform.15s, box-shadow.15s;}
+.tile:hover { transform: translateY(-2px); box-shadow: var(--shadow);}
+.tile:active { transform: scale(.98);}
+.tile img { width: 100%; aspect-ratio: 1; border-radius: 9px; object-fit: cover; display: block; background: var(--surface-2);}
+.tile .t-ph { width: 100%; aspect-ratio: 1; border-radius: 9px; background: var(--surface-2); color: var(--ink-3); display: grid; place-items: center; font-family: "Archivo", sans-serif; font-weight: 800; font-size: 40px;}
+.tile-title { margin: 10px 2px 0; font-size: 14.5px; font-weight: 900; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.7em;}
+.tile-artist { margin: 3px 2px 0; font-size: 12px; color: var(--ink-2); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.tile-meta { display: flex; gap: 5px; margin: 8px 2px 2px; flex-wrap: wrap;}
+.tile-meta .tag { font-size: 11px; padding: 3px 8px; border-radius: 6px;}
+.empty { text-align: center; padding: 56px 20px; border: 1.5px dashed var(--line); border-radius: var(--radius); color: var(--ink-2);}
 .empty p { margin: 0 0 6px; font-weight: 900; font-size: 17px; color: var(--ink);}
 .empty span { font-size: 14px; line-height: 1.7;}
-.empty button {
-margin-top: 16px; font: inherit; font-weight: 700; font-size: 14px;
-background: var(--surface); border: 1.5px solid var(--line);
-border-radius: 999px; padding: 8px 20px; cursor: pointer; color: var(--ink);
-}
-
+.empty button { margin-top: 16px; font: inherit; font-weight: 700; font-size: 14px; background: var(--surface); border: 1.5px solid var(--line); border-radius: 999px; padding: 8px 20px; cursor: pointer; color: var(--ink);}
 footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--ink-3); line-height: 1.8;}
 footer a { color: var(--ink-2); font-weight: 700;}
 .foot-link { display: inline-flex; align-items: center; min-height: 2rem;}
-
-/* ---------- inline request panel ---------- */
-.req-panel {
-margin-top: 16px;
-border-top: 1px dashed var(--line);
-padding-top: 16px;
-animation: rise.35s both;
-}
-.type-pill {
-display: inline-block; margin-bottom: 12px;
-font-size: 12.5px; font-weight: 900; letter-spacing:.05em;
-border-radius: 999px; padding: 4px 13px;
-}
+.req-panel { margin-top: 16px; border-top: 1px dashed var(--line); padding-top: 16px; animation: rise.35s both;}
+.type-pill { display: inline-block; margin-bottom: 12px; font-size: 12.5px; font-weight: 900; letter-spacing:.05em; border-radius: 999px; padding: 4px 13px;}
 .type-pill.solo { background: var(--accent-soft); color: var(--accent);}
 .type-pill.duet { background: var(--duet-soft); color: var(--duet);}
-.req-btn.sent {
-background: var(--surface-2); color: var(--ink-3);
-border: 1.5px solid var(--line); cursor: default;
-}
+.req-btn.sent { background: var(--surface-2); color: var(--ink-3); border: 1.5px solid var(--line); cursor: default;}
 .req-btn.sent:hover { filter: none;}
 .req-btn.sent:active { transform: none;}
 .panel-form { display: flex; flex-direction: column; gap: 14px;}
 .field label { display: block; font-size: 13.5px; font-weight: 900; margin-bottom: 7px;}
 .field label .req { color: var(--accent); font-size: 11.5px; margin-left: 6px;}
 .field label .opt { color: var(--ink-3); font-size: 11.5px; margin-left: 6px; font-weight: 700;}
-.field input,.field textarea {
-width: 100%; font: inherit; font-size: 16px; color: var(--ink);
-background: var(--bg); border: 1.5px solid var(--line);
-border-radius: 12px; padding: 12px 14px; outline: 0;
-transition: border-color.2s;
-}
+.field input, .field textarea { width: 100%; font: inherit; font-size: 16px; color: var(--ink); background: var(--bg); border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 14px; outline: 0; transition: border-color.2s;}
 .field textarea { min-height: 5.5rem; resize: vertical; line-height: 1.6;}
-.field input:focus,.field textarea:focus { border-color: var(--accent);}
-.field .hint { margin: 6px 0 0; font-size: 12.5px; color: var(--ink-3); line-height: 1.6;}
+.field input:focus, .field textarea:focus { border-color: var(--accent);}
 .field .err { display: none; margin: 6px 0 0; font-size: 12.5px; color: var(--accent); font-weight: 700;}
 .field.invalid input { border-color: var(--accent);}
 .field.invalid .err { display: block;}
 .panel-actions { display: flex; gap: 10px; margin-top: 4px;}
-.btn-close {
-font: inherit; font-weight: 700; font-size: 15px;
-background: var(--surface-2); color: var(--ink-2);
-border: 0; border-radius: 12px; padding: 12px 20px; min-height: 3.25rem; cursor: pointer;
-}
-.btn-send {
-flex: 1; font: inherit; font-weight: 900; font-size: 15px;
-border: 0; border-radius: 12px; padding: 12px; min-height: 3.25rem; cursor: pointer;
-display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-transition: filter.15s, transform.15s;
-}
+.btn-close { font: inherit; font-weight: 700; font-size: 15px; background: var(--surface-2); color: var(--ink-2); border: 0; border-radius: 12px; padding: 12px 20px; min-height: 3.25rem; cursor: pointer;}
+.btn-send { flex: 1; font: inherit; font-weight: 900; font-size: 15px; border: 0; border-radius: 12px; padding: 12px; min-height: 3.25rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: filter.15s, transform.15s;}
 .btn-send.solo { background: var(--accent); color: var(--accent-ink);}
 .btn-send.duet { background: var(--duet); color: var(--bg);}
 .btn-send:hover { filter: brightness(1.07);}
 .btn-send:active { transform: scale(.98);}
 .btn-send[disabled] { opacity:.65; cursor: default; transform: none; filter: none;}
-.panel-done {
-display: flex; gap: 10px; align-items: flex-start;
-background: var(--duet-soft); color: var(--ink);
-border-radius: var(--radius); padding: 14px 16px;
-font-size: 14.5px; line-height: 1.7; font-weight: 700;
-}
+.panel-done { display: flex; gap: 10px; align-items: flex-start; background: var(--duet-soft); color: var(--ink); border-radius: var(--radius); padding: 14px 16px; font-size: 14.5px; line-height: 1.7; font-weight: 700;}
 .panel-done p { margin: 0;}
 .panel-done .sub { display: block; margin-top: 2px; font-size: 13px; font-weight: 500; color: var(--ink-2);}
-.panel-error {
-background: var(--accent-soft); color: var(--ink);
-border-radius: var(--radius); padding: 14px 16px;
-font-size: 14.5px; line-height: 1.7; font-weight: 700;
-}
+.panel-error { background: var(--accent-soft); color: var(--ink); border-radius: var(--radius); padding: 14px 16px; font-size: 14.5px; line-height: 1.7; font-weight: 700;}
 .panel-error p { margin: 0;}
-.fallback-text {
-width: 100%; margin-top: 12px; font: inherit; font-size: 13.5px; line-height: 1.7;
-background: var(--bg); color: var(--ink-2);
-border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 14px;
-min-height: 7rem;
-}
-.btn-copy-inline {
-margin-top: 10px; font: inherit; font-weight: 900; font-size: 14px;
-background: var(--ink); color: var(--bg);
-border: 0; border-radius: 12px; padding: 10px 18px; min-height: 2.75rem; cursor: pointer;
-display: inline-flex; align-items: center; gap: 8px;
-}
-
+.fallback-text { width: 100%; margin-top: 12px; font: inherit; font-size: 13.5px; line-height: 1.7; background: var(--bg); color: var(--ink-2); border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 14px; min-height: 7rem;}
+.btn-copy-inline { margin-top: 10px; font: inherit; font-weight: 900; font-size: 14px; background: var(--ink); color: var(--bg); border: 0; border-radius: 12px; padding: 10px 18px; min-height: 2.75rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;}
+.sheet-backdrop { position: fixed; inset: 0; z-index: 40; background: rgba(10, 10, 8,.48); opacity: 0; visibility: hidden; transition: opacity.3s, visibility.3s;}
+.sheet-backdrop.open { opacity: 1; visibility: visible;}
+.sheet { position: fixed; left: 50%; bottom: 0; transform: translate(-50%, 105%); width: min(680px, 100%); max-height: 88vh; overflow-y: auto; z-index: 41; background: var(--surface); border-radius: 20px 20px 0 0; box-shadow: var(--shadow); padding: 14px 22px 30px; transition: transform.35s cubic-bezier(.32,.9,.35,1);}
+.sheet.open { transform: translate(-50%, 0);}
+.sheet-grip { width: 44px; height: 5px; border-radius: 99px; background: var(--line); margin: 0 auto 16px;}
+.sheet-head { display: flex; gap: 16px; align-items: flex-start;}
+.sheet-head img, .sheet-head .thumb-ph { width: 108px; height: 108px; border-radius: 14px; font-size: 44px;}
+.sheet-head img { object-fit: cover; background: var(--surface-2);}
+.sheet-title { margin: 0; font-size: 24px; font-weight: 900; line-height: 1.3;}
+.sheet-artist { margin: 4px 0 0; font-size: 14.5px; color: var(--ink-2); font-weight: 700;}
 @media (max-width: 560px) {
 .steps { grid-template-columns: 1fr;}
 .step { display: flex; gap: 14px; align-items: flex-start;}
@@ -328,6 +165,11 @@ display: inline-flex; align-items: center; gap: 8px;
 .song-title { font-size: 20px;}
 .search-row { flex-direction: column;}
 .sort-select { width: 100%;}
+.song-grid { grid-template-columns: repeat(3, 1fr); gap: 10px;}
+.tile { padding: 7px;}
+.tile-title { font-size: 12.5px;}
+.thumb, .thumb-ph { width: 56px; height: 56px;}
+.sheet { padding: 12px 16px 26px;}
 }
 @media (prefers-reduced-motion: reduce) {
 *, *::before, *::after { animation-duration:.01ms!important; transition-duration:.01ms!important;}
@@ -351,7 +193,7 @@ html { scroll-behavior: auto;}
 <header class="hero">
 <div class="who"><span class="dot latin">N</span>ネグロ ─ 歌い手</div>
 <h1>歌える曲<span class="accent">リスト</span></h1>
-<p class="lead">ネグロが歌える曲の一覧です。気になる曲が見つかったら、そのままリクエストできます。「一緒に歌いたい」はコラボのお誘い用です。</p>
+<p class="lead">ネグロがカラオケやオフ会で歌える曲の一覧です。気になる曲が見つかったら、そのままリクエストできます。「一緒に歌いたい」はデュエットのお誘い用です。</p>
 <div class="sample-note">
 <strong>お知らせ</strong>
 <span>いまは表示の確認用にサンプル曲を載せています。本人のレパートリーがそろい次第、順次差し替えていきます。</span>
@@ -361,7 +203,7 @@ html { scroll-behavior: auto;}
 <section class="steps" aria-label="リクエストの流れ">
 <div class="step">
 <div class="num latin">STEP 1</div>
-<p>曲を探す<span>曲名・アーティストで検索したり、ジャンルで絞り込めます。</span></p>
+<p>曲を探す<span>曲名・アーティストで検索したり、ジャンルやアーティストで絞り込めます。</span></p>
 </div>
 <div class="step">
 <div class="num latin">STEP 2</div>
@@ -381,10 +223,20 @@ html { scroll-behavior: auto;}
 </div>
 <select id="sort" class="sort-select" aria-label="並び替え">
 <option value="reco">おすすめ順</option>
+<option value="new">新しい順</option>
 <option value="title">曲名順</option>
 <option value="artist">アーティスト順</option>
 <option value="key">キー順（低い→高い）</option>
 </select>
+</div>
+<div class="filter-row">
+<select id="artist-filter" class="sort-select artist-select" aria-label="アーティストで絞り込み">
+<option value="">すべてのアーティスト</option>
+</select>
+<div class="view-toggle" role="group" aria-label="表示切り替え">
+<button type="button" id="view-list" class="on">リスト</button>
+<button type="button" id="view-tile">タイル</button>
+</div>
 </div>
 <div class="chips" id="genre-chips" role="group" aria-label="ジャンルで絞り込み"></div>
 <p class="count-line"><b id="count">0</b> 曲 見つかりました</p>
@@ -392,224 +244,236 @@ html { scroll-behavior: auto;}
 
 <main>
 <div class="song-list" id="song-list"></div>
+<div class="song-grid" id="song-grid" hidden></div>
 <div class="empty" id="empty" hidden>
 <p>見つかりませんでした</p>
-<span>検索のことばを短くするか、ジャンルを「すべて」に戻してみてください。</span><br />
+<span>検索のことばを短くするか、絞り込みを「すべて」に戻してみてください。</span><br />
 <button type="button" id="reset-filters">絞り込みをリセット</button>
 </div>
 </main>
 
 <footer>
-リクエストはライブや歌ってみたの参考にさせてもらいます。内容によってはお応えできない場合もあります。<br />
+リクエストはカラオケやオフ会の参考にさせてもらいます。内容によってはお応えできない場合もあります。<br />
 ネグロへの連絡は X（<a class="foot-link" href="https://x.com/negro_niconico" target="_blank" rel="noopener">@negro_niconico</a>）からどうぞ。
 </footer>
 </div>
 
+<div class="sheet-backdrop" id="sheet-backdrop"></div>
+<section class="sheet" id="sheet" aria-hidden="true" aria-label="曲の詳細とリクエスト">
+<div class="sheet-grip"></div>
+<div id="sheet-body"></div>
+</section>
 <script>
-// ===== Song data (sample set for layout check — replaced with the real repertoire later) =====
-var SONGS = [
-{ title: "GALLOWS BELL", artist: "buzzG", genre: "ボカロ", keyLabel: "原曲 −2", keyShift: -2, level: 3, memo: "サビの高音と疾走感が得意な一曲。ライブでも定番。"},
-{ title: "シャルル", artist: "バルーン", genre: "ボカロ", keyLabel: "原曲 −2", keyShift: -2, level: 3, memo: "低音からサビまでの流れを気持ちよく歌えます。"},
-{ title: "千本桜", artist: "黒うさP feat. 初音ミク", genre: "ボカロ", keyLabel: "原曲キー", keyShift: 0, level: 2, memo: "テンポが速いので、勢いのある場面向け。"},
-{ title: "残酷な天使のテーゼ", artist: "高橋洋子", genre: "アニソン", keyLabel: "原曲キー", keyShift: 0, level: 3, memo: "みんなで盛り上がれる定番。サビは一緒にどうぞ。"},
-{ title: "紅蓮華", artist: "LiSA", genre: "アニソン", keyLabel: "原曲 −2", keyShift: -2, level: 2, memo: "力強いサビが持ち味。キーを下げて歌います。"},
-{ title: "夜に駆ける", artist: "YOASOBI", genre: "J-POP", keyLabel: "原曲 −3", keyShift: -3, level: 2, memo: "早口パート多め。静かな入りから一気に駆け上がります。"},
-{ title: "ドライフラワー", artist: "優里", genre: "J-POP", keyLabel: "原曲キー", keyShift: 0, level: 3, memo: "しっとり聴かせる系ならこれ。感情を込めて歌います。"},
-{ title: "Lemon", artist: "米津玄師", genre: "J-POP", keyLabel: "原曲キー", keyShift: 0, level: 2, memo: "バラード枠。落ちサビの表現が好きな曲。"},
-{ title: "Pretender", artist: "Official髭男dism", genre: "J-POP", keyLabel: "原曲キー", keyShift: 0, level: 2, memo: "ピアノロックの王道。転調後のサビが見せ場。"},
-{ title: "マリーゴールド", artist: "あいみょん", genre: "J-POP", keyLabel: "原曲 +1", keyShift: 1, level: 1, memo: "やわらかい雰囲気で。キーを少し上げて歌います。"},
-{ title: "紅", artist: "X JAPAN", genre: "ロック", keyLabel: "原曲キー", keyShift: 0, level: 2, memo: "シャウト気味に攻める一曲。会場が熱くなるタイプ。"}
+// ===== Song data =====
+// 本番データは songs.json（管理ページから堅斗だけが更新できる）。
+// 読み込めない環境（ローカル確認など）では下のサンプルで表示する。
+var FALLBACK_SONGS = [
+{ id: "s1", title: "GALLOWS BELL", artist: "buzzG", genre: "ボカロ", keyLabel: "原曲 −2", keyShift: -2, level: 3, memo: "サビの高音と疾走感が得意な一曲。カラオケでも鉄板。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s2", title: "シャルル", artist: "バルーン", genre: "ボカロ", keyLabel: "原曲 −2", keyShift: -2, level: 3, memo: "低音からサビまでの流れを気持ちよく歌えます。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s3", title: "千本桜", artist: "黒うさP feat. 初音ミク", genre: "ボカロ", keyLabel: "原曲キー", keyShift: 0, level: 2, memo: "テンポが速いので、勢いのある場面向け。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s4", title: "残酷な天使のテーゼ", artist: "高橋洋子", genre: "アニソン", keyLabel: "原曲キー", keyShift: 0, level: 3, memo: "みんなで盛り上がれる定番。サビは一緒にどうぞ。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s5", title: "紅蓮華", artist: "LiSA", genre: "アニソン", keyLabel: "原曲 −2", keyShift: -2, level: 2, memo: "力強いサビが持ち味。キーを下げて歌います。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s6", title: "夜に駆ける", artist: "YOASOBI", genre: "J-POP", keyLabel: "原曲 −3", keyShift: -3, level: 2, memo: "早口パート多め。静かな入りから一気に駆け上がります。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s7", title: "ドライフラワー", artist: "優里", genre: "J-POP", keyLabel: "原曲キー", keyShift: 0, level: 3, memo: "しっとり聴かせる系ならこれ。感情を込めて歌います。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s8", title: "Lemon", artist: "米津玄師", genre: "J-POP", keyLabel: "原曲キー", keyShift: 0, level: 2, memo: "バラード枠。落ちサビの表現が好きな曲。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s9", title: "Pretender", artist: "Official髭男dism", genre: "J-POP", keyLabel: "原曲キー", keyShift: 0, level: 2, memo: "ピアノロックの王道。転調後のサビが見せ場。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s10", title: "マリーゴールド", artist: "あいみょん", genre: "J-POP", keyLabel: "原曲 +1", keyShift: 1, level: 1, memo: "やわらかい雰囲気で。キーを少し上げて歌います。", jacket: "", addedAt: "2026-11-12"},
+{ id: "s11", title: "紅", artist: "X JAPAN", genre: "ロック", keyLabel: "原曲キー", keyShift: 0, level: 2, memo: "シャウト気味に攻める一曲。場が熱くなるタイプ。", jacket: "", addedAt: "2026-11-12"}
 ];
-var GENRES = ["すべて", "ボカロ", "J-POP", "アニソン", "ロック"];
+var SONGS = FALLBACK_SONGS.slice();
 
-var state = { q: "", genre: "すべて", sort: "reco"};
+var state = { q: "", genre: "すべて", artist: "", sort: "reco", view: "list"};
+try { var savedView = localStorage.getItem("nsl.view"); if (savedView === "tile" || savedView === "list") state.view = savedView; } catch (e) {}
 
 var listEl = document.getElementById("song-list");
+var gridEl = document.getElementById("song-grid");
 var emptyEl = document.getElementById("empty");
 var countEl = document.getElementById("count");
 var chipsEl = document.getElementById("genre-chips");
+var artistSel = document.getElementById("artist-filter");
 
-GENRES.forEach(function (g) {
+function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]; }); }
+function songById(id) { for (var i = 0; i < SONGS.length; i++) if (SONGS[i].id === id) return SONGS[i]; return null; }
+function firstChar(s) { return (s || "?").charAt(0); }
+
+function jacketHTML(s, big) {
+if (s.jacket) return '<img class="' + (big ? "" : "thumb") + '" src="' + esc(s.jacket) + '" alt="" loading="lazy" onerror="this.outerHTML=\'<div class=\\\'thumb-ph\\\'>' + esc(firstChar(s.title)) + '</div>\'" />';
+return '<div class="thumb-ph" aria-hidden="true">' + esc(firstChar(s.title)) + "</div>";
+}
+function stars(level) {
+var s = "";
+for (var i = 1; i <= 3; i++) s += '<span class="' + (i <= level ? "" : "off") + '">★</span>';
+return '<span class="stars" role="img" aria-label="得意度 ' + level + ' / 3">' + s + "</span>";
+}
+function metaHTML(s) {
+return '<span class="tag key"><span class="k-label">KEY</span>' + esc(s.keyLabel) + "</span>" +
+'<span class="tag">' + esc(s.genre) + "</span>" +
+'<span class="tag">' + stars(s.level) + '<span style="font-size:12px">得意度</span></span>';
+}
+
+function buildGenreChips() {
+var counts = {};
+SONGS.forEach(function (s) { counts[s.genre] = (counts[s.genre] || 0) + 1; });
+var genres = ["すべて"].concat(Object.keys(counts).sort(function (a, b) { return a.localeCompare(b, "ja"); }));
+if (genres.indexOf(state.genre) === -1) state.genre = "すべて";
+chipsEl.innerHTML = "";
+genres.forEach(function (g) {
 var b = document.createElement("button");
 b.type = "button";
-b.className = "chip" + (g === state.genre? " on": "");
-b.textContent = g;
-b.setAttribute("aria-pressed", g === state.genre? "true": "false");
+b.className = "chip" + (g === state.genre ? " on" : "");
+b.setAttribute("aria-pressed", g === state.genre ? "true" : "false");
+b.innerHTML = esc(g) + '<span class="n">' + (g === "すべて" ? SONGS.length : counts[g]) + "</span>";
 b.addEventListener("click", function () {
 state.genre = g;
-chipsEl.querySelectorAll(".chip").forEach(function (c) {
-var on = c.textContent === g;
-c.classList.toggle("on", on);
-c.setAttribute("aria-pressed", on? "true": "false");
-});
+chipsEl.querySelectorAll(".chip").forEach(function (c) { c.classList.remove("on"); c.setAttribute("aria-pressed", "false"); });
+b.classList.add("on"); b.setAttribute("aria-pressed", "true");
 render();
 });
 chipsEl.appendChild(b);
 });
-
-document.getElementById("search").addEventListener("input", function (e) {
-state.q = e.target.value.trim().toLowerCase();
-render();
+}
+function buildArtistOptions() {
+var seen = {};
+SONGS.forEach(function (s) { seen[s.artist] = true; });
+var artists = Object.keys(seen).sort(function (a, b) { return a.localeCompare(b, "ja"); });
+artistSel.innerHTML = '<option value="">すべてのアーティスト</option>';
+artists.forEach(function (a) {
+var o = document.createElement("option");
+o.value = a; o.textContent = a;
+if (a === state.artist) o.selected = true;
+artistSel.appendChild(o);
 });
-document.getElementById("sort").addEventListener("change", function (e) {
-state.sort = e.target.value;
-render();
-});
-document.getElementById("reset-filters").addEventListener("click", function () {
-state.q = ""; state.genre = "すべて";
-document.getElementById("search").value = "";
-chipsEl.querySelectorAll(".chip").forEach(function (c) {
-var on = c.textContent === "すべて";
-c.classList.toggle("on", on);
-c.setAttribute("aria-pressed", on? "true": "false");
-});
-render();
-});
-
-function stars(level) {
-var s = "";
-for (var i = 1; i <= 3; i++) s += '<span class="' + (i <= level? "": "off") + '">★</span>';
-return '<span class="stars" role="img" aria-label="得意度 ' + level + ' / 3">' + s + "</span>";
 }
 
 function filtered() {
 var arr = SONGS.filter(function (s) {
-if (state.genre!== "すべて" && s.genre!== state.genre) return false;
+if (state.genre !== "すべて" && s.genre !== state.genre) return false;
+if (state.artist && s.artist !== state.artist) return false;
 if (state.q) {
-var hay = (s.title + " " + s.artist + " " + s.genre).toLowerCase();
-if (hay.indexOf(state.q) === -1) return false;
+var hay = (s.title + " " + s.artist + " " + s.genre + " " + (s.memo || "")).toLowerCase();
+var terms = state.q.split(/\s+/);
+for (var i = 0; i < terms.length; i++) if (terms[i] && hay.indexOf(terms[i]) === -1) return false;
 }
 return true;
 });
-if (state.sort === "title") arr.sort(function (a, b) { return a.title.localeCompare(b.title, "ja");});
-else if (state.sort === "artist") arr.sort(function (a, b) { return a.artist.localeCompare(b.artist, "ja");});
-else if (state.sort === "key") arr.sort(function (a, b) { return a.keyShift - b.keyShift;});
-else arr.sort(function (a, b) { return b.level - a.level;});
+if (state.sort === "title") arr.sort(function (a, b) { return a.title.localeCompare(b.title, "ja"); });
+else if (state.sort === "artist") arr.sort(function (a, b) { return a.artist.localeCompare(b.artist, "ja") || a.title.localeCompare(b.title, "ja"); });
+else if (state.sort === "key") arr.sort(function (a, b) { return a.keyShift - b.keyShift; });
+else if (state.sort === "new") arr.sort(function (a, b) { return String(b.addedAt || "").localeCompare(String(a.addedAt || "")) || a.title.localeCompare(b.title, "ja"); });
+else arr.sort(function (a, b) { return b.level - a.level || a.title.localeCompare(b.title, "ja"); });
 return arr;
 }
+
+var ICON_MIC = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><path d="M12 18v4"/></svg>';
+var ICON_DUET = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>';
 
 function render() {
 var arr = filtered();
 countEl.textContent = arr.length;
-listEl.innerHTML = "";
 emptyEl.hidden = arr.length > 0;
+document.getElementById("view-list").classList.toggle("on", state.view === "list");
+document.getElementById("view-tile").classList.toggle("on", state.view === "tile");
+listEl.hidden = state.view !== "list";
+gridEl.hidden = state.view !== "tile";
+if (state.view === "list") renderList(arr); else renderGrid(arr);
+}
+function renderList(arr) {
+gridEl.innerHTML = "";
+listEl.innerHTML = "";
 arr.forEach(function (s, i) {
-var idx = SONGS.indexOf(s);
 var card = document.createElement("article");
 card.className = "song";
 card.style.animationDelay = Math.min(i * 60, 360) + "ms";
 card.innerHTML =
-'<div class="song-head"><div class="song-main">' +
-'<h3 class="song-title"></h3><p class="song-artist"></p>' +
-'</div><span class="badge-sample latin">SAMPLE</span></div>' +
-'<div class="meta">' +
-'<span class="tag key"><span class="k-label">KEY</span>' + s.keyLabel + "</span>" +
-'<span class="tag">' + s.genre + "</span>" +
-'<span class="tag">' + stars(s.level) + '<span style="font-size:12px">得意度</span></span>' +
-"</div>" +
+'<div class="song-head">' + jacketHTML(s) +
+'<div class="song-main"><h3 class="song-title"></h3><p class="song-artist"></p></div>' +
+'<span class="badge-sample latin">SAMPLE</span></div>' +
+'<div class="meta">' + metaHTML(s) + "</div>" +
 '<p class="memo"></p>' +
 '<div class="req-row">' +
-'<button type="button" class="req-btn solo" data-key="' + idx + ':solo" data-idx="' + idx + '" data-type="solo">' +
-'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><path d="M12 18v4"/></svg>' +
-"歌ってほしい</button>" +
-'<button type="button" class="req-btn duet" data-key="' + idx + ':duet" data-idx="' + idx + '" data-type="duet">' +
-'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>' +
-"一緒に歌いたい</button>" +
+'<button type="button" class="req-btn solo" data-key="' + esc(s.id) + ':solo" data-id="' + esc(s.id) + '" data-type="solo">' + ICON_MIC + "歌ってほしい</button>" +
+'<button type="button" class="req-btn duet" data-key="' + esc(s.id) + ':duet" data-id="' + esc(s.id) + '" data-type="duet">' + ICON_DUET + "一緒に歌いたい</button>" +
 "</div>" +
-'<div class="req-slot" data-slot="' + idx + '"></div>';
+'<div class="req-slot" data-slot="' + esc(s.id) + '"></div>';
 card.querySelector(".song-title").textContent = s.title;
 card.querySelector(".song-artist").textContent = s.artist;
-card.querySelector(".memo").textContent = s.memo;
+card.querySelector(".memo").textContent = s.memo || "";
 listEl.appendChild(card);
 });
 listEl.querySelectorAll(".req-btn").forEach(function (btn) {
 refreshButton(btn);
-btn.addEventListener("click", function () { onReqButton(btn);});
+btn.addEventListener("click", function () { onReqButton(btn); });
 });
 renderPanel(false);
 }
+function renderGrid(arr) {
+listEl.innerHTML = "";
+gridEl.innerHTML = "";
+arr.forEach(function (s, i) {
+var t = document.createElement("button");
+t.type = "button";
+t.className = "tile";
+t.style.animationDelay = Math.min(i * 40, 320) + "ms";
+t.setAttribute("aria-label", s.title + " / " + s.artist + " の詳細を開く");
+t.innerHTML =
+(s.jacket ? '<img src="' + esc(s.jacket) + '" alt="" loading="lazy" onerror="this.outerHTML=\'<div class=\\\'t-ph\\\'>' + esc(firstChar(s.title)) + '</div>\'" />' : '<div class="t-ph" aria-hidden="true">' + esc(firstChar(s.title)) + "</div>") +
+'<p class="tile-title"></p><p class="tile-artist"></p>' +
+'<div class="tile-meta"><span class="tag key"><span class="k-label">KEY</span>' + esc(s.keyLabel) + '</span><span class="tag">' + esc(s.genre) + "</span></div>";
+t.querySelector(".tile-title").textContent = s.title;
+t.querySelector(".tile-artist").textContent = s.artist;
+t.addEventListener("click", function () { openSheet(s.id); });
+gridEl.appendChild(t);
+});
+}
 
-// ===== Inline request panel: submits straight to the request form backend =====
-// Endpoint and entry IDs verified against the live form (see build notes).
+document.getElementById("search").addEventListener("input", function (e) { state.q = e.target.value.trim().toLowerCase(); render(); });
+document.getElementById("sort").addEventListener("change", function (e) { state.sort = e.target.value; render(); });
+artistSel.addEventListener("change", function () { state.artist = artistSel.value; render(); });
+document.getElementById("view-list").addEventListener("click", function () { setView("list"); });
+document.getElementById("view-tile").addEventListener("click", function () { setView("tile"); });
+function setView(v) { state.view = v; try { localStorage.setItem("nsl.view", v); } catch (e) {} render(); }
+document.getElementById("reset-filters").addEventListener("click", function () {
+state.q = ""; state.genre = "すべて"; state.artist = "";
+document.getElementById("search").value = "";
+artistSel.value = "";
+buildGenreChips();
+render();
+});
+// ===== Request submission (shared by list panel and tile sheet) =====
 var FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeKoKRXS8kw1RNGGkxQaO1XI6gg61isViPuy8HNN9N2KnYCjA/formResponse";
-var ENTRY = {
-song: "entry.1103741972",
-type: "entry.1374821190",
-name: "entry.1788823070",
-message: "entry.670314950"
-};
-var TYPE_LABEL = { solo: "歌ってほしい", duet: "一緒に歌いたい"};
+var ENTRY = { song: "entry.1103741972", type: "entry.1374821190", name: "entry.1788823070", message: "entry.670314950" };
+var TYPE_LABEL = { solo: "歌ってほしい", duet: "一緒に歌いたい" };
 var ICON_CHECK = '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg>';
 var ICON_SEND = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>';
 var ICON_COPY = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
 
-var sentFlags = {};   // "idx:type" -> true once that request has been sent
-var panelStates = {}; // "idx:type" -> { phase, name, message, nameError, fallback }
-var openKey = null;   // "idx:type" of the currently expanded panel
-
+var sentFlags = {};
+var panelStates = {};
+var openKey = null;
 function stateFor(key) {
-if (!panelStates[key]) panelStates[key] = { phase: "edit", name: "", message: "", nameError: false, fallback: ""};
+if (!panelStates[key]) panelStates[key] = { phase: "edit", name: "", message: "", nameError: false, fallback: "" };
 return panelStates[key];
 }
-
 function refreshButton(btn) {
 if (sentFlags[btn.getAttribute("data-key")]) {
 btn.classList.add("sent");
 btn.innerHTML = ICON_CHECK + "<span>送信しました</span>";
 }
 }
-
-function onReqButton(btn) {
-var key = btn.getAttribute("data-key");
-if (sentFlags[key]) return; // already sent: re-taps do nothing
-openKey = openKey === key? null: key;
-renderPanel(!!openKey);
-}
-
-function closePanel() {
-openKey = null;
-renderPanel(false);
-}
-
-function renderPanel(focusName) {
-listEl.querySelectorAll(".req-slot").forEach(function (slot) { slot.innerHTML = "";});
-if (!openKey) return;
-var parts = openKey.split(":");
-var idx = Number(parts[0]);
-var type = parts[1];
-var slot = listEl.querySelector('[data-slot="' + idx + '"]');
-if (!slot) return;
-var song = SONGS[idx];
-var st = stateFor(openKey);
+function buildFormHTML(key, song, type, st) {
 var isDuet = type === "duet";
-var panel = document.createElement("div");
-panel.className = "req-panel";
-
-if (st.phase === "sent") {
-panel.innerHTML =
-'<div class="panel-done">' + ICON_CHECK +
-'<p>リクエストを送りました。ありがとうございます！<span class="sub"></span></p></div>' +
-'<div class="panel-actions" style="margin-top:12px"><button type="button" class="btn-close">閉じる</button></div>';
-panel.querySelector(".sub").textContent = song.title + "（" + TYPE_LABEL[type] + "）を受け付けました。";
-panel.querySelector(".btn-close").addEventListener("click", closePanel);
-slot.appendChild(panel);
-return;
-}
-
 var sending = st.phase === "sending";
-var idBase = "pf-" + idx + "-" + type;
+var idBase = "pf-" + key.replace(":", "-");
 var html =
 '<span class="type-pill ' + type + '">' + TYPE_LABEL[type] + "</span>" +
-'<form class="panel-form" novalidate>' +
-'<div class="field' + (st.nameError? " invalid": "") + '">' +
+'<form class="panel-form" novalidate data-formkey="' + esc(key) + '">' +
+'<div class="field' + (st.nameError ? " invalid" : "") + '">' +
 '<label for="' + idBase + '-name">あなたのお名前<span class="req">必須</span></label>' +
-'<input id="' + idBase + '-name" class="p-name" type="text" placeholder="例：やえ" autocomplete="name"' + (sending? " disabled": "") + " />" +
-'<p class="err">お名前を入れてください。</p>' +
-"</div>" +
+'<input id="' + idBase + '-name" class="p-name" type="text" placeholder="例：やえ" autocomplete="name"' + (sending ? " disabled" : "") + " />" +
+'<p class="err">お名前を入れてください。</p></div>' +
 '<div class="field">' +
-'<label for="' + idBase + '-msg">' + (isDuet? "メッセージ・希望パート": "メッセージ") + '<span class="opt">任意</span></label>' +
-'<textarea id="' + idBase + '-msg" class="p-msg" placeholder="' + (isDuet? "例：ハモリをやりたい／サビだけ一緒に、など": "例：ライブで聴きたい、など自由にどうぞ") + '"' + (sending? " disabled": "") + "></textarea>" +
-"</div>";
+'<label for="' + idBase + '-msg">' + (isDuet ? "メッセージ・希望パート" : "メッセージ") + '<span class="opt">任意</span></label>' +
+'<textarea id="' + idBase + '-msg" class="p-msg" placeholder="' + (isDuet ? "例：ハモリをやりたい／サビだけ一緒に、など" : "例：カラオケで聴きたい、など自由にどうぞ") + '"' + (sending ? " disabled" : "") + "></textarea></div>";
 if (st.phase === "error") {
 html +=
 '<div class="panel-error"><p>送信できませんでした。お手数ですが、下の文をコピーして X の DM（@negro_niconico）で送ってください。</p>' +
@@ -619,118 +483,203 @@ html +=
 html +=
 '<div class="panel-actions">' +
 '<button type="button" class="btn-close">閉じる</button>' +
-'<button type="submit" class="btn-send ' + type + '"' + (sending? " disabled": "") + ">" + ICON_SEND +
-"<span>" + (sending? "送信中…": "送信する") + "</span></button>" +
+'<button type="submit" class="btn-send ' + type + '"' + (sending ? " disabled" : "") + ">" + ICON_SEND +
+"<span>" + (sending ? "送信中…" : "送信する") + "</span></button>" +
 "</div></form>";
-panel.innerHTML = html;
-
+return html;
+}
+function wireForm(panel, key, rerender) {
+var st = stateFor(key);
 var nameInput = panel.querySelector(".p-name");
 var msgInput = panel.querySelector(".p-msg");
+if (!nameInput) return;
 nameInput.value = st.name;
 msgInput.value = st.message;
 nameInput.addEventListener("input", function () {
 st.name = nameInput.value;
-if (st.nameError && st.name.trim()) {
-st.nameError = false;
-panel.querySelector(".field").classList.remove("invalid");
-}
+if (st.nameError && st.name.trim()) { st.nameError = false; panel.querySelector(".field").classList.remove("invalid"); }
 });
-msgInput.addEventListener("input", function () { st.message = msgInput.value;});
-panel.querySelector(".btn-close").addEventListener("click", closePanel);
-panel.querySelector(".panel-form").addEventListener("submit", function (e) {
-e.preventDefault();
-submitRequest();
-});
+msgInput.addEventListener("input", function () { st.message = msgInput.value; });
+var closeBtn = panel.querySelector(".btn-close");
+if (closeBtn) closeBtn.addEventListener("click", function () { closeAllForms(); });
+panel.querySelector(".panel-form").addEventListener("submit", function (e) { e.preventDefault(); submitRequest(key, rerender); });
 if (st.phase === "error") {
 panel.querySelector(".fallback-text").value = st.fallback;
-panel.querySelector(".btn-copy-inline").addEventListener("click", function () { copyFallback(panel);});
+panel.querySelector(".btn-copy-inline").addEventListener("click", function () { copyFallback(panel); });
 }
-slot.appendChild(panel);
-if (focusName) nameInput.focus();
 }
-
+function doneHTML(key, song, type) {
+return '<div class="panel-done">' + ICON_CHECK +
+'<p>リクエストを送りました。ありがとうございます！<span class="sub">' + esc(song.title) + "（" + TYPE_LABEL[type] + "）を受け付けました。</span></p></div>" +
+'<div class="panel-actions" style="margin-top:12px"><button type="button" class="btn-close">閉じる</button></div>';
+}
 function buildFallbackText(song, type, name, msg) {
-var lines = [
-"【歌唱リクエスト】",
-"曲：" + song.title + " ／ " + song.artist,
-"キー：" + song.keyLabel,
-"種類：" + TYPE_LABEL[type],
-"お名前：" + name
-];
+var lines = ["【歌唱リクエスト】", "曲：" + song.title + " ／ " + song.artist, "キー：" + song.keyLabel, "種類：" + TYPE_LABEL[type], "お名前：" + name];
 if (msg) lines.push("メッセージ：" + msg);
 return lines.join("\n");
 }
-
-function submitRequest() {
-if (!openKey) return;
-var key = openKey;
+function submitRequest(key, rerender) {
 var st = stateFor(key);
 var parts = key.split(":");
-var song = SONGS[Number(parts[0])];
+var song = songById(parts[0]);
 var type = parts[1];
+if (!song) return;
 var name = st.name.trim();
-if (!name) {
-st.nameError = true;
-renderPanel(true);
-return;
-}
+if (!name) { st.nameError = true; rerender(true); return; }
 st.nameError = false;
 st.phase = "sending";
-renderPanel(false);
-
+rerender(false);
 var body = new URLSearchParams();
 body.append(ENTRY.song, song.title + " ／ " + song.artist);
 body.append(ENTRY.type, TYPE_LABEL[type]);
 body.append(ENTRY.name, name);
 var msg = st.message.trim();
 if (msg) body.append(ENTRY.message, msg);
-
-fetch(FORM_URL, {
-method: "POST",
-mode: "no-cors",
-headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"},
-body: body.toString()
-}).then(function () {
-// no-cors responses are opaque: a resolved fetch means the request was delivered.
+fetch(FORM_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" }, body: body.toString() })
+.then(function () {
 st.phase = "sent";
 sentFlags[key] = true;
 var btn = listEl.querySelector('.req-btn[data-key="' + key + '"]');
 if (btn) refreshButton(btn);
-renderPanel(false);
-}).catch(function () {
+rerender(false);
+})
+.catch(function () {
 st.phase = "error";
 st.fallback = buildFallbackText(song, type, name, msg);
-renderPanel(false);
+rerender(false);
 });
 }
+function copyFallback(scope) {
+var ta = scope.querySelector(".fallback-text");
+var label = scope.querySelector(".btn-copy-inline span");
+function done() { label.textContent = "コピーしました"; setTimeout(function () { label.textContent = "リクエスト文をコピーする"; }, 2000); }
+function selectCopy() { ta.focus(); ta.select(); try { if (document.execCommand("copy")) done(); } catch (e) {} }
+if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(done).catch(selectCopy);
+else selectCopy();
+}
+function closeAllForms() { openKey = null; closeSheet(); renderPanel(false); }
 
-function copyFallback(panel) {
-var ta = panel.querySelector(".fallback-text");
-var label = panel.querySelector(".btn-copy-inline span");
-function done() {
-label.textContent = "コピーしました";
-setTimeout(function () { label.textContent = "リクエスト文をコピーする";}, 2000);
+// ===== List inline panel =====
+function onReqButton(btn) {
+var key = btn.getAttribute("data-key");
+if (sentFlags[key]) return;
+openKey = openKey === key ? null : key;
+renderPanel(!!openKey);
 }
-function selectCopy() {
-ta.focus();
-ta.select();
-try { if (document.execCommand("copy")) done();} catch (e) { /* text stays selected for manual copy */ }
+function renderPanel(focusName) {
+if (state.view !== "list") return;
+listEl.querySelectorAll(".req-slot").forEach(function (slot) { slot.innerHTML = ""; });
+if (!openKey) return;
+var parts = openKey.split(":");
+var id = parts[0], type = parts[1];
+var slot = listEl.querySelector('[data-slot="' + id + '"]');
+if (!slot) return;
+var song = songById(id);
+var st = stateFor(openKey);
+var panel = document.createElement("div");
+panel.className = "req-panel";
+if (st.phase === "sent") {
+panel.innerHTML = doneHTML(openKey, song, type);
+panel.querySelector(".btn-close").addEventListener("click", closeAllForms);
+slot.appendChild(panel);
+return;
 }
-if (navigator.clipboard && navigator.clipboard.writeText) {
-navigator.clipboard.writeText(ta.value).then(done).catch(selectCopy);
-} else selectCopy();
+panel.innerHTML = buildFormHTML(openKey, song, type, st);
+wireForm(panel, openKey, renderPanel);
+slot.appendChild(panel);
+if (focusName) { var ni = panel.querySelector(".p-name"); if (ni) ni.focus(); }
 }
 
-document.addEventListener("keydown", function (e) {
-if (e.key === "Escape" && openKey) closePanel();
+// ===== Tile sheet =====
+var sheetEl = document.getElementById("sheet");
+var backdropEl = document.getElementById("sheet-backdrop");
+var sheetBody = document.getElementById("sheet-body");
+var sheetSongId = null;
+var sheetKey = null;
+function openSheet(id) {
+sheetSongId = id;
+sheetKey = null;
+renderSheet();
+sheetEl.classList.add("open");
+backdropEl.classList.add("open");
+sheetEl.setAttribute("aria-hidden", "false");
+}
+function closeSheet() {
+sheetEl.classList.remove("open");
+backdropEl.classList.remove("open");
+sheetEl.setAttribute("aria-hidden", "true");
+sheetSongId = null;
+sheetKey = null;
+}
+backdropEl.addEventListener("click", closeAllForms);
+function renderSheet() {
+var song = songById(sheetSongId);
+if (!song) return;
+var html =
+'<div class="sheet-head">' +
+(song.jacket ? '<img src="' + esc(song.jacket) + '" alt="" onerror="this.outerHTML=\'<div class=\\\'thumb-ph\\\'>' + esc(firstChar(song.title)) + '</div>\'" />' : '<div class="thumb-ph" aria-hidden="true">' + esc(firstChar(song.title)) + "</div>") +
+'<div class="song-main"><h3 class="sheet-title"></h3><p class="sheet-artist"></p>' +
+'<div class="meta" style="margin-top:10px">' + metaHTML(song) + "</div></div></div>" +
+'<p class="memo"></p>' +
+'<div class="req-row">' +
+'<button type="button" class="req-btn solo" data-skey="' + esc(song.id) + ':solo">' + ICON_MIC + "歌ってほしい</button>" +
+'<button type="button" class="req-btn duet" data-skey="' + esc(song.id) + ':duet">' + ICON_DUET + "一緒に歌いたい</button>" +
+"</div>" +
+'<div id="sheet-form"></div>';
+sheetBody.innerHTML = html;
+sheetBody.querySelector(".sheet-title").textContent = song.title;
+sheetBody.querySelector(".sheet-artist").textContent = song.artist;
+sheetBody.querySelector(".memo").textContent = song.memo || "";
+sheetBody.querySelectorAll(".req-btn").forEach(function (btn) {
+var key = btn.getAttribute("data-skey");
+if (sentFlags[key]) { btn.classList.add("sent"); btn.innerHTML = ICON_CHECK + "<span>送信しました</span>"; }
+btn.addEventListener("click", function () {
+if (sentFlags[key]) return;
+sheetKey = sheetKey === key ? null : key;
+openKey = sheetKey;
+renderSheetForm(true);
 });
+});
+renderSheetForm(false);
+}
+function renderSheetForm(focusName) {
+var slot = document.getElementById("sheet-form");
+if (!slot) return;
+slot.innerHTML = "";
+if (!sheetKey) return;
+var parts = sheetKey.split(":");
+var song = songById(parts[0]);
+var type = parts[1];
+var st = stateFor(sheetKey);
+var panel = document.createElement("div");
+panel.className = "req-panel";
+if (st.phase === "sent") {
+panel.innerHTML = doneHTML(sheetKey, song, type);
+panel.querySelector(".btn-close").addEventListener("click", closeAllForms);
+slot.appendChild(panel);
+return;
+}
+panel.innerHTML = buildFormHTML(sheetKey, song, type, st);
+wireForm(panel, sheetKey, renderSheetForm);
+slot.appendChild(panel);
+if (focusName) { var ni = panel.querySelector(".p-name"); if (ni) ni.focus(); }
+}
 
+document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeAllForms(); });
+
+// ===== Data load =====
+function ready() {
+buildGenreChips();
+buildArtistOptions();
 render();
-
-window.addEventListener("load", function () {
-setTimeout(function () { document.getElementById("skeleton").classList.add("done");}, 450);
-});
-setTimeout(function () { document.getElementById("skeleton").classList.add("done");}, 1600);
+var sk = document.getElementById("skeleton");
+if (sk) sk.classList.add("done");
+}
+fetch("songs.json", { cache: "no-store" })
+.then(function (r) { if (!r.ok) throw new Error("ng"); return r.json(); })
+.then(function (d) { if (Array.isArray(d) && d.length) SONGS = d; ready(); })
+.catch(function () { ready(); });
+setTimeout(function () { var sk = document.getElementById("skeleton"); if (sk && !sk.classList.contains("done")) ready(); }, 2500);
 </script>
 </body>
 </html>

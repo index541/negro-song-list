@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<meta name="robots" content="noindex" />
+<title>曲リスト管理 | ネグロ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet" />
+<style>
+button, select, input:not([type="checkbox"], [type="radio"]), textarea { min-height: 2.25rem;}
+:root { --bg:#fbfbf9; --surface:#ffffff; --surface-2:#f1f0ec; --ink:#1b1a17; --ink-2:#55534c; --ink-3:#8a877d; --line:#e3e1d9; --accent:#e03c1f; --accent-ink:#ffffff; --accent-soft:#fdeeea; --duet:#0e7a6d; --duet-soft:#e6f4f1; --gold:#c98a12; --radius:14px; }
+@media (prefers-color-scheme: dark) { :root { --bg:#131311; --surface:#1d1d1a; --surface-2:#26261f; --ink:#f3f1ea; --ink-2:#b9b5a8; --ink-3:#8a877d; --line:#34332c; --accent:#ff5a3c; --accent-ink:#1b0f0b; --accent-soft:#3a1d15; --duet:#3ec9b6; --duet-soft:#123330; --gold:#e0aa3e; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif; -webkit-font-smoothing:antialiased; }
+.page { max-width:880px; margin:0 auto; padding:0 20px 72px; }
+header { padding:36px 0 4px; }
+h1 { margin:10px 0 8px; font-size:clamp(28px,6vw,40px); font-weight:900; line-height:1.15; }
+h1 .accent { color:var(--accent); }
+.lead { margin:0; font-size:14.5px; line-height:1.8; color:var(--ink-2); }
+.card { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:20px 22px; margin-top:18px; }
+.card h2 { margin:0 0 6px; font-size:18px; font-weight:900; }
+.card .desc { margin:0 0 14px; font-size:13.5px; line-height:1.75; color:var(--ink-2); }
+.field { margin-bottom:14px; }
+.field label { display:block; font-size:13.5px; font-weight:900; margin-bottom:7px; }
+.field label .req { color:var(--accent); font-size:11.5px; margin-left:6px; }
+.field input, .field textarea, .field select { width:100%; font:inherit; font-size:16px; color:var(--ink); background:var(--bg); border:1.5px solid var(--line); border-radius:12px; padding:11px 14px; outline:0; }
+.field textarea { min-height:4.5rem; resize:vertical; line-height:1.6; }
+.field input:focus, .field textarea:focus, .field select:focus { border-color:var(--accent); }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+.btn { font:inherit; font-weight:900; font-size:14.5px; border:0; border-radius:12px; padding:11px 18px; min-height:3rem; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:8px; }
+.btn.primary { background:var(--accent); color:var(--accent-ink); }
+.btn.sub { background:var(--surface-2); color:var(--ink-2); }
+.btn.duet { background:var(--duet); color:#fff; }
+.btn.danger { background:var(--accent-soft); color:var(--accent); }
+.btn[disabled] { opacity:.6; cursor:default; }
+.btn-row { display:flex; gap:10px; flex-wrap:wrap; }
+.status { margin-top:12px; font-size:13.5px; line-height:1.7; font-weight:700; }
+.status.ok { color:var(--duet); }
+.status.ng { color:var(--accent); }
+details.howto { margin-top:10px; font-size:13.5px; line-height:1.8; color:var(--ink-2); }
+details.howto summary { font-weight:900; color:var(--ink); cursor:pointer; min-height:2rem; }
+details.howto ol { margin:8px 0 0; padding-left:1.4em; }
+.cand-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(104px,1fr)); gap:10px; margin-top:12px; }
+.cand { border:1.5px solid var(--line); background:var(--surface); border-radius:12px; padding:7px; cursor:pointer; font:inherit; text-align:left; color:var(--ink); }
+.cand:hover { border-color:var(--accent); }
+.cand img { width:100%; aspect-ratio:1; object-fit:cover; border-radius:8px; display:block; background:var(--surface-2); }
+.cand p { margin:6px 2px 0; font-size:11.5px; font-weight:700; line-height:1.4; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.cand span { display:block; margin:0 2px 2px; font-size:10.5px; color:var(--ink-3); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.song-row { display:flex; align-items:center; gap:12px; padding:10px 0; border-top:1px dashed var(--line); }
+.song-row:first-of-type { border-top:0; }
+.song-row img, .song-row .ph { width:46px; height:46px; border-radius:9px; object-fit:cover; flex:none; background:var(--surface-2); }
+.song-row .ph { display:grid; place-items:center; font-family:"Archivo",sans-serif; font-weight:800; color:var(--ink-3); }
+.song-row .main { flex:1; min-width:0; }
+.song-row .t { font-weight:900; font-size:15px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.song-row .a { font-size:12.5px; color:var(--ink-2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.song-row .mini { font:inherit; font-size:12.5px; font-weight:900; border:0; border-radius:9px; padding:8px 13px; min-height:2.4rem; cursor:pointer; }
+.preview { width:96px; height:96px; border-radius:12px; object-fit:cover; background:var(--surface-2); display:block; }
+#toast { position:fixed; left:50%; bottom:22px; transform:translate(-50%,80px); background:var(--ink); color:var(--bg); font-size:14px; font-weight:900; border-radius:999px; padding:12px 22px; opacity:0; transition:all.35s; z-index:50; max-width:92vw; text-align:center; }
+#toast.show { transform:translate(-50%,0); opacity:1; }
+@media (max-width:560px) { .grid2, .grid3 { grid-template-columns:1fr; } .card { padding:18px 16px; } }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+<div style="font-weight:700;font-size:14px;color:var(--ink-2)">ネグロ ─ 専用ページ</div>
+<h1>曲リスト<span class="accent">管理</span></h1>
+<p class="lead">このページは堅斗専用です。曲の追加・編集・削除には、堅斗の GitHub トークンが必要です。公開ページを見るだけの人は、ここで何も変更できません。</p>
+</header>
+
+<section class="card" id="token-card">
+<h2>1. トークンの設定（最初に1回だけ）</h2>
+<p class="desc">GitHub の「このリポジトリ専用」トークンを貼ると、このブラウザから曲を保存できるようになります。トークンはこのブラウザの中にだけ保存されて、ページやリポジトリには入りません。</p>
+<div class="field">
+<label for="token-input">GitHub トークン</label>
+<input id="token-input" type="password" placeholder="github_pat_…" autocomplete="off" />
+</div>
+<div class="btn-row">
+<button type="button" class="btn primary" id="token-save">トークンを保存</button>
+<button type="button" class="btn sub" id="token-test">接続テスト</button>
+<button type="button" class="btn danger" id="token-clear">トークンを消す</button>
+</div>
+<p class="status" id="token-status"></p>
+<details class="howto">
+<summary>トークンの作り方</summary>
+<ol>
+<li>GitHub の設定から「Fine-grained tokens」の新規作成を開く（<a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a>）</li>
+<li>Token name は何でもOK（例：song-list）。有効期限は長めでOK</li>
+<li>Repository access で「Only select repositories」を選び、<strong>negro-song-list</strong> だけを選ぶ</li>
+<li>Permissions の Repository permissions で <strong>Contents</strong> を「Read and write」にする</li>
+<li>「Generate token」で発行して、表示された文字列をここに貼る</li>
+</ol>
+</details>
+</section>
+
+<section class="card">
+<h2>2. ジャケットを探す</h2>
+<p class="desc">曲名（できればアーティスト名も）を入れて探すと、候補のジャケットが出ます。気に入ったものを押すと、下の編集フォームに反映されます。</p>
+<div class="field">
+<label for="cover-q">検索のことば</label>
+<input id="cover-q" type="search" placeholder="例：GALLOWS BELL buzzG" autocomplete="off" />
+</div>
+<div class="btn-row">
+<button type="button" class="btn duet" id="search-itunes">iTunes で探す</button>
+<button type="button" class="btn sub" id="search-mb">MusicBrainz で探す</button>
+</div>
+<p class="status" id="cover-status"></p>
+<div class="cand-grid" id="cand-grid"></div>
+</section>
+
+<section class="card">
+<h2>3. 曲の編集</h2>
+<p class="desc">保存すると公開ページに反映されます（反映まで1分ほどかかります）。</p>
+<input type="hidden" id="f-id" />
+<div class="field">
+<label for="f-title">曲名<span class="req">必須</span></label>
+<input id="f-title" type="text" placeholder="例：GALLOWS BELL" />
+</div>
+<div class="field">
+<label for="f-artist">アーティスト<span class="req">必須</span></label>
+<input id="f-artist" type="text" placeholder="例：buzzG" />
+</div>
+<div class="grid3">
+<div class="field">
+<label for="f-genre">ジャンル</label>
+<input id="f-genre" type="text" list="genre-list" placeholder="例：ボカロ" />
+<datalist id="genre-list"></datalist>
+</div>
+<div class="field">
+<label for="f-keylabel">キー表示</label>
+<input id="f-keylabel" type="text" list="key-list" placeholder="例：原曲 −2" />
+<datalist id="key-list">
+<option value="原曲キー"></option><option value="原曲 −1"></option><option value="原曲 −2"></option><option value="原曲 −3"></option><option value="原曲 −4"></option><option value="原曲 +1"></option><option value="原曲 +2"></option>
+</datalist>
+</div>
+<div class="field">
+<label for="f-level">得意度</label>
+<select id="f-level">
+<option value="3">★★★ とても得意</option>
+<option value="2" selected>★★☆ ふつう</option>
+<option value="1">★☆☆ たまに</option>
+</select>
+</div>
+</div>
+<div class="field">
+<label for="f-memo">一言メモ</label>
+<textarea id="f-memo" placeholder="例：サビの高音が得意な一曲"></textarea>
+</div>
+<div class="field">
+<label for="f-jacket">ジャケット画像 URL</label>
+<input id="f-jacket" type="url" placeholder="https://…" />
+</div>
+<img id="f-preview" class="preview" alt="" style="display:none" />
+<div class="btn-row" style="margin-top:16px">
+<button type="button" class="btn primary" id="song-save">保存する</button>
+<button type="button" class="btn sub" id="song-clear">新規入力に戻す</button>
+</div>
+<p class="status" id="save-status"></p>
+</section>
+
+<section class="card">
+<h2>いまの曲リスト（<span id="song-count">0</span>曲）</h2>
+<p class="desc">「編集」で読み込んで直せます。「削除」は取り消せないので注意してください。</p>
+<div id="song-rows"></div>
+</section>
+
+<footer style="margin-top:36px;font-size:13px;color:var(--ink-3);line-height:1.8">
+公開ページ：<a href="./" style="color:var(--ink-2);font-weight:700">歌える曲リスト</a>
+</footer>
+</div>
+<div id="toast" role="status"></div>
+<script>
+var OWNER = "index541", REPO = "negro-song-list", FILEPATH = "songs.json";
+var token = "";
+try { token = localStorage.getItem("nsl.token") || ""; } catch (e) {}
+var songs = [];
+var fileSha = null;
+
+function $(id) { return document.getElementById(id); }
+function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+function toast(msg) { var t = $("toast"); t.textContent = msg; t.classList.add("show"); setTimeout(function () { t.classList.remove("show"); }, 3200); }
+function setStatus(id, msg, ok) { var el = $(id); el.textContent = msg; el.className = "status " + (ok === true ? "ok" : ok === false ? "ng" : ""); }
+function b64encode(str) { var bytes = new TextEncoder().encode(str); var bin = ""; bytes.forEach(function (b) { bin += String.fromCharCode(b); }); return btoa(bin); }
+function b64decode(b64) { var bin = atob(String(b64).replace(/\s/g, "")); var bytes = new Uint8Array(bin.length); for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i); return new TextDecoder().decode(bytes); }
+function todayJST() { return new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Tokyo" }); }
+function keyShiftFromLabel(label) {
+if (!label || label.indexOf("原曲キー") === 0) return 0;
+var m = String(label).replace("－", "-").replace("＋", "+").match(/([+-])\s*(\d+)/);
+if (m) return (m[1] === "-" ? -1 : 1) * parseInt(m[2], 10);
+return 0;
+}
+function ghHeaders() { return { "Authorization": "Bearer " + token, "Accept": "application/vnd.github+json", "Content-Type": "application/json" }; }
+
+function loadSongs() {
+if (token) {
+return fetch("https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/" + FILEPATH, { headers: ghHeaders() })
+.then(function (r) { if (!r.ok) throw new Error("gh " + r.status); return r.json(); })
+.then(function (d) { fileSha = d.sha; songs = JSON.parse(b64decode(d.content)); renderSongs(); });
+}
+return fetch("songs.json", { cache: "no-store" })
+.then(function (r) { if (!r.ok) throw new Error("local"); return r.json(); })
+.then(function (d) { songs = d; renderSongs(); });
+}
+function renderSongs() {
+$("song-count").textContent = songs.length;
+var wrap = $("song-rows");
+wrap.innerHTML = "";
+songs.forEach(function (s) {
+var row = document.createElement("div");
+row.className = "song-row";
+row.innerHTML =
+(s.jacket ? '<img src="' + esc(s.jacket) + '" alt="" loading="lazy" />' : '<div class="ph">' + esc((s.title || "?").charAt(0)) + "</div>") +
+'<div class="main"><div class="t"></div><div class="a"></div></div>' +
+'<button type="button" class="mini" style="background:var(--surface-2);color:var(--ink-2)" data-act="edit">編集</button>' +
+'<button type="button" class="mini" style="background:var(--accent-soft);color:var(--accent)" data-act="del">削除</button>';
+row.querySelector(".t").textContent = s.title;
+row.querySelector(".a").textContent = s.artist + " ／ " + s.genre + " ／ " + s.keyLabel;
+row.querySelector('[data-act="edit"]').addEventListener("click", function () { editSong(s.id); });
+row.querySelector('[data-act="del"]').addEventListener("click", function () { deleteSong(s.id); });
+wrap.appendChild(row);
+});
+var seen = {};
+songs.forEach(function (s) { seen[s.genre] = true; });
+$("genre-list").innerHTML = Object.keys(seen).map(function (g) { return '<option value="' + esc(g) + '"></option>'; }).join("");
+}
+function commitSongs(message) {
+if (!token) { setStatus("save-status", "先にトークンを保存してください。", false); return Promise.reject(new Error("no token")); }
+if (!fileSha) return loadSongs().then(function () { return commitSongs(message); });
+var body = { message: message, content: b64encode(JSON.stringify(songs, null, 2) + "\n"), sha: fileSha };
+return fetch("https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/" + FILEPATH, { method: "PUT", headers: ghHeaders(), body: JSON.stringify(body) })
+.then(function (r) { if (!r.ok) return r.text().then(function (t) { throw new Error("保存に失敗しました（" + r.status + "）"); }); return r.json(); })
+.then(function (d) { fileSha = d.content.sha; });
+}
+
+// ===== Token =====
+$("token-input").value = token;
+if (token) setStatus("token-status", "トークンは保存済みです。「接続テスト」で確認できます。", true);
+$("token-save").addEventListener("click", function () {
+token = $("token-input").value.trim();
+if (!token) { setStatus("token-status", "トークンが空です。", false); return; }
+try { localStorage.setItem("nsl.token", token); } catch (e) {}
+fileSha = null;
+setStatus("token-status", "保存しました。接続テストを押してみてください。", true);
+loadSongs().catch(function () {});
+});
+$("token-clear").addEventListener("click", function () {
+token = ""; $("token-input").value = "";
+try { localStorage.removeItem("nsl.token"); } catch (e) {}
+setStatus("token-status", "トークンを消しました。", null);
+});
+$("token-test").addEventListener("click", function () {
+if (!token) { setStatus("token-status", "先にトークンを貼って保存してください。", false); return; }
+setStatus("token-status", "接続中…", null);
+fetch("https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/" + FILEPATH, { headers: ghHeaders() })
+.then(function (r) {
+if (r.ok) { setStatus("token-status", "接続OKです。このブラウザから曲を保存できます。", true); return r.json().then(function (d) { fileSha = d.sha; songs = JSON.parse(b64decode(d.content)); renderSongs(); }); }
+if (r.status === 401 || r.status === 403) setStatus("token-status", "トークンが違うか、権限が足りません。作り方を確認してください。", false);
+else if (r.status === 404) setStatus("token-status", "リポジトリか曲ファイルに届きませんでした。トークンの対象リポジトリを確認してください。", false);
+else setStatus("token-status", "接続できませんでした（" + r.status + "）。", false);
+})
+.catch(function () { setStatus("token-status", "通信できませんでした。", false); });
+});
+
+// ===== Editor =====
+function clearEditor() {
+$("f-id").value = ""; $("f-title").value = ""; $("f-artist").value = ""; $("f-genre").value = "";
+$("f-keylabel").value = ""; $("f-level").value = "2"; $("f-memo").value = ""; $("f-jacket").value = "";
+$("f-preview").style.display = "none";
+setStatus("save-status", "", null);
+}
+$("song-clear").addEventListener("click", clearEditor);
+$("f-jacket").addEventListener("input", function () {
+var v = $("f-jacket").value.trim();
+var p = $("f-preview");
+if (v) { p.src = v; p.style.display = "block"; p.onerror = function () { p.style.display = "none"; }; }
+else p.style.display = "none";
+});
+function editSong(id) {
+var s = null;
+songs.forEach(function (x) { if (x.id === id) s = x; });
+if (!s) return;
+$("f-id").value = s.id; $("f-title").value = s.title; $("f-artist").value = s.artist;
+$("f-genre").value = s.genre; $("f-keylabel").value = s.keyLabel; $("f-level").value = String(s.level || 2);
+$("f-memo").value = s.memo || ""; $("f-jacket").value = s.jacket || "";
+$("f-jacket").dispatchEvent(new Event("input"));
+$("f-title").scrollIntoView({ behavior: "smooth", block: "center" });
+setStatus("save-status", "「" + s.title + "」を編集中です。直して保存してください。", null);
+}
+function deleteSong(id) {
+var s = null;
+songs.forEach(function (x) { if (x.id === id) s = x; });
+if (!s) return;
+if (!confirm("「" + s.title + "」を削除しますか？")) return;
+songs = songs.filter(function (x) { return x.id !== id; });
+commitSongs("曲を削除: " + s.title)
+.then(function () { renderSongs(); toast("削除しました。公開ページへの反映は1分ほどかかります"); })
+.catch(function (e) { setStatus("save-status", e.message || "削除に失敗しました。", false); loadSongs().catch(function () {}); });
+}
+$("song-save").addEventListener("click", function () {
+var title = $("f-title").value.trim();
+var artist = $("f-artist").value.trim();
+if (!title || !artist) { setStatus("save-status", "曲名とアーティストは必須です。", false); return; }
+var id = $("f-id").value;
+var keyLabel = $("f-keylabel").value.trim() || "原曲キー";
+var obj = {
+id: id || ("s" + Date.now().toString(36)),
+title: title, artist: artist,
+genre: $("f-genre").value.trim() || "その他",
+keyLabel: keyLabel, keyShift: keyShiftFromLabel(keyLabel),
+level: parseInt($("f-level").value, 10) || 2,
+memo: $("f-memo").value.trim(),
+jacket: $("f-jacket").value.trim(),
+addedAt: todayJST()
+};
+var isNew = !id;
+if (id) {
+var old = null;
+songs.forEach(function (x) { if (x.id === id) old = x; });
+if (old) obj.addedAt = old.addedAt || obj.addedAt;
+songs = songs.map(function (x) { return x.id === id ? obj : x; });
+} else songs.push(obj);
+var btn = $("song-save");
+btn.disabled = true;
+setStatus("save-status", "保存中…", null);
+commitSongs((isNew ? "曲を追加: " : "曲を更新: ") + title)
+.then(function () {
+btn.disabled = false;
+renderSongs();
+clearEditor();
+toast("保存しました。公開ページへの反映は1分ほどかかります");
+setStatus("save-status", "保存できました。", true);
+})
+.catch(function (e) {
+btn.disabled = false;
+setStatus("save-status", e.message || "保存に失敗しました。トークンを確認してください。", false);
+});
+});
+
+// ===== Jacket search =====
+var GENRE_MAP = { "J-Pop": "J-POP", "Pop": "J-POP", "Anime": "アニソン", "Rock": "ロック", "Alternative": "ロック", "Vocaloid": "ボカロ", "Soundtrack": "アニソン" };
+function renderCandidates(list) {
+var grid = $("cand-grid");
+grid.innerHTML = "";
+if (!list.length) { setStatus("cover-status", "候補が見つかりませんでした。ことばを変えて試してください。", false); return; }
+setStatus("cover-status", list.length + "件の候補が見つかりました。使うものを押してください。", true);
+list.forEach(function (c) {
+var b = document.createElement("button");
+b.type = "button";
+b.className = "cand";
+b.innerHTML = '<img src="' + esc(c.img) + '" alt="" loading="lazy" /><p></p><span></span>';
+b.querySelector("p").textContent = c.title;
+b.querySelector("span").textContent = c.artist + "（" + c.source + "）";
+b.querySelector("img").addEventListener("error", function () { b.remove(); });
+b.addEventListener("click", function () { applyCandidate(c); });
+grid.appendChild(b);
+});
+}
+function applyCandidate(c) {
+$("f-jacket").value = c.full;
+$("f-jacket").dispatchEvent(new Event("input"));
+if (c.title) $("f-title").value = c.title;
+if (c.artist) $("f-artist").value = c.artist;
+if (c.genre && !$("f-genre").value.trim()) $("f-genre").value = GENRE_MAP[c.genre] || c.genre;
+toast("ジャケットと曲情報を反映しました");
+}
+$("search-itunes").addEventListener("click", function () {
+var q = ($("cover-q").value.trim() || ($("f-title").value + " " + $("f-artist").value).trim());
+if (!q) { setStatus("cover-status", "先に検索のことばを入れてください。", false); return; }
+setStatus("cover-status", "iTunes で探しています…", null);
+fetch("https://itunes.apple.com/search?term=" + encodeURIComponent(q) + "&country=JP&media=music&entity=song&limit=12&lang=ja_jp")
+.then(function (r) { return r.json(); })
+.then(function (d) {
+var list = (d.results || []).filter(function (x) { return x.artworkUrl100; }).map(function (x) {
+return { img: x.artworkUrl100.replace("100x100bb.jpg", "300x300bb.jpg"), full: x.artworkUrl100.replace("100x100bb.jpg", "600x600bb.jpg"), title: x.trackName || "", artist: x.artistName || "", genre: x.primaryGenreName || "", source: "iTunes" };
+});
+renderCandidates(list);
+})
+.catch(function () { setStatus("cover-status", "iTunes へ通信できませんでした。", false); });
+});
+$("search-mb").addEventListener("click", function () {
+var q = ($("cover-q").value.trim() || $("f-title").value.trim());
+if (!q) { setStatus("cover-status", "先に検索のことばを入れてください。", false); return; }
+setStatus("cover-status", "MusicBrainz で探しています…", null);
+fetch("https://musicbrainz.org/ws/2/recording/?query=" + encodeURIComponent('recording:"' + q.replace(/"/g, "") + '"') + "&fmt=json&limit=10")
+.then(function (r) { return r.json(); })
+.then(function (d) {
+var list = [];
+(d.recordings || []).forEach(function (rec) {
+if (!rec.releases || !rec.releases.length) return;
+var rid = rec.releases[0].id;
+list.push({ img: "https://coverartarchive.org/release/" + rid + "/front-250", full: "https://coverartarchive.org/release/" + rid + "/front-500", title: rec.title || "", artist: (rec["artist-credit"] && rec["artist-credit"][0] && rec["artist-credit"][0].name) || "", genre: "", source: "MusicBrainz" });
+});
+renderCandidates(list);
+})
+.catch(function () { setStatus("cover-status", "MusicBrainz へ通信できませんでした。", false); });
+});
+
+loadSongs().catch(function () { setStatus("save-status", "曲リストを読み込めませんでした。", false); });
+</script>
+</body>
+</html>
