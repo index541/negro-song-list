@@ -651,7 +651,7 @@ document.addEventListener("keydown", function (e) { if (e.key === "Escape") clos
 function buildMarquee() {
 var track = document.getElementById("marquee-track");
 if (!track) return;
-var items = ["カラオケで歌える曲", "リクエスト受付中"];
+var items = ["歌える曲", "リクエスト受付中"];
 var seen = {};
 SONGS.forEach(function (s) { if (!seen[s.genre]) { seen[s.genre] = true; items.push(s.genre); } });
 var half = items.map(function (t) { return "<span>" + esc(t) + " ♪</span>"; }).join("");
