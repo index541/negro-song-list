@@ -148,9 +148,11 @@ footer a { color: var(--ink-2); font-weight: 700;}
 .listen-btn.pv { background: var(--ink); color: var(--bg); border-color: var(--ink);}
 .listen-btn.pv.playing { background: var(--accent); border-color: var(--accent); color: #ffffff;}
 .listen-btn.chorus { background: var(--accent); border-color: var(--accent); color: #ffffff;}
-.pv-progress { display: none; height: 4px; border-radius: 99px; background: var(--surface-2); overflow: hidden; margin-top: 8px;}
-.pv-progress.on { display: block;}
-.pv-progress i { display: block; height: 100%; width: 0%; background: var(--accent);}
+.pv-progress { position: relative; height: 24px; margin-top: 4px; cursor: pointer; touch-action: none; --p: 0%;}
+.pv-track { position: absolute; left: 0; right: 0; top: 50%; height: 4px; transform: translateY(-50%); border-radius: 99px; background: var(--surface-2); overflow: hidden;}
+.pv-track i { display: block; height: 100%; width: var(--p); background: var(--accent);}
+.pv-knob { position: absolute; top: 50%; left: var(--p); width: 15px; height: 15px; border-radius: 50%; background: var(--accent); transform: translate(-50%, -50%); box-shadow: 0 1px 4px rgba(0, 0, 0,.25); pointer-events: none;}
+.pv-progress:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 8px;}
 .tile-pv { position: absolute; top: 15px; right: 15px; width: 34px; height: 34px; border-radius: 50%; background: rgba(28, 28, 28,.8); color: #ffffff; display: grid; place-items: center; font-size: 12px; z-index: 2;}
 .tile-pv.playing { background: var(--accent);}
 .cmodal-backdrop { position: fixed; inset: 0; z-index: 50; background: rgba(10, 10, 8,.55); opacity: 0; visibility: hidden; transition: opacity.3s, visibility.3s;}
@@ -365,7 +367,7 @@ if (s.preview) h += '<button type="button" class="listen-btn pv" data-pv="' + es
 h += '<a class="listen-btn" href="' + esc(ytSearchURL(s)) + '" target="_blank" rel="noopener">YouTubeで探す</a>';
 h += '<a class="listen-btn" href="' + esc(nicoSearchURL(s)) + '" target="_blank" rel="noopener">ニコニコで探す</a>';
 h += "</div>";
-if (s.preview) h += '<div class="pv-progress" data-pvbar="' + esc(s.id) + '"><i></i></div>';
+if (s.preview) h += '<div class="pv-progress" data-pvbar="' + esc(s.id) + '" role="slider" tabindex="0" aria-label="試聴の再生位置"><span class="pv-track"><i></i></span><span class="pv-knob"></span></div>';
 return h;
 }
 var pvAudio = new Audio();
@@ -384,11 +386,13 @@ if (i >= steps) { clearInterval(pvFadeTimer); pvFadeTimer = null; if (done) done
 }, 50);
 }
 function pvStop(fast) {
+var id = pvId;
 pvRamp(0, fast ? 200 : 300, function () {
 pvAudio.pause();
 try { pvAudio.currentTime = 0; } catch (e) {}
 try { pvAudio.volume = 1; } catch (e) {}
 pvFadingOut = false;
+if (id) document.querySelectorAll('[data-pvbar="' + id + '"]').forEach(function (b) { b.style.setProperty("--p", "0%"); });
 pvUI();
 });
 }
@@ -413,9 +417,7 @@ if (b.classList.contains("listen-btn")) b.textContent = on ? "⏸ 停止" : "▶
 else b.textContent = on ? "⏸" : "▶";
 });
 document.querySelectorAll("[data-pvbar]").forEach(function (bar) {
-var on = bar.getAttribute("data-pvbar") === pvId && !!playing;
-bar.classList.toggle("on", on);
-if (!on) { var i = bar.querySelector("i"); if (i) i.style.width = "0%"; }
+if (bar.getAttribute("data-pvbar") !== pvId) bar.style.setProperty("--p", "0%");
 });
 }
 function togglePreview(id) {
@@ -432,8 +434,11 @@ startPv(id);
 }
 pvAudio.addEventListener("timeupdate", function () {
 if (!pvId || !pvAudio.duration) return;
-var bar = document.querySelector('[data-pvbar="' + pvId + '"] i');
-if (bar) bar.style.width = (pvAudio.currentTime / pvAudio.duration * 100) + "%";
+var pct = (pvAudio.currentTime / pvAudio.duration * 100) + "%";
+document.querySelectorAll('[data-pvbar="' + pvId + '"]').forEach(function (bar) {
+bar.style.setProperty("--p", pct);
+bar.setAttribute("aria-valuenow", Math.round(pvAudio.currentTime));
+});
 var remain = pvAudio.duration - pvAudio.currentTime;
 if (!pvFadingOut && remain <= 1.3 && remain > 0) { pvFadingOut = true; pvRamp(0, 1200); }
 });
@@ -442,7 +447,60 @@ pvAudio.addEventListener("pause", pvUI);
 pvAudio.addEventListener("ended", function () {
 try { pvAudio.volume = 1; } catch (e) {}
 pvFadingOut = false;
+pvId = null;
 pvUI();
+});
+var pvPendingSeek = null;
+pvAudio.addEventListener("loadedmetadata", function () {
+if (pvPendingSeek !== null && pvAudio.duration) {
+try { pvAudio.currentTime = pvPendingSeek * pvAudio.duration; } catch (e) {}
+}
+pvPendingSeek = null;
+});
+function pvSeekTo(id, frac) {
+var s = songById(id);
+if (!s || !s.preview) return;
+if (pvId !== id) { pvPendingSeek = frac; startPv(id); return; }
+if (pvAudio.duration) { try { pvAudio.currentTime = frac * pvAudio.duration; } catch (e) {} }
+if (pvAudio.paused) {
+var p = pvAudio.play();
+if (p && p.catch) p.catch(function () {});
+pvRamp(1, 600);
+}
+}
+document.addEventListener("pointerdown", function (e) {
+var bar = e.target && e.target.closest ? e.target.closest("[data-pvbar]") : null;
+if (!bar) return;
+var id = bar.getAttribute("data-pvbar");
+var s = songById(id);
+if (!s || !s.preview) return;
+e.preventDefault();
+closeChorus();
+function seekToEvent(ev) {
+var r = bar.getBoundingClientRect();
+var f = Math.min(1, Math.max(0, (ev.clientX - r.left) / r.width));
+bar.style.setProperty("--p", (f * 100) + "%");
+pvSeekTo(id, f);
+}
+seekToEvent(e);
+try { bar.setPointerCapture(e.pointerId); } catch (err) {}
+function mv(ev) { seekToEvent(ev); }
+function up() {
+bar.removeEventListener("pointermove", mv);
+bar.removeEventListener("pointerup", up);
+bar.removeEventListener("pointercancel", up);
+}
+bar.addEventListener("pointermove", mv);
+bar.addEventListener("pointerup", up);
+bar.addEventListener("pointercancel", up);
+});
+document.addEventListener("keydown", function (e) {
+var bar = e.target && e.target.closest ? e.target.closest("[data-pvbar]") : null;
+if (!bar || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
+if (pvId !== bar.getAttribute("data-pvbar") || !pvAudio.duration) return;
+e.preventDefault();
+var d = e.key === "ArrowRight" ? 2 : -2;
+try { pvAudio.currentTime = Math.min(pvAudio.duration, Math.max(0, pvAudio.currentTime + d)); } catch (err) {}
 });
 document.addEventListener("click", function (e) {
 if (!e.target || !e.target.closest) return;
