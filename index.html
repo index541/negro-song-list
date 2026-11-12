@@ -363,13 +363,15 @@ if (b.classList.contains("listen-btn")) b.textContent = on ? "⏸ 停止" : "▶
 else b.textContent = on ? "⏸" : "▶";
 });
 document.querySelectorAll("[data-pvbar]").forEach(function (bar) {
-bar.classList.toggle("on", bar.getAttribute("data-pvbar") === pvId && (playing || pvAudio.currentTime > 0));
+var on = bar.getAttribute("data-pvbar") === pvId && !!playing;
+bar.classList.toggle("on", on);
+if (!on) { var i = bar.querySelector("i"); if (i) i.style.width = "0%"; }
 });
 }
 function togglePreview(id) {
 var s = songById(id);
 if (!s || !s.preview) return;
-if (pvId === id && !pvAudio.paused) { pvAudio.pause(); pvUI(); return; }
+if (pvId === id && !pvAudio.paused) { pvAudio.pause(); try { pvAudio.currentTime = 0; } catch (e) {} pvUI(); return; }
 if (pvId !== id) { pvAudio.src = s.preview; pvId = id; }
 var p = pvAudio.play();
 if (p && p.catch) p.catch(function () {});
@@ -739,6 +741,7 @@ renderSheetForm(true);
 });
 });
 renderSheetForm(false);
+pvUI();
 }
 function renderSheetForm(focusName) {
 var slot = document.getElementById("sheet-form");
