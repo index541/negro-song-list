@@ -194,6 +194,16 @@ footer a { color: var(--ink-2); font-weight: 700;}
 .thumb, .thumb-ph { width: 56px; height: 56px;}
 .sheet { padding: 12px 16px 26px;}
 }
+@media (min-width: 1024px) {
+.page, .sk-wrap { max-width: 1200px; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.search-row { flex: 2 1 360px; }
+.filter-row { flex: 1 1 280px; margin-top: 0; }
+.genre-row { flex: 1 1 200px; }
+.toolbar .count-line { flex-basis: 100%; margin-top: 8px; }
+.song-list { display: grid; grid-template-columns: 1fr 1fr; align-items: start; }
+.song-grid { grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 16px; }
+}
 @media (prefers-reduced-motion: reduce) {
 *, *::before, *::after { animation-duration:.01ms!important; transition-duration:.01ms!important;}
 html { scroll-behavior: auto;}
