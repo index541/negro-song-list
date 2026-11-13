@@ -1014,7 +1014,7 @@ function metaHTML(s) {
 var kl = String(s.keyLabel || "原曲キー").replace(/\s+/g, "").replace("+", "＋");
 return '<span class="tag key">' + esc(kl) + "</span>" +
 genreTag(s) +
-'<a class="tag ext ext-app" href="' + esc(ytSearchURL(s)) + '" target="_blank" rel="noopener">YouTube</a>' +
+'<a class="tag ext" href="' + esc(ytSearchURL(s)) + '" target="_blank" rel="noopener">YouTube</a>' +
 '<a class="tag ext ext-app" data-pkg="jp.nicovideo.android" href="' + esc(nicoSearchURL(s)) + '" target="_blank" rel="noopener">ニコニコ</a>';
 }
 var MEM_COLORS = ["#e2483d", "#ef7d1a", "#f2b01e", "#8fbf3f", "#28a35c"];
