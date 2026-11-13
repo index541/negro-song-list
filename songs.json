@@ -354,19 +354,6 @@
     "artistYomi": "ピノキオピー"
   },
   {
-    "id": "u028",
-    "title": "え・い・り・あ・ん",
-    "artist": "マキシマム ザ ホルモン",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "エ・イ・リ・ア・ン",
-    "artistYomi": "マキシマム ザ ホルモン"
-  },
-  {
     "id": "u029",
     "title": "「S」",
     "artist": "ゆよゆっぺ feat.巡音ルカ",
@@ -2806,19 +2793,6 @@
     "artistYomi": "Gero&ロン"
   },
   {
-    "id": "w072",
-    "title": "ショタショタ★ナイトフィーバー",
-    "artist": "Gero＆roro",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "ショタショタ★ナイトフィーバー",
-    "artistYomi": "Geroアンドroro"
-  },
-  {
     "id": "w073",
     "title": "Alchemy",
     "artist": "Girls Dead Monster",
@@ -3048,19 +3022,6 @@
     "artistYomi": "IA"
   },
   {
-    "id": "w094",
-    "title": "青に溶ける",
-    "artist": "IA",
-    "genre": "エレクトロニック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/95/97/11/959711da-ad49-4497-4d5f-bedc9dd75f77/bigup14166996.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "アオニトケル",
-    "artistYomi": "IA"
-  },
-  {
     "id": "w096",
     "title": "てるみい",
     "artist": "IA & ONE",
@@ -3167,48 +3128,6 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/18/c8/19/18c8199d-c28b-c123-e460-7a4c85bd224e/mzaf_13988832954143710767.plus.aac.p.m4a",
     "titleYomi": "Fine",
-    "artistYomi": "IKU"
-  },
-  {
-    "id": "w104",
-    "title": "おしまいの嘘",
-    "artist": "IKU",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/90/40/24/90402445-87c9-87f5-ed54-b62a89a341b5/5021732650009.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/22/90/61/2290613d-7363-636e-ad22-6ffb67532c21/mzaf_16293408784901707067.plus.aac.p.m4a",
-    "titleYomi": "オシマイノウソ",
-    "artistYomi": "IKU"
-  },
-  {
-    "id": "w105",
-    "title": "音のない夜空に",
-    "artist": "IKU",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/48/b6/c5/48b6c5d6-20c0-a4c9-bf71-cb18cad18e18/5021732649256.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f7/4e/52/f74e52fa-df31-45d2-916e-77e52040ccff/mzaf_6417858277657230685.plus.aac.p.m4a",
-    "titleYomi": "オトノナイヨゾラニ",
-    "artistYomi": "IKU"
-  },
-  {
-    "id": "w106",
-    "title": "金魚と泡粒",
-    "artist": "IKU",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/90/40/24/90402445-87c9-87f5-ed54-b62a89a341b5/5021732650009.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d2/3a/67/d23a6727-c2f2-646d-37df-e5ceb7cedc27/mzaf_5178599711047199663.plus.aac.p.m4a",
-    "titleYomi": "キンギョトアワツブ",
     "artistYomi": "IKU"
   },
   {
@@ -3497,19 +3416,6 @@
     "artistYomi": "Lorenzo Carrera&Erik Castello&Yoko Hallelujah"
   },
   {
-    "id": "w144",
-    "title": "海を泳ぐ月",
-    "artist": "LUMi",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/d5/ac/15/d5ac15dd-c844-0e2d-ffec-c47157726601/4562251594364_cover.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "ウミヲオヨグツキ",
-    "artistYomi": "LUMi"
-  },
-  {
     "id": "w145",
     "title": "メトロノーム",
     "artist": "Lvoe",
@@ -3767,19 +3673,6 @@
     "artistYomi": "RADWIMPS"
   },
   {
-    "id": "w185",
-    "title": "行きます！カラオケ一曲目",
-    "artist": "recog",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "イキマス！カラオケイチキョクメ",
-    "artistYomi": "recog"
-  },
-  {
     "id": "w187",
     "title": "ニコニコ観測ββ",
     "artist": "recog",
@@ -3790,19 +3683,6 @@
     "jacket": "",
     "addedAt": "2026-11-12",
     "titleYomi": "ニコニコカンソクベータベータ",
-    "artistYomi": "recog"
-  },
-  {
-    "id": "w188",
-    "title": "彼女をください",
-    "artist": "recog",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "カノジョヲクダサイ",
     "artistYomi": "recog"
   },
   {
@@ -4152,20 +4032,6 @@
     "artistYomi": "UNISON SQUARE GARDEN"
   },
   {
-    "id": "w218",
-    "title": "クロスハート1号線(Advantage In a Long Time)",
-    "artist": "UNISON SQUARE GARDEN",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/9f/83/8a/9f838ab6-ecc0-dbc2-ec66-d8bfefa79c88/CIDER_ROAD.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/e0/07/dd/e007dd80-85b2-72be-960f-ffa56b6162ae/mzaf_1468564291197055043.plus.aac.p.m4a",
-    "titleYomi": "クロスハート1ゴウセン(Advantage In a Long Time)",
-    "artistYomi": "UNISON SQUARE GARDEN"
-  },
-  {
     "id": "w219",
     "title": "セレナーデが止まらない",
     "artist": "UNISON SQUARE GARDEN",
@@ -4191,48 +4057,6 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/92/c7/19/92c7198a-3beb-8694-da09-d62fe54cf46e/mzaf_6685600064898352013.plus.aac.p.m4a",
     "titleYomi": "リュウセイノスコール",
-    "artistYomi": "UNISON SQUARE GARDEN"
-  },
-  {
-    "id": "w221",
-    "title": "君はともだち",
-    "artist": "UNISON SQUARE GARDEN",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/9f/83/8a/9f838ab6-ecc0-dbc2-ec66-d8bfefa79c88/CIDER_ROAD.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ff/87/78/ff8778de-d70b-f6fa-5867-529c89761d53/mzaf_12083877645432545046.plus.aac.p.m4a",
-    "titleYomi": "キミハトモダチ",
-    "artistYomi": "UNISON SQUARE GARDEN"
-  },
-  {
-    "id": "w222",
-    "title": "シャンデリア・ワルツ",
-    "artist": "UNISON SQUARE GARDEN",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/9f/83/8a/9f838ab6-ecc0-dbc2-ec66-d8bfefa79c88/CIDER_ROAD.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/7a/8d/42/7a8d4294-0dad-a325-b34b-a13c26ad1288/mzaf_10872845421214299668.plus.aac.p.m4a",
-    "titleYomi": "シャンデリア・ワルツ",
-    "artistYomi": "UNISON SQUARE GARDEN"
-  },
-  {
-    "id": "w223",
-    "title": "オトノバ中間試験",
-    "artist": "UNISON SQUARE GARDEN",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/75/63/13/7563130a-f816-4f18-2d8d-02ee9bd8beaa/TFCC-86565WW.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/07/84/ac/0784ac47-dee3-27fe-d4c9-05e4c61a80f9/mzaf_12725032691350962527.plus.aac.p.m4a",
-    "titleYomi": "オトノバチュウカンシケン",
     "artistYomi": "UNISON SQUARE GARDEN"
   },
   {
@@ -4276,20 +4100,6 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/77/cc/8f/77cc8f9a-b97a-e9c5-f7f6-f66a1d8cd79f/mzaf_6270057835883317678.plus.aac.p.m4a",
     "titleYomi": "フライデイノベルス",
     "artistYomi": "UNISON SQUARE GARDEN"
-  },
-  {
-    "id": "w229",
-    "title": "カラス",
-    "artist": "J‐REXXX",
-    "genre": "レゲエ",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/03/82/ee/0382ee77-1816-300d-3517-86a80ff3102f/859757975648_cover.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d2/96/f9/d296f98b-510c-3463-a35e-b71c22a4ff1c/mzaf_16661998735017067308.plus.aac.p.m4a",
-    "titleYomi": "カラス",
-    "artistYomi": "J‐REXXX"
   },
   {
     "id": "w230",
@@ -4359,19 +4169,6 @@
     "artistYomi": "タぴおか、ココ"
   },
   {
-    "id": "w235",
-    "title": "キャラを取り戻せ!!",
-    "artist": "ココ",
-    "genre": "ゲーム",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "キャラヲトリモドセ!!",
-    "artistYomi": "ココ"
-  },
-  {
     "id": "w236",
     "title": "魂の剣",
     "artist": "めらみぽっぷ",
@@ -4385,32 +4182,6 @@
     "artistYomi": "メラミポッぷ"
   },
   {
-    "id": "w237",
-    "title": "最強の変態は誰だ！",
-    "artist": "Nimo、大瀬良あい、ココ",
-    "genre": "ゲーム",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "サイキョウノヘンタイハダレダ！",
-    "artistYomi": "Nimo、オオセリョウアイ、ココ"
-  },
-  {
-    "id": "w238",
-    "title": "こちら幻想郷博麗神社前派出所",
-    "artist": "miko、96、イザベル、大瀬良あい",
-    "genre": "ゲーム",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "コチラゲンソウゴウヒロシウララジンジャゼンハシュツジョ",
-    "artistYomi": "miko、96、イザベル、オオセリョウアイ"
-  },
-  {
     "id": "w239",
     "title": "Something from the darkness",
     "artist": "たま、妖狐",
@@ -4422,19 +4193,6 @@
     "addedAt": "2026-11-12",
     "titleYomi": "Something from the darkness",
     "artistYomi": "タマ、妖狐"
-  },
-  {
-    "id": "w240",
-    "title": "ギャグ幻想郷日和",
-    "artist": "ココ、大瀬良あい",
-    "genre": "ゲーム",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "ギャグゲンソウサトヒヨリ",
-    "artistYomi": "ココ、オオセリョウアイ"
   },
   {
     "id": "w241",
@@ -4489,19 +4247,6 @@
     "artistYomi": "ユケ"
   },
   {
-    "id": "w246",
-    "title": "新たな異変？スタンドのようなもの",
-    "artist": "大瀬良あい、岩杉夏",
-    "genre": "ゲーム",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "アラタナイヘン？スタンドノヨウナモノ",
-    "artistYomi": "オオセリョウアイ、イワスギナツ"
-  },
-  {
     "id": "w248",
     "title": "UTSUHO",
     "artist": "真野紫",
@@ -4513,19 +4258,6 @@
     "addedAt": "2026-11-12",
     "titleYomi": "UTSUHO",
     "artistYomi": "マヤムラサキ"
-  },
-  {
-    "id": "w249",
-    "title": "イェイ！イェイ！イェイ！",
-    "artist": "un：c",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "イェイ！イェイ！イェイ！",
-    "artistYomi": "un：c"
   },
   {
     "id": "w250",
@@ -4623,19 +4355,6 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/1b/d8/f4/1bd8f4ec-771b-0087-f8f5-fd6fba1f4ac4/mzaf_18212002539344606414.plus.aac.p.m4a",
     "titleYomi": "ガイチュウ",
     "artistYomi": "Khaki"
-  },
-  {
-    "id": "w274",
-    "title": "君と世界をつなぐもの",
-    "artist": "Vin",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/49/fe/c9/49fec91e-bc2b-f3f7-4c2b-cae7166f4e66/COCC-17361.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "キミトセカイヲツナグモノ",
-    "artistYomi": "Vin"
   },
   {
     "id": "w276",
@@ -4948,20 +4667,6 @@
     "artistYomi": "YUKI"
   },
   {
-    "id": "w306",
-    "title": "ウォーターワールド",
-    "artist": "DJ OASIS",
-    "genre": "ヒップホップ／ラップ",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/45/0c/db/450cdb79-b53b-b75d-9c18-b6c9d73ca81c/jacket_MHXX02172B00Z_550.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/60/95/dc/6095dc83-629c-c318-c37b-fab53afd6338/mzaf_8074903473503164107.plus.aac.p.m4a",
-    "titleYomi": "ウォーターワールド",
-    "artistYomi": "DJ OASIS"
-  },
-  {
     "id": "w307",
     "title": "森",
     "artist": "HY",
@@ -5126,19 +4831,6 @@
     "artistYomi": "オミムラマユコ"
   },
   {
-    "id": "w321",
-    "title": "カノンロック-失恋疾走曲-",
-    "artist": "くるみ餅",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/41/70/e1/4170e19a-7496-058a-0664-9daca500ab6a/KICS-93711.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "カノンロック-シツレンシッソウキョク-",
-    "artistYomi": "クルミモチ"
-  },
-  {
     "id": "w324",
     "title": "ロリ誘拐",
     "artist": "このり",
@@ -5150,19 +4842,6 @@
     "addedAt": "2026-11-12",
     "titleYomi": "ロリユウカイ",
     "artistYomi": "コノリ"
-  },
-  {
-    "id": "w325",
-    "title": "乙倉悠貴ちゃんの脇汗なめたい",
-    "artist": "こばたん",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "オツクラユウキチャンノワキアセナメタイ",
-    "artistYomi": "コバタン"
   },
   {
     "id": "w326",
@@ -5178,19 +4857,6 @@
     "artistYomi": "コバタン"
   },
   {
-    "id": "w327",
-    "title": "島村卯月ちゃんのパンツになりたい",
-    "artist": "こばたん",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "シマムラウヅキチャンノパンツニナリタイ",
-    "artistYomi": "コバタン"
-  },
-  {
     "id": "w328",
     "title": "本田未央ちゃんのパンツになりたい",
     "artist": "こばたん",
@@ -5201,19 +4867,6 @@
     "jacket": "",
     "addedAt": "2026-11-12",
     "titleYomi": "ホンダミオチャンノパンツニナリタイ",
-    "artistYomi": "コバタン"
-  },
-  {
-    "id": "w329",
-    "title": "渋谷凛ちゃんのパンツになりたい",
-    "artist": "こばたん",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "シブヤリンチャンノパンツニナリタイ",
     "artistYomi": "コバタン"
   },
   {
@@ -5297,34 +4950,6 @@
     "artistYomi": "ズットマヨナカデイイノニ。"
   },
   {
-    "id": "w337",
-    "title": "サターン",
-    "artist": "ずっと真夜中でいいのに。",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/19/07/13/1907134a-ffe1-c31a-ab6b-18bba8575dd4/00602577195488.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/42/af/85/42af859b-3353-a3d1-136b-fa60b23e5f6b/mzaf_3015681199884275828.plus.aac.p.m4a",
-    "titleYomi": "サターン",
-    "artistYomi": "ズットマヨナカデイイノニ。"
-  },
-  {
-    "id": "w338",
-    "title": "雲丹と栗",
-    "artist": "ずっと真夜中でいいのに。",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/19/07/13/1907134a-ffe1-c31a-ab6b-18bba8575dd4/00602577195488.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f0/95/b1/f095b111-e141-8bb3-3eb5-84565bc9a146/mzaf_6348893416165356607.plus.aac.p.m4a",
-    "titleYomi": "ウニトクリ",
-    "artistYomi": "ズットマヨナカデイイノニ。"
-  },
-  {
     "id": "w339",
     "title": "脳裏上のクラッカー",
     "artist": "ずっと真夜中でいいのに。",
@@ -5336,20 +4961,6 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/09/f4/70/09f470e9-33ce-ae57-6800-a6847e475605/mzaf_13701224392120064275.plus.aac.p.m4a",
     "titleYomi": "ノウリジョウノクラッカー",
-    "artistYomi": "ズットマヨナカデイイノニ。"
-  },
-  {
-    "id": "w340",
-    "title": "君がいて水になる",
-    "artist": "ずっと真夜中でいいのに。",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/19/07/13/1907134a-ffe1-c31a-ab6b-18bba8575dd4/00602577195488.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/e8/c2/58/e8c258e1-8db2-adec-0dcc-dc9b6b0cc813/mzaf_12497566400587932069.plus.aac.p.m4a",
-    "titleYomi": "キミガイテミズニナル",
     "artistYomi": "ズットマヨナカデイイノニ。"
   },
   {
@@ -5592,19 +5203,6 @@
     "artistYomi": "ナメコ"
   },
   {
-    "id": "w360",
-    "title": "君のぶぶチャチャ‼",
-    "artist": "なゆ*&bagi&じゃぴ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "キミノブブチャチャ‼",
-    "artistYomi": "ナユ*&bagi&ジャぴ"
-  },
-  {
     "id": "w361",
     "title": "シャルル",
     "artist": "バルーン",
@@ -5688,20 +5286,6 @@
     "artistYomi": "ジミーサムP"
   },
   {
-    "id": "w370",
-    "title": "変わらないもの",
-    "artist": "奥 華子",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/b0/c0/b4/b0c0b489-6566-b007-7971-86a0c138f2ce/PCCA_03691_itunes.png/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/30/29/57/302957ce-d059-4349-d6d3-e1252d7408f9/mzaf_8537768324612322861.plus.aac.p.m4a",
-    "titleYomi": "カワラナイモノ",
-    "artistYomi": "オク ハナコ"
-  },
-  {
     "id": "w373",
     "title": "Alice",
     "artist": "ばずぱんだ&スケベ",
@@ -5753,20 +5337,6 @@
     "addedAt": "2026-11-12",
     "titleYomi": "セイメイヅケダッチワイフ",
     "artistYomi": "ヒナギク"
-  },
-  {
-    "id": "w377",
-    "title": "アンチクロロベンゼン ver.びびあん",
-    "artist": "びびあん×オワタP",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/a0/38/91/mzi.qdqaoozd.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/Music2/v4/01/45/28/0145284e-8753-a200-af4e-f9291e14b5e8/mzaf_7360433239292052214.plus.aac.p.m4a",
-    "titleYomi": "アンチクロロベンゼン ver.ビビアン",
-    "artistYomi": "ビビアンカケルオワタP"
   },
   {
     "id": "w378",
@@ -6544,19 +6114,6 @@
     "artistYomi": "アーティストメイナシ"
   },
   {
-    "id": "w448",
-    "title": "オトメロディー クロミ",
-    "artist": "アーティスト名なし",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "オトメロディー クロミ",
-    "artistYomi": "アーティストメイナシ"
-  },
-  {
     "id": "w449",
     "title": "ヤバイTシャツ屋さん - 「無線LANばり便利」Music Video",
     "artist": "アーティスト名なし",
@@ -6744,19 +6301,6 @@
     "artistYomi": "ウォルピス・カーター"
   },
   {
-    "id": "w467",
-    "title": "ゴーストルール×オツキミリサイタル",
-    "artist": "ウサナー",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "ゴーストルールカケルオツキミリサイタル",
-    "artistYomi": "ウサナー"
-  },
-  {
     "id": "w468",
     "title": "想像フォレスト×ハッピーシンセサイザ",
     "artist": "ウサナー",
@@ -6796,19 +6340,6 @@
     "artistYomi": "エットレ･リゴッティ&Sophia Aslanidou"
   },
   {
-    "id": "w471",
-    "title": "アリエッティソング",
-    "artist": "エットレ･リゴッティ&Sophia Aslanidou",
-    "genre": "チルドレン・ミュージック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/19/d4/d9/19d4d969-b911-56ae-8e35-77169b3f244e/14639400.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "アリエッティソング",
-    "artistYomi": "エットレ･リゴッティ&Sophia Aslanidou"
-  },
-  {
     "id": "w473",
     "title": "魔法アラ・ドーモ!",
     "artist": "キュアミラクル(CV:高橋李依)・キュアマジカル(CV:堀江由衣)・キュアフェリーチェ(CV:早見沙織)",
@@ -6821,20 +6352,6 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/6d/6f/29/6d6f2996-178b-37e5-addb-b8f2de8d1383/mzaf_14680100099860962987.plus.aac.p.m4a",
     "titleYomi": "マホウアラ・ドーモ!",
     "artistYomi": "キュアミラクル(CV:タカハシリヨ)・キュアマジカル(CV:ホリエユイ)・キュアフェリーチェ(CV:ハヤミサオリ)"
-  },
-  {
-    "id": "w474",
-    "title": "ガンバランス de ダンス～希望のリレー～",
-    "artist": "キュア・カルテット",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/20/2b/a0/202ba0d4-668d-c76f-4bc4-abba3294b1b1/MAQLT-00346.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/6e/15/af/6e15af10-43fe-cf1e-c79e-77522905f441/mzaf_2424733543264375976.plus.aac.p.m4a",
-    "titleYomi": "ガンバランス de ダンス～キボウノリレー～",
-    "artistYomi": "キュア・カルテット"
   },
   {
     "id": "w475",
@@ -6874,32 +6391,6 @@
     "addedAt": "2026-11-12",
     "titleYomi": "オトメロディー (TVサイズ)",
     "artistYomi": "クロミ (タケウチジュンコ)"
-  },
-  {
-    "id": "w478",
-    "title": "クルミロンド",
-    "artist": "クロミ ～クルミ・ヌイ Ver.～ (竹内順子)",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/1e/9f/bc/1e9fbc19-e19c-24b9-38bd-6c5810f3b8a4/25UMGIM43623.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "クルミロンド",
-    "artistYomi": "クロミ ～クルミ・ヌイ Ver.～ (タケウチジュンコ)"
-  },
-  {
-    "id": "w479",
-    "title": "クロイヒトミ",
-    "artist": "クロミ ～クルミ・ヌイ Ver.～ (竹内順子)",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "クロイヒトミ",
-    "artistYomi": "クロミ ～クルミ・ヌイ Ver.～ (タケウチジュンコ)"
   },
   {
     "id": "w480",
@@ -6985,20 +6476,6 @@
     "artistYomi": "ザ・リーサルウェポンズ"
   },
   {
-    "id": "w486",
-    "title": "シェイキン月給日",
-    "artist": "ザ・リーサルウェポンズ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/c6/db/9c/c6db9c14-a92e-44f4-bcc1-ae5a89779ba8/859754795447_cover.png/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/45/9a/58/459a581e-b19e-1692-6f2a-4befd98538d3/mzaf_6899464200386625766.plus.aac.p.m4a",
-    "titleYomi": "シェイキンゲッキュウビ",
-    "artistYomi": "ザ・リーサルウェポンズ"
-  },
-  {
     "id": "w487",
     "title": "プレミアムフライデーナイト",
     "artist": "ザ・リーサルウェポンズ",
@@ -7068,20 +6545,6 @@
     "artistYomi": "ザ・リーサルウェポンズ"
   },
   {
-    "id": "w492",
-    "title": "クールジャパン",
-    "artist": "ザ・リーサルウェポンズ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/c6/db/9c/c6db9c14-a92e-44f4-bcc1-ae5a89779ba8/859754795447_cover.png/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/a5/e1/58/a5e158c5-ee18-b773-bf91-ce8477eb6a7b/mzaf_16726370360132343850.plus.aac.p.m4a",
-    "titleYomi": "クールジャパン",
-    "artistYomi": "ザ・リーサルウェポンズ"
-  },
-  {
     "id": "w493",
     "title": "熱血ティーチャー",
     "artist": "ザ・リーサルウェポンズ",
@@ -7107,34 +6570,6 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/31/27/b0/3127b028-3f33-aade-c282-354d10f90163/mzaf_6082293623320790991.plus.aac.p.m4a",
     "titleYomi": "ホッピーデハッピー",
-    "artistYomi": "ザ・リーサルウェポンズ"
-  },
-  {
-    "id": "w495",
-    "title": "ゴキブリナイトメア",
-    "artist": "ザ・リーサルウェポンズ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/c6/db/9c/c6db9c14-a92e-44f4-bcc1-ae5a89779ba8/859754795447_cover.png/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/3c/5a/7c/3c5a7c52-9f40-240d-c7c8-7644b60ecf26/mzaf_13383800769900417640.plus.aac.p.m4a",
-    "titleYomi": "ゴキブリナイトメア",
-    "artistYomi": "ザ・リーサルウェポンズ"
-  },
-  {
-    "id": "w496",
-    "title": "サイボーグメカニンジャ",
-    "artist": "ザ・リーサルウェポンズ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/c6/db/9c/c6db9c14-a92e-44f4-bcc1-ae5a89779ba8/859754795447_cover.png/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/ed/d5/ee/edd5eec8-09ab-955c-f6a7-5bdd2a46ee3e/mzaf_3108220016839622871.plus.aac.p.m4a",
-    "titleYomi": "サイボーグメカニンジャ",
     "artistYomi": "ザ・リーサルウェポンズ"
   },
   {
@@ -7218,19 +6653,6 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c1/1d/15/c11d15c4-9513-adb6-ef22-cd576d858355/mzaf_10072675976825796249.plus.aac.p.m4a",
     "titleYomi": "レンアイサーキュレーション",
     "artistYomi": "タイツォン"
-  },
-  {
-    "id": "w504",
-    "title": "雄々しくて",
-    "artist": "タイ焼き屋",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/a6/53/be/a653be86-117c-9737-2d79-89ca23ceb0d3/859756250685_cover.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "オオシクテ",
-    "artistYomi": "タイヤキヤ"
   },
   {
     "id": "w505",
@@ -7571,19 +6993,6 @@
     "artistYomi": "イキモノガカリ"
   },
   {
-    "id": "w574",
-    "title": "キラリ2",
-    "artist": "ネグロ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "キラリ2",
-    "artistYomi": "ネグロ"
-  },
-  {
     "id": "w576",
     "title": "ナイトオブナイツ",
     "artist": "ビートまりお",
@@ -7706,19 +7115,6 @@
     "addedAt": "2026-11-12",
     "titleYomi": "Smiling",
     "artistYomi": "halyosy"
-  },
-  {
-    "id": "w605",
-    "title": "お願いマッスル　左右",
-    "artist": "ネグロ&蒼空とねす",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/2a/54/ad/2a54ad4d-30ba-6405-a1ee-3e1b3cef1931/JK_ZMCZ-13191.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "オネガイマッスル　サユウ",
-    "artistYomi": "ネグロ&ソウクウトネス"
   },
   {
     "id": "w606",
@@ -8027,19 +7423,6 @@
     "artistYomi": "マキシマムザホルモン"
   },
   {
-    "id": "w634",
-    "title": "恋のスウィート糞メリケン",
-    "artist": "マキシマムザホルモン",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "コイノスウィートクソメリケン",
-    "artistYomi": "マキシマムザホルモン"
-  },
-  {
     "id": "w635",
     "title": "握れっっ!!",
     "artist": "マキシマムザホルモン",
@@ -8050,19 +7433,6 @@
     "jacket": "",
     "addedAt": "2026-11-12",
     "titleYomi": "ニギレッッ!!",
-    "artistYomi": "マキシマムザホルモン"
-  },
-  {
-    "id": "w636",
-    "title": "ジョニー鉄パイプ",
-    "artist": "マキシマムザホルモン",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "ジョニーテツパイプ",
     "artistYomi": "マキシマムザホルモン"
   },
   {
@@ -8092,32 +7462,6 @@
     "artistYomi": "マキシマムザホルモン"
   },
   {
-    "id": "w639",
-    "title": "鬱くしきOP～月の爆撃機～",
-    "artist": "マキシマムザホルモン",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "鬱クシキOP～ツキノバクゲキキ～",
-    "artistYomi": "マキシマムザホルモン"
-  },
-  {
-    "id": "w640",
-    "title": "アバラ・ボブ",
-    "artist": "マキシマムザホルモン",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "アバラ・ボブ",
-    "artistYomi": "マキシマムザホルモン"
-  },
-  {
     "id": "w641",
     "title": "ニトロBB戦争",
     "artist": "マキシマムザホルモン",
@@ -8141,19 +7485,6 @@
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/8f/72/32/8f723276-ec43-c6a5-2d07-988b25f38059/0198448669689_cover.png/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "ヘルシー・ボブ",
-    "artistYomi": "マキシマムザホルモン"
-  },
-  {
-    "id": "w643",
-    "title": "鬱くしき人々のうた",
-    "artist": "マキシマムザホルモン",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "鬱クシキヒトビトノウタ",
     "artistYomi": "マキシマムザホルモン"
   },
   {
@@ -8235,19 +7566,6 @@
     "artistYomi": "マキシマムザホルモン"
   },
   {
-    "id": "w651",
-    "title": "三品‐SANPIN‐",
-    "artist": "マキシマムザホルモン",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "サンヒン‐SANPIN‐",
-    "artistYomi": "マキシマムザホルモン"
-  },
-  {
     "id": "w652",
     "title": "中2ザビーム",
     "artist": "マキシマムザホルモン",
@@ -8258,32 +7576,6 @@
     "jacket": "",
     "addedAt": "2026-11-12",
     "titleYomi": "チュウ2ザビーム",
-    "artistYomi": "マキシマムザホルモン"
-  },
-  {
-    "id": "w653",
-    "title": "川北猿員",
-    "artist": "マキシマムザホルモン",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "カワキタサルイン",
-    "artistYomi": "マキシマムザホルモン"
-  },
-  {
-    "id": "w654",
-    "title": "アナル･ウイスキー･ポンセ",
-    "artist": "マキシマムザホルモン",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "アナル･ウイスキー･ポンセ",
     "artistYomi": "マキシマムザホルモン"
   },
   {
@@ -8336,19 +7628,6 @@
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/53/f4/a1/53f4a1a3-ae4f-2406-2e89-f49e8a3d1ec1/25UMGIM89645.rgb.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "NOBODYS",
-    "artistYomi": "マキシマムザホルモン"
-  },
-  {
-    "id": "w659",
-    "title": "アカギ",
-    "artist": "マキシマムザホルモン",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/db/c3/5b/dbc35b76-de63-539b-9797-e8536c6c2612/mzi.acihrdiy.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "アカギ",
     "artistYomi": "マキシマムザホルモン"
   },
   {
@@ -8430,19 +7709,6 @@
     "artistYomi": "マキシマムザホルモン"
   },
   {
-    "id": "w666",
-    "title": "恐喝～kyokatsu～",
-    "artist": "マキシマムザホルモン",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "キョウカツ～kyokatsu～",
-    "artistYomi": "マキシマムザホルモン"
-  },
-  {
     "id": "w667",
     "title": "祟り君‐タタリくん‐",
     "artist": "マキシマムザホルモン",
@@ -8453,19 +7719,6 @@
     "jacket": "",
     "addedAt": "2026-11-12",
     "titleYomi": "タタリキミ‐タタリクン‐",
-    "artistYomi": "マキシマムザホルモン"
-  },
-  {
-    "id": "w668",
-    "title": "アンビリーバボ!～スヲミンツ ホケレイロ ミフエホ～",
-    "artist": "マキシマムザホルモン",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "アンビリーバボ!～スヲミンツ ホケレイロ ミフエホ～",
     "artistYomi": "マキシマムザホルモン"
   },
   {
@@ -8492,19 +7745,6 @@
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/fd/91/a8/fd91a8e2-2b67-05e8-983f-e1348ff13764/5021732263124.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "ビキニ・スポーツ・ポンチン",
-    "artistYomi": "マキシマムザホルモン"
-  },
-  {
-    "id": "w671",
-    "title": "上原～FUTOSHI～",
-    "artist": "マキシマムザホルモン",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "ウエハラ～FUTOSHI～",
     "artistYomi": "マキシマムザホルモン"
   },
   {
@@ -8627,19 +7867,6 @@
     "artistYomi": "マキシマムザホルモン"
   },
   {
-    "id": "w681",
-    "title": "恋のきなこ私にください",
-    "artist": "マキシマムザホルモン",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "コイノキナコワタシニクダサイ",
-    "artistYomi": "マキシマムザホルモン"
-  },
-  {
     "id": "w682",
     "title": "恋のメガラバ",
     "artist": "マキシマムザホルモン",
@@ -8650,19 +7877,6 @@
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/75/73/23/757323f4-c6ec-06fc-9d82-8a58cc9a48b0/190295258382.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "コイノメガラバ",
-    "artistYomi": "マキシマムザホルモン"
-  },
-  {
-    "id": "w683",
-    "title": "恋のスペルマ",
-    "artist": "マキシマムザホルモン",
-    "genre": "メタル",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/fe/88/4f/fe884fd6-9ada-b062-4a02-a79e10e843ed/4550760752412_cover.png/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "コイノスペルマ",
     "artistYomi": "マキシマムザホルモン"
   },
   {
@@ -8813,20 +8027,6 @@
     "artistYomi": "ヤマイアンドウサ"
   },
   {
-    "id": "w698",
-    "title": "藍二乗",
-    "artist": "ヨルシカ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/e2/8a/ad/e28aad49-2e0e-8cf6-d6c4-cfe2c8e0c5f5/PA00076064_0_91593_jacket.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d9/dc/d9/d9dcd9ea-f09d-ca08-bb1b-bf4ebd630ede/mzaf_6254279233344660048.plus.aac.p.m4a",
-    "titleYomi": "アイニジョウ",
-    "artistYomi": "ヨルシカ"
-  },
-  {
     "id": "w699",
     "title": "八月､某､月明かり",
     "artist": "ヨルシカ",
@@ -8837,34 +8037,6 @@
     "jacket": "",
     "addedAt": "2026-11-12",
     "titleYomi": "ハチガツ､ボウ､ツキアカリ",
-    "artistYomi": "ヨルシカ"
-  },
-  {
-    "id": "w700",
-    "title": "詩書きとコーヒー",
-    "artist": "ヨルシカ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/64/ab/ba/64abba45-d080-0e8a-c24b-313e597c63cb/PA00076158_0_91679_jacket.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/73/a5/a4/73a5a4fa-334f-5c4a-ef6e-82b160f0d444/mzaf_18194104567421622049.plus.aac.p.m4a",
-    "titleYomi": "シガキトコーヒー",
-    "artistYomi": "ヨルシカ"
-  },
-  {
-    "id": "w702",
-    "title": "踊ろうぜ",
-    "artist": "ヨルシカ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/64/ab/ba/64abba45-d080-0e8a-c24b-313e597c63cb/PA00076158_0_91679_jacket.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/32/61/d3/3261d342-98a1-752e-93f4-c6b3a2cbacd8/mzaf_4798596316468812181.plus.aac.p.m4a",
-    "titleYomi": "オドロウゼ",
     "artistYomi": "ヨルシカ"
   },
   {
@@ -8882,20 +8054,6 @@
     "artistYomi": "ヨルシカ"
   },
   {
-    "id": "w704",
-    "title": "五月は花緑青の窓辺から",
-    "artist": "ヨルシカ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/64/ab/ba/64abba45-d080-0e8a-c24b-313e597c63cb/PA00076158_0_91679_jacket.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/e2/44/de/e244de2a-ce3e-2da6-204d-fecd16c6d633/mzaf_9944841624000173195.plus.aac.p.m4a",
-    "titleYomi": "ゴガツハハナロクショウノマドベカラ",
-    "artistYomi": "ヨルシカ"
-  },
-  {
     "id": "w705",
     "title": "夜紛い",
     "artist": "ヨルシカ",
@@ -8910,20 +8068,6 @@
     "artistYomi": "ヨルシカ"
   },
   {
-    "id": "w707",
-    "title": "エルマ",
-    "artist": "ヨルシカ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/64/ab/ba/64abba45-d080-0e8a-c24b-313e597c63cb/PA00076158_0_91679_jacket.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/e8/2d/72/e82d7252-5b91-b89b-4660-6863fab11339/mzaf_4028463421389609710.plus.aac.p.m4a",
-    "titleYomi": "エルマ",
-    "artistYomi": "ヨルシカ"
-  },
-  {
     "id": "w709",
     "title": "だから僕は音楽を辞めた",
     "artist": "ヨルシカ",
@@ -8935,34 +8079,6 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/9d/af/c7/9dafc7cc-f128-3eeb-ecf1-856c8a1710ef/mzaf_5355670438520538794.plus.aac.p.m4a",
     "titleYomi": "ダカラボクハオンガクヲヤメタ",
-    "artistYomi": "ヨルシカ"
-  },
-  {
-    "id": "w710",
-    "title": "車窓",
-    "artist": "ヨルシカ",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8e/8e/19/8e8e1946-327d-7376-b75f-a49cb69b8686/19UMGIM62014.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/56/e6/95/56e695a3-58d6-1112-886f-0d2529192543/mzaf_1010655995291205982.plus.aac.p.m4a",
-    "titleYomi": "シャソウ",
-    "artistYomi": "ヨルシカ"
-  },
-  {
-    "id": "w711",
-    "title": "憂一乗",
-    "artist": "ヨルシカ",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8e/8e/19/8e8e1946-327d-7376-b75f-a49cb69b8686/19UMGIM62014.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c3/c3/58/c3c35809-5275-2e3a-816c-396d10eacea7/mzaf_10356424940940434024.plus.aac.p.m4a",
-    "titleYomi": "ウイチジョウ",
     "artistYomi": "ヨルシカ"
   },
   {
@@ -9008,62 +8124,6 @@
     "artistYomi": "ヨルシカ"
   },
   {
-    "id": "w715",
-    "title": "神様のダンス",
-    "artist": "ヨルシカ",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8e/8e/19/8e8e1946-327d-7376-b75f-a49cb69b8686/19UMGIM62014.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/bc/f1/6b/bcf16b6e-94a7-58e0-fd5f-7b3bc184be63/mzaf_10536380978303384918.plus.aac.p.m4a",
-    "titleYomi": "カミサマノダンス",
-    "artistYomi": "ヨルシカ"
-  },
-  {
-    "id": "w716",
-    "title": "雨晴るる",
-    "artist": "ヨルシカ",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8e/8e/19/8e8e1946-327d-7376-b75f-a49cb69b8686/19UMGIM62014.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d4/81/75/d48175f6-18b6-d5cf-cd8b-d97f196616db/mzaf_370113668673655222.plus.aac.p.m4a",
-    "titleYomi": "アマハラシルル",
-    "artistYomi": "ヨルシカ"
-  },
-  {
-    "id": "w717",
-    "title": "歩く",
-    "artist": "ヨルシカ",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8e/8e/19/8e8e1946-327d-7376-b75f-a49cb69b8686/19UMGIM62014.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/bb/37/56/bb3756d4-adf1-7fa1-e1a0-890788a74308/mzaf_16889671112657730233.plus.aac.p.m4a",
-    "titleYomi": "アルク",
-    "artistYomi": "ヨルシカ"
-  },
-  {
-    "id": "w718",
-    "title": "心に穴が空いた",
-    "artist": "ヨルシカ",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8e/8e/19/8e8e1946-327d-7376-b75f-a49cb69b8686/19UMGIM62014.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/46/a8/2a/46a82a85-1ef2-582b-17c2-eb5b969cf482/mzaf_3458906757989362407.plus.aac.p.m4a",
-    "titleYomi": "ココロニアナガアイタ",
-    "artistYomi": "ヨルシカ"
-  },
-  {
     "id": "w719",
     "title": "森の教会",
     "artist": "ヨルシカ",
@@ -9075,48 +8135,6 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4a/40/0d/4a400d92-60ab-7a74-c62f-1dba97250f24/mzaf_2280079253398630088.plus.aac.p.m4a",
     "titleYomi": "モリノキョウカイ",
-    "artistYomi": "ヨルシカ"
-  },
-  {
-    "id": "w720",
-    "title": "声",
-    "artist": "ヨルシカ",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8e/8e/19/8e8e1946-327d-7376-b75f-a49cb69b8686/19UMGIM62014.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/61/ad/ab/61adab1c-f319-5cd9-c316-6b9d460ffac8/mzaf_18202989325101570894.plus.aac.p.m4a",
-    "titleYomi": "コエ",
-    "artistYomi": "ヨルシカ"
-  },
-  {
-    "id": "w721",
-    "title": "エイミー",
-    "artist": "ヨルシカ",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8e/8e/19/8e8e1946-327d-7376-b75f-a49cb69b8686/19UMGIM62014.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/19/69/a6/1969a68e-0c0b-86ca-d67c-f3843a43a13c/mzaf_16615250745097415157.plus.aac.p.m4a",
-    "titleYomi": "エイミー",
-    "artistYomi": "ヨルシカ"
-  },
-  {
-    "id": "w722",
-    "title": "海底、月明かり",
-    "artist": "ヨルシカ",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8e/8e/19/8e8e1946-327d-7376-b75f-a49cb69b8686/19UMGIM62014.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/fc/ff/75/fcff75bb-9335-f3ba-6543-094c62f70b73/mzaf_8430598947911739599.plus.aac.p.m4a",
-    "titleYomi": "カイテイ、ツキアカリ",
     "artistYomi": "ヨルシカ"
   },
   {
@@ -9147,20 +8165,6 @@
     "artistYomi": "ヨルシカ"
   },
   {
-    "id": "w725",
-    "title": "カトレア",
-    "artist": "ヨルシカ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/df/48/09/df4809c7-6386-d30f-b656-7cfcde722f28/PA00074565_0_155989_jacket.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/1e/5b/6e/1e5b6e0c-2d0c-b6f7-e719-1301787ba313/mzaf_5827553432330820482.plus.aac.p.m4a",
-    "titleYomi": "カトレア",
-    "artistYomi": "ヨルシカ"
-  },
-  {
     "id": "w726",
     "title": "言って｡",
     "artist": "ヨルシカ",
@@ -9171,20 +8175,6 @@
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/2a/85/f2/2a85f284-d2ad-afdd-2922-483520f6f635/25UM1IM52566.rgb.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "イッテ｡",
-    "artistYomi": "ヨルシカ"
-  },
-  {
-    "id": "w727",
-    "title": "あの夏に咲け",
-    "artist": "ヨルシカ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/df/48/09/df4809c7-6386-d30f-b656-7cfcde722f28/PA00074565_0_155989_jacket.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/04/35/b2/0435b233-37dc-0c0e-34dc-b6425d78b118/mzaf_9494369467984655938.plus.aac.p.m4a",
-    "titleYomi": "アノナツニサケ",
     "artistYomi": "ヨルシカ"
   },
   {
@@ -9199,48 +8189,6 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/a8/f5/b1/a8f5b1e1-fb91-eef1-3aac-69e05fd1f755/mzaf_7466019799233259910.plus.aac.p.m4a",
     "titleYomi": "ヒコウ",
-    "artistYomi": "ヨルシカ"
-  },
-  {
-    "id": "w729",
-    "title": "靴の花火",
-    "artist": "ヨルシカ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/df/48/09/df4809c7-6386-d30f-b656-7cfcde722f28/PA00074565_0_155989_jacket.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/1e/37/09/1e37099e-777d-315c-6aff-513a0d095b10/mzaf_6783317977425554706.plus.aac.p.m4a",
-    "titleYomi": "クツノハナビ",
-    "artistYomi": "ヨルシカ"
-  },
-  {
-    "id": "w730",
-    "title": "雲と幽霊",
-    "artist": "ヨルシカ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/df/48/09/df4809c7-6386-d30f-b656-7cfcde722f28/PA00074565_0_155989_jacket.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/45/07/9a/45079abd-58cd-0974-4ef3-d7e34566ea7a/mzaf_9410845977161640731.plus.aac.p.m4a",
-    "titleYomi": "クモトユウレイ",
-    "artistYomi": "ヨルシカ"
-  },
-  {
-    "id": "w731",
-    "title": "音楽泥棒の自白",
-    "artist": "ヨルシカ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/d0/40/24/d0402416-addd-18e9-dd7f-4f93743e51b4/20UMGIM49946.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/de/00/d6/de00d630-4b6c-b468-4629-1cea0481edc6/mzaf_15064082211596214540.plus.aac.p.m4a",
-    "titleYomi": "オンガクドロボウノジハク",
     "artistYomi": "ヨルシカ"
   },
   {
@@ -9328,20 +8276,6 @@
     "artistYomi": "ヨルシカ"
   },
   {
-    "id": "w738",
-    "title": "朱夏期、音楽泥棒",
-    "artist": "ヨルシカ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/d0/40/24/d0402416-addd-18e9-dd7f-4f93743e51b4/20UMGIM49946.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/a0/64/76/a064762c-6974-151d-7d13-ee6362e7714b/mzaf_4164987855523598639.plus.aac.p.m4a",
-    "titleYomi": "シュカキ、オンガクドロボウ",
-    "artistYomi": "ヨルシカ"
-  },
-  {
     "id": "w739",
     "title": "盗作",
     "artist": "ヨルシカ",
@@ -9353,20 +8287,6 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/20/b3/68/20b368ea-7257-dcd0-9d9b-a5ed6be87a3e/mzaf_13238634398079186106.plus.aac.p.m4a",
     "titleYomi": "トウサク",
-    "artistYomi": "ヨルシカ"
-  },
-  {
-    "id": "w740",
-    "title": "思想犯",
-    "artist": "ヨルシカ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/0a/21/bc/0a21bc24-fa85-935f-c782-9d57186eeadf/20UMGIM47216.rgb.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/17/d5/e7/17d5e71d-7f86-44fc-be75-e6bf85d51369/mzaf_17763947152356019364.plus.aac.p.m4a",
-    "titleYomi": "シソウハン",
     "artistYomi": "ヨルシカ"
   },
   {
@@ -9493,20 +8413,6 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/23/37/9c/23379c83-eb37-179a-7e3d-74cd967193a7/mzaf_5618145252939468924.plus.aac.p.m4a",
     "titleYomi": "ラッカ",
-    "artistYomi": "ヨルシカ"
-  },
-  {
-    "id": "w750",
-    "title": "準透明少年",
-    "artist": "ヨルシカ",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/e3/e5/7a/e3e57a00-ed2d-69d6-bf00-347d7c37f3bd/PA00074572_0_90261_jacket.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/0a/a8/18/0aa818b7-1f1d-d2b7-fbe0-320f80bbe3ee/mzaf_8751963345005513899.plus.aac.p.m4a",
-    "titleYomi": "ジュントウメイショウネン",
     "artistYomi": "ヨルシカ"
   },
   {
@@ -9784,20 +8690,6 @@
     "artistYomi": "ナカノアズサ(CV:タケタチイロドリ奈)"
   },
   {
-    "id": "w777",
-    "title": "じゃじゃ馬Way To Go",
-    "artist": "中野梓 (CV:竹達彩奈)",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/04/62/1b/04621b0c-8f56-0687-f475-71576aca36a9/mzi.dngpjtmg.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/8b/a7/8b/8ba78baa-e508-23c5-14a2-2c26a9271a92/mzaf_1412436569542242816.plus.aac.p.m4a",
-    "titleYomi": "ジャジャウマWay To Go",
-    "artistYomi": "ナカノアズサ (CV:タケタチイロドリ奈)"
-  },
-  {
     "id": "w778",
     "title": "私は私の道を行く",
     "artist": "中野梓 (CV:竹達彩奈)",
@@ -9851,20 +8743,6 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview123/v4/d8/97/2e/d8972e5b-7e6c-983c-4ae8-1be3ac9c322c/mzaf_14119463732279844184.plus.aac.p.m4a",
     "titleYomi": "ワンダー☆ウインター☆ヤッター!!",
     "artistYomi": "ゴジョウマユミ"
-  },
-  {
-    "id": "w784",
-    "title": "ガンバランス de ダンス",
-    "artist": "五條真由美 with フラッピ&チョッピーズ",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/2d/c5/2b/mzi.qijbsecp.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/14/83/ae/1483aeaf-967b-9ddb-b646-da01a6094817/mzaf_13683301031685389203.plus.aac.p.m4a",
-    "titleYomi": "ガンバランス de ダンス",
-    "artistYomi": "ゴジョウマユミ with フラッピ&チョッピーズ"
   },
   {
     "id": "w785",
@@ -9921,19 +8799,6 @@
     "artistYomi": "チョン"
   },
   {
-    "id": "w789",
-    "title": "アンハッピーリフレイン×え？あぁ、そう。",
-    "artist": "全",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "アンハッピーリフレインカケルエ？アァ、ソウ。",
-    "artistYomi": "チョン"
-  },
-  {
     "id": "w790",
     "title": "リリリリバーニングナイト×千本桜",
     "artist": "全",
@@ -9986,32 +8851,6 @@
     "artistYomi": "ハツネミク"
   },
   {
-    "id": "w802",
-    "title": "あいまいクエスチョン",
-    "artist": "初音ミク",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/55/47/2d/55472d15-5ca0-d181-b237-710f1741e06c/4550712706739_cover.png/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "アイマイクエスチョン",
-    "artistYomi": "ハツネミク"
-  },
-  {
-    "id": "w803",
-    "title": "いるかジェット",
-    "artist": "初音ミク",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/29/c8/a7/29c8a782-e878-894d-1dd4-0be4d7f887f3/PA00218883_0_246419_jacket.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "イルカジェット",
-    "artistYomi": "ハツネミク"
-  },
-  {
     "id": "w804",
     "title": "お気に召すまま",
     "artist": "初音ミク",
@@ -10052,19 +8891,6 @@
     "artistYomi": "ハツネミク"
   },
   {
-    "id": "w807",
-    "title": "アネモイ",
-    "artist": "初音ミク",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/0d/e2/08/mzi.zpkbowbx.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "アネモイ",
-    "artistYomi": "ハツネミク"
-  },
-  {
     "id": "w808",
     "title": "アネモネは白昼夢に咲いた",
     "artist": "初音ミク",
@@ -10088,19 +8914,6 @@
     "jacket": "",
     "addedAt": "2026-11-12",
     "titleYomi": "エイリアンエイリアン-DIVELA REMIX",
-    "artistYomi": "ハツネミク"
-  },
-  {
-    "id": "w810",
-    "title": "オハヨウ、新世界",
-    "artist": "初音ミク",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/6f/90/38/6f903816-f200-22eb-a56c-ea90d6f68e89/4560465262017_cover.png/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "オハヨウ、シンセカイ",
     "artistYomi": "ハツネミク"
   },
   {
@@ -10276,32 +9089,6 @@
     "artistYomi": "ハツネミク"
   },
   {
-    "id": "w824",
-    "title": "浮くおふとん",
-    "artist": "初音ミク",
-    "genre": "エレクトロニック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/6c/67/70/6c677010-ed97-0584-f244-779641ec6c51/4511820-94460.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "ウクオフトン",
-    "artistYomi": "ハツネミク"
-  },
-  {
-    "id": "w825",
-    "title": "消えてく",
-    "artist": "初音ミク",
-    "genre": "オルタナティブ",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5b/29/36/5b293662-e74a-2557-1c8c-1e8ec90fdc16/bigup13254909.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "キエテク",
-    "artistYomi": "ハツネミク"
-  },
-  {
     "id": "w826",
     "title": "空とラムネ",
     "artist": "初音ミク",
@@ -10312,19 +9099,6 @@
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/91/bf/76/91bf76a3-863c-34c8-d7eb-707e7ab689b1/23UM1IM11725.rgb.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "ソラトラムネ",
-    "artistYomi": "ハツネミク"
-  },
-  {
-    "id": "w827",
-    "title": "純情スワロー",
-    "artist": "初音ミク",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "ジュンジョウスワロー",
     "artistYomi": "ハツネミク"
   },
   {
@@ -10351,19 +9125,6 @@
     "jacket": "",
     "addedAt": "2026-11-12",
     "titleYomi": "フウセンテンシ",
-    "artistYomi": "ハツネミク"
-  },
-  {
-    "id": "w830",
-    "title": "鬼哭啾々",
-    "artist": "初音ミク",
-    "genre": "ヒップホップ／ラップ",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/c0/3e/cc/c03ecce8-4734-8faf-3b5d-36be3bd2bfff/4550759900473_cover.png/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "キコクシュウシュウ",
     "artistYomi": "ハツネミク"
   },
   {
@@ -10580,19 +9341,6 @@
     "artistYomi": "ハツネミク"
   },
   {
-    "id": "w848",
-    "title": "さよなら常識空間",
-    "artist": "初音ミク",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/b3/f1/bc/b3f1bc97-7899-5e59-c096-b417cb2bb603/KRHS-37210_cosMo_P.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "サヨナラジョウシキクウカン",
-    "artistYomi": "ハツネミク"
-  },
-  {
     "id": "w849",
     "title": "玉砕バニー",
     "artist": "初音ミク",
@@ -10737,19 +9485,6 @@
     "artistYomi": "ハツネミク&オンガイウナ"
   },
   {
-    "id": "w868",
-    "title": "クールになれ!〜Keep On Our Love〜",
-    "artist": "前原圭一",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "クールニナレ!〜Keep On Our Love〜",
-    "artistYomi": "マエハラケイイチ"
-  },
-  {
     "id": "w869",
     "title": "ドリーミング☆プリンセスプリキュア",
     "artist": "北川理恵",
@@ -10883,20 +9618,6 @@
     "artistYomi": "ヨシダヒトミ"
   },
   {
-    "id": "w882",
-    "title": "この空の向こう",
-    "artist": "吉田仁美",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/8d/f9/3f/8df93fc3-9326-4855-94f8-0c4a2e365317/MJSA-01068.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview62/v4/c2/17/ab/c217abe5-cd76-851f-a38c-b17caddc0c7c/mzaf_3440603754556348755.plus.aac.p.m4a",
-    "titleYomi": "コノソラノムコウ",
-    "artistYomi": "ヨシダヒトミ"
-  },
-  {
     "id": "w883",
     "title": "ラブリンク",
     "artist": "吉田仁美",
@@ -10966,19 +9687,6 @@
     "artistYomi": "エンサキミオン&エンサキシオン"
   },
   {
-    "id": "w889",
-    "title": "言えない言葉",
-    "artist": "園崎魅音&園崎詩音",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/3d/f2/78/3df278f2-ddb6-30c3-bf0d-32237f96d2c9/ANTCD-A0000013495.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "イエナイコトバ",
-    "artistYomi": "エンサキミオン&エンサキシオン"
-  },
-  {
     "id": "w890",
     "title": "小夜子",
     "artist": "みきとP",
@@ -11003,20 +9711,6 @@
     "addedAt": "2026-11-12",
     "titleYomi": "ハッピーエンドグレーテル",
     "artistYomi": "ダイコン"
-  },
-  {
-    "id": "w892",
-    "title": "うそつき",
-    "artist": "緑黄色社会",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/40/f7/90/40f7900f-ca2c-2448-28fa-761769ce9333/4547366621280.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/21/09/cb/2109cbde-5c00-4642-a29e-01f36e6ad653/mzaf_15732589018860120777.plus.aac.p.m4a",
-    "titleYomi": "ウソツキ",
-    "artistYomi": "リョクオウショクシャカイ"
   },
   {
     "id": "w893",
@@ -11128,34 +9822,6 @@
     "artistYomi": "ヒメシンアキイサゴ"
   },
   {
-    "id": "w902",
-    "title": "キラキラしちゃって My True Love!",
-    "artist": "宮本佳那子",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/cd/e1/c0/mzi.zycjjlwm.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview71/v4/59/da/e1/59dae1c9-7a39-70ed-0714-7e0af4791f78/mzaf_5822124179541303708.plus.aac.p.m4a",
-    "titleYomi": "キラキラシチャッテ My True Love!",
-    "artistYomi": "ミヤモトカナコ"
-  },
-  {
-    "id": "w903",
-    "title": "ガンバランスdeダンス ~夢見る奇跡たち~",
-    "artist": "宮本佳那子",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/4d/b9/e7/mzi.hxhuxogd.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview71/v4/c6/4f/52/c64f524f-e206-8be4-de10-587289dda570/mzaf_8596708337559339442.plus.aac.p.m4a",
-    "titleYomi": "ガンバランスdeダンス ~ユメミルキセキタチ~",
-    "artistYomi": "ミヤモトカナコ"
-  },
-  {
     "id": "w904",
     "title": "手と手つないでハートもリンク!!",
     "artist": "宮本佳那子",
@@ -11167,20 +9833,6 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/ee/d9/fa/eed9faa0-5eb1-114d-39e9-a0ddd3e3c863/mzaf_11826095871755235034.plus.aac.p.m4a",
     "titleYomi": "テトテツナイデハートモリンク!!",
-    "artistYomi": "ミヤモトカナコ"
-  },
-  {
-    "id": "w905",
-    "title": "シュビドゥビ☆スイーツタイム",
-    "artist": "宮本佳那子",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/89/87/0c/89870c31-9afa-6896-ae10-e0034c724ad0/MJSS-09205.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/d1/bf/3c/d1bf3ce7-4ded-2ef9-bb61-81358c4d403a/mzaf_11369715654897546702.plus.aac.p.m4a",
-    "titleYomi": "シュビドゥビ☆スイーツタイム",
     "artistYomi": "ミヤモトカナコ"
   },
   {
@@ -11196,19 +9848,6 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/66/01/da/6601da46-454a-d858-6082-7fce36d8ee3c/mzaf_15106168206262372432.plus.aac.p.m4a",
     "titleYomi": "レッツ・ラ・クッキン☆ショータイム",
     "artistYomi": "ミヤモトカナコ"
-  },
-  {
-    "id": "w907",
-    "title": "愛のイナズマ閃光",
-    "artist": "富竹ジロウ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "アイノイナズマセンコウ",
-    "artistYomi": "トミタケジロウ"
   },
   {
     "id": "w908",
@@ -11473,20 +10112,6 @@
     "artistYomi": "ヒラサワユイ(CV:トヨサキアイナマ)"
   },
   {
-    "id": "w927",
-    "title": "しあわせ日和",
-    "artist": "平沢唯(CV:豊崎愛生)",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/5c/c6/a2/mzi.nbqxgpwg.png/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/db/65/9d/db659d44-7650-75c4-9fc5-3557e3ba49ba/mzaf_16055063390544427522.plus.aac.p.m4a",
-    "titleYomi": "シアワセヒヨリ",
-    "artistYomi": "ヒラサワユイ(CV:トヨサキアイナマ)"
-  },
-  {
     "id": "w928",
     "title": "Sunday Siesta",
     "artist": "平沢唯(CV:豊崎愛生)",
@@ -11515,34 +10140,6 @@
     "artistYomi": "ヒラサワユイ(CV:トヨサキアイナマ)"
   },
   {
-    "id": "w930",
-    "title": "ウキウキNew! My Way",
-    "artist": "平沢憂(CV:米澤円)",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/82/8d/08/mzi.zzxrdxus.png/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/8e/18/91/8e18910a-58fe-8e50-6e3d-fcd1c5f4a128/mzaf_827443305682850162.plus.aac.p.m4a",
-    "titleYomi": "ウキウキNew! My Way",
-    "artistYomi": "ヒラサワユウ(CV:ヨネザワエン)"
-  },
-  {
-    "id": "w931",
-    "title": "色は匂えど散りぬるを(Lound mix) [with senya]",
-    "artist": "幽閉サテライト",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/94/c3/d1/94c3d1f4-05ad-27e4-f0fd-b34240543701/4580547314229.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/8b/a3/c8/8ba3c8bc-1c20-9b5c-3bc4-30b026c05d34/mzaf_126449916229760735.plus.aac.p.m4a",
-    "titleYomi": "イロハニオエドチリヌルヲ(Lound mix) [with senya]",
-    "artistYomi": "ユウヘイサテライト"
-  },
-  {
     "id": "w932",
     "title": "promise",
     "artist": "広瀬香美",
@@ -11555,45 +10152,6 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/cc/cb/78/cccb7885-531d-fea7-a24a-9be0d8158f25/mzaf_17722359108753425103.plus.aac.p.m4a",
     "titleYomi": "promise",
     "artistYomi": "ヒロセコウミ"
-  },
-  {
-    "id": "w933",
-    "title": "姉がブラック★会社に勤めているようです",
-    "artist": "弟の姉",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "アネガブラック★カイシャニツトメテイルヨウデス",
-    "artistYomi": "オトウトノアネ"
-  },
-  {
-    "id": "w934",
-    "title": "姉がデスノートを拾ったようです",
-    "artist": "弟の姉",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "アネガデスノートヲヒロッタヨウデス",
-    "artistYomi": "オトウトノアネ"
-  },
-  {
-    "id": "w935",
-    "title": "姉がオタになったようです",
-    "artist": "弟の姉",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "アネガオタニナッタヨウデス",
-    "artistYomi": "オトウトノアネ"
   },
   {
     "id": "w936",
@@ -11840,19 +10398,6 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/68/1a/9d/681a9d04-9816-48f5-6607-2ba0787fc4de/mzaf_9878810207038595595.plus.aac.p.m4a",
     "titleYomi": "カソウキョク",
     "artistYomi": "No.D"
-  },
-  {
-    "id": "w963",
-    "title": "じゃまもの",
-    "artist": "歌愛ユキ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "ジャマモノ",
-    "artistYomi": "ウタアイユキ"
   },
   {
     "id": "w964",
@@ -12333,19 +10878,6 @@
     "artistYomi": "アキヤマキイロ"
   },
   {
-    "id": "w1011",
-    "title": "笑顔・はっぴぃ・ピース♪",
-    "artist": "竜宮レナ",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "エガオ・ハッぴぃ・ピース♪",
-    "artistYomi": "リュウグウレナ"
-  },
-  {
     "id": "w1012",
     "title": "知恵と勇気だ！メダロット",
     "artist": "竹内順子",
@@ -12397,19 +10929,6 @@
     "addedAt": "2026-11-12",
     "titleYomi": "Cryogenic",
     "artistYomi": "ユイオン"
-  },
-  {
-    "id": "w1016",
-    "title": "アカツキヤミ",
-    "artist": "結音-ゆヰね-",
-    "genre": "ロック",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5c/b2/a0/5cb2a075-562c-539d-a123-dffe9460dfbe/4529123350978_cover.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "アカツキヤミ",
-    "artistYomi": "ユイオン-ユヰネ-"
   },
   {
     "id": "w1017",
@@ -12803,47 +11322,6 @@
     "artistYomi": "スズキコノミアンドキバオブアキバ"
   },
   {
-    "id": "w1055",
-    "title": "純情Bomber!!",
-    "artist": "鈴木純(CV:永田依子)",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/e2/68/4e/e2684ed7-3a1a-ac33-4b39-609bf6e73d38/mzi.ppqiltzm.png/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4a/3f/eb/4a3febf7-9298-c84a-e1ff-767ae7637a0a/mzaf_12096970851113916481.plus.aac.p.m4a",
-    "titleYomi": "ジュンジョウBomber!!",
-    "artistYomi": "スズキジュン(CV:ナガタヨリコ)"
-  },
-  {
-    "id": "w1056",
-    "title": "言葉のいらない約束",
-    "artist": "鋼兵",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/26/4c/bd/264cbd18-19f0-9ca8-cf20-d2792c42bd61/jacket_SMCL00381B00Z_550.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "コトバノイラナイヤクソク",
-    "artistYomi": "ハガネヘイ"
-  },
-  {
-    "id": "w1058",
-    "title": "オーヴァークロック",
-    "artist": "Neru",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/41/9d/17/419d17e6-6c43-8e06-0682-eb02ae7e771f/4582364268709_cover.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/8f/d1/8c/8fd18c42-6a22-90f4-d7d3-0d2bf8966b47/mzaf_709987083908273086.plus.aac.p.m4a",
-    "titleYomi": "オーヴァークロック",
-    "artistYomi": "Neru"
-  },
-  {
     "id": "w1059",
     "title": "セ　フ　レ",
     "artist": "鋼兵",
@@ -12868,19 +11346,6 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c2/91/83/c2918351-497b-d89f-123e-cff35f3f3fac/mzaf_3312641472555258930.plus.aac.p.m4a",
     "titleYomi": "デリヘルヨンダラキミガキタ",
-    "artistYomi": "ハガネヘイ"
-  },
-  {
-    "id": "w1061",
-    "title": "幻想奇行",
-    "artist": "鋼兵",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/96/e2/ff/96e2ff6e-22be-aadf-9f28-b955df55e0ef/QWCE_00560_itunes.png/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "ゲンソウキコウ",
     "artistYomi": "ハガネヘイ"
   },
   {
@@ -13371,19 +11836,6 @@
     "artistYomi": "ハガネヘイ"
   },
   {
-    "id": "w1106",
-    "title": "インターネットカラオケマン",
-    "artist": "鋼兵",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "インターネットカラオケマン",
-    "artistYomi": "ハガネヘイ"
-  },
-  {
     "id": "w1107",
     "title": "ショットガン・ラヴァーズ",
     "artist": "鋼兵",
@@ -13588,19 +12040,6 @@
     "artistYomi": "ハガネヘイ"
   },
   {
-    "id": "w1124",
-    "title": "自己嫌悪",
-    "artist": "鋼兵",
-    "genre": "ヒップホップ／ラップ",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/e7/61/41/e7614132-619b-d585-b1da-65d8f09a2fd0/mzi.bzvlutay.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "ジコケンオ",
-    "artistYomi": "ハガネヘイ"
-  },
-  {
     "id": "w1125",
     "title": "初音ミクの分裂→破壊",
     "artist": "鋼兵",
@@ -13680,19 +12119,6 @@
     "artistYomi": "ハガネヘイ"
   },
   {
-    "id": "w1134",
-    "title": "人生リセットボタン×インビジブル",
-    "artist": "鋼兵",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "ジンセイリセットボタンカケルインビジブル",
-    "artistYomi": "ハガネヘイ"
-  },
-  {
     "id": "w1135",
     "title": "激熱！帝国火撃団",
     "artist": "鋼兵",
@@ -13704,20 +12130,6 @@
     "addedAt": "2026-11-12",
     "titleYomi": "ゲキネツ！テイコクヒ撃団",
     "artistYomi": "ハガネヘイ"
-  },
-  {
-    "id": "w1137",
-    "title": "自由の翼",
-    "artist": "Linked Horizon",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/68/3d/2b/683d2b87-f72d-9aa1-c6a5-956d3d25c80e/PCCA_03837_itunes.png/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/3d/3e/f8/3d3ef8a6-330a-7936-2fa0-e0beb530076f/mzaf_6177404048776027414.plus.aac.p.m4a",
-    "titleYomi": "ジユウノツバサ",
-    "artistYomi": "Linked Horizon"
   },
   {
     "id": "w1138",
@@ -13758,19 +12170,6 @@
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/94/2e/da/942edac7-0f95-d462-adc4-1662673653b8/4511820-95133.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "モンキーダンスノセンノウジュツ",
-    "artistYomi": "カガミオトリン"
-  },
-  {
-    "id": "w1143",
-    "title": "自己否定依存症",
-    "artist": "鏡音リン",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/71/c6/d2/71c6d2ed-184b-c6d5-a556-103259a61f6a/099719_J.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "ジコヒテイイゾンショウ",
     "artistYomi": "カガミオトリン"
   },
   {
@@ -13852,19 +12251,6 @@
     "artistYomi": "カガミオトリンアンドレン"
   },
   {
-    "id": "w1151",
-    "title": "孤独の葬",
-    "artist": "鏡音レン",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "コドクノソウ",
-    "artistYomi": "カガミオトレン"
-  },
-  {
     "id": "w1152",
     "title": "理解感",
     "artist": "鏡音レン",
@@ -13875,19 +12261,6 @@
     "jacket": "",
     "addedAt": "2026-11-12",
     "titleYomi": "リカイカン",
-    "artistYomi": "カガミオトレン"
-  },
-  {
-    "id": "w1153",
-    "title": "囚人",
-    "artist": "鏡音レン",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/21/bf/5e/21bf5e3c-e6aa-5877-08fb-97a7e0c816eb/PA00099806_0_150232_jacket.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "シュウジン",
     "artistYomi": "カガミオトレン"
   },
   {
@@ -14095,19 +12468,6 @@
     "artistYomi": "クロキサトコ(CV:キッタイズミ)"
   },
   {
-    "id": "w1174",
-    "title": "エモノの恋愛タイガ→☆",
-    "artist": "？",
-    "genre": "その他",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "エモノノレンアイタイガ→☆",
-    "artistYomi": "？"
-  },
-  {
     "id": "w1175",
     "title": "ポニョロック",
     "artist": "？",
@@ -14174,19 +12534,6 @@
     "artistYomi": "サクラモチ"
   },
   {
-    "id": "w1180",
-    "title": "自由に捕らわれる。",
-    "artist": "アシャー",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/14/3f/0f/143f0fec-cf55-4bfa-edfe-9e333afe0bec/4571640631603_cover.png/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "ジユウニトラワレル。",
-    "artistYomi": "アシャー"
-  },
-  {
     "id": "w1181",
     "title": "さんかく",
     "artist": "てれかす",
@@ -14199,19 +12546,6 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/a4/24/d2/a424d2f5-409e-8eb5-3dee-f00b31638bb5/mzaf_5534618576486402234.plus.aac.p.m4a",
     "titleYomi": "サンカク",
     "artistYomi": "テレカス"
-  },
-  {
-    "id": "w1182",
-    "title": "キティ 2",
-    "artist": "ネグロ",
-    "genre": "アニソン",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/76/0d/ee/760dee5c-6357-5ae4-327c-de5b91186bb1/5021732547934.jpg/600x600bb.jpg",
-    "addedAt": "2026-11-12",
-    "titleYomi": "キティ 2",
-    "artistYomi": "ネグロ"
   },
   {
     "id": "w1183",
