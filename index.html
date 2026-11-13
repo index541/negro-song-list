@@ -124,6 +124,9 @@ img.thumb.ld { opacity: 1;}
 .tag.key { background: var(--accent-soft); color: var(--accent);}
 .tag.genre { color: #ffffff;}
 .tag .k-label { font-size: 11px; font-weight: 700; opacity:.75; letter-spacing:.06em;}
+.tag.ext { background: var(--surface); border: 1.5px solid var(--line); color: var(--ink-2); text-decoration: none; cursor: pointer;}
+.tag.ext:active { transform: scale(.96);}
+.pv-inrow { flex: none; align-self: center; white-space: nowrap;}
 .stars { color: var(--gold); letter-spacing: 2px; font-size: 13px;}
 .stars .off { color: var(--line);}
 .memo { margin: 12px 0 0; font-size: 14px; line-height: 1.7; color: var(--ink-2);}
@@ -436,14 +439,15 @@ var start = parseInt(s.ytStart, 10);
 if (start > 0) return s.ytLink + (s.ytLink.indexOf("?") >= 0 ? "&" : "?") + "t=" + start + "s";
 return s.ytLink;
 }
+function pvBtnHTML(s) {
+return s.preview ? '<button type="button" class="listen-btn pv pv-inrow" data-pv="' + esc(s.id) + '">▶ 試聴</button>' : "";
+}
 function listenHTML(s, full) {
-var h = '<div class="listen-row">';
-if (s.ytLink) h += '<button type="button" class="listen-btn chorus" data-chorus="' + esc(s.id) + '">♪ サビを聴く</button>';
-if (s.preview) h += '<button type="button" class="listen-btn pv" data-pv="' + esc(s.id) + '">▶ 試聴（30秒）</button>' +
-(full ? '<span class="pv-key" data-keyfor="' + esc(s.id) + '"><button type="button" class="pv-key-btn" data-pvkey="-1" aria-label="キーを下げる">−</button><span class="pv-key-label" data-pvkey-label>原曲キー</span><button type="button" class="pv-key-btn" data-pvkey="1" aria-label="キーを上げる">＋</button></span><button type="button" class="pv-key-reset" data-pvkey-reset data-keyfor="' + esc(s.id) + '" style="display:none">原曲に戻す</button>' : '');
-h += '<a class="listen-btn" href="' + esc(ytSearchURL(s)) + '" target="_blank" rel="noopener">YouTubeで探す</a>';
-h += '<a class="listen-btn" href="' + esc(nicoSearchURL(s)) + '" target="_blank" rel="noopener">ニコニコで探す</a>';
-h += "</div>";
+var parts = "";
+if (s.ytLink) parts += '<button type="button" class="listen-btn chorus" data-chorus="' + esc(s.id) + '">♪ サビを聴く</button>';
+if (full && s.preview) parts += '<span class="pv-key" data-keyfor="' + esc(s.id) + '"><button type="button" class="pv-key-btn" data-pvkey="-1" aria-label="キーを下げる">−</button><span class="pv-key-label" data-pvkey-label>原曲キー</span><button type="button" class="pv-key-btn" data-pvkey="1" aria-label="キーを上げる">＋</button></span><button type="button" class="pv-key-reset" data-pvkey-reset data-keyfor="' + esc(s.id) + '" style="display:none">原曲に戻す</button>';
+if (!parts && !(full && s.preview)) return "";
+var h = '<div class="listen-row">' + parts + "</div>";
 if (s.preview && full) h += '<div class="pv-progress" data-pvbar="' + esc(s.id) + '" role="slider" tabindex="0" aria-label="試聴の再生位置"><span class="pv-track"><i></i></span><span class="pv-knob"></span></div>';
 return h;
 }
@@ -698,7 +702,7 @@ var playing = pvId && pvPlaying;
 document.querySelectorAll("[data-pv]").forEach(function (b) {
 var on = playing && b.getAttribute("data-pv") === pvId;
 b.classList.toggle("playing", !!on);
-if (b.classList.contains("listen-btn")) b.textContent = on ? "⏸ 停止" : "▶ 試聴（30秒）";
+if (b.classList.contains("listen-btn")) b.textContent = on ? "⏸ 停止" : "▶ 試聴";
 else b.textContent = on ? "⏸" : "▶";
 });
 document.querySelectorAll("[data-pvbar]").forEach(function (bar) {
@@ -926,8 +930,11 @@ document.getElementById("cmodal-close").addEventListener("click", closeChorus);
 document.getElementById("cmodal-backdrop").addEventListener("click", closeChorus);
 document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeChorus(); });
 function metaHTML(s) {
-return '<span class="tag key"><span class="k-label">KEY</span>' + esc(s.keyLabel) + "</span>" +
-genreTag(s);
+var kl = String(s.keyLabel || "原曲キー").replace(/\s+/g, "").replace("+", "＋");
+return '<span class="tag key">' + esc(kl) + "</span>" +
+genreTag(s) +
+'<a class="tag ext" href="' + esc(ytSearchURL(s)) + '" target="_blank" rel="noopener">YouTube</a>' +
+'<a class="tag ext" href="' + esc(nicoSearchURL(s)) + '" target="_blank" rel="noopener">ニコニコ</a>';
 }
 var MEM_COLORS = ["#e2483d", "#ef7d1a", "#f2b01e", "#8fbf3f", "#28a35c"];
 function memoryHTML(s) {
@@ -1121,8 +1128,9 @@ card.innerHTML =
 memoryHTML(s) +
 '<p class="memo"></p>' +
 '<div class="req-row">' +
+pvBtnHTML(s) +
 '<button type="button" class="req-btn solo" data-key="' + esc(s.id) + ':solo" data-id="' + esc(s.id) + '" data-type="solo">' + ICON_MIC + "歌ってほしい</button>" +
-'<button type="button" class="req-btn duet" data-key="' + esc(s.id) + ':duet" data-id="' + esc(s.id) + '" data-type="duet">' + ICON_DUET + "一緒に歌いたい</button>" +
+'<button type="button" class="req-btn duet" data-key="' + esc(s.id) + ':duet" data-id="' + esc(s.id) + '" data-type="duet">' + ICON_DUET + "一緒に歌う</button>" +
 "</div>" +
 listenHTML(s, false) +
 '<div class="req-slot" data-slot="' + esc(s.id) + '"></div>';
@@ -1362,8 +1370,9 @@ var html =
 '<div class="meta" style="margin-top:10px">' + metaHTML(song) + "</div>" + memoryHTML(song) + "</div></div>" +
 '<p class="memo"></p>' +
 '<div class="req-row">' +
+pvBtnHTML(song) +
 '<button type="button" class="req-btn solo" data-skey="' + esc(song.id) + ':solo">' + ICON_MIC + "歌ってほしい</button>" +
-'<button type="button" class="req-btn duet" data-skey="' + esc(song.id) + ':duet">' + ICON_DUET + "一緒に歌いたい</button>" +
+'<button type="button" class="req-btn duet" data-skey="' + esc(song.id) + ':duet">' + ICON_DUET + "一緒に歌う</button>" +
 "</div>" +
 listenHTML(song, true) +
 '<div id="sheet-form"></div>';
