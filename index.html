@@ -917,6 +917,20 @@ e.preventDefault();
 e.stopPropagation();
 togglePreview(t.getAttribute("data-pv"));
 }, true);
+document.addEventListener("click", function (e) {
+if (!e.target || !e.target.closest) return;
+var a = e.target.closest("a.ext-app");
+if (!a) return;
+var ua = navigator.userAgent || "";
+if (!/Android/i.test(ua) || !/Chrome\//i.test(ua) || /Firefox\//i.test(ua)) return;
+e.preventDefault();
+e.stopPropagation();
+var web = a.getAttribute("href");
+try {
+var u = new URL(web);
+location.href = "intent://" + u.host + u.pathname + u.search + "#Intent;scheme=https;package=" + a.getAttribute("data-pkg") + ";S.browser_fallback_url=" + encodeURIComponent(web) + ";end";
+} catch (err) { location.href = web; }
+}, true);
 function ytIdFromUrl(u) {
 var m = String(u || "").match(/(?:youtube\.com\/(?:watch\?[^#]*v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/);
 return m ? m[1] : "";
@@ -997,8 +1011,8 @@ function metaHTML(s) {
 var kl = String(s.keyLabel || "原曲キー").replace(/\s+/g, "").replace("+", "＋");
 return '<span class="tag key">' + esc(kl) + "</span>" +
 genreTag(s) +
-'<a class="tag ext" href="' + esc(ytSearchURL(s)) + '" target="_blank" rel="noopener">YouTube</a>' +
-'<a class="tag ext" href="' + esc(nicoSearchURL(s)) + '" target="_blank" rel="noopener">ニコニコ</a>';
+'<a class="tag ext ext-app" data-pkg="com.google.android.youtube" href="' + esc(ytSearchURL(s)) + '" target="_blank" rel="noopener">YouTube</a>' +
+'<a class="tag ext ext-app" data-pkg="jp.nicovideo.android" href="' + esc(nicoSearchURL(s)) + '" target="_blank" rel="noopener">ニコニコ</a>';
 }
 var MEM_COLORS = ["#e2483d", "#ef7d1a", "#f2b01e", "#8fbf3f", "#28a35c"];
 function memoryHTML(s) {
