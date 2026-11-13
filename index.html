@@ -283,9 +283,8 @@ html { scroll-behavior: auto;}
 <input id="search" type="search" placeholder="曲名・アーティストで検索" autocomplete="off" aria-label="曲名・アーティストで検索" />
 </div>
 <select id="sort" class="sort-select" aria-label="並び替え">
-<option value="reco">おすすめ順</option>
 <option value="new">新しい順</option>
-<option value="title">曲名順</option>
+<option value="title" selected>曲名順</option>
 <option value="artist">アーティスト順</option>
 <option value="key">キー順（低い→高い）</option>
 </select>
@@ -343,7 +342,7 @@ html { scroll-behavior: auto;}
 var FALLBACK_SONGS = [];
 var SONGS = FALLBACK_SONGS.slice();
 
-var state = { q: "", genre: "すべて", artist: "", sort: "reco", view: "list"};
+var state = { q: "", genre: "すべて", artist: "", sort: "title", view: "list"};
 try { var savedView = localStorage.getItem("nsl.view"); if (savedView === "tile" || savedView === "list") state.view = savedView; } catch (e) {}
 
 var listEl = document.getElementById("song-list");
@@ -992,7 +991,7 @@ cmpStr(a.id, b.id);
 });
 else if (state.sort === "key") arr.sort(function (a, b) { return a.keyShift - b.keyShift; });
 else if (state.sort === "new") arr.sort(function (a, b) { return String(b.addedAt || "").localeCompare(String(a.addedAt || "")) || a.title.localeCompare(b.title, "ja"); });
-/* reco = おすすめ順：データの並び順（管理ページで並べた順）そのまま */
+/* 既定は曲名順（五十音）。おすすめ順は 2026-11-13 に廃止した */
 return arr;
 }
 
