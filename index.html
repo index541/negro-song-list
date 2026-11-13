@@ -170,6 +170,24 @@ footer a { color: var(--ink-2); font-weight: 700;}
 .pv-key-label { font-size: 12.5px; font-weight: 900; color: var(--ink-2); min-width: 4.8em; text-align: center; font-variant-numeric: tabular-nums;}
 .pv-key-reset { font: inherit; font-size: 11.5px; font-weight: 800; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink-2); border-radius: 999px; padding: 5px 10px; cursor: pointer; margin-left: 6px;}
 .pv-key-reset:active { transform: scale(.96);}
+#player-bar { position: fixed; left: 10px; right: 54px; bottom: calc(10px + env(safe-area-inset-bottom)); z-index: 35; background: var(--surface); border: 1.5px solid var(--line); border-radius: 16px; box-shadow: 0 12px 32px rgba(30, 20, 10,.20); padding: 10px 12px;}
+#player-bar[hidden] { display: none;}
+.pb-main { display: flex; align-items: center; gap: 10px;}
+.pb-thumb, .pb-thumb-ph { width: 44px; height: 44px; border-radius: 10px; object-fit: cover; flex: none;}
+.pb-thumb-ph { background: var(--surface-2); color: var(--ink-3); display: grid; place-items: center; font-size: 20px;}
+.pb-meta { flex: 1; min-width: 0;}
+.pb-title { margin: 0; font-size: 14.5px; font-weight: 900; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.pb-artist { margin: 1px 0 0; font-size: 12px; color: var(--ink-2); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.pb-toggle { flex: none; width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--ink); color: var(--bg); font-size: 16px; cursor: pointer; display: grid; place-items: center;}
+.pb-toggle.playing { background: var(--accent); color: #ffffff;}
+.pb-close { flex: none; width: 32px; height: 32px; border-radius: 50%; border: 0; background: var(--surface-2); color: var(--ink-2); font-size: 14px; cursor: pointer; display: grid; place-items: center;}
+.pb-progress { margin-top: 6px;}
+.pb-sub { display: flex; align-items: center; margin-top: 4px;}
+body.pbon main { padding-bottom: 158px;}
+body.pbon #to-top { bottom: 176px;}
+@media (min-width: 1024px) {
+#player-bar { left: 50%; right: auto; transform: translateX(-50%); width: min(720px, calc(100vw - 140px)); bottom: 18px;}
+}
 .tile-pv { position: absolute; top: 15px; right: 15px; width: 34px; height: 34px; border-radius: 50%; background: rgba(28, 28, 28,.8); color: #ffffff; display: grid; place-items: center; font-size: 12px; z-index: 2;}
 .tile-pv.playing { background: var(--accent);}
 .cmodal-backdrop { position: fixed; inset: 0; z-index: 50; background: rgba(10, 10, 8,.55); opacity: 0; visibility: hidden; transition: opacity.3s, visibility.3s;}
@@ -258,7 +276,7 @@ footer a { color: var(--ink-2); font-weight: 700;}
 .song-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px;}
 .tile { padding: 7px;}
 .tile-title { font-size: 12.5px;}
-.thumb, .thumb-ph { width: 48px; height: 48px; border-radius: 10px;}
+.thumb, .thumb-ph { width: 56px; height: 56px;}
 .sheet { padding: 12px 16px 26px;}
 }
 @media (min-width: 1024px) {
@@ -348,6 +366,20 @@ html { scroll-behavior: auto;}
 <nav id="kana-index" style="display:none" aria-label="頭文字の索引"></nav>
 <button type="button" id="to-top" aria-label="一番上に戻る">↑</button>
 
+<div id="player-bar" hidden>
+<div class="pb-main">
+<img class="pb-thumb" id="pb-thumb" alt="" hidden />
+<div class="pb-thumb-ph" id="pb-thumb-ph" aria-hidden="true">♪</div>
+<div class="pb-meta"><p class="pb-title" id="pb-title"></p><p class="pb-artist" id="pb-artist"></p></div>
+<button type="button" class="pb-toggle" id="pb-toggle" data-pv="" aria-label="試聴の再生・停止">▶</button>
+<button type="button" class="pb-close" id="pb-close" aria-label="プレイヤーを閉じる">✕</button>
+</div>
+<div class="pv-progress pb-progress" id="pb-bar" data-pvbar="" role="slider" tabindex="0" aria-label="試聴の再生位置"><span class="pv-track"><i></i></span><span class="pv-knob"></span></div>
+<div class="pb-sub">
+<span class="pv-key" id="pb-keywrap" data-keyfor=""><button type="button" class="pv-key-btn" data-pvkey="-1" aria-label="キーを下げる">−</button><span class="pv-key-label" data-pvkey-label>原曲キー</span><button type="button" class="pv-key-btn" data-pvkey="1" aria-label="キーを上げる">＋</button></span><button type="button" class="pv-key-reset" id="pb-reset" data-pvkey-reset data-keyfor="" style="display:none">原曲に戻す</button>
+</div>
+</div>
+
 <div class="cmodal-backdrop" id="cmodal-backdrop"></div>
 <section class="cmodal" id="cmodal" aria-hidden="true" aria-label="サビ試聴">
 <div class="cmodal-head"><span id="cmodal-title">サビ試聴</span><button type="button" class="cmodal-close" id="cmodal-close" aria-label="閉じる">×</button></div>
@@ -404,15 +436,15 @@ var start = parseInt(s.ytStart, 10);
 if (start > 0) return s.ytLink + (s.ytLink.indexOf("?") >= 0 ? "&" : "?") + "t=" + start + "s";
 return s.ytLink;
 }
-function listenHTML(s) {
+function listenHTML(s, full) {
 var h = '<div class="listen-row">';
 if (s.ytLink) h += '<button type="button" class="listen-btn chorus" data-chorus="' + esc(s.id) + '">♪ サビを聴く</button>';
 if (s.preview) h += '<button type="button" class="listen-btn pv" data-pv="' + esc(s.id) + '">▶ 試聴（30秒）</button>' +
-'<span class="pv-key" data-keyfor="' + esc(s.id) + '"><button type="button" class="pv-key-btn" data-pvkey="-1" aria-label="キーを下げる">−</button><span class="pv-key-label" data-pvkey-label>原曲キー</span><button type="button" class="pv-key-btn" data-pvkey="1" aria-label="キーを上げる">＋</button></span><button type="button" class="pv-key-reset" data-pvkey-reset data-keyfor="' + esc(s.id) + '" style="display:none">原曲に戻す</button>';
+(full ? '<span class="pv-key" data-keyfor="' + esc(s.id) + '"><button type="button" class="pv-key-btn" data-pvkey="-1" aria-label="キーを下げる">−</button><span class="pv-key-label" data-pvkey-label>原曲キー</span><button type="button" class="pv-key-btn" data-pvkey="1" aria-label="キーを上げる">＋</button></span><button type="button" class="pv-key-reset" data-pvkey-reset data-keyfor="' + esc(s.id) + '" style="display:none">原曲に戻す</button>' : '');
 h += '<a class="listen-btn" href="' + esc(ytSearchURL(s)) + '" target="_blank" rel="noopener">YouTubeで探す</a>';
 h += '<a class="listen-btn" href="' + esc(nicoSearchURL(s)) + '" target="_blank" rel="noopener">ニコニコで探す</a>';
 h += "</div>";
-if (s.preview) h += '<div class="pv-progress" data-pvbar="' + esc(s.id) + '" role="slider" tabindex="0" aria-label="試聴の再生位置"><span class="pv-track"><i></i></span><span class="pv-knob"></span></div>';
+if (s.preview && full) h += '<div class="pv-progress" data-pvbar="' + esc(s.id) + '" role="slider" tabindex="0" aria-label="試聴の再生位置"><span class="pv-track"><i></i></span><span class="pv-knob"></span></div>';
 return h;
 }
 var pvAudio = new Audio();
@@ -673,7 +705,38 @@ document.querySelectorAll("[data-pvbar]").forEach(function (bar) {
 if (bar.getAttribute("data-pvbar") !== pvId) bar.style.setProperty("--p", "0%");
 });
 pvKeyUI();
+syncPlayerBar();
 }
+var pbLastId = "__init__";
+function syncPlayerBar() {
+var bar = document.getElementById("player-bar");
+if (!bar) return;
+if (!pvId) {
+if (pbLastId !== null) { bar.hidden = true; document.body.classList.remove("pbon"); pbLastId = null; }
+return;
+}
+if (pbLastId === pvId) return;
+pbLastId = pvId;
+var s = songById(pvId);
+if (!s) { bar.hidden = true; document.body.classList.remove("pbon"); return; }
+document.getElementById("pb-title").textContent = s.title || "";
+document.getElementById("pb-artist").textContent = s.artist || "";
+var img = document.getElementById("pb-thumb");
+var ph = document.getElementById("pb-thumb-ph");
+if (s.jacket) { img.src = s.jacket; img.hidden = false; ph.style.display = "none"; }
+else { img.hidden = true; ph.style.display = ""; }
+document.getElementById("pb-toggle").setAttribute("data-pv", pvId);
+var pb = document.getElementById("pb-bar");
+pb.setAttribute("data-pvbar", pvId);
+pb.style.setProperty("--p", "0%");
+document.getElementById("pb-keywrap").setAttribute("data-keyfor", pvId);
+document.getElementById("pb-reset").setAttribute("data-keyfor", pvId);
+bar.hidden = false;
+document.body.classList.add("pbon");
+pvKeyUI();
+}
+var pbCloseBtn = document.getElementById("pb-close");
+if (pbCloseBtn) pbCloseBtn.addEventListener("click", function () { pvStop(true); pvId = null; pvUI(); });
 function togglePreview(id) {
 var s = songById(id);
 if (!s || !s.preview) return;
@@ -1061,7 +1124,7 @@ memoryHTML(s) +
 '<button type="button" class="req-btn solo" data-key="' + esc(s.id) + ':solo" data-id="' + esc(s.id) + '" data-type="solo">' + ICON_MIC + "歌ってほしい</button>" +
 '<button type="button" class="req-btn duet" data-key="' + esc(s.id) + ':duet" data-id="' + esc(s.id) + '" data-type="duet">' + ICON_DUET + "一緒に歌いたい</button>" +
 "</div>" +
-listenHTML(s) +
+listenHTML(s, false) +
 '<div class="req-slot" data-slot="' + esc(s.id) + '"></div>';
 card.querySelector(".song-title").textContent = s.title;
 card.querySelector(".song-artist").textContent = s.artist;
@@ -1302,7 +1365,7 @@ var html =
 '<button type="button" class="req-btn solo" data-skey="' + esc(song.id) + ':solo">' + ICON_MIC + "歌ってほしい</button>" +
 '<button type="button" class="req-btn duet" data-skey="' + esc(song.id) + ':duet">' + ICON_DUET + "一緒に歌いたい</button>" +
 "</div>" +
-listenHTML(song) +
+listenHTML(song, true) +
 '<div id="sheet-form"></div>';
 sheetBody.innerHTML = html;
 sheetBody.querySelector(".sheet-title").textContent = song.title;
