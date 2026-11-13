@@ -674,12 +674,11 @@ if (!r.ok) throw new Error("oembed");
 return r.json();
 }).then(function (d) {
 importFill("f-title", d.title || "");
-importFill("f-artist", d.author_name || "");
 var m = raw.match(/(?:youtube\.com\/(?:watch\?[^#]*v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/);
 importSetJacket(m ? "https://i.ytimg.com/vi/" + m[1] + "/hqdefault.jpg" : (d.thumbnail_url || ""));
 importFill("f-ytlink", raw);
 setupChorusPlayer();
-st.textContent = "YouTubeから取り込みました。内容を確認してから保存してください（動画タイトルの飾りなどは直してください）。";
+st.textContent = "YouTubeから取り込みました（チャンネル: " + (d.author_name || "不明") + "）。アーティスト欄には原曲のアーティストを入力してください。内容を確認してから保存してください。";
 }).catch(function () { st.textContent = "読み取れませんでした。動画が公開されているか、URLを確認してください。"; });
 return;
 }
@@ -695,9 +694,8 @@ st.textContent = "読み取り中…";
 fetch("https://noembed.com/embed?url=" + encodeURIComponent(raw)).then(function (r) { return r.json(); }).then(function (d) {
 if (!d || d.error || !d.title) { st.textContent = "このサイトは自動で読み取れませんでした。手入力してください。"; return; }
 importFill("f-title", d.title || "");
-importFill("f-artist", d.author_name || "");
 importSetJacket(d.thumbnail_url || "");
-st.textContent = "取り込みました。内容を確認してから保存してください。";
+st.textContent = "取り込みました（投稿者: " + (d.author_name || "不明") + "）。アーティスト欄には原曲のアーティストを入力してください。内容を確認してから保存してください。";
 }).catch(function () { st.textContent = "読み取れませんでした。URLを確認してください。"; });
 }
 $("import-btn").addEventListener("click", importFromUrl);
