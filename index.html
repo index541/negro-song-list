@@ -596,17 +596,63 @@ elementStart(s);
 }
 function pvDuration() { return pvMode === "web" && waBuffer ? waBuffer.duration : (pvAudio.duration || 0); }
 function pvCurrentPos() { return pvMode === "web" ? waPos() : (pvAudio.currentTime || 0); }
+var pvPaused = false;
+var pvPauseSeq = 0;
 function pvEnded() {
 if (pvMode === "web") { waDisconnectShifter(); try { waGain.gain.value = 1; } catch (e) {} }
 try { pvAudio.volume = 1; } catch (e) {}
 pvPlaying = false;
+pvPaused = false;
 pvFadingOut = false;
 waFadingOut = false;
 pvId = null;
 pvUI();
 }
+function pvPause() {
+if (!pvPlaying || !pvId) return;
+pvPaused = true;
+pvPlaying = false;
+if (pvMode === "web") {
+pvPauseSeq++;
+var seq = pvPauseSeq;
+try {
+waGain.gain.cancelScheduledValues(waCtx.currentTime);
+waGain.gain.setValueAtTime(waGain.gain.value, waCtx.currentTime);
+waGain.gain.linearRampToValueAtTime(0, waCtx.currentTime + 0.15);
+} catch (e) {}
+setTimeout(function () { if (pvPaused && seq === pvPauseSeq && waCtx) { try { waCtx.suspend(); } catch (e) {} } }, 170);
+pvUI();
+return;
+}
+pvRamp(0, 180, function () { pvAudio.pause(); try { pvAudio.volume = 1; } catch (e) {} pvFadingOut = false; });
+pvUI();
+}
+function pvResume() {
+if (!pvPaused || !pvId) return;
+pvPaused = false;
+if (pvMode === "web") {
+pvPauseSeq++;
+if (waCtx && waCtx.state === "suspended") { var pr = waCtx.resume(); if (pr && pr.catch) pr.catch(function () {}); }
+try {
+waGain.gain.cancelScheduledValues(waCtx.currentTime);
+waGain.gain.setValueAtTime(waGain.gain.value, waCtx.currentTime);
+waGain.gain.linearRampToValueAtTime(1, waCtx.currentTime + 0.4);
+} catch (e) {}
+pvPlaying = true;
+pvUI();
+return;
+}
+try { pvAudio.volume = 0; } catch (e) {}
+var p2 = pvAudio.play();
+if (p2 && p2.catch) p2.catch(function () {});
+pvPlaying = true;
+pvRamp(1, 400);
+pvUI();
+}
 function pvStop(fast) {
 var id = pvId;
+pvId = null;
+pvPaused = false;
 function finish() {
 if (id) document.querySelectorAll('[data-pvbar="' + id + '"]').forEach(function (b) { b.style.setProperty("--p", "0%"); });
 pvUI();
@@ -685,6 +731,8 @@ function startPv(id, frac) {
 var s = songById(id);
 if (!s || !s.preview) return;
 pvId = id;
+pvPaused = false;
+pvPauseSeq++;
 pvFadingOut = false;
 if (getKey(id) !== 0) {
 pvMode = "web";
@@ -702,7 +750,7 @@ var playing = pvId && pvPlaying;
 document.querySelectorAll("[data-pv]").forEach(function (b) {
 var on = playing && b.getAttribute("data-pv") === pvId;
 b.classList.toggle("playing", !!on);
-if (b.classList.contains("listen-btn")) b.textContent = on ? "⏸ 停止" : "▶ 試聴";
+if (b.classList.contains("listen-btn")) b.textContent = on ? "⏸ 一時停止" : (pvPaused && b.getAttribute("data-pv") === pvId ? "▶ 再開" : "▶ 試聴");
 else b.textContent = on ? "⏸" : "▶";
 });
 document.querySelectorAll("[data-pvbar]").forEach(function (bar) {
@@ -745,7 +793,8 @@ function togglePreview(id) {
 var s = songById(id);
 if (!s || !s.preview) return;
 closeChorus();
-if (pvId === id && pvPlaying) { pvStop(false); return; }
+if (pvId === id && pvPlaying) { pvPause(); return; }
+if (pvId === id && pvPaused) { pvResume(); return; }
 if (pvId && pvId !== id && pvPlaying) {
 var nid = id;
 if (pvMode === "web") { waStop(true, function () { startPv(nid); }); }
@@ -779,11 +828,26 @@ if (!s || !s.preview) return;
 if (pvId !== id) { startPv(id, frac); return; }
 if (pvMode === "web") {
 if (!waBuffer) return;
-try { waStart(id, frac * waBuffer.duration, pvPlaying ? 150 : 900); }
+try {
+waStart(id, frac * waBuffer.duration, pvPlaying ? 150 : 900);
+if (pvPaused) {
+try { waGain.gain.cancelScheduledValues(waCtx.currentTime); waGain.gain.setValueAtTime(0, waCtx.currentTime); } catch (e) {}
+try { waCtx.suspend(); } catch (e) {}
+pvPlaying = false;
+}
+}
 catch (e) { pvMode = "element"; pvPendingSeek = frac; elementStart(s); }
+pvUI();
 return;
 }
 if (pvAudio.duration) { try { pvAudio.currentTime = frac * pvAudio.duration; } catch (e) {} }
+if (pvPaused) {
+document.querySelectorAll('[data-pvbar="' + id + '"]').forEach(function (b) {
+b.style.setProperty("--p", (frac * 100) + "%");
+b.setAttribute("aria-valuenow", Math.round(frac * (pvAudio.duration || 0)));
+});
+return;
+}
 if (pvAudio.paused) {
 var p = pvAudio.play();
 if (p && p.catch) p.catch(function () {});
