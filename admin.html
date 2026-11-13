@@ -652,8 +652,10 @@ syncYtLabels();
 }
 $("f-ytstart-r").addEventListener("input", function () { $("f-ytstart").value = $("f-ytstart-r").value; clampYt("start"); });
 $("f-ytend-r").addEventListener("input", function () { $("f-ytend").value = $("f-ytend-r").value; clampYt("end"); });
-$("f-ytstart").addEventListener("input", function () { clampYt("start"); });
-$("f-ytend").addEventListener("input", function () { clampYt("end"); });
+$("f-ytstart").addEventListener("input", function () { $("f-ytstart-r").value = $("f-ytstart").value || 0; syncYtLabels(); });
+$("f-ytend").addEventListener("input", function () { $("f-ytend-r").value = $("f-ytend").value || 0; syncYtLabels(); });
+$("f-ytstart").addEventListener("change", function () { clampYt("start"); });
+$("f-ytend").addEventListener("change", function () { clampYt("end"); });
 $("yt-audition").addEventListener("click", function () {
 if (!ytPlayer || !ytPlayer.seekTo) return;
 var st = parseInt($("f-ytstart-r").value, 10) || 0;
