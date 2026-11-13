@@ -923,13 +923,15 @@ var a = e.target.closest("a.ext-app");
 if (!a) return;
 var ua = navigator.userAgent || "";
 if (!/Android/i.test(ua) || !/Chrome\//i.test(ua) || /Firefox\//i.test(ua)) return;
-e.preventDefault();
-e.stopPropagation();
+if (a.getAttribute("data-intent")) return;
 var web = a.getAttribute("href");
 try {
 var u = new URL(web);
-location.href = "intent://" + u.host + u.pathname + u.search + "#Intent;scheme=https;package=" + a.getAttribute("data-pkg") + ";S.browser_fallback_url=" + encodeURIComponent(web) + ";end";
-} catch (err) { location.href = web; }
+a.setAttribute("data-intent", "1");
+a.setAttribute("href", "intent://" + u.host + u.pathname + u.search + "#Intent;scheme=https;package=" + a.getAttribute("data-pkg") + ";S.browser_fallback_url=" + encodeURIComponent(web) + ";end");
+a.removeAttribute("target");
+setTimeout(function () { a.setAttribute("href", web); a.setAttribute("target", "_blank"); a.removeAttribute("data-intent"); }, 1500);
+} catch (err) {}
 }, true);
 function ytIdFromUrl(u) {
 var m = String(u || "").match(/(?:youtube\.com\/(?:watch\?[^#]*v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/);
