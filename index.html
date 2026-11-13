@@ -928,7 +928,8 @@ var web = a.getAttribute("href");
 try {
 var u = new URL(web);
 a.setAttribute("data-intent", "1");
-a.setAttribute("href", "intent://" + u.host + u.pathname + u.search + "#Intent;scheme=https;package=" + a.getAttribute("data-pkg") + ";S.browser_fallback_url=" + encodeURIComponent(web) + ";end");
+var pkg = a.getAttribute("data-pkg");
+a.setAttribute("href", "intent://" + u.host + u.pathname + u.search + "#Intent;scheme=https;" + (pkg ? "package=" + pkg + ";" : "") + "S.browser_fallback_url=" + encodeURIComponent(web) + ";end");
 a.removeAttribute("target");
 setTimeout(function () { a.setAttribute("href", web); a.setAttribute("target", "_blank"); a.removeAttribute("data-intent"); }, 1500);
 } catch (err) {}
@@ -1013,7 +1014,7 @@ function metaHTML(s) {
 var kl = String(s.keyLabel || "原曲キー").replace(/\s+/g, "").replace("+", "＋");
 return '<span class="tag key">' + esc(kl) + "</span>" +
 genreTag(s) +
-'<a class="tag ext ext-app" data-pkg="com.google.android.youtube" href="' + esc(ytSearchURL(s)) + '" target="_blank" rel="noopener">YouTube</a>' +
+'<a class="tag ext ext-app" href="' + esc(ytSearchURL(s)) + '" target="_blank" rel="noopener">YouTube</a>' +
 '<a class="tag ext ext-app" data-pkg="jp.nicovideo.android" href="' + esc(nicoSearchURL(s)) + '" target="_blank" rel="noopener">ニコニコ</a>';
 }
 var MEM_COLORS = ["#e2483d", "#ef7d1a", "#f2b01e", "#8fbf3f", "#28a35c"];
