@@ -640,18 +640,20 @@ syncYtLabels();
 });
 }
 $("f-ytlink").addEventListener("change", setupChorusPlayer);
-$("f-ytstart-r").addEventListener("input", function () {
-var er = $("f-ytend-r");
-if (parseInt(er.value, 10) < parseInt($("f-ytstart-r").value, 10)) { er.value = $("f-ytstart-r").value; $("f-ytend").value = er.value; }
-$("f-ytstart").value = $("f-ytstart-r").value; syncYtLabels();
-});
-$("f-ytend-r").addEventListener("input", function () {
-var sr = $("f-ytstart-r");
-if (parseInt($("f-ytend-r").value, 10) < parseInt(sr.value, 10)) { sr.value = $("f-ytend-r").value; $("f-ytstart").value = sr.value; }
-$("f-ytend").value = $("f-ytend-r").value; syncYtLabels();
-});
-$("f-ytstart").addEventListener("input", function () { var v = parseInt($("f-ytstart").value, 10); if (!isNaN(v)) { $("f-ytstart-r").value = v; syncYtLabels(); } });
-$("f-ytend").addEventListener("input", function () { var v = parseInt($("f-ytend").value, 10); if (!isNaN(v)) { $("f-ytend-r").value = v; syncYtLabels(); } });
+function clampYt(changed) {
+var s = parseInt($("f-ytstart").value, 10), e = parseInt($("f-ytend").value, 10);
+if (!isNaN(s) && !isNaN(e) && e < s) {
+if (changed === "end") { $("f-ytstart").value = e; }
+else { $("f-ytend").value = s; }
+}
+$("f-ytstart-r").value = $("f-ytstart").value || 0;
+$("f-ytend-r").value = $("f-ytend").value || 0;
+syncYtLabels();
+}
+$("f-ytstart-r").addEventListener("input", function () { $("f-ytstart").value = $("f-ytstart-r").value; clampYt("start"); });
+$("f-ytend-r").addEventListener("input", function () { $("f-ytend").value = $("f-ytend-r").value; clampYt("end"); });
+$("f-ytstart").addEventListener("input", function () { clampYt("start"); });
+$("f-ytend").addEventListener("input", function () { clampYt("end"); });
 $("yt-audition").addEventListener("click", function () {
 if (!ytPlayer || !ytPlayer.seekTo) return;
 var st = parseInt($("f-ytstart-r").value, 10) || 0;
