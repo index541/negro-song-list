@@ -168,6 +168,8 @@ footer a { color: var(--ink-2); font-weight: 700;}
 .pv-key-btn:active { transform: scale(.94);}
 .pv-key-btn:disabled { opacity:.35; cursor: default;}
 .pv-key-label { font-size: 12.5px; font-weight: 900; color: var(--ink-2); min-width: 4.8em; text-align: center; font-variant-numeric: tabular-nums;}
+.pv-key-reset { font: inherit; font-size: 11.5px; font-weight: 800; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink-2); border-radius: 999px; padding: 5px 10px; cursor: pointer; margin-left: 6px;}
+.pv-key-reset:active { transform: scale(.96);}
 .tile-pv { position: absolute; top: 15px; right: 15px; width: 34px; height: 34px; border-radius: 50%; background: rgba(28, 28, 28,.8); color: #ffffff; display: grid; place-items: center; font-size: 12px; z-index: 2;}
 .tile-pv.playing { background: var(--accent);}
 .cmodal-backdrop { position: fixed; inset: 0; z-index: 50; background: rgba(10, 10, 8,.55); opacity: 0; visibility: hidden; transition: opacity.3s, visibility.3s;}
@@ -382,7 +384,7 @@ function listenHTML(s) {
 var h = '<div class="listen-row">';
 if (s.ytLink) h += '<button type="button" class="listen-btn chorus" data-chorus="' + esc(s.id) + '">♪ サビを聴く</button>';
 if (s.preview) h += '<button type="button" class="listen-btn pv" data-pv="' + esc(s.id) + '">▶ 試聴（30秒）</button>' +
-'<span class="pv-key"><button type="button" class="pv-key-btn" data-pvkey="-1" aria-label="キーを下げる">−</button><span class="pv-key-label" data-pvkey-label>原曲キー</span><button type="button" class="pv-key-btn" data-pvkey="1" aria-label="キーを上げる">＋</button></span>';
+'<span class="pv-key"><button type="button" class="pv-key-btn" data-pvkey="-1" aria-label="キーを下げる">−</button><span class="pv-key-label" data-pvkey-label>原曲キー</span><button type="button" class="pv-key-btn" data-pvkey="1" aria-label="キーを上げる">＋</button></span><button type="button" class="pv-key-reset" data-pvkey-reset style="display:none">原曲に戻す</button>';
 h += '<a class="listen-btn" href="' + esc(ytSearchURL(s)) + '" target="_blank" rel="noopener">YouTubeで探す</a>';
 h += '<a class="listen-btn" href="' + esc(nicoSearchURL(s)) + '" target="_blank" rel="noopener">ニコニコで探す</a>';
 h += "</div>";
@@ -568,6 +570,9 @@ document.querySelectorAll("[data-pvkey]").forEach(function (b) {
 var d = parseInt(b.getAttribute("data-pvkey"), 10);
 b.disabled = (d < 0 && pvKeyShift <= -6) || (d > 0 && pvKeyShift >= 6);
 });
+document.querySelectorAll("[data-pvkey-reset]").forEach(function (b) {
+b.style.display = pvKeyShift === 0 ? "none" : "";
+});
 }
 function pvApplyKey() {
 try { pvAudio.preservesPitch = false; pvAudio.mozPreservesPitch = false; pvAudio.webkitPreservesPitch = false; } catch (e) {}
@@ -721,6 +726,15 @@ pvSeekTo(pvId, Math.min(1, Math.max(0, (pvCurrentPos() + d) / dur)));
 });
 document.addEventListener("click", function (e) {
 if (!e.target || !e.target.closest) return;
+var rst = e.target.closest("[data-pvkey-reset]");
+if (rst) {
+e.preventDefault();
+e.stopPropagation();
+pvKeyShift = 0;
+pvKeyChanged();
+pvKeyUI();
+return;
+}
 var k = e.target.closest("[data-pvkey]");
 if (k) {
 e.preventDefault();
