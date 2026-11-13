@@ -51,6 +51,7 @@ h1 { margin:10px 0 8px; font-size:clamp(28px,6vw,40px); font-weight:900; line-he
 .btn.danger { background:var(--accent-soft); color:var(--accent); }
 .btn[disabled] { opacity:.6; cursor:default; }
 .btn-row { display:flex; gap:10px; flex-wrap:wrap; }
+.import-row input { flex:1; min-width:200px; }
 .yt-frame { aspect-ratio: 16/9; background: var(--surface-2); border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
 .yt-frame iframe { width: 100%; height: 100%; display: block; }
 .yt-range-row { display: flex; align-items: center; gap: 10px; margin: 6px 0; }
@@ -168,6 +169,14 @@ body.has-bulk-float { padding-bottom:86px; }
 <h2>3. 曲の編集</h2>
 <p class="desc">保存すると公開ページに反映されます（反映まで1分ほどかかります）。</p>
 <input type="hidden" id="f-id" />
+<div class="field">
+<label for="f-import-url">動画URLから取り込む（YouTube / ニコニコ など）</label>
+<div class="btn-row import-row">
+<input id="f-import-url" type="url" placeholder="https://www.youtube.com/watch?v=…" />
+<button type="button" class="btn sub" id="import-btn">取り込む</button>
+</div>
+<p class="status" id="import-status"></p>
+</div>
 <div class="field">
 <label for="f-title">曲名<span class="req">必須</span></label>
 <input id="f-title" type="text"  />
@@ -555,6 +564,7 @@ if (st) st.textContent = "曲の編集";
 $("f-id").value = ""; $("f-title").value = ""; $("f-artist").value = ""; $("f-genre").value = "";
 $("f-keylabel").value = ""; $("f-memory").value = ""; $("f-memo").value = ""; $("f-jacket").value = "";
 $("f-ytlink").value = ""; $("f-ytstart").value = ""; $("f-ytend").value = "";
+$("f-import-url").value = ""; $("import-status").textContent = "";
 $("yt-tools").style.display = "none"; ytPlayerId = "";
 if (ytPlayer && ytPlayer.pauseVideo) { try { ytPlayer.pauseVideo(); } catch (e) {} }
 $("f-preview").style.display = "none";
@@ -639,6 +649,58 @@ syncYtLabels();
 });
 });
 }
+// ===== 動画URLから取り込む =====
+function importFill(id, val) {
+if (!val) return;
+var el = $(id);
+if (el && !el.value.trim()) el.value = val;
+}
+function importSetJacket(url) {
+if (!url || $("f-jacket").value.trim()) return;
+$("f-jacket").value = url;
+$("f-jacket").dispatchEvent(new Event("input"));
+}
+function importFromUrl() {
+var raw = $("f-import-url").value.trim();
+var st = $("import-status");
+if (!raw) { st.textContent = "URLを貼ってください。"; return; }
+var url;
+try { url = new URL(raw); } catch (e) { st.textContent = "URLの形式が正しくありません。"; return; }
+var host = url.hostname.replace(/^www\./, "").replace(/^m\./, "");
+if (host === "youtube.com" || host === "youtu.be" || host === "music.youtube.com") {
+st.textContent = "YouTubeから読み取り中…";
+fetch("https://www.youtube.com/oembed?url=" + encodeURIComponent(raw) + "&format=json").then(function (r) {
+if (!r.ok) throw new Error("oembed");
+return r.json();
+}).then(function (d) {
+importFill("f-title", d.title || "");
+importFill("f-artist", d.author_name || "");
+var m = raw.match(/(?:youtube\.com\/(?:watch\?[^#]*v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/);
+importSetJacket(m ? "https://i.ytimg.com/vi/" + m[1] + "/hqdefault.jpg" : (d.thumbnail_url || ""));
+importFill("f-ytlink", raw);
+setupChorusPlayer();
+st.textContent = "YouTubeから取り込みました。内容を確認してから保存してください（動画タイトルの飾りなどは直してください）。";
+}).catch(function () { st.textContent = "読み取れませんでした。動画が公開されているか、URLを確認してください。"; });
+return;
+}
+if (host === "nicovideo.jp" || host === "nico.ms") {
+var nm = raw.match(/(?:watch\/|nico\.ms\/)(?:sm|nm|so)?(\d+)/);
+if (nm) {
+importSetJacket("https://nicovideo.cdn.nimg.jp/thumbnails/" + nm[1] + "/" + nm[1]);
+st.textContent = "ニコニコ動画はサムネイルだけ取り込みました。曲名とアーティストは入力してください。";
+} else st.textContent = "ニコニコ動画のIDが読み取れませんでした。";
+return;
+}
+st.textContent = "読み取り中…";
+fetch("https://noembed.com/embed?url=" + encodeURIComponent(raw)).then(function (r) { return r.json(); }).then(function (d) {
+if (!d || d.error || !d.title) { st.textContent = "このサイトは自動で読み取れませんでした。手入力してください。"; return; }
+importFill("f-title", d.title || "");
+importFill("f-artist", d.author_name || "");
+importSetJacket(d.thumbnail_url || "");
+st.textContent = "取り込みました。内容を確認してから保存してください。";
+}).catch(function () { st.textContent = "読み取れませんでした。URLを確認してください。"; });
+}
+$("import-btn").addEventListener("click", importFromUrl);
 $("f-ytlink").addEventListener("change", setupChorusPlayer);
 function clampYt(changed) {
 var s = parseInt($("f-ytstart").value, 10), e = parseInt($("f-ytend").value, 10);
