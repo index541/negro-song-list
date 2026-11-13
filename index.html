@@ -384,7 +384,7 @@ function listenHTML(s) {
 var h = '<div class="listen-row">';
 if (s.ytLink) h += '<button type="button" class="listen-btn chorus" data-chorus="' + esc(s.id) + '">♪ サビを聴く</button>';
 if (s.preview) h += '<button type="button" class="listen-btn pv" data-pv="' + esc(s.id) + '">▶ 試聴（30秒）</button>' +
-'<span class="pv-key"><button type="button" class="pv-key-btn" data-pvkey="-1" aria-label="キーを下げる">−</button><span class="pv-key-label" data-pvkey-label>原曲キー</span><button type="button" class="pv-key-btn" data-pvkey="1" aria-label="キーを上げる">＋</button></span><button type="button" class="pv-key-reset" data-pvkey-reset style="display:none">原曲に戻す</button>';
+'<span class="pv-key" data-keyfor="' + esc(s.id) + '"><button type="button" class="pv-key-btn" data-pvkey="-1" aria-label="キーを下げる">−</button><span class="pv-key-label" data-pvkey-label>原曲キー</span><button type="button" class="pv-key-btn" data-pvkey="1" aria-label="キーを上げる">＋</button></span><button type="button" class="pv-key-reset" data-pvkey-reset data-keyfor="' + esc(s.id) + '" style="display:none">原曲に戻す</button>';
 h += '<a class="listen-btn" href="' + esc(ytSearchURL(s)) + '" target="_blank" rel="noopener">YouTubeで探す</a>';
 h += '<a class="listen-btn" href="' + esc(nicoSearchURL(s)) + '" target="_blank" rel="noopener">ニコニコで探す</a>';
 h += "</div>";
@@ -464,7 +464,7 @@ waOffset = fromSec || 0;
 waPlayedBase = 0;
 waPlayEventCtx = waCtx.currentTime;
 waShifter = new StModule.PitchShifter(waCtx, sliceBuffer(buf, waOffset), 4096);
-waShifter.pitchSemitones = pvKeyShift;
+waShifter.pitchSemitones = getKey(id);
 waShifter.tempo = 1;
 waShifter.on("play", function (detail) {
 waPlayedBase = detail.timePlayed;
@@ -561,30 +561,41 @@ pvFadingOut = false;
 finish();
 });
 }
-var pvKeyShift = 0;
+var pvKeyById = {};
+try { pvKeyById = JSON.parse(localStorage.getItem("nsl.keys") || "{}") || {}; } catch (e) { pvKeyById = {}; }
+function getKey(id) { return pvKeyById[id] || 0; }
+function setKey(id, v) {
+v = Math.max(-6, Math.min(6, v));
+if (v === 0) delete pvKeyById[id]; else pvKeyById[id] = v;
+try { localStorage.setItem("nsl.keys", JSON.stringify(pvKeyById)); } catch (e) {}
+if (id === pvId) applyKeyToPlayback();
+pvKeyUI();
+}
 function pvKeyUI() {
-document.querySelectorAll("[data-pvkey-label]").forEach(function (el) {
-el.textContent = pvKeyShift === 0 ? "原曲キー" : (pvKeyShift > 0 ? "+" + pvKeyShift : "−" + (-pvKeyShift)) + "キー";
-});
-document.querySelectorAll("[data-pvkey]").forEach(function (b) {
+document.querySelectorAll(".pv-key[data-keyfor]").forEach(function (wrap) {
+var k = getKey(wrap.getAttribute("data-keyfor"));
+var label = wrap.querySelector("[data-pvkey-label]");
+if (label) label.textContent = k === 0 ? "原曲キー" : (k > 0 ? "+" + k : "−" + (-k)) + "キー";
+wrap.querySelectorAll("[data-pvkey]").forEach(function (b) {
 var d = parseInt(b.getAttribute("data-pvkey"), 10);
-b.disabled = (d < 0 && pvKeyShift <= -6) || (d > 0 && pvKeyShift >= 6);
+b.disabled = (d < 0 && k <= -6) || (d > 0 && k >= 6);
+});
 });
 document.querySelectorAll("[data-pvkey-reset]").forEach(function (b) {
-b.style.display = pvKeyShift === 0 ? "none" : "";
+b.style.display = getKey(b.getAttribute("data-keyfor")) === 0 ? "none" : "";
 });
 }
 function pvApplyKey() {
 try { pvAudio.preservesPitch = false; pvAudio.mozPreservesPitch = false; pvAudio.webkitPreservesPitch = false; } catch (e) {}
-pvAudio.playbackRate = Math.pow(2, pvKeyShift / 12);
+pvAudio.playbackRate = Math.pow(2, getKey(pvId) / 12);
 }
-function pvKeyChanged() {
+function applyKeyToPlayback() {
 if (pvMode === "web") {
-if (waShifter) { try { waShifter.pitchSemitones = pvKeyShift; } catch (e) {} }
+if (waShifter) { try { waShifter.pitchSemitones = getKey(pvId); } catch (e) {} }
 return;
 }
 if (!pvId) return;
-if (pvKeyShift !== 0 && pvPlaying) {
+if (getKey(pvId) !== 0 && pvPlaying) {
 var s = songById(pvId);
 if (!s) { pvApplyKey(); return; }
 var frac = pvAudio.duration ? pvAudio.currentTime / pvAudio.duration : 0;
@@ -615,7 +626,7 @@ var s = songById(id);
 if (!s || !s.preview) return;
 pvId = id;
 pvFadingOut = false;
-if (pvKeyShift !== 0) {
+if (getKey(id) !== 0) {
 pvMode = "web";
 pvPendingSeek = null;
 waLoadAndStart(s, frac || 0);
@@ -730,9 +741,7 @@ var rst = e.target.closest("[data-pvkey-reset]");
 if (rst) {
 e.preventDefault();
 e.stopPropagation();
-pvKeyShift = 0;
-pvKeyChanged();
-pvKeyUI();
+setKey(rst.getAttribute("data-keyfor"), 0);
 return;
 }
 var k = e.target.closest("[data-pvkey]");
@@ -740,9 +749,9 @@ if (k) {
 e.preventDefault();
 e.stopPropagation();
 var d = parseInt(k.getAttribute("data-pvkey"), 10);
-pvKeyShift = Math.max(-6, Math.min(6, pvKeyShift + d));
-pvKeyChanged();
-pvKeyUI();
+var kwrap = k.closest(".pv-key");
+var kid = kwrap ? kwrap.getAttribute("data-keyfor") : null;
+if (kid) setKey(kid, getKey(kid) + d);
 return;
 }
 var c = e.target.closest("[data-chorus]");
