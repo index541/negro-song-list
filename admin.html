@@ -265,8 +265,7 @@ body.has-bulk-float { padding-bottom:86px; }
 <div class="field">
 <label for="adm-sort">並び替え</label>
 <select id="adm-sort">
-<option value="order">並んでいる順（公開のおすすめ順）</option>
-<option value="title">曲名順</option>
+<option value="title" selected>曲名順</option>
 <option value="artist">アーティスト順</option>
 <option value="genre">ジャンル順</option>
 <option value="new">新しい順</option>
@@ -369,7 +368,7 @@ return fetch("songs.json", { cache: "no-store" })
 .then(function (r) { if (!r.ok) throw new Error("local"); return r.json(); })
 .then(function (d) { songs = d; renderSongs(); });
 }
-var admState = { q: "", genre: "", sort: "order" };
+var admState = { q: "", genre: "", sort: "title" };
 /* 公開ページと同一の五十音ソート（読み仮名基準） */
 var SMALL_KANA = { "ぁ": "あ", "ぃ": "い", "ぅ": "う", "ぇ": "え", "ぉ": "お", "ゃ": "や", "ゅ": "ゆ", "ょ": "よ", "っ": "つ", "ゎ": "わ" };
 function kanaNorm(str) {
