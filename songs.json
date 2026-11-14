@@ -9261,7 +9261,6 @@
   },
   {
     "id": "smwg36bcg",
-    "addedAt": "2026-11-14",
     "title": "君の知らない物語",
     "artist": "supercell",
     "work": "化物語",
@@ -9270,7 +9269,8 @@
     "keyShift": 0,
     "memo": "",
     "memory": null,
-    "jacket": "https://i.ytimg.com/vi/jpV5jeFlt_E/hqdefault.jpg",
+    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/09/a9/4d/09a94db1-101a-bebd-78c7-50b452e4a7aa/jacket_SRCL07081B00Z_550.jpg/600x600bb.jpg",
+    "addedAt": "2026-11-14",
     "ytLink": "https://www.youtube.com/watch?v=jpV5jeFlt_E",
     "ytStart": 74,
     "ytEnd": 111
