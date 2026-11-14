@@ -8106,15 +8106,17 @@
     "id": "w1038",
     "title": "オツキミリサイタル",
     "artist": "じん",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music3/v4/f3/24/c1/f324c1c5-3a02-00fe-c635-35573ffa75d2/KICS-3161-1400.jpg/600x600bb.jpg",
+    "memory": null,
+    "jacket": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToZfzs959nPfICAoxUhWe7txpgUTe6IePdTo8F7i00I_fhkmiPfDBzIRA&s=10",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ea/93/22/ea9322f2-e93d-c108-a26b-43f3d2d742aa/mzaf_16410644744063337932.plus.aac.p.m4a",
     "titleYomi": "おつきみりさいたる",
-    "artistYomi": "じん"
+    "artistYomi": "じん",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ea/93/22/ea9322f2-e93d-c108-a26b-43f3d2d742aa/mzaf_16410644744063337932.plus.aac.p.m4a"
   },
   {
     "id": "w1039",
