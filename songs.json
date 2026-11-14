@@ -5053,16 +5053,18 @@
   },
   {
     "id": "w445",
-    "title": "あずきちゃんop　素敵な君full",
-    "artist": "アーティスト名なし",
+    "title": "素敵な君",
+    "artist": "RAZZ MA TAZZ",
+    "work": "あずきちゃん",
     "genre": "その他",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": 4,
     "jacket": "",
     "addedAt": "2026-11-12",
-    "titleYomi": "あずきちゃんop　すてきなきみfull",
-    "artistYomi": "あーてぃすとめいなし"
+    "titleYomi": "すてきなきみ",
+    "artistYomi": "らずまたず"
   },
   {
     "id": "w449",
