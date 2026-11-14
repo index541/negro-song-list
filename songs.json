@@ -5238,7 +5238,7 @@
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "memory": null,
+    "memory": 4,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/82/7d/34/827d34f1-f358-78e0-e62c-eeb8f1dbe14f/TKCA-72165.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "いつもなんどでも",
