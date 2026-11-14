@@ -5449,16 +5449,18 @@
   {
     "id": "w507",
     "title": "赤いスイートピー",
-    "artist": "デーモン小暮",
+    "artist": "デーモン閣下",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/bb/7a/91/bb7a9111-1bb6-d932-f0b1-6336c124858b/jacket_MHCL20128B00Z_550.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/9d/34/71/9d3471b5-3ada-4b0c-c3cf-a4e6315da65f/mzaf_8237450872456645886.plus.aac.p.m4a",
     "titleYomi": "あかいすいーとぴー",
-    "artistYomi": "でーもんこぐれ"
+    "artistYomi": "でーもんかっか",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/9d/34/71/9d3471b5-3ada-4b0c-c3cf-a4e6315da65f/mzaf_8237450872456645886.plus.aac.p.m4a"
   },
   {
     "id": "w508",
