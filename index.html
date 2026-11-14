@@ -161,7 +161,6 @@ footer a { color: var(--ink-2); font-weight: 700;}
 .listen-btn:active { transform: scale(.97);}
 .listen-btn.pv { background: var(--ink); color: var(--bg); border-color: var(--ink);}
 .listen-btn.pv.playing { background: var(--accent); border-color: var(--accent); color: #ffffff;}
-.listen-btn.chorus { background: var(--accent); border-color: var(--accent); color: #ffffff;}
 .pv-progress { position: relative; height: 24px; margin-top: 4px; cursor: pointer; touch-action: none; --p: 0%;}
 .pv-track { position: absolute; left: 0; right: 0; top: 50%; height: 4px; transform: translateY(-50%); border-radius: 99px; background: var(--surface-2); overflow: hidden;}
 .pv-track i { display: block; height: 100%; width: var(--p); background: var(--accent);}
@@ -179,6 +178,8 @@ footer a { color: var(--ink-2); font-weight: 700;}
 .pb-main { display: flex; align-items: center; gap: 10px;}
 .pb-thumb, .pb-thumb-ph { width: 44px; height: 44px; border-radius: 10px; object-fit: cover; flex: none;}
 .pb-thumb-ph { background: var(--surface-2); color: var(--ink-3); display: grid; place-items: center; font-size: 20px;}
+.pb-video { width: 118px; aspect-ratio: 16/9; border-radius: 9px; overflow: hidden; flex: none; background: #000;}
+.pb-video iframe { width: 100%; height: 100%; display: block; border: 0;}
 .pb-meta { flex: 1; min-width: 0;}
 .pb-title { margin: 0; font-size: 14.5px; font-weight: 900; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 .pb-artist { margin: 1px 0 0; font-size: 12px; color: var(--ink-2); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
@@ -194,17 +195,6 @@ body.pbon #to-top { bottom: 176px;}
 }
 .tile-pv { position: absolute; top: 15px; right: 15px; width: 34px; height: 34px; border-radius: 50%; background: rgba(28, 28, 28,.8); color: #ffffff; display: grid; place-items: center; font-size: 12px; z-index: 2;}
 .tile-pv.playing { background: var(--accent);}
-.cmodal-backdrop { position: fixed; inset: 0; z-index: 50; background: rgba(10, 10, 8,.55); opacity: 0; visibility: hidden; transition: opacity.3s, visibility.3s;}
-.cmodal-backdrop.open { opacity: 1; visibility: visible;}
-.cmodal { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -46%); opacity: 0; visibility: hidden; width: min(680px, calc(100% - 24px)); z-index: 51; background: var(--surface); border-radius: 16px; box-shadow: var(--shadow); padding: 14px 16px 16px; transition: opacity.28s, transform.28s, visibility.28s;}
-.cmodal.open { transform: translate(-50%, -50%); opacity: 1; visibility: visible;}
-.cmodal-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px;}
-.cmodal-head span { font-weight: 900; font-size: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
-.cmodal-close { font: inherit; font-size: 18px; font-weight: 900; width: 40px; height: 40px; border: 0; border-radius: 50%; background: var(--surface-2); color: var(--ink-2); cursor: pointer; flex: none;}
-.cmodal-frame { aspect-ratio: 16/9; background: #000; border-radius: 10px; overflow: hidden;}
-.cmodal-frame iframe { width: 100%; height: 100%; display: block; border: 0;}
-.cmodal-note { margin: 10px 0 0; font-size: 12.5px; color: var(--ink-3); font-weight: 700;}
-.cmodal-note a { color: var(--accent); font-weight: 900;}
 .req-panel { margin-top: 16px; border-top: 1px dashed var(--line); padding-top: 16px; animation: rise.35s both;}
 .type-pill { display: inline-block; margin-bottom: 12px; font-size: 12.5px; font-weight: 900; letter-spacing:.05em; border-radius: 999px; padding: 4px 13px;}
 .type-pill.solo { background: var(--accent-soft); color: var(--accent);}
@@ -374,22 +364,18 @@ html { scroll-behavior: auto;}
 <div class="pb-main">
 <img class="pb-thumb" id="pb-thumb" alt="" hidden />
 <div class="pb-thumb-ph" id="pb-thumb-ph" aria-hidden="true">♪</div>
+<div class="pb-video" id="pb-video" hidden><div id="pb-yt-holder"></div></div>
 <div class="pb-meta"><p class="pb-title" id="pb-title"></p><p class="pb-artist" id="pb-artist"></p></div>
 <button type="button" class="pb-toggle" id="pb-toggle" data-pv="" aria-label="試聴の再生・停止">▶</button>
 <button type="button" class="pb-close" id="pb-close" aria-label="プレイヤーを閉じる">✕</button>
 </div>
 <div class="pv-progress pb-progress" id="pb-bar" data-pvbar="" role="slider" tabindex="0" aria-label="試聴の再生位置"><span class="pv-track"><i></i></span><span class="pv-knob"></span></div>
-<div class="pb-sub">
+<div class="pb-sub" id="pb-sub">
 <span class="pv-key" id="pb-keywrap" data-keyfor=""><button type="button" class="pv-key-btn" data-pvkey="-1" aria-label="キーを下げる">−</button><span class="pv-key-label" data-pvkey-label>原曲キー</span><button type="button" class="pv-key-btn" data-pvkey="1" aria-label="キーを上げる">＋</button></span><button type="button" class="pv-key-reset" id="pb-reset" data-pvkey-reset data-keyfor="" style="display:none">原曲に戻す</button>
 </div>
 </div>
 
-<div class="cmodal-backdrop" id="cmodal-backdrop"></div>
-<section class="cmodal" id="cmodal" aria-hidden="true" aria-label="サビ試聴">
-<div class="cmodal-head"><span id="cmodal-title">サビ試聴</span><button type="button" class="cmodal-close" id="cmodal-close" aria-label="閉じる">×</button></div>
-<div class="cmodal-frame" id="cmodal-frame"></div>
-<p class="cmodal-note">動画が再生できない場合は <a id="cmodal-ext" href="#" target="_blank" rel="noopener">YouTubeで開く</a> からどうぞ。</p>
-</section>
+
 
 <div class="sheet-backdrop" id="sheet-backdrop"></div>
 <section class="sheet" id="sheet" aria-hidden="true" aria-label="曲の詳細とリクエスト">
@@ -434,22 +420,15 @@ return '<span class="tag genre" style="background:' + genreColor(s.genre) + '">'
 }
 function ytSearchURL(s) { return "https://www.youtube.com/results?search_query=" + encodeURIComponent(s.title + " " + s.artist); }
 function nicoSearchURL(s) { return "https://www.nicovideo.jp/search/" + encodeURIComponent(s.title + " " + s.artist); }
-function chorusURL(s) {
-if (!s.ytLink) return "";
-var start = parseInt(s.ytStart, 10);
-if (start > 0) return s.ytLink + (s.ytLink.indexOf("?") >= 0 ? "&" : "?") + "t=" + start + "s";
-return s.ytLink;
-}
 function pvBtnHTML(s) {
-return s.preview ? '<button type="button" class="listen-btn pv pv-inrow" data-pv="' + esc(s.id) + '">▶ 試聴</button>' : "";
+return (s.preview || s.ytLink) ? '<button type="button" class="listen-btn pv pv-inrow" data-pv="' + esc(s.id) + '">▶ 試聴</button>' : "";
 }
 function listenHTML(s, full) {
 var parts = "";
-if (s.ytLink) parts += '<button type="button" class="listen-btn chorus" data-chorus="' + esc(s.id) + '">♪ サビを聴く</button>';
-if (full && s.preview) parts += '<span class="pv-key" data-keyfor="' + esc(s.id) + '"><button type="button" class="pv-key-btn" data-pvkey="-1" aria-label="キーを下げる">−</button><span class="pv-key-label" data-pvkey-label>原曲キー</span><button type="button" class="pv-key-btn" data-pvkey="1" aria-label="キーを上げる">＋</button></span><button type="button" class="pv-key-reset" data-pvkey-reset data-keyfor="' + esc(s.id) + '" style="display:none">原曲に戻す</button>';
-if (!parts && !(full && s.preview)) return "";
+if (full && s.preview && !s.ytLink) parts += '<span class="pv-key" data-keyfor="' + esc(s.id) + '"><button type="button" class="pv-key-btn" data-pvkey="-1" aria-label="キーを下げる">−</button><span class="pv-key-label" data-pvkey-label>原曲キー</span><button type="button" class="pv-key-btn" data-pvkey="1" aria-label="キーを上げる">＋</button></span><button type="button" class="pv-key-reset" data-pvkey-reset data-keyfor="' + esc(s.id) + '" style="display:none">原曲に戻す</button>';
+if (!parts && !(full && s.preview && !s.ytLink)) return "";
 var h = '<div class="listen-row">' + parts + "</div>";
-if (s.preview && full) h += '<div class="pv-progress" data-pvbar="' + esc(s.id) + '" role="slider" tabindex="0" aria-label="試聴の再生位置"><span class="pv-track"><i></i></span><span class="pv-knob"></span></div>';
+if (s.preview && full && !s.ytLink) h += '<div class="pv-progress" data-pvbar="' + esc(s.id) + '" role="slider" tabindex="0" aria-label="試聴の再生位置"><span class="pv-track"><i></i></span><span class="pv-knob"></span></div>';
 return h;
 }
 var pvAudio = new Audio();
@@ -595,8 +574,8 @@ pvMode = "element";
 elementStart(s);
 });
 }
-function pvDuration() { return pvMode === "web" && waBuffer ? waBuffer.duration : (pvAudio.duration || 0); }
-function pvCurrentPos() { return pvMode === "web" ? waPos() : (pvAudio.currentTime || 0); }
+function pvDuration() { if (pvMode === "yt") return ytRangeDur(); return pvMode === "web" && waBuffer ? waBuffer.duration : (pvAudio.duration || 0); }
+function pvCurrentPos() { if (pvMode === "yt") { if (!ytPlayer || !ytPlayer.getCurrentTime) return 0; try { return Math.max(0, ytPlayer.getCurrentTime() - ytStartSec); } catch (e) { return 0; } } return pvMode === "web" ? waPos() : (pvAudio.currentTime || 0); }
 var pvPaused = false;
 var pvPauseSeq = 0;
 function pvEnded() {
@@ -613,6 +592,7 @@ function pvPause() {
 if (!pvPlaying || !pvId) return;
 pvPaused = true;
 pvPlaying = false;
+if (pvMode === "yt") { ytPauseInternal(); pvUI(); return; }
 if (pvMode === "web") {
 pvPauseSeq++;
 var seq = pvPauseSeq;
@@ -631,6 +611,7 @@ pvUI();
 function pvResume() {
 if (!pvPaused || !pvId) return;
 pvPaused = false;
+if (pvMode === "yt") { ytResumeInternal(); pvUI(); return; }
 if (pvMode === "web") {
 pvPauseSeq++;
 if (waCtx && waCtx.state === "suspended") { var pr = waCtx.resume(); if (pr && pr.catch) pr.catch(function () {}); }
@@ -654,6 +635,14 @@ function pvStop(fast) {
 var id = pvId;
 pvId = null;
 pvPaused = false;
+if (pvMode === "yt") {
+ytStopInternal();
+pvPlaying = false;
+pvFadingOut = false;
+if (id) document.querySelectorAll('[data-pvbar="' + id + '"]').forEach(function (b) { b.style.setProperty("--p", "0%"); });
+pvUI();
+return;
+}
 function finish() {
 if (id) document.querySelectorAll('[data-pvbar="' + id + '"]').forEach(function (b) { b.style.setProperty("--p", "0%"); });
 pvUI();
@@ -730,7 +719,8 @@ pvUI();
 }
 function startPv(id, frac) {
 var s = songById(id);
-if (!s || !s.preview) return;
+if (!s || (!s.preview && !s.ytLink)) return;
+if (s.ytLink) { startYt(s, frac); return; }
 pvId = id;
 pvPaused = false;
 pvPauseSeq++;
@@ -778,6 +768,10 @@ var img = document.getElementById("pb-thumb");
 var ph = document.getElementById("pb-thumb-ph");
 if (s.jacket) { img.src = s.jacket; img.hidden = false; ph.style.display = "none"; }
 else { img.hidden = true; ph.style.display = ""; }
+var pbVideo = document.getElementById("pb-video");
+var pbSub = document.getElementById("pb-sub");
+if (pvMode === "yt") { if (pbVideo) pbVideo.hidden = false; img.hidden = true; ph.style.display = "none"; if (pbSub) pbSub.style.display = "none"; }
+else { if (pbVideo) pbVideo.hidden = true; if (pbSub) pbSub.style.display = ""; }
 document.getElementById("pb-toggle").setAttribute("data-pv", pvId);
 var pb = document.getElementById("pb-bar");
 pb.setAttribute("data-pvbar", pvId);
@@ -792,17 +786,20 @@ var pbCloseBtn = document.getElementById("pb-close");
 if (pbCloseBtn) pbCloseBtn.addEventListener("click", function () { pvStop(true); pvId = null; pvUI(); });
 function togglePreview(id) {
 var s = songById(id);
-if (!s || !s.preview) return;
-closeChorus();
+if (!s || (!s.preview && !s.ytLink)) return;
 if (pvId === id && pvPlaying) { pvPause(); return; }
 if (pvId === id && pvPaused) { pvResume(); return; }
-if (pvId && pvId !== id && pvPlaying) {
+if (pvId && pvId !== id) {
 var nid = id;
-if (pvMode === "web") { waStop(true, function () { startPv(nid); }); }
-else pvRamp(0, 200, function () { pvAudio.pause(); pvPlaying = false; startPv(nid); });
+if (pvMode === "yt") { ytStopInternal(); pvPlaying = false; pvId = null; startPv(nid); }
+else if (pvPlaying && pvMode === "web") { waStop(true, function () { startPv(nid); }); }
+else if (pvPlaying) { pvRamp(0, 200, function () { pvAudio.pause(); pvPlaying = false; startPv(nid); }); }
+else startPv(nid);
+if (s.ytLink) closeSheet();
 return;
 }
 startPv(id);
+if (s.ytLink) closeSheet();
 }
 pvAudio.addEventListener("timeupdate", function () {
 if (pvMode !== "element" || !pvId || !pvAudio.duration) return;
@@ -825,8 +822,9 @@ pvPendingSeek = null;
 });
 function pvSeekTo(id, frac) {
 var s = songById(id);
-if (!s || !s.preview) return;
+if (!s || (!s.preview && !s.ytLink)) return;
 if (pvId !== id) { startPv(id, frac); return; }
+if (pvMode === "yt") { ytSeek(frac); return; }
 if (pvMode === "web") {
 if (!waBuffer) return;
 try {
@@ -860,9 +858,8 @@ var bar = e.target && e.target.closest ? e.target.closest("[data-pvbar]") : null
 if (!bar) return;
 var id = bar.getAttribute("data-pvbar");
 var s = songById(id);
-if (!s || !s.preview) return;
+if (!s || (!s.preview && !s.ytLink)) return;
 e.preventDefault();
-closeChorus();
 function seekToEvent(ev) {
 var r = bar.getBoundingClientRect();
 var f = Math.min(1, Math.max(0, (ev.clientX - r.left) / r.width));
@@ -910,8 +907,6 @@ var kid = kwrap ? kwrap.getAttribute("data-keyfor") : null;
 if (kid) setKey(kid, getKey(kid) + d);
 return;
 }
-var c = e.target.closest("[data-chorus]");
-if (c) { e.preventDefault(); e.stopPropagation(); openChorus(c.getAttribute("data-chorus")); return; }
 var t = e.target.closest("[data-pv]");
 if (!t) return;
 e.preventDefault();
@@ -939,7 +934,6 @@ function ytIdFromUrl(u) {
 var m = String(u || "").match(/(?:youtube\.com\/(?:watch\?[^#]*v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/);
 return m ? m[1] : "";
 }
-var chorusPlayer = null, chorusTimer = null, chorusEndSec = 0;
 function loadYtApiPub(cb) {
 if (window.YT && YT.Player) { cb(); return; }
 var prev = window.onYouTubeIframeAPIReady;
@@ -950,67 +944,96 @@ tag.id = "yt-api"; tag.src = "https://www.youtube.com/iframe_api";
 document.head.appendChild(tag);
 }
 }
-function stopChorusTimer() { if (chorusTimer) { clearInterval(chorusTimer); chorusTimer = null; } }
-function openChorus(id) {
-var s = songById(id);
-if (!s || !s.ytLink) return;
-var vid = ytIdFromUrl(s.ytLink);
-if (!vid) { window.open(chorusURL(s), "_blank"); return; }
-if (pvPlaying) pvStop(true);
-var st = parseInt(s.ytStart, 10); if (isNaN(st) || st < 0) st = 0;
-var en = parseInt(s.ytEnd, 10);
-chorusEndSec = (!isNaN(en) && en > st) ? en : 0;
-document.getElementById("cmodal-title").textContent = s.title + " ／ " + s.artist;
-document.getElementById("cmodal-ext").href = chorusURL(s);
-var frame = document.getElementById("cmodal-frame");
-frame.innerHTML = "";
-var holder = document.createElement("div");
-holder.id = "chorus-player";
-frame.appendChild(holder);
-document.getElementById("cmodal").classList.add("open");
-document.getElementById("cmodal-backdrop").classList.add("open");
-document.getElementById("cmodal").setAttribute("aria-hidden", "false");
-loadYtApiPub(function () {
-if (!document.getElementById("cmodal").classList.contains("open")) return;
-if (chorusPlayer && chorusPlayer.destroy) { try { chorusPlayer.destroy(); } catch (e) {} chorusPlayer = null; }
-var holder2 = document.createElement("div");
-holder2.id = "chorus-player";
-var frame2 = document.getElementById("cmodal-frame");
-frame2.innerHTML = "";
-frame2.appendChild(holder2);
-chorusPlayer = new YT.Player("chorus-player", {
-videoId: vid, width: "100%", height: "100%",
-playerVars: { autoplay: 1, rel: 0, start: st },
-events: {
-onReady: function (ev) { try { ev.target.playVideo(); } catch (e) {} },
-onStateChange: function (ev) { if (window.YT && ev.data === YT.PlayerState.ENDED) stopChorusTimer(); }
+function ytSeek(frac) {
+if (!ytPlayer || !ytReady) return;
+var dur = ytRangeDur();
+if (!dur) return;
+try { ytPlayer.seekTo(ytStartSec + frac * dur, true); } catch (e) {}
+if (frac < 1) ytAtEnd = false;
+if (pvPaused) ytSetBar(frac);
 }
+function ytSetBar(frac) {
+if (!pvId) return;
+document.querySelectorAll('[data-pvbar="' + pvId + '"]').forEach(function (b) {
+b.style.setProperty("--p", (frac * 100) + "%");
+b.setAttribute("aria-valuenow", Math.round(frac * ytRangeDur()));
 });
-stopChorusTimer();
-if (chorusEndSec > 0) {
-chorusTimer = setInterval(function () {
-if (!chorusPlayer || !chorusPlayer.getCurrentTime) return;
-if (chorusPlayer.getCurrentTime() >= chorusEndSec) {
-try { chorusPlayer.pauseVideo(); } catch (e) {}
-stopChorusTimer();
 }
+function ytRangeDur() {
+if (ytEndSec > ytStartSec) return ytEndSec - ytStartSec;
+if (ytPlayer && ytPlayer.getDuration) { try { var d = ytPlayer.getDuration(); if (d > ytStartSec) return d - ytStartSec; } catch (e) {} }
+return 0;
+}
+var ytPlayer = null, ytReady = false, ytTimer = null, ytStartSec = 0, ytEndSec = 0, ytAtEnd = false;
+function ytPollStart() {
+ytPollStop();
+ytTimer = setInterval(function () {
+if (pvMode !== "yt" || !ytPlayer || !ytPlayer.getCurrentTime) return;
+var t;
+try { t = ytPlayer.getCurrentTime(); } catch (e) { return; }
+if (ytEndSec > ytStartSec && t >= ytEndSec) {
+try { ytPlayer.pauseVideo(); } catch (e) {}
+pvPlaying = false; pvPaused = true; ytAtEnd = true;
+ytSetBar(1);
+pvUI();
+return;
+}
+var dur = ytRangeDur();
+if (dur > 0) ytSetBar(Math.min(1, Math.max(0, (t - ytStartSec) / dur)));
 }, 250);
 }
+function ytPollStop() { if (ytTimer) { clearInterval(ytTimer); ytTimer = null; } }
+function ytStopInternal() {
+ytPollStop();
+if (ytPlayer && ytPlayer.stopVideo) { try { ytPlayer.stopVideo(); } catch (e) {} }
+ytAtEnd = false;
+}
+function ytPauseInternal() { if (ytPlayer && ytPlayer.pauseVideo) { try { ytPlayer.pauseVideo(); } catch (e) {} } }
+function ytResumeInternal() {
+if (!ytPlayer) return;
+try {
+if (ytAtEnd || (ytEndSec > ytStartSec && ytPlayer.getCurrentTime && ytPlayer.getCurrentTime() >= ytEndSec - 0.25)) ytPlayer.seekTo(ytStartSec, true);
+ytAtEnd = false;
+ytPlayer.playVideo();
+} catch (e) {}
+}
+function startYt(s, frac) {
+pvId = s.id;
+pvPaused = false;
+pvPlaying = false;
+pvPauseSeq++;
+pvFadingOut = false;
+pvMode = "yt";
+ytAtEnd = false;
+var st = parseInt(s.ytStart, 10); ytStartSec = (isNaN(st) || st < 0) ? 0 : st;
+var en = parseInt(s.ytEnd, 10); ytEndSec = (!isNaN(en) && en > ytStartSec) ? en : 0;
+pvUI();
+var vid = ytIdFromUrl(s.ytLink);
+if (!vid) { window.open(s.ytLink, "_blank"); pvEnded(); return; }
+loadYtApiPub(function () {
+if (pvId !== s.id || pvMode !== "yt") return;
+var startAt = ytStartSec + (typeof frac === "number" && ytEndSec > ytStartSec ? frac * (ytEndSec - ytStartSec) : 0);
+if (ytPlayer && ytReady) {
+try { ytPlayer.loadVideoById({ videoId: vid, startSeconds: startAt }); } catch (e) {}
+ytPollStart();
+return;
+}
+if (!document.getElementById("pb-yt-holder")) return;
+ytPlayer = new YT.Player("pb-yt-holder", {
+videoId: vid, width: "118", height: "66",
+playerVars: { autoplay: 1, rel: 0, playsinline: 1, start: Math.floor(startAt) },
+events: {
+onReady: function (ev) { ytReady = true; try { ev.target.playVideo(); } catch (e) {} ytPollStart(); },
+onStateChange: function (ev) {
+if (pvMode !== "yt" || !window.YT) return;
+if (ev.data === YT.PlayerState.PLAYING) { pvPlaying = true; pvPaused = false; ytAtEnd = false; pvUI(); }
+else if (ev.data === YT.PlayerState.PAUSED) { if (pvPlaying) { pvPlaying = false; pvPaused = true; pvUI(); } }
+else if (ev.data === YT.PlayerState.ENDED) { pvPlaying = false; pvPaused = true; ytAtEnd = true; ytSetBar(1); pvUI(); }
+}
+}
+});
 });
 }
-function closeChorus() {
-var m = document.getElementById("cmodal");
-if (!m || !m.classList.contains("open")) return;
-m.classList.remove("open");
-document.getElementById("cmodal-backdrop").classList.remove("open");
-m.setAttribute("aria-hidden", "true");
-stopChorusTimer();
-if (chorusPlayer && chorusPlayer.destroy) { try { chorusPlayer.destroy(); } catch (e) {} chorusPlayer = null; }
-document.getElementById("cmodal-frame").innerHTML = "";
-}
-document.getElementById("cmodal-close").addEventListener("click", closeChorus);
-document.getElementById("cmodal-backdrop").addEventListener("click", closeChorus);
-document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeChorus(); });
 function metaHTML(s) {
 var kl = String(s.keyLabel || "原曲キー").replace(/\s+/g, "").replace("+", "＋");
 return '<span class="tag key">' + esc(kl) + "</span>" +
@@ -1245,7 +1268,7 @@ t.style.setProperty("--gc", genreColor(s.genre));
 t.style.animationDelay = Math.min(i * 40, 320) + "ms";
 t.setAttribute("aria-label", s.title + " / " + s.artist + " の詳細を開く");
 t.innerHTML =
-(s.preview ? '<span class="tile-pv" data-pv="' + esc(s.id) + '" aria-hidden="true">▶</span>' : "") +
+((s.preview || s.ytLink) ? '<span class="tile-pv" data-pv="' + esc(s.id) + '" aria-hidden="true">▶</span>' : "") +
 (s.jacket ? '<img src="' + esc(s.jacket) + '" alt="" loading="lazy" onload="this.classList.add(\'ld\')" onerror="this.outerHTML=\'<div class=\\\'t-ph\\\'>' + esc(firstChar(s.title)) + '</div>\'" />' : '<div class="t-ph" aria-hidden="true">' + esc(firstChar(s.title)) + "</div>") +
 '<p class="tile-title"></p><p class="tile-artist"></p>' +
 '<div class="tile-meta"><span class="tag key"><span class="k-label">KEY</span>' + esc(s.keyLabel) + "</span>" + genreTag(s) + "</div>" +
