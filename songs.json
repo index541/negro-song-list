@@ -273,15 +273,17 @@
     "id": "u018",
     "title": "色は匂へど 散りぬるを",
     "artist": "幽閉サテライト/senya",
-    "genre": "J-POP",
+    "work": "",
+    "genre": "東方Project",
     "keyLabel": "原曲 +2",
     "keyShift": 2,
     "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/ce/03/1f/ce031f3e-657a-9ac1-3ef5-b50d69be8e2d/0149721e-bb72-4ce2-9d96-55eda0c1f26f.jpg/600x600bb.jpg",
+    "memory": 5,
+    "jacket": "https://m.media-amazon.com/images/I/71wwuBR+CnL._UF1000,1000_QL80_.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/8e/b9/7d/8eb97d35-6077-38db-cfb2-e349cbc5e4a6/mzaf_12659553980304705390.plus.aac.p.m4a",
     "titleYomi": "いろはにおいへど ちりぬるを",
-    "artistYomi": "ゆうへいさてらいと/senya"
+    "artistYomi": "ゆうへいさてらいと/senya",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/8e/b9/7d/8eb97d35-6077-38db-cfb2-e349cbc5e4a6/mzaf_12659553980304705390.plus.aac.p.m4a"
   },
   {
     "id": "u020",
