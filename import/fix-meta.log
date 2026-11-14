@@ -1,0 +1,11 @@
+progress 150/675
+progress 300/675
+progress 450/675
+progress 600/675
+artist_changed: 22
+manual_applied: 1
+title_changed: 7
+skipped_ambiguous: 9
+skipped_preview_conflict: 22
+skipped_collision: 0
+DRY RUN (not applied)

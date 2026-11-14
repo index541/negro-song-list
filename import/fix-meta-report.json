@@ -1,0 +1,371 @@
+{
+  "artist_changed": [
+    {
+      "id": "u001",
+      "title": "I am Just Feeling Alive",
+      "from": "UMI☆KUUN",
+      "to": "Kyle Xian",
+      "via": "catalog i1/d1"
+    },
+    {
+      "id": "u016",
+      "title": "1925",
+      "from": "冨田悠斗(とみー/T-POCKET) feat.初音ミク",
+      "to": "LVDS",
+      "via": "catalog i1/d1"
+    },
+    {
+      "id": "u052",
+      "title": "既成事実",
+      "from": "デッドボールP loves 初音ミク",
+      "to": "yumebi",
+      "via": "catalog i1/d1"
+    },
+    {
+      "id": "u059",
+      "title": "空中庭園",
+      "from": "アヒル軍曹P feat.鏡音リン、鏡音レン",
+      "to": "FloatingCloud",
+      "via": "catalog i1/d1"
+    },
+    {
+      "id": "u074",
+      "title": "最高速 Fall in Love",
+      "from": "ミーア(CV:雨宮天) パピ(CV:小澤亜李) セントレア(CV:相川奈都姫) スー(CV:野村真悠華) メロ(CV:山崎はるか) ラクネラ(CV:中村桜)",
+      "to": "ミーア、パピ、セントレア、スー、メロ、ラクネラ",
+      "via": "catalog i1/d1"
+    },
+    {
+      "id": "u076",
+      "title": "The Secret Garden",
+      "from": "Project DIVA Original Song feat.初音ミク",
+      "to": "Wonstein",
+      "via": "catalog i1/d1"
+    },
+    {
+      "id": "w155",
+      "title": "少女レイ",
+      "from": "NORISTRY",
+      "to": "宮下遊",
+      "via": "catalog i1/d1"
+    },
+    {
+      "id": "w184",
+      "title": "なんでもないや",
+      "from": "RADWIMPS",
+      "to": "みゆな",
+      "via": "catalog i1/d1"
+    },
+    {
+      "id": "w351",
+      "title": "Sis. Anger",
+      "from": "どび",
+      "to": "BABYMETAL",
+      "via": "catalog i1/d1"
+    },
+    {
+      "id": "w403",
+      "title": "回る空うさぎ",
+      "from": "Orangestar",
+      "to": "Akuya",
+      "via": "catalog i1/d1"
+    },
+    {
+      "id": "w461",
+      "title": "Fallen Down",
+      "from": "イカロス",
+      "to": "Duncan Cox",
+      "via": "catalog i1/d1"
+    },
+    {
+      "id": "w482",
+      "title": "Catch You Catch Me",
+      "from": "グミ",
+      "to": "GUMI",
+      "via": "catalog i1/d1"
+    },
+    {
+      "id": "w507",
+      "title": "赤いスイートピー",
+      "from": "デーモン小暮",
+      "to": "ジ・エンプティ",
+      "via": "catalog i1/d1"
+    },
+    {
+      "id": "w551",
+      "title": "GLAMOROUS SKY",
+      "from": "NANA & 中島 美嘉",
+      "to": "HYDE",
+      "via": "catalog i1/d1"
+    },
+    {
+      "id": "w624",
+      "title": "人間が大好きなこわれた妖怪の唄",
+      "from": "ビートまりお",
+      "to": "COOL&CREATE",
+      "via": "catalog i1/d1"
+    },
+    {
+      "id": "w625",
+      "title": "最終鬼畜一部声",
+      "from": "ビートまりお",
+      "to": "COOL&CREATE",
+      "via": "catalog i1/d1"
+    },
+    {
+      "id": "w866",
+      "title": "夢の続き",
+      "from": "初音ミク&鏡音リン&鏡音レン&巡音ルカ",
+      "to": "鈴木このみ",
+      "via": "catalog i1/d1"
+    },
+    {
+      "id": "w1019",
+      "title": "Sugar Sweet Nightmare",
+      "from": "羽川翼",
+      "to": "Marie Bibika",
+      "via": "catalog i1/d1"
+    },
+    {
+      "id": "w1023",
+      "title": "キレキャリオン",
+      "from": "蒼空とねす",
+      "to": "ポリスピカデリー",
+      "via": "catalog i2/d1"
+    },
+    {
+      "id": "w1053",
+      "title": "私がモテないのはどう考えてもお前らが悪い",
+      "from": "鈴木このみ＆キバオブアキバ",
+      "to": "鈴木このみ n' キバオブアキバ",
+      "via": "catalog i2/d1"
+    },
+    {
+      "id": "w1149",
+      "title": "Arkadia",
+      "from": "鏡音リン＆レン",
+      "to": "BABYMETAL",
+      "via": "catalog i1/d1"
+    },
+    {
+      "id": "w1168",
+      "title": "フライングゲット",
+      "from": "鬼龍院 翔",
+      "to": "AKB48",
+      "via": "catalog i4/d1"
+    }
+  ],
+  "title_changed": [
+    {
+      "id": "u076",
+      "artist": "Wonstein",
+      "from": "The secret garden",
+      "to": "The Secret Garden"
+    },
+    {
+      "id": "w351",
+      "artist": "BABYMETAL",
+      "from": "Sis_Anger",
+      "to": "Sis. Anger"
+    },
+    {
+      "id": "w461",
+      "artist": "Duncan Cox",
+      "from": "fallen down",
+      "to": "Fallen Down"
+    },
+    {
+      "id": "w762",
+      "artist": "FLOW",
+      "from": "sign",
+      "to": "Sign"
+    },
+    {
+      "id": "w1019",
+      "artist": "Marie Bibika",
+      "from": "sugar sweet nightmare",
+      "to": "Sugar Sweet Nightmare"
+    },
+    {
+      "id": "w1053",
+      "artist": "鈴木このみ n' キバオブアキバ",
+      "from": "私がモテないのはどう考えてもお前らが悪い!",
+      "to": "私がモテないのはどう考えてもお前らが悪い"
+    },
+    {
+      "id": "w1149",
+      "artist": "BABYMETAL",
+      "from": "ARKADIA",
+      "to": "Arkadia"
+    }
+  ],
+  "manual_applied": [
+    {
+      "id": "w006",
+      "title": "桜ノ雨",
+      "from": "absorb",
+      "to": "halyosy",
+      "via": "manual"
+    }
+  ],
+  "skipped_ambiguous": [
+    {
+      "id": "u038",
+      "title": "想い出がいっぱい",
+      "artist": "H2O"
+    },
+    {
+      "id": "u108",
+      "title": "地上の星",
+      "artist": "中島みゆき"
+    },
+    {
+      "id": "u146",
+      "title": "be your girl",
+      "artist": "河辺千恵子"
+    },
+    {
+      "id": "u192",
+      "title": "LILIUM",
+      "artist": "MOKA☆"
+    },
+    {
+      "id": "w008",
+      "title": "Fallen Angel",
+      "artist": "AIMEE B"
+    },
+    {
+      "id": "w196",
+      "title": "KiLLiNG ME",
+      "artist": "SiM"
+    },
+    {
+      "id": "w368",
+      "title": "Starduster",
+      "artist": "ジミーサムP"
+    },
+    {
+      "id": "w916",
+      "title": "masterpiece",
+      "artist": "川田まみ"
+    },
+    {
+      "id": "w944",
+      "title": "こいのうた",
+      "artist": "戸松遥"
+    }
+  ],
+  "skipped_preview_conflict": [
+    {
+      "id": "u002",
+      "title": "愛こそすべて",
+      "artist": "SEX MACHINEGUNS"
+    },
+    {
+      "id": "u062",
+      "title": "Glass",
+      "artist": "河村隆一"
+    },
+    {
+      "id": "u070",
+      "title": "Call Me Maybe",
+      "artist": "Carly Rae Jepsen"
+    },
+    {
+      "id": "u096",
+      "title": "Seven Deadly Sins",
+      "artist": "MAN WITH A MISSION"
+    },
+    {
+      "id": "u109",
+      "title": "CHA-LA HEAD-CHA-LA",
+      "artist": "影山ヒロノブ"
+    },
+    {
+      "id": "u141",
+      "title": "パレード",
+      "artist": "CHABA"
+    },
+    {
+      "id": "u154",
+      "title": "Believe",
+      "artist": "Folder5"
+    },
+    {
+      "id": "u157",
+      "title": "プラネタリウム",
+      "artist": "BUMP OF CHICKEN"
+    },
+    {
+      "id": "u182",
+      "title": "やさしいキスをして",
+      "artist": "DREAMS COME TRUE"
+    },
+    {
+      "id": "w069",
+      "title": "PONPONPON",
+      "artist": "きゃりーぱみゅぱみゅ"
+    },
+    {
+      "id": "w097",
+      "title": "天国へ行こう",
+      "artist": "きくお"
+    },
+    {
+      "id": "w183",
+      "title": "前前前世",
+      "artist": "RADWIMPS"
+    },
+    {
+      "id": "w195",
+      "title": "1/3の純情な感情",
+      "artist": "SIAM SHADE"
+    },
+    {
+      "id": "w499",
+      "title": "全力少年",
+      "artist": "スキマスイッチ"
+    },
+    {
+      "id": "w508",
+      "title": "撲殺天使ドクロちゃん",
+      "artist": "ドクロちゃん"
+    },
+    {
+      "id": "w558",
+      "title": "Spirit",
+      "artist": "Project DMM"
+    },
+    {
+      "id": "w569",
+      "title": "ウィーアー!",
+      "artist": "きただにひろし"
+    },
+    {
+      "id": "w723",
+      "title": "ノーチラス",
+      "artist": "ヨルシカ"
+    },
+    {
+      "id": "w932",
+      "title": "promise",
+      "artist": "広瀬香美"
+    },
+    {
+      "id": "w955",
+      "title": "Trust Me",
+      "artist": "松下優也"
+    },
+    {
+      "id": "w972",
+      "title": "God knows...",
+      "artist": "涼宮ハルヒ(CV.平野綾)"
+    },
+    {
+      "id": "w1172",
+      "title": "どう考えても私は悪くない",
+      "artist": "黒木智子(CV:橘田いずみ)"
+    }
+  ],
+  "skipped_collision": []
+}
