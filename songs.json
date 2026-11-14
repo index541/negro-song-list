@@ -5544,7 +5544,7 @@
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "memory": null,
+    "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/fb/7c/de/fb7cde17-efad-9f06-0b36-cd22c2bec0c9/PA00075780_0_91329_jacket.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "あいら",
