@@ -5721,15 +5721,17 @@
     "id": "w569",
     "title": "ウィーアー!",
     "artist": "きただにひろし",
-    "genre": "その他",
+    "work": "ONEPIECE",
+    "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/1e/40/79/1e4079db-c461-baca-462c-6e5583af0f01/CODC-1806.jpg/600x600bb.jpg",
+    "memory": 5,
+    "jacket": "https://prcdn.freetls.fastly.net/release_image/19470/4001/19470-4001-c101b800ef0936aed1042fb0adfa553a-900x899.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/25/e4/c9/25e4c974-3bc3-d9e7-abe1-37283a94c0ce/mzaf_4403614388959647499.plus.aac.p.m4a",
     "titleYomi": "うぃーあー!",
-    "artistYomi": "きただにひろし"
+    "artistYomi": "きただにひろし",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/25/e4/c9/25e4c974-3bc3-d9e7-abe1-37283a94c0ce/mzaf_4403614388959647499.plus.aac.p.m4a"
   },
   {
     "id": "w573",
