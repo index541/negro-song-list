@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-"""サビ登録 (ytLink) があり公式試聴 (preview) が無い曲について、
+"""サビ登録 (ytLink) がある曲について、公式試聴 (preview) の有無にかかわらず
 登録範囲の音源を切り出して audio/<id>.m4a に置き、songs.json に ytClip を付ける。
-公式試聴と同じ再生経路に乗るため、公開ページでキー変更が効くようになる。
+公開ページでは ytClip が公式試聴より優先されるため、登録した範囲が
+キー変更付きでそのまま再生される。
 使い方: python3 import/make-clips.py [--dry-run]
 変更があった時だけ commit + push する。結果は標準出力に要約を出す。
 """
@@ -50,7 +51,7 @@ def main():
     referenced = set()
     for s in songs:
         target_file = os.path.join(AUDIO_DIR, s["id"] + ".m4a")
-        needs = bool(s.get("ytLink")) and not s.get("preview")
+        needs = bool(s.get("ytLink"))
         if needs:
             referenced.add(s["id"] + ".m4a")
             if s.get("ytClip") and s.get("ytClipKey") == clip_key(s) and os.path.exists(target_file):
