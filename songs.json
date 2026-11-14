@@ -8596,16 +8596,18 @@
   {
     "id": "w1093",
     "title": "インビジブル",
-    "artist": "kemu",
-    "genre": "ロック",
+    "artist": "kemu feat. GUMI、鏡音リン",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/43/58/3b/43583bbc-b02b-e7af-dac0-c3ae43791133/jacket_KSCL02085B00Z_550.jpg/600x600bb.jpg",
+    "memory": 5,
+    "jacket": "https://i1.sndcdn.com/artworks-000652330603-52vu78-t1080x1080.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/17/27/b6/1727b6a6-6654-287a-0d2b-a61682fa6c5b/mzaf_9976425601066014034.plus.aac.p.m4a",
     "titleYomi": "いんびじぶる",
-    "artistYomi": "kemu"
+    "artistYomi": "けむぐみかがみねりん",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/17/27/b6/1727b6a6-6654-287a-0d2b-a61682fa6c5b/mzaf_9976425601066014034.plus.aac.p.m4a"
   },
   {
     "id": "w1094",
