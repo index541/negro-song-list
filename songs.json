@@ -183,16 +183,17 @@
     "id": "u012",
     "title": "イェイ!イェイ!イェイ!",
     "artist": "吉田仁美",
+    "work": "スイートプリキュア♪",
     "genre": "アニソン",
-    "keyLabel": "原曲 +2",
-    "keyShift": 2,
+    "keyLabel": "原曲 +4",
+    "keyShift": 4,
     "memo": "",
+    "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/bb/0f/1a/bb0f1a5d-95a2-f7cc-d36c-9529030da27c/MJSS-09073.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/71/58/bc/7158bcdb-efdf-a11e-f8d8-95d23c7cb4d7/mzaf_4613151541821020984.plus.aac.p.m4a",
     "titleYomi": "いぇい!いぇい!いぇい!",
     "artistYomi": "よしだひとみ",
-    "work": "スイートプリキュア♪"
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/71/58/bc/7158bcdb-efdf-a11e-f8d8-95d23c7cb4d7/mzaf_4613151541821020984.plus.aac.p.m4a"
   },
   {
     "id": "u013",
