@@ -257,15 +257,17 @@
     "id": "u017",
     "title": "イマジネーション",
     "artist": "SPYAIR",
-    "genre": "ロック",
+    "work": "ハイキュー!!",
+    "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/f6/06/f7/f606f7cb-0bf0-b086-2362-922bba4edaaa/jacket_AIXX00545B00Z_550.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/5a/28/8e/5a288e76-5276-eb24-4621-0702a27c9c00/mzaf_25025913697395051.plus.aac.p.m4a",
     "titleYomi": "いまじねーしょん",
-    "artistYomi": "SPYAIR"
+    "artistYomi": "SPYAIR",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/5a/28/8e/5a288e76-5276-eb24-4621-0702a27c9c00/mzaf_25025913697395051.plus.aac.p.m4a"
   },
   {
     "id": "u018",
