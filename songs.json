@@ -8403,7 +8403,9 @@
     "artistYomi": "クロウサP",
     "ytLink": "https://www.youtube.com/watch?v=shs0rAiwsGQ",
     "ytStart": 55,
-    "ytEnd": 70
+    "ytEnd": 70,
+    "ytClip": "audio/w1082.m4a",
+    "ytClipKey": "https://www.youtube.com/watch?v=shs0rAiwsGQ|55|70"
   },
   {
     "id": "w1085",
