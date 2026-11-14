@@ -1208,8 +1208,8 @@ var arr = SONGS.filter(function (s) {
 if (state.genre !== "すべて" && s.genre !== state.genre) return false;
 if (state.artist && s.artist !== state.artist) return false;
 if (state.q) {
-var hay = (s.title + " " + s.artist + " " + (s.work || "")).toLowerCase();
-var terms = state.q.split(/\s+/);
+var hay = kanaNorm((s.title + " " + s.artist + " " + (s.work || "") + " " + (s.titleYomi || "") + " " + (s.artistYomi || "")).toLowerCase());
+var terms = state.q.split(/\s+/).map(function (t) { return kanaNorm(t); });
 for (var i = 0; i < terms.length; i++) if (terms[i] && hay.indexOf(terms[i]) === -1) return false;
 }
 return true;

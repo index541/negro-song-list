@@ -595,8 +595,8 @@ if (admState.todo === "nojacket" && s.jacket) return false;
 if (admState.todo === "yomieng" && !(s.artistYomi && s.artistYomi === s.artist)) return false;
 if (admState.todo === "key0" && (s.keyShift || 0) !== 0) return false;
 if (admState.q) {
-var hay = (s.title + " " + s.artist + " " + s.genre + " " + (s.work || "") + " " + (s.memo || "")).toLowerCase();
-var terms = admState.q.split(/\s+/);
+var hay = kanaNorm((s.title + " " + s.artist + " " + s.genre + " " + (s.work || "") + " " + (s.memo || "") + " " + (s.titleYomi || "") + " " + (s.artistYomi || "")).toLowerCase());
+var terms = admState.q.split(/\s+/).map(function (t) { return kanaNorm(t); });
 for (var i = 0; i < terms.length; i++) if (terms[i] && hay.indexOf(terms[i]) === -1) return false;
 }
 return true;
