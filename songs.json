@@ -9316,19 +9316,5 @@
     "ytClipKey": "https://www.youtube.com/watch?v=jpV5jeFlt_E|73|111",
     "titleYomi": "きみのしらないものがたり",
     "artistYomi": "supercell"
-  },
-  {
-    "id": "autotest1",
-    "title": "自動更新テストの歌",
-    "artist": "テストアーティスト",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "memory": null,
-    "jacket": "",
-    "addedAt": "2026-11-14",
-    "titleYomi": "じどうこうしんてすとのうた",
-    "artistYomi": "てすとあーてぃすと"
   }
 ]
