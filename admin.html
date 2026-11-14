@@ -182,8 +182,18 @@ body.has-bulk-float { padding-bottom:86px; }
 <input id="f-title" type="text"  />
 </div>
 <div class="field">
+<label for="f-titleyomi">曲名のよみがな</label>
+<input id="f-titleyomi" type="text" placeholder="あいこそすべて" />
+<p class="desc">五十音順の並びと見出しに使われます。自動の読みが違う時だけ直してください。空欄なら自動判定になります。</p>
+</div>
+<div class="field">
 <label for="f-artist">アーティスト<span class="req">必須</span></label>
 <input id="f-artist" type="text"  />
+</div>
+<div class="field">
+<label for="f-artistyomi">アーティストのよみがな</label>
+<input id="f-artistyomi" type="text" placeholder="らるくあんしえる" />
+<p class="desc">アーティスト順の並びに使われます。自動の読みが違う時だけ直してください。空欄なら自動判定になります。</p>
 </div>
 <div class="field">
 <label for="f-work">作品名</label>
@@ -686,7 +696,7 @@ else setStatus("token-status", "接続できませんでした（" + r.status + 
 function clearEditor() {
 var st = document.getElementById("sheet-title");
 if (st) st.textContent = "曲の編集";
-$("f-id").value = ""; $("f-title").value = ""; $("f-artist").value = ""; $("f-work").value = ""; $("f-genre").value = "";
+$("f-id").value = ""; $("f-title").value = ""; $("f-titleyomi").value = ""; $("f-artist").value = ""; $("f-artistyomi").value = ""; $("f-work").value = ""; $("f-genre").value = "";
 $("f-keylabel").value = ""; $("f-memory").value = ""; $("f-memo").value = ""; $("f-jacket").value = "";
 $("f-ytlink").value = ""; $("f-ytstart").value = ""; $("f-ytend").value = "";
 $("f-import-url").value = ""; $("import-status").textContent = "";
@@ -707,7 +717,7 @@ function editSong(id) {
 var s = null;
 songs.forEach(function (x) { if (x.id === id) s = x; });
 if (!s) return;
-$("f-id").value = s.id; $("f-title").value = s.title; $("f-artist").value = s.artist;
+$("f-id").value = s.id; $("f-title").value = s.title; $("f-titleyomi").value = s.titleYomi || ""; $("f-artist").value = s.artist; $("f-artistyomi").value = s.artistYomi || "";
 $("f-work").value = s.work || "";
 $("f-genre").value = s.genre; $("f-keylabel").value = s.keyLabel;
 $("f-memory").value = (s.memory === null || s.memory === undefined) ? "" : String(s.memory);
@@ -1081,11 +1091,15 @@ var ytLinkV = $("f-ytlink").value.trim();
 var ytStartV = parseInt($("f-ytstart").value, 10);
 var ytEndV = parseInt($("f-ytend").value, 10);
 if (ytLinkV) { obj.ytLink = ytLinkV; if (!isNaN(ytStartV) && ytStartV > 0) obj.ytStart = ytStartV; if (!isNaN(ytEndV) && ytEndV > 0 && (isNaN(ytStartV) || ytEndV > ytStartV)) obj.ytEnd = ytEndV; }
+var titleYomiV = $("f-titleyomi").value.trim();
+var artistYomiV = $("f-artistyomi").value.trim();
+if (titleYomiV) obj.titleYomi = titleYomiV;
+if (artistYomiV) obj.artistYomi = artistYomiV;
 var isNew = !id;
 if (id) {
 var old = null;
 songs.forEach(function (x) { if (x.id === id) old = x; });
-if (old) { obj.addedAt = old.addedAt || obj.addedAt; if (old.preview) obj.preview = old.preview; if (old.titleYomi && old.title === title) obj.titleYomi = old.titleYomi; if (old.artistYomi && old.artist === artist) obj.artistYomi = old.artistYomi; }
+if (old) { obj.addedAt = old.addedAt || obj.addedAt; if (old.preview) obj.preview = old.preview; }
 songs = songs.map(function (x) { return x.id === id ? obj : x; });
 } else songs.push(obj);
 var btn = $("song-save");
