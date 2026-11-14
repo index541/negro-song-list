@@ -47,8 +47,12 @@
     "memory": 4,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/dd/ee/e8/ddeee880-1c29-2473-2ee8-e56706dda64e/859757589333_cover.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
+    "ytLink": "https://www.youtube.com/watch?v=I0eeS5wYGzI",
+    "ytStart": 69,
+    "ytEnd": 101,
     "titleYomi": "アイコトバ",
-    "artistYomi": "DECO*27"
+    "artistYomi": "DECO*27",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/de/39/3c/de393cde-9f67-d4b3-a55b-375e937d69ee/mzaf_206706861710945560.plus.aac.p.m4a"
   },
   {
     "id": "u004",
