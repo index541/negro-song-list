@@ -4763,16 +4763,18 @@
   {
     "id": "w402",
     "title": "アサガオの散る頃に",
-    "artist": "めありー",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
+    "artist": "ぷす feat.  初音ミク",
+    "work": "",
+    "genre": "ボカロ",
+    "keyLabel": "原曲 +4",
+    "keyShift": 4,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/f5/b4/3a/f5b43a60-6a1e-ff7e-0411-96196c09ca8c/4522197134406_cover.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/a1/b1/d3/a1b1d3f8-c1dc-711e-f18c-e0ea89596dd9/mzaf_15838677509079340912.plus.aac.p.m4a",
     "titleYomi": "あさがおのちるころに",
-    "artistYomi": "めありー"
+    "artistYomi": "ぷすはつねみく",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/a1/b1/d3/a1b1d3f8-c1dc-711e-f18c-e0ea89596dd9/mzaf_15838677509079340912.plus.aac.p.m4a"
   },
   {
     "id": "w403",
