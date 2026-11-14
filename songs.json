@@ -228,15 +228,17 @@
   {
     "id": "u015",
     "title": "いすゞのトラック",
-    "artist": "KAZCO",
-    "genre": "アニソン",
-    "keyLabel": "原曲 +4",
-    "keyShift": 4,
+    "artist": "大友康平",
+    "work": "",
+    "genre": "J-POP",
+    "keyLabel": "原曲キー",
+    "keyShift": 0,
     "memo": "",
+    "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music71/v4/f9/bd/a2/f9bda244-511a-1b4d-e4dd-74b3d065a925/859753140989_cover.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "いすずのとらっく",
-    "artistYomi": "KAZCO"
+    "artistYomi": "おおともこうへい"
   },
   {
     "id": "u016",
