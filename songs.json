@@ -452,14 +452,17 @@
     "id": "u032",
     "title": "オオカミガール",
     "artist": "くらP feat.初音ミク",
+    "work": "",
     "genre": "ボカロ",
     "keyLabel": "原曲 +4",
     "keyShift": 4,
     "memo": "",
-    "jacket": "",
+    "memory": null,
+    "jacket": "https://static.wikia.nocookie.net/vocaloid/images/0/01/Hatsune_Miku-Wolf_Girl_%28Ookami_Gaaru%29_Niconico_Version.jpg/revision/latest?cb=20140707153751",
     "addedAt": "2026-11-12",
     "titleYomi": "おおかみがーる",
-    "artistYomi": "くらP feat.はつねみく"
+    "artistYomi": "くらP feat.はつねみく",
+    "jacketPos": "43% 39%"
   },
   {
     "id": "u033",
