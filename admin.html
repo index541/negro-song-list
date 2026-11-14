@@ -376,9 +376,10 @@ function b64decode(b64) { var bin = atob(String(b64).replace(/\s/g, "")); var by
 function todayJST() { return new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Tokyo" }); }
 function keyShiftFromLabel(label) {
 if (!label || label.indexOf("原曲キー") === 0) return 0;
-var m = String(label).replace("－", "-").replace("＋", "+").match(/([+-])\s*(\d+)/);
-if (m) return (m[1] === "-" ? -1 : 1) * parseInt(m[2], 10);
-return 0;
+var m = String(label).match(/([+＋\-−])\s*(\d+)/);
+if (!m) return 0;
+var n = parseInt(m[2], 10);
+return (m[1] === "-" || m[1] === "−") ? -n : n;
 }
 function ghHeaders() { return { "Authorization": "Bearer " + token, "Accept": "application/vnd.github+json", "Content-Type": "application/json" }; }
 
