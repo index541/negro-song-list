@@ -4188,16 +4188,18 @@
   {
     "id": "w317",
     "title": "悪ノ娘",
-    "artist": "mothy_悪ノP",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
+    "artist": "悪ノP feat. 鏡音リン",
+    "work": "",
+    "genre": "ボカロ",
+    "keyLabel": "原曲 −4",
+    "keyShift": -4,
     "memo": "",
+    "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music3/v4/d4/da/f0/d4daf096-4186-1a49-f462-c4443b671b0d/825646135615.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ca/c0/75/cac07512-694c-0339-1f7f-99ff37681b9b/mzaf_1694921722793869159.plus.aac.p.m4a",
     "titleYomi": "あくのむすめ",
-    "artistYomi": "mothy_あくのP"
+    "artistYomi": "あくのぴーふゅーちゃりんぐかがみねりん",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ca/c0/75/cac07512-694c-0339-1f7f-99ff37681b9b/mzaf_1694921722793869159.plus.aac.p.m4a"
   },
   {
     "id": "w320",
