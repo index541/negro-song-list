@@ -243,10 +243,14 @@ body.has-bulk-float { padding-bottom:86px; }
 <div class="yt-range-row"><span class="yt-cap">開始</span><input type="range" id="f-ytstart-r" min="0" max="0" step="1" value="0" /><span class="yt-time" id="yt-start-t">0:00</span></div>
 <div class="yt-range-row"><span class="yt-cap">終了</span><input type="range" id="f-ytend-r" min="0" max="0" step="1" value="0" /><span class="yt-time" id="yt-end-t">0:00</span></div>
 <div class="btn-row">
+<button type="button" class="btn sub" id="yt-set-start">今の位置を開始に</button>
+<button type="button" class="btn sub" id="yt-set-end">今の位置を終了に</button>
+</div>
+<div class="btn-row">
 <button type="button" class="btn sub" id="yt-audition">この範囲を再生する</button>
 <span class="yt-time" id="yt-dur"></span>
 </div>
-<p class="desc">スライダーを動かすと秒の欄にも反映されます。「この範囲を再生する」で確かめながら合わせられます。</p>
+<p class="desc">スライダーを動かすと秒の欄にも反映されます。動画を再生しながら「今の位置を開始に／終了に」を押すと、その位置がそのまま入ります。「この範囲を再生する」で確かめながら合わせられます。</p>
 </div>
 <div class="btn-row" style="margin-top:16px">
 <button type="button" class="btn primary" id="song-save">保存する</button>
@@ -781,6 +785,14 @@ $("f-ytstart").addEventListener("input", function () { $("f-ytstart-r").value = 
 $("f-ytend").addEventListener("input", function () { $("f-ytend-r").value = $("f-ytend").value || 0; syncYtLabels(); });
 $("f-ytstart").addEventListener("change", function () { clampYt("start"); });
 $("f-ytend").addEventListener("change", function () { clampYt("end"); });
+function ytSetFromPlayer(which) {
+if (!ytPlayer || !ytPlayer.getCurrentTime) return;
+var t = Math.floor(ytPlayer.getCurrentTime() || 0);
+if (which === "start") { $("f-ytstart").value = t; clampYt("start"); }
+else { $("f-ytend").value = t; clampYt("end"); }
+}
+$("yt-set-start").addEventListener("click", function () { ytSetFromPlayer("start"); });
+$("yt-set-end").addEventListener("click", function () { ytSetFromPlayer("end"); });
 $("yt-audition").addEventListener("click", function () {
 if (!ytPlayer || !ytPlayer.seekTo) return;
 var st = parseInt($("f-ytstart-r").value, 10) || 0;
