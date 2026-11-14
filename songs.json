@@ -367,14 +367,17 @@
     "id": "u025",
     "title": "ウルトラマンパワード",
     "artist": "前田達也",
+    "work": "",
     "genre": "その他",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "",
+    "memory": null,
+    "jacket": "https://columbia.jp/prod-info/jacket/COCC-72185.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "うるとらまんぱわーど",
-    "artistYomi": "まえだたつや"
+    "artistYomi": "まえだたつや",
+    "jacketPos": "0% 100%"
   },
   {
     "id": "u026",
