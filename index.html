@@ -1330,10 +1330,7 @@ if (!panelStates[key]) panelStates[key] = { phase: "edit", name: "", message: ""
 return panelStates[key];
 }
 function refreshButton(btn) {
-if (sentFlags[btn.getAttribute("data-key")]) {
-btn.classList.add("sent");
-btn.innerHTML = ICON_CHECK + "<span>送信しました</span>";
-}
+// 送信後もボタンはそのまま使えるようにする（「送信しました」に固定しない）
 }
 function buildFormHTML(key, song, type, st) {
 var isDuet = type === "duet";
@@ -1413,9 +1410,6 @@ if (msg) body.append(ENTRY.message, msg);
 fetch(FORM_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" }, body: body.toString() })
 .then(function () {
 st.phase = "sent";
-sentFlags[key] = true;
-var btn = listEl.querySelector('.req-btn[data-key="' + key + '"]');
-if (btn) refreshButton(btn);
 rerender(false);
 })
 .catch(function () {
@@ -1437,7 +1431,8 @@ function closeAllForms() { openKey = null; closeSheet(); renderPanel(false); }
 // ===== List inline panel =====
 function onReqButton(btn) {
 var key = btn.getAttribute("data-key");
-if (sentFlags[key]) return;
+var st = stateFor(key);
+if (st.phase === "sent") { st.phase = "edit"; st.nameError = false; }
 openKey = openKey === key ? null : key;
 renderPanel(!!openKey);
 }
@@ -1509,9 +1504,9 @@ sheetBody.querySelector(".sheet-artist").textContent = song.artist;
 sheetBody.querySelector(".memo").textContent = song.memo || "";
 sheetBody.querySelectorAll(".req-btn").forEach(function (btn) {
 var key = btn.getAttribute("data-skey");
-if (sentFlags[key]) { btn.classList.add("sent"); btn.innerHTML = ICON_CHECK + "<span>送信しました</span>"; }
 btn.addEventListener("click", function () {
-if (sentFlags[key]) return;
+var st = stateFor(key);
+if (st.phase === "sent") { st.phase = "edit"; st.nameError = false; }
 sheetKey = sheetKey === key ? null : key;
 openKey = sheetKey;
 renderSheetForm(true);
