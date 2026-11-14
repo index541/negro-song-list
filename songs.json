@@ -5525,15 +5525,17 @@
     "id": "w518",
     "title": "アイラ",
     "artist": "n-buna",
+    "work": "",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/fb/7c/de/fb7cde17-efad-9f06-0b36-cd22c2bec0c9/PA00075780_0_91329_jacket.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/11/c6/e1/11c6e18d-0e31-9f26-c5a8-3caddb78f7ce/mzaf_2445367213589319372.plus.aac.p.m4a",
     "titleYomi": "あいら",
-    "artistYomi": "n-buna"
+    "artistYomi": "なぶな",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/11/c6/e1/11c6e18d-0e31-9f26-c5a8-3caddb78f7ce/mzaf_2445367213589319372.plus.aac.p.m4a"
   },
   {
     "id": "w521",
