@@ -4950,15 +4950,17 @@
   {
     "id": "w419",
     "title": "イーガー♥ビリーバー",
-    "artist": "ろん",
-    "genre": "その他",
+    "artist": "アヒル軍曹P feat. 鏡音リン",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "",
+    "memory": null,
+    "jacket": "https://img.cdn.nimg.jp/s/nicovideo/thumbnails/10944122/10944122.original/r1280x720l?key=d8dadfc6b5756e75334906ad723f1e9c2eeec947a4fe5944921cdb866887702a",
     "addedAt": "2026-11-12",
     "titleYomi": "いーがー♥びりーばー",
-    "artistYomi": "ろん"
+    "artistYomi": "あひるぐんそうぴーかがみねりん"
   },
   {
     "id": "w420",
