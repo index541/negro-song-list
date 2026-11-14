@@ -8143,7 +8143,7 @@
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "memory": null,
+    "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/9d/1e/4d/9d1e4da0-f56e-5375-a780-7dd04f06479b/00600406441225.rgb.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "ytLink": "https://www.youtube.com/watch?v=-EKxzId_Sj4",
