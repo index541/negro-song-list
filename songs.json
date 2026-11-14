@@ -152,15 +152,17 @@
     "id": "u010",
     "title": "アルエ",
     "artist": "BUMP OF CHICKEN",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲 +2",
     "keyShift": 2,
     "memo": "",
+    "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/c0/83/9d/c0839dc8-453c-6cde-49d3-b3d5d0b9418e/TFCC-86163WW.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/da/81/98/da8198ce-0e98-23a6-06a8-d2d3548c7fd2/mzaf_17122876016679822418.plus.aac.p.m4a",
     "titleYomi": "あるえ",
-    "artistYomi": "BUMP OF CHICKEN"
+    "artistYomi": "BUMP OF CHICKEN",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/da/81/98/da8198ce-0e98-23a6-06a8-d2d3548c7fd2/mzaf_17122876016679822418.plus.aac.p.m4a"
   },
   {
     "id": "u011",
