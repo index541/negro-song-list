@@ -1555,7 +1555,7 @@ if (sk) sk.classList.add("done");
 }
 fetch("songs.json", { cache: "no-store" })
 .then(function (r) { if (!r.ok) throw new Error("ng"); return r.json(); })
-.then(function (d) { if (Array.isArray(d) && d.length) SONGS = d; ready(); })
+.then(function (d) { if (Array.isArray(d) && d.length) { d.forEach(function (s) { if (!s.preview && s.ytClip) s.preview = s.ytClip; }); SONGS = d; } ready(); })
 .catch(function () { ready(); });
 setTimeout(function () { var sk = document.getElementById("skeleton"); if (sk && !sk.classList.contains("done")) ready(); }, 2500);
 </script>
