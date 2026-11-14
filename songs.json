@@ -120,15 +120,17 @@
     "id": "u008",
     "title": "アフターダーク",
     "artist": "ASIAN KUNG-FU GENERATION",
-    "genre": "ロック",
+    "work": "BLEACH",
+    "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/48/96/3e/48963e5a-75d7-7a8b-132c-233f26ebd70d/jacket_KSCL01917B00Z_550.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ed/0d/6f/ed0d6ff0-d645-8698-b5b2-23feee3860c1/mzaf_10500902622289664662.plus.aac.p.m4a",
     "titleYomi": "あふたーだーく",
-    "artistYomi": "ASIAN KUNG-FU GENERATION"
+    "artistYomi": "あじあんかんふーじぇねれーしょん",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ed/0d/6f/ed0d6ff0-d645-8698-b5b2-23feee3860c1/mzaf_10500902622289664662.plus.aac.p.m4a"
   },
   {
     "id": "u009",
