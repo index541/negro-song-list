@@ -275,6 +275,7 @@ body.has-bulk-float { padding-bottom:86px; }
 </div>
 <div class="btn-row" style="margin-top:16px">
 <button type="button" class="btn primary" id="song-save">保存する</button>
+<button type="button" class="btn sub" id="song-save-next" style="display:none">保存して次の曲</button>
 <button type="button" class="btn sub" id="song-clear">新規入力に戻す</button>
 </div>
 <p class="status" id="save-status"></p>
@@ -696,6 +697,7 @@ else setStatus("token-status", "接続できませんでした（" + r.status + 
 function clearEditor() {
 var st = document.getElementById("sheet-title");
 if (st) st.textContent = "曲の編集";
+$("song-save-next").style.display = "none";
 $("f-id").value = ""; $("f-title").value = ""; $("f-titleyomi").value = ""; $("f-artist").value = ""; $("f-artistyomi").value = ""; $("f-work").value = ""; $("f-genre").value = "";
 $("f-keylabel").value = ""; $("f-memory").value = ""; $("f-memo").value = ""; $("f-jacket").value = "";
 $("f-ytlink").value = ""; $("f-ytstart").value = ""; $("f-ytend").value = "";
@@ -729,6 +731,7 @@ kaStop(); kaSetKey(keyShiftFromLabel(s.keyLabel));
 $("f-jacket").dispatchEvent(new Event("input"));
 var st = document.getElementById("sheet-title");
 if (st) st.textContent = "「" + s.title + "」を編集";
+$("song-save-next").style.display = "";
 setStatus("save-status", "", null);
 openEditor();
 }
@@ -1064,7 +1067,7 @@ if (excludeId && s.id === excludeId) return false;
 return normTitleBasic(s.title) === basic || normTitleLoose(s.title) === loose;
 });
 }
-$("song-save").addEventListener("click", function () {
+function saveSong(goNext) {
 var title = $("f-title").value.trim();
 var artist = $("f-artist").value.trim();
 if (!title || !artist) { setStatus("save-status", "曲名とアーティストは必須です。", false); return; }
@@ -1103,20 +1106,33 @@ if (old) { obj.addedAt = old.addedAt || obj.addedAt; if (old.preview) obj.previe
 songs = songs.map(function (x) { return x.id === id ? obj : x; });
 } else songs.push(obj);
 var btn = $("song-save");
-btn.disabled = true;
+var btnNext = $("song-save-next");
+btn.disabled = true; btnNext.disabled = true;
 function doCommit() {
 setStatus("save-status", "保存中…", null);
 commitSongs((isNew ? "曲を追加: " : "曲を更新: ") + title)
 .then(function () {
-btn.disabled = false;
+btn.disabled = false; btnNext.disabled = false;
 renderSongs();
+var nextId = null;
+if (goNext && id) {
+var view = adminViewSongs();
+for (var vi = 0; vi < view.length; vi++) { if (view[vi].id === id) { if (vi + 1 < view.length) nextId = view[vi + 1].id; break; } }
+}
+if (nextId) {
+editSong(nextId);
+var sh = document.querySelector(".modal-sheet"); if (sh) sh.scrollTop = 0;
+setStatus("save-status", "保存しました。次の曲を表示しています。", true);
+toast("保存しました。次の曲に進みました");
+} else {
 clearEditor();
 closeEditor();
-toast("保存しました。公開ページへの反映は1分ほどかかります");
+toast(goNext && id ? "保存しました。表示中の最後の曲でした" : "保存しました。公開ページへの反映は1分ほどかかります");
 setStatus("save-status", "保存できました。", true);
+}
 })
 .catch(function (e) {
-btn.disabled = false;
+btn.disabled = false; btnNext.disabled = false;
 setStatus("save-status", e.message || "保存に失敗しました。トークンを確認してください。", false);
 });
 }
@@ -1124,7 +1140,9 @@ if (obj.ytLink && !obj.preview) {
 setStatus("save-status", "公式試聴を探しています…", null);
 findPreviewUrl(obj.title, obj.artist).then(function (url) { if (url) obj.preview = url; doCommit(); }).catch(function () { doCommit(); });
 } else doCommit();
-});
+}
+$("song-save").addEventListener("click", function () { saveSong(false); });
+$("song-save-next").addEventListener("click", function () { saveSong(true); });
 
 // ===== Jacket search =====
 var GENRE_MAP = { "J-Pop": "J-POP", "Pop": "J-POP", "Anime": "アニソン", "Rock": "ロック", "Alternative": "ロック", "Vocaloid": "ボカロ", "Soundtrack": "アニソン", "Rock / Metal": "ロック", "Metal": "ロック", "Dance": "ダンス", "vocaloid": "ボカロ", "anime": "アニソン", "j-pop": "J-POP", "jpop": "J-POP", "rock": "ロック", "pop": "J-POP", "anison": "アニソン" };
