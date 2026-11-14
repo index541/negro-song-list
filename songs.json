@@ -6196,16 +6196,18 @@
   {
     "id": "w690",
     "title": "悪ノ召使",
-    "artist": "mothy_悪ノP",
-    "genre": "アニソン",
+    "artist": "悪ノP feat. 鏡音レン",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/d2/2e/bf/d22ebf32-b5e6-a6a8-8676-c6312caafdd5/QWCE_00663_2.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/6b/59/bd/6b59bd5f-ea55-98e0-2ffe-84997a01d20d/mzaf_12829774025343496005.plus.aac.p.m4a",
     "titleYomi": "あくのめしつかい",
-    "artistYomi": "mothy_あくのP"
+    "artistYomi": "あくのぴーかがみねれん",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/6b/59/bd/6b59bd5f-ea55-98e0-2ffe-84997a01d20d/mzaf_12829774025343496005.plus.aac.p.m4a"
   },
   {
     "id": "w693",
