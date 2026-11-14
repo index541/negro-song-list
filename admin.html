@@ -1067,6 +1067,7 @@ if (excludeId && s.id === excludeId) return false;
 return normTitleBasic(s.title) === basic || normTitleLoose(s.title) === loose;
 });
 }
+function yomiHira(s) { return (s || "").replace(/[ァ-ヶ]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0x60); }); }
 function saveSong(goNext) {
 var title = $("f-title").value.trim();
 var artist = $("f-artist").value.trim();
@@ -1094,15 +1095,15 @@ var ytLinkV = $("f-ytlink").value.trim();
 var ytStartV = parseInt($("f-ytstart").value, 10);
 var ytEndV = parseInt($("f-ytend").value, 10);
 if (ytLinkV) { obj.ytLink = ytLinkV; if (!isNaN(ytStartV) && ytStartV > 0) obj.ytStart = ytStartV; if (!isNaN(ytEndV) && ytEndV > 0 && (isNaN(ytStartV) || ytEndV > ytStartV)) obj.ytEnd = ytEndV; }
-var titleYomiV = $("f-titleyomi").value.trim();
-var artistYomiV = $("f-artistyomi").value.trim();
+var titleYomiV = yomiHira($("f-titleyomi").value.trim());
+var artistYomiV = yomiHira($("f-artistyomi").value.trim());
 if (titleYomiV) obj.titleYomi = titleYomiV;
 if (artistYomiV) obj.artistYomi = artistYomiV;
 var isNew = !id;
 if (id) {
 var old = null;
 songs.forEach(function (x) { if (x.id === id) old = x; });
-if (old) { obj.addedAt = old.addedAt || obj.addedAt; if (old.preview) obj.preview = old.preview; }
+if (old) { obj.addedAt = old.addedAt || obj.addedAt; if (old.preview) obj.preview = old.preview; if (old.ytClip) obj.ytClip = old.ytClip; if (old.ytClipKey) obj.ytClipKey = old.ytClipKey; }
 songs = songs.map(function (x) { return x.id === id ? obj : x; });
 } else songs.push(obj);
 var btn = $("song-save");
