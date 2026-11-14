@@ -4847,15 +4847,18 @@
   {
     "id": "w412",
     "title": "うたうたいのうた",
-    "artist": "りぶ",
-    "genre": "J-POP",
+    "artist": "ナノウ",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/31/1b/d6/311bd673-136a-5a28-0b00-16a1d73af53f/4580151287735.jpg/600x600bb.jpg",
+    "memory": 5,
+    "jacket": "https://i.ytimg.com/vi/utM2tgtLTnc/mqdefault.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "うたうたいのうた",
-    "artistYomi": "りぶ"
+    "artistYomi": "なのう",
+    "jacketPos": "62% 46%"
   },
   {
     "id": "w413",
