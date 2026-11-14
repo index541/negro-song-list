@@ -289,6 +289,19 @@ body.pbon #to-top { bottom: 176px;}
 *, *::before, *::after { animation-duration:.01ms!important; transition-duration:.01ms!important;}
 html { scroll-behavior: auto;}
 }
+.search-box { position:relative; }
+.sg-box { position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:80; background:var(--surface); border:1.5px solid var(--line); border-radius:14px; box-shadow:0 14px 34px rgba(0,0,0,.18); overflow-y:auto; max-height:60vh; }
+.sg-row { display:flex; align-items:center; gap:10px; width:100%; padding:9px 12px; background:none; border:0; border-bottom:1px solid var(--line); font:inherit; text-align:left; cursor:pointer; color:var(--ink); }
+.sg-row:last-child { border-bottom:0; }
+.sg-row.on { background:var(--accent-soft, #ffe2e2); }
+.sg-row img, .sg-ph { width:38px; height:38px; border-radius:8px; object-fit:cover; flex:none; background:var(--surface-2, #f1f1f1); }
+.sg-ph { display:flex; align-items:center; justify-content:center; font-weight:900; color:var(--ink-3); }
+.sg-main { min-width:0; display:flex; flex-direction:column; }
+.sg-main b { font-size:14.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.sg-main i { font-style:normal; font-size:12px; color:var(--ink-3); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.sg-kind { flex:none; font-size:11px; font-weight:900; color:#fff; background:var(--accent); border-radius:99px; padding:3px 8px; }
+.sg-kind.work { background:#5053f0; }
+.sg-count { margin-left:auto; flex:none; font-size:12px; color:var(--ink-3); }
 </style>
 </head>
 <body>
@@ -1600,6 +1613,87 @@ window.scrollTo(0, sy);
 }
 setInterval(autoRefreshSongs, 60000);
 document.addEventListener("visibilitychange", function () { if (!document.hidden) autoRefreshSongs(); });
+</script>
+<script>
+// ===== 検索の予測候補 =====
+function sgNorm(s) { return String(s || "").toLowerCase().replace(/[ァ-ヶ]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0x60); }); }
+function sgCandidates(q, arr) {
+var needle = sgNorm(q).trim();
+if (!needle) return [];
+var songHits = [], artists = {}, works = {};
+arr.forEach(function (s) {
+var t = sgNorm(s.title), ty = sgNorm(s.titleYomi), a = sgNorm(s.artist), ay = sgNorm(s.artistYomi), w = sgNorm(s.work);
+var score = -1;
+if (t.indexOf(needle) === 0) score = 0;
+else if (t.indexOf(needle) >= 0) score = 1;
+else if (ty.indexOf(needle) === 0) score = 1;
+else if (ty.indexOf(needle) >= 0) score = 2;
+else if (a.indexOf(needle) >= 0 || ay.indexOf(needle) >= 0) score = 3;
+else if (w && w.indexOf(needle) >= 0) score = 4;
+if (score >= 0) songHits.push({ s: s, score: score });
+if (a.indexOf(needle) >= 0 || ay.indexOf(needle) >= 0) artists[s.artist] = (artists[s.artist] || 0) + 1;
+if (s.work && w.indexOf(needle) >= 0) works[s.work] = (works[s.work] || 0) + 1;
+});
+songHits.sort(function (x, y) { return x.score - y.score || x.s.title.localeCompare(y.s.title, "ja"); });
+var out = [];
+songHits.slice(0, 6).forEach(function (h) { out.push({ type: "song", s: h.s }); });
+Object.keys(artists).sort(function (a, b) { return artists[b] - artists[a]; }).slice(0, 2).forEach(function (n) { out.push({ type: "artist", name: n, count: artists[n] }); });
+Object.keys(works).sort(function (a, b) { return works[b] - works[a]; }).slice(0, 2).forEach(function (n) { out.push({ type: "work", name: n, count: works[n] }); });
+return out.slice(0, 8);
+}
+function attachSuggest(input, container, songsFn, onSong) {
+var box = document.createElement("div");
+box.className = "sg-box"; box.style.display = "none";
+container.appendChild(box);
+var items = [], active = -1;
+function close() { box.style.display = "none"; box.innerHTML = ""; items = []; active = -1; }
+function highlight() { for (var i = 0; i < box.children.length; i++) box.children[i].classList.toggle("on", i === active); }
+function activate(c) {
+if (c.type === "song") { close(); onSong(c.s); return; }
+input.value = c.name;
+input.dispatchEvent(new Event("input"));
+close();
+input.focus();
+}
+function open() {
+var cands = sgCandidates(input.value, songsFn());
+if (!cands.length) { close(); return; }
+box.innerHTML = ""; items = cands; active = -1;
+cands.forEach(function (c) {
+var b = document.createElement("button");
+b.type = "button"; b.className = "sg-row";
+if (c.type === "song") {
+if (c.s.jacket) { var img = document.createElement("img"); img.src = c.s.jacket; img.alt = ""; img.addEventListener("error", function () { img.style.display = "none"; }); b.appendChild(img); }
+else { var ph = document.createElement("span"); ph.className = "sg-ph"; ph.textContent = String(c.s.title || "?").charAt(0); b.appendChild(ph); }
+var main = document.createElement("span"); main.className = "sg-main";
+var bt = document.createElement("b"); bt.textContent = c.s.title;
+var it = document.createElement("i"); it.textContent = c.s.artist;
+main.appendChild(bt); main.appendChild(it); b.appendChild(main);
+} else {
+var kind = document.createElement("span"); kind.className = "sg-kind" + (c.type === "work" ? " work" : "");
+kind.textContent = c.type === "work" ? "作品" : "アーティスト";
+var nm = document.createElement("span"); nm.className = "sg-main";
+var nb = document.createElement("b"); nb.textContent = c.name; nm.appendChild(nb);
+var ct = document.createElement("span"); ct.className = "sg-count"; ct.textContent = c.count + "曲";
+b.appendChild(kind); b.appendChild(nm); b.appendChild(ct);
+}
+b.addEventListener("mousedown", function (e) { e.preventDefault(); activate(c); });
+box.appendChild(b);
+});
+box.style.display = "";
+}
+input.addEventListener("input", open);
+input.addEventListener("focus", function () { if (input.value.trim()) open(); });
+input.addEventListener("keydown", function (e) {
+if (box.style.display === "none") return;
+if (e.key === "ArrowDown") { e.preventDefault(); active = Math.min(active + 1, items.length - 1); highlight(); }
+else if (e.key === "ArrowUp") { e.preventDefault(); active = Math.max(active - 1, 0); highlight(); }
+else if (e.key === "Enter") { if (items.length) { e.preventDefault(); activate(items[active >= 0 ? active : 0]); } }
+else if (e.key === "Escape") { close(); }
+});
+document.addEventListener("mousedown", function (e) { if (e.target !== input && !box.contains(e.target)) close(); });
+}
+attachSuggest(document.getElementById("search"), document.querySelector(".search-box"), function () { return SONGS; }, function (s) { openSheet(s.id); });
 </script>
 </body>
 </html>
