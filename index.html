@@ -405,7 +405,7 @@ function songById(id) { for (var i = 0; i < SONGS.length; i++) if (SONGS[i].id =
 function firstChar(s) { return (s || "?").charAt(0); }
 
 function jacketHTML(s, big) {
-if (s.jacket) return '<img class="' + (big ? "" : "thumb") + '" src="' + esc(s.jacket) + '" alt="" loading="lazy" onload="this.classList.add(\'ld\')" onerror="this.outerHTML=\'<div class=\\\'thumb-ph\\\'>' + esc(firstChar(s.title)) + '</div>\'" />';
+if (s.jacket) return '<img class="' + (big ? "" : "thumb") + '" style="object-position:' + esc(s.jacketPos || "50% 50%") + '" src="' + esc(s.jacket) + '" alt="" loading="lazy" onload="this.classList.add(\'ld\')" onerror="this.outerHTML=\'<div class=\\\'thumb-ph\\\'>' + esc(firstChar(s.title)) + '</div>\'" />';
 return '<div class="thumb-ph" aria-hidden="true">' + esc(firstChar(s.title)) + "</div>";
 }
 var GENRE_COLORS = { "J-POP": "#e83531", "アニソン": "#e50a84", "ボカロ": "#0891b2", "ロック": "#ff6e1f", "ゲーム": "#00ac57", "歌謡曲": "#c98a12", "エレクトロニック": "#5053f0", "K-Pop": "#ef65c0", "その他": "#8a8a84" };
@@ -787,7 +787,7 @@ document.getElementById("pb-title").textContent = s.title || "";
 document.getElementById("pb-artist").textContent = s.artist || "";
 var img = document.getElementById("pb-thumb");
 var ph = document.getElementById("pb-thumb-ph");
-if (s.jacket) { img.src = s.jacket; img.hidden = false; ph.style.display = "none"; }
+if (s.jacket) { img.src = s.jacket; img.style.objectPosition = s.jacketPos || ""; img.hidden = false; ph.style.display = "none"; }
 else { img.hidden = true; ph.style.display = ""; }
 var pbVideo = document.getElementById("pb-video");
 var pbSub = document.getElementById("pb-sub");
@@ -1290,7 +1290,7 @@ t.style.animationDelay = Math.min(i * 40, 320) + "ms";
 t.setAttribute("aria-label", s.title + " / " + s.artist + " の詳細を開く");
 t.innerHTML =
 ((s.preview || s.ytLink) ? '<span class="tile-pv" data-pv="' + esc(s.id) + '" aria-hidden="true">▶</span>' : "") +
-(s.jacket ? '<img src="' + esc(s.jacket) + '" alt="" loading="lazy" onload="this.classList.add(\'ld\')" onerror="this.outerHTML=\'<div class=\\\'t-ph\\\'>' + esc(firstChar(s.title)) + '</div>\'" />' : '<div class="t-ph" aria-hidden="true">' + esc(firstChar(s.title)) + "</div>") +
+(s.jacket ? '<img style="object-position:' + esc(s.jacketPos || "50% 50%") + '" src="' + esc(s.jacket) + '" alt="" loading="lazy" onload="this.classList.add(\'ld\')" onerror="this.outerHTML=\'<div class=\\\'t-ph\\\'>' + esc(firstChar(s.title)) + '</div>\'" />' : '<div class="t-ph" aria-hidden="true">' + esc(firstChar(s.title)) + "</div>") +
 '<p class="tile-title"></p><p class="tile-artist"></p>' +
 '<div class="tile-meta"><span class="tag key"><span class="k-label">KEY</span>' + esc(s.keyLabel) + "</span>" + genreTag(s) + "</div>" +
 memoryHTML(s);
