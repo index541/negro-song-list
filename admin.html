@@ -101,7 +101,8 @@ body.has-bulk-float { padding-bottom:86px; }
 .bf-row { display:flex; align-items:center; gap:8px; }
 .bf-fields[hidden] { display:none; }
 .bf-fields .bulk-edit { margin:0; }
-.preview { width:96px; height:96px; border-radius:12px; object-fit:cover; background:var(--surface-2); display:block; }
+.preview { width:170px; height:170px; border-radius:12px; object-fit:cover; background:var(--surface-2); display:block; cursor:grab; touch-action:none; }
+.preview:active { cursor:grabbing; }
 #toast { position:fixed; left:50%; bottom:22px; transform:translate(-50%,80px); background:var(--ink); color:var(--bg); font-size:14px; font-weight:900; border-radius:999px; padding:12px 22px; opacity:0; transition:all.35s; z-index:90; max-width:92vw; text-align:center; }
 #toast.show { transform:translate(-50%,0); opacity:1; }
 @media (max-width:560px) { .grid2, .grid3 { grid-template-columns:1fr; } .card { padding:18px 16px; } }
@@ -246,6 +247,12 @@ body.has-bulk-float { padding-bottom:86px; }
 <input id="f-jacket" type="url" placeholder="https://…" />
 </div>
 <img id="f-preview" class="preview" alt="" style="display:none" />
+<div id="jpos-ui" style="display:none">
+<p class="desc">正方形で見える位置は、画像をドラッグして変えられます。</p>
+<div class="btn-row"><button type="button" class="btn sub" id="jpos-reset">中央に戻す</button><span class="yt-time" id="jpos-label"></span></div>
+<p class="desc" id="jfile-note" style="display:none">画像ファイルが設定されています。保存すると、選んだ位置で正方形に切り取ってアップロードされます。</p>
+</div>
+<p class="desc">画像ファイルは、この編集画面へのドラッグ＆ドロップや貼り付け（Ctrl+V）でも設定できます。画像のURLを落とした時も入ります。</p>
 <div class="field">
 <label for="f-ytlink">サビ試聴リンク（YouTube、任意）</label>
 <input id="f-ytlink" type="url" placeholder="https://www.youtube.com/watch?v=…" />
@@ -525,7 +532,7 @@ var row = document.createElement("div");
 row.className = "song-row" + (selectedIds[s.id] ? " selected" : "");
 row.innerHTML =
 '<input type="checkbox" class="sel" aria-label="この曲を選択" />' +
-(s.jacket ? '<img src="' + esc(s.jacket) + '" alt="" loading="lazy" />' : '<div class="ph">' + esc((s.title || "?").charAt(0)) + "</div>") +
+(s.jacket ? '<img style="object-position:' + esc(s.jacketPos || "50% 50%") + '" src="' + esc(s.jacket) + '" alt="" loading="lazy" />' : '<div class="ph">' + esc((s.title || "?").charAt(0)) + "</div>") +
 '<div class="main"><div class="t"></div><div class="a"></div></div>' +
 '<button type="button" class="mini" style="background:var(--surface-2);color:var(--ink-2)" data-act="edit">編集</button>' +
 '<button type="button" class="mini" style="background:var(--accent-soft);color:var(--accent)" data-act="del">削除</button>';
@@ -720,14 +727,73 @@ $("yt-tools").style.display = "none"; ytPlayerId = "";
 if (ytPlayer && ytPlayer.pauseVideo) { try { ytPlayer.pauseVideo(); } catch (e) {} }
 kaStop(); kaSetKey(0);
 $("f-preview").style.display = "none";
+pendingJacket = null; jUrl = ""; setJPos(50, 50); showJacketUI(false); $("jfile-note").style.display = "none";
 setStatus("save-status", "", null);
 }
 $("song-clear").addEventListener("click", clearEditor);
+var jPos = { x: 50, y: 50 };
+var jUrl = "";
+var pendingJacket = null;
+function applyJPos() {
+$("f-preview").style.objectPosition = jPos.x + "% " + jPos.y + "%";
+var lb = $("jpos-label"); if (lb) lb.textContent = "位置 " + Math.round(jPos.x) + "% / " + Math.round(jPos.y) + "%";
+}
+function setJPos(x, y) { jPos.x = Math.max(0, Math.min(100, x)); jPos.y = Math.max(0, Math.min(100, y)); applyJPos(); }
+function showJacketUI(has) { $("jpos-ui").style.display = has ? "" : "none"; }
 $("f-jacket").addEventListener("input", function () {
 var v = $("f-jacket").value.trim();
 var p = $("f-preview");
-if (v) { p.src = v; p.style.display = "block"; p.onerror = function () { p.style.display = "none"; }; }
-else p.style.display = "none";
+if (v !== jUrl) { jUrl = v; pendingJacket = null; $("jfile-note").style.display = "none"; setJPos(50, 50); }
+if (v) { p.src = v; p.style.display = "block"; showJacketUI(true); p.onerror = function () { p.style.display = "none"; showJacketUI(false); }; }
+else { p.style.display = "none"; showJacketUI(false); }
+applyJPos();
+});
+(function () {
+var p = $("f-preview");
+var drag = null;
+p.addEventListener("pointerdown", function (e) { drag = { x: e.clientX, y: e.clientY, px: jPos.x, py: jPos.y }; try { p.setPointerCapture(e.pointerId); } catch (err) {} e.preventDefault(); });
+p.addEventListener("pointermove", function (e) { if (!drag) return; var r = p.getBoundingClientRect(); if (!r.width || !r.height) return; setJPos(drag.px - (e.clientX - drag.x) / r.width * 100, drag.py - (e.clientY - drag.y) / r.height * 100); });
+p.addEventListener("pointerup", function () { drag = null; });
+p.addEventListener("pointercancel", function () { drag = null; });
+})();
+$("jpos-reset").addEventListener("click", function () { setJPos(50, 50); });
+function acceptImageFile(file) {
+if (!file || !file.type || file.type.indexOf("image/") !== 0) return false;
+var rd = new FileReader();
+rd.onload = function () {
+pendingJacket = { dataUrl: String(rd.result) };
+jUrl = "";
+$("f-jacket").value = "";
+var p = $("f-preview");
+p.onerror = null;
+p.src = pendingJacket.dataUrl;
+p.style.display = "block";
+showJacketUI(true);
+$("jfile-note").style.display = "";
+setJPos(50, 50);
+setStatus("save-status", "画像ファイルを設定しました。位置を合わせて保存してください。", null);
+};
+rd.readAsDataURL(file);
+return true;
+}
+document.addEventListener("dragover", function (e) { if (editorOverlay && editorOverlay.classList.contains("open")) e.preventDefault(); });
+document.addEventListener("drop", function (e) {
+if (!(editorOverlay && editorOverlay.classList.contains("open"))) return;
+e.preventDefault();
+var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+if (f) { acceptImageFile(f); return; }
+var t = e.dataTransfer && e.dataTransfer.getData("text/plain");
+if (t && /^https?:\/\//.test(t.trim())) { $("f-jacket").value = t.trim(); $("f-jacket").dispatchEvent(new Event("input")); }
+});
+document.addEventListener("paste", function (e) {
+if (!(editorOverlay && editorOverlay.classList.contains("open"))) return;
+var tg = e.target;
+if (tg && (tg.tagName === "TEXTAREA" || (tg.tagName === "INPUT" && tg.id !== "f-jacket"))) return;
+var items = e.clipboardData && e.clipboardData.items;
+if (!items) return;
+for (var i = 0; i < items.length; i++) {
+if (items[i].type.indexOf("image/") === 0) { var f = items[i].getAsFile(); if (f && acceptImageFile(f)) e.preventDefault(); return; }
+}
 });
 function editSong(id) {
 var s = null;
@@ -743,6 +809,7 @@ $("f-ytend").value = (s.ytEnd === null || s.ytEnd === undefined) ? "" : String(s
 setupChorusPlayer();
 kaStop(); kaSetKey(keyShiftFromLabel(s.keyLabel));
 $("f-jacket").dispatchEvent(new Event("input"));
+if (s.jacketPos) { var jpm = String(s.jacketPos).match(/(\d+(?:\.\d+)?)%\s+(\d+(?:\.\d+)?)%/); if (jpm) setJPos(parseFloat(jpm[1]), parseFloat(jpm[2])); }
 var st = document.getElementById("sheet-title");
 if (st) st.textContent = "「" + s.title + "」を編集";
 $("song-save-next").style.display = "";
@@ -1082,6 +1149,37 @@ return normTitleBasic(s.title) === basic || normTitleLoose(s.title) === loose;
 });
 }
 function yomiHira(s) { return (s || "").replace(/[ァ-ヶ]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0x60); }); }
+function bakeJacket(dataUrl, pos) {
+return new Promise(function (resolve, reject) {
+var img = new Image();
+img.onload = function () {
+try {
+var side = Math.min(img.naturalWidth, img.naturalHeight);
+var sx = (img.naturalWidth - side) * pos.x / 100;
+var sy = (img.naturalHeight - side) * pos.y / 100;
+var out = Math.min(800, side);
+var cv = document.createElement("canvas");
+cv.width = out; cv.height = out;
+cv.getContext("2d").drawImage(img, sx, sy, side, side, 0, 0, out, out);
+resolve(cv.toDataURL("image/jpeg", 0.87));
+} catch (err) { reject(new Error("画像の切り取りに失敗しました。")); }
+};
+img.onerror = function () { reject(new Error("画像を読み込めませんでした。")); };
+img.src = dataUrl;
+});
+}
+function uploadJacket(id, title, dataUrl) {
+var path = "jackets/" + id + ".jpg";
+var url = "https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/" + path;
+var b64 = dataUrl.split(",")[1];
+function put(sha) {
+var body = { message: "ジャケット画像: " + title, content: b64 };
+if (sha) body.sha = sha;
+return fetch(url, { method: "PUT", headers: ghHeaders(), body: JSON.stringify(body) })
+.then(function (r) { if (!r.ok) throw new Error("ジャケット画像のアップロードに失敗しました（" + r.status + "）"); return path; });
+}
+return fetch(url, { headers: ghHeaders() }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) { return put(d && d.sha); });
+}
 function saveSong(goNext) {
 var title = $("f-title").value.trim();
 var artist = $("f-artist").value.trim();
@@ -1157,10 +1255,24 @@ btn.disabled = false; btnNext.disabled = false;
 setStatus("save-status", e.message || "保存に失敗しました。トークンを確認してください。", false);
 });
 }
+function prepareAndCommit() {
+if (!pendingJacket) {
+if (obj.jacket && (Math.round(jPos.x) !== 50 || Math.round(jPos.y) !== 50)) obj.jacketPos = Math.round(jPos.x) + "% " + Math.round(jPos.y) + "%";
+doCommit();
+return;
+}
+setStatus("save-status", "ジャケット画像をアップロード中…", null);
+bakeJacket(pendingJacket.dataUrl, jPos).then(function (jpeg) { return uploadJacket(obj.id, obj.title, jpeg); })
+.then(function (path) { obj.jacket = path; pendingJacket = null; $("jfile-note").style.display = "none"; doCommit(); })
+.catch(function (e) {
+btn.disabled = false; btnNext.disabled = false;
+setStatus("save-status", e.message || "ジャケット画像のアップロードに失敗しました。", false);
+});
+}
 if (obj.ytLink && !obj.preview) {
 setStatus("save-status", "公式試聴を探しています…", null);
-findPreviewUrl(obj.title, obj.artist).then(function (url) { if (url) obj.preview = url; doCommit(); }).catch(function () { doCommit(); });
-} else doCommit();
+findPreviewUrl(obj.title, obj.artist).then(function (url) { if (url) obj.preview = url; prepareAndCommit(); }).catch(function () { prepareAndCommit(); });
+} else prepareAndCommit();
 }
 $("song-save").addEventListener("click", function () { saveSong(false); });
 $("song-save-next").addEventListener("click", function () { saveSong(true); });
