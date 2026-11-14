@@ -8548,16 +8548,18 @@
   {
     "id": "w1092",
     "title": "アンハッピーリフレイン",
-    "artist": "wowaka",
-    "genre": "アニソン",
+    "artist": "wowaka feat. 初音ミク",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/ba/da/38/bada3857-bb86-0c54-7fa3-111ea4675053/Marasy_JEWER.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/Music2/v4/07/d6/08/07d6089a-8560-c0af-7442-2114347153f9/mzaf_9030431956980378852.plus.aac.p.m4a",
     "titleYomi": "あんはっぴーりふれいん",
-    "artistYomi": "wowaka"
+    "artistYomi": "おわかはつねみく",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/Music2/v4/07/d6/08/07d6089a-8560-c0af-7442-2114347153f9/mzaf_9030431956980378852.plus.aac.p.m4a"
   },
   {
     "id": "w1093",
