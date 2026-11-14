@@ -6726,15 +6726,17 @@
   {
     "id": "w833",
     "title": "アンバランスコミュニケーション",
-    "artist": "初音ミク",
-    "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
+    "artist": "曲者P feat. 初音ミク",
+    "work": "",
+    "genre": "ボカロ",
+    "keyLabel": "原曲 −4",
+    "keyShift": -4,
     "memo": "",
+    "memory": 4,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/6e/2f/41/mzi.bzdqxsbf.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "あんばらんすこみゅにけーしょん",
-    "artistYomi": "はつねみく"
+    "artistYomi": "くせものぴーはつねみく"
   },
   {
     "id": "w834",
