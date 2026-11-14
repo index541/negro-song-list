@@ -3700,16 +3700,17 @@
     "id": "w206",
     "title": "オリオンをなぞる",
     "artist": "UNISON SQUARE GARDEN",
+    "work": "TIGER & BUNNY",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/4e/82/ba/4e82ba1b-997c-f715-24d1-53f370887d49/4547366640427.jpg/600x600bb.jpg",
+    "memory": null,
+    "jacket": "https://m.media-amazon.com/images/I/91f1zB5ZXRL._UF1000,1000_QL80_.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/0f/59/44/0f59441f-3ff6-99ff-f1ea-786ae3911309/mzaf_11218679849324215211.plus.aac.p.m4a",
     "titleYomi": "おりおんをなぞる",
     "artistYomi": "UNISON SQUARE GARDEN",
-    "work": "TIGER & BUNNY"
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/0f/59/44/0f59441f-3ff6-99ff-f1ea-786ae3911309/mzaf_11218679849324215211.plus.aac.p.m4a"
   },
   {
     "id": "w207",
