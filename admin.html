@@ -204,6 +204,17 @@ body.has-bulk-float { padding-bottom:86px; }
 </datalist>
 </div>
 </div>
+<div class="field" id="ka-box">
+<label>キーを聴いて決める</label>
+<div class="btn-row">
+<button type="button" class="btn sub" id="ka-play">▶ 試聴する</button>
+<button type="button" class="btn sub" id="ka-minus">−</button>
+<span class="yt-time" id="ka-label">原曲キー</span>
+<button type="button" class="btn sub" id="ka-plus">＋</button>
+<button type="button" class="btn sub" id="ka-apply">このキーをキー表示に入れる</button>
+</div>
+<p class="desc" id="ka-note">試聴音源（切り出し音源か公式試聴）をキー変更して再生します。＋と−で耳で確かめて、「このキーをキー表示に入れる」を押すと上のキー表示に反映されます（「保存する」を押すまで確定しません）。試聴音源が無い曲では使えません。</p>
+</div>
 <div class="field">
 <label for="f-memory">覚えてる度</label>
 <select id="f-memory">
@@ -561,6 +572,7 @@ document.body.style.overflow = "hidden";
 }
 function closeEditor() {
 if (!editorOverlay) return;
+kaStop();
 editorOverlay.classList.remove("open");
 document.body.style.overflow = "";
 }
@@ -635,6 +647,7 @@ $("f-ytlink").value = ""; $("f-ytstart").value = ""; $("f-ytend").value = "";
 $("f-import-url").value = ""; $("import-status").textContent = "";
 $("yt-tools").style.display = "none"; ytPlayerId = "";
 if (ytPlayer && ytPlayer.pauseVideo) { try { ytPlayer.pauseVideo(); } catch (e) {} }
+kaStop(); kaSetKey(0);
 $("f-preview").style.display = "none";
 setStatus("save-status", "", null);
 }
@@ -657,12 +670,92 @@ $("f-memo").value = s.memo || ""; $("f-jacket").value = s.jacket || "";
 $("f-ytlink").value = s.ytLink || ""; $("f-ytstart").value = (s.ytStart === null || s.ytStart === undefined) ? "" : String(s.ytStart);
 $("f-ytend").value = (s.ytEnd === null || s.ytEnd === undefined) ? "" : String(s.ytEnd);
 setupChorusPlayer();
+kaStop(); kaSetKey(keyShiftFromLabel(s.keyLabel));
 $("f-jacket").dispatchEvent(new Event("input"));
 var st = document.getElementById("sheet-title");
 if (st) st.textContent = "「" + s.title + "」を編集";
 setStatus("save-status", "", null);
 openEditor();
 }
+// ===== キーを聴いて決める（試聴音源をキー変更して再生し、キー表示へ反映） =====
+var kaCtx = null, kaGain = null, kaShifter = null, kaPlaying = false, kaKey = 0, kaBufCache = {}, kaEndTimer = null;
+var kaRbReady = false, kaRbFailed = false, kaStModule = null, kaStFailed = false;
+function KaRbShifter(ctx, buffer) {
+this._src = ctx.createBufferSource();
+this._src.buffer = buffer;
+this._node = new AudioWorkletNode(ctx, "rubberband-processor", { numberOfInputs: 1, numberOfOutputs: 1, outputChannelCount: [buffer.numberOfChannels || 2] });
+this._pitch = 0;
+this._src.connect(this._node);
+this._src.start();
+}
+Object.defineProperty(KaRbShifter.prototype, "pitchSemitones", {
+get: function () { return this._pitch; },
+set: function (v) { this._pitch = v; try { this._node.port.postMessage(JSON.stringify(["pitch", Math.pow(2, v / 12)])); } catch (e) {} }
+});
+KaRbShifter.prototype.connect = function (dest) { try { this._node.connect(dest); } catch (e) {} };
+KaRbShifter.prototype.disconnect = function () { try { this._src.stop(); } catch (e) {} try { this._src.disconnect(); } catch (e) {} try { this._node.disconnect(); } catch (e) {} };
+KaRbShifter.prototype.on = function () {};
+KaRbShifter.prototype.off = function () {};
+function kaLabelText(v) { if (!v) return "原曲キー"; return v > 0 ? "原曲 +" + v : "原曲 −" + (-v); }
+function kaSetKey(v) {
+kaKey = Math.max(-6, Math.min(6, v | 0));
+$("ka-label").textContent = kaLabelText(kaKey);
+if (kaShifter) { try { kaShifter.pitchSemitones = kaKey; } catch (e) {} }
+}
+function kaLoadEngine() {
+if (kaRbReady) return Promise.resolve("rb");
+if (kaStModule) return Promise.resolve("st");
+if (kaRbFailed && kaStFailed) return Promise.reject(new Error("engine unavailable"));
+function loadSt() { return import("./soundtouch.js").then(function (m) { kaStModule = m; return "st"; }).catch(function (e) { kaStFailed = true; throw e; }); }
+if (kaRbFailed || !kaCtx) return loadSt();
+return kaCtx.audioWorklet.addModule("rubberband-processor.js").then(function () { kaRbReady = true; return "rb"; }).catch(function () { kaRbFailed = true; return loadSt(); });
+}
+function kaSongAudioUrl() {
+var id = $("f-id").value, s = null;
+songs.forEach(function (x) { if (x.id === id) s = x; });
+if (!s) return "";
+return s.ytClip || s.preview || "";
+}
+function kaStop() {
+if (kaEndTimer) { clearTimeout(kaEndTimer); kaEndTimer = null; }
+if (kaShifter) { try { kaShifter.off(); } catch (e) {} try { kaShifter.disconnect(); } catch (e) {} kaShifter = null; }
+kaPlaying = false;
+var b = $("ka-play"); if (b) b.textContent = "▶ 試聴する";
+}
+function kaPlay() {
+if (kaPlaying) { kaStop(); return; }
+var url = kaSongAudioUrl();
+if (!url) { $("ka-note").textContent = "この曲には試聴音源が無いので、キー変更して聴くことはできません。サビ登録をした曲は、音源が用意でき次第（最大で15分ほど）使えるようになります。"; return; }
+var AC = window.AudioContext || window.webkitAudioContext;
+if (!AC) { $("ka-note").textContent = "このブラウザではキー変更つき試聴が使えません。"; return; }
+if (!kaCtx) { kaCtx = new AC(); kaGain = kaCtx.createGain(); kaGain.connect(kaCtx.destination); }
+if (kaCtx.state === "suspended") { var p = kaCtx.resume(); if (p && p.catch) p.catch(function () {}); }
+if (ytPlayer && ytPlayer.pauseVideo) { try { ytPlayer.pauseVideo(); } catch (e) {} }
+kaLoadEngine().then(function () {
+if (kaBufCache[url]) return kaBufCache[url];
+return fetch(url).then(function (r) { if (!r.ok) throw new Error("fetch"); return r.arrayBuffer(); })
+.then(function (ab) { return kaCtx.decodeAudioData(ab); })
+.then(function (buf) { kaBufCache[url] = buf; return buf; });
+}).then(function (buf) {
+if (!buf) return;
+kaStop();
+kaShifter = kaRbReady ? new KaRbShifter(kaCtx, buf) : new kaStModule.PitchShifter(kaCtx, buf, 4096);
+kaShifter.pitchSemitones = kaKey;
+try { kaShifter.tempo = 1; } catch (e) {}
+kaShifter.connect(kaGain);
+kaPlaying = true;
+$("ka-play").textContent = "⏸ 止める";
+kaEndTimer = setTimeout(kaStop, (buf.duration + 1.5) * 1000);
+}).catch(function () { $("ka-note").textContent = "試聴音源を読み込めませんでした。"; });
+}
+$("ka-play").addEventListener("click", kaPlay);
+$("ka-minus").addEventListener("click", function () { kaSetKey(kaKey - 1); });
+$("ka-plus").addEventListener("click", function () { kaSetKey(kaKey + 1); });
+$("ka-apply").addEventListener("click", function () {
+$("f-keylabel").value = kaLabelText(kaKey);
+toast("キー表示に「" + kaLabelText(kaKey) + "」を入れました（保存するまで確定しません）");
+});
+
 // ===== Chorus (サビ) slider tools =====
 var ytPlayer = null, ytPlayerId = "", ytDur = 0, ytAuditionTimer = null;
 function ytIdFromUrl(u) {
