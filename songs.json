@@ -5155,15 +5155,17 @@
   {
     "id": "w463",
     "title": "ありがとの経験値",
-    "artist": "インデックス",
-    "genre": "その他",
+    "artist": "インデックス(CV:井口裕香)",
+    "work": "とある魔術の禁書目録",
+    "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": 5,
     "jacket": "https://cdn-images.dzcdn.net/images/cover/e3d4d84c2b4d6627cf23992747f5a1c1/1000x1000-000000-80-0-0.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "ありがとのけいけんち",
-    "artistYomi": "いんでっくす"
+    "artistYomi": "いんでっくすいぐちゆうか"
   },
   {
     "id": "w464",
