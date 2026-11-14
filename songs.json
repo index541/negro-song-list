@@ -4607,16 +4607,18 @@
   {
     "id": "w379",
     "title": "いーあるふぁんくらぶ",
-    "artist": "びびあん",
-    "genre": "J-POP",
+    "artist": "みきとP feat. GUMI、鏡音リン",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/f8/a4/ef/f8a4efeb-f10c-99ed-a01a-a9d65bb20e45/00600406611031.rgb.jpg/600x600bb.jpg",
+    "memory": 5,
+    "jacket": "https://pjsekai.com/image/thumb/E38184E383BCE38182E3828BE381B5E38181E38293E3818FE38289E381B6.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview128/v4/93/cf/e0/93cfe025-5f89-caf1-f7a8-744edd925740/mzaf_1208313866203944009.plus.aac.p.m4a",
     "titleYomi": "いーあるふぁんくらぶ",
-    "artistYomi": "びびあん"
+    "artistYomi": "みきとぴーぐみかがみねりん",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview128/v4/93/cf/e0/93cfe025-5f89-caf1-f7a8-744edd925740/mzaf_1208313866203944009.plus.aac.p.m4a"
   },
   {
     "id": "w382",
