@@ -4253,15 +4253,17 @@
   {
     "id": "w334",
     "title": "一丁目ゆきみ商店街",
-    "artist": "すぃ",
-    "genre": "J-POP",
+    "artist": "yukkedoluce feat. 初音ミク",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/dc/fd/a2/dcfda2ed-1470-4755-b9f5-7f36190c1bb2/bigup14047646.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "titleYomi": "いちちょうめゆきみしょうてんがい",
-    "artistYomi": "すぃ"
+    "titleYomi": "いっちょうめゆきみしょうてんがい",
+    "artistYomi": "ゆっけどるちぇはつねみく"
   },
   {
     "id": "w335",
