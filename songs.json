@@ -3442,16 +3442,17 @@
     "id": "w177",
     "title": "大空ドリーマー",
     "artist": "PPP",
+    "work": "けものフレンズ",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music111/v4/23/83/e7/2383e7a7-9701-2f88-3a5c-9fb1465994c9/VEATP-34001.jpg/600x600bb.jpg",
+    "memory": null,
+    "jacket": "https://i.kfs.io/album/global/33987557,1v1/fit/500x500.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/11/cc/2a/11cc2aed-c827-c02b-4808-efec91feaa61/mzaf_1456537335928944362.plus.aac.p.m4a",
     "titleYomi": "おおぞらどりーまー",
     "artistYomi": "PPP",
-    "work": "けものフレンズ"
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/11/cc/2a/11cc2aed-c827-c02b-4808-efec91feaa61/mzaf_1456537335928944362.plus.aac.p.m4a"
   },
   {
     "id": "w178",
