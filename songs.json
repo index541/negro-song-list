@@ -6420,14 +6420,17 @@
     "id": "w766",
     "title": "オマーン湖",
     "artist": "ロリコム",
+    "work": "",
     "genre": "その他",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "",
+    "memory": null,
+    "jacket": "https://i.ytimg.com/vi/FUZYJyXKbaA/hqdefault.jpg?sqp=-oaymwEmCOADEOgC8quKqQMa8AEB-AG-AoAC8AGKAgwIABABGCwgXyhlMA8=&rs=AOn4CLC3RxFYgXrmHSshhFtMijCZlB2ayg",
     "addedAt": "2026-11-12",
     "titleYomi": "おまーんこ",
-    "artistYomi": "ろりこむ"
+    "artistYomi": "ろりこむ",
+    "jacketPos": "100% 54%"
   },
   {
     "id": "w767",
