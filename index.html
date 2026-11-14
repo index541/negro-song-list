@@ -1573,11 +1573,38 @@ render();
 var sk = document.getElementById("skeleton");
 if (sk) sk.classList.add("done");
 }
-fetch("songs.json", { cache: "no-store" })
-.then(function (r) { if (!r.ok) throw new Error("ng"); return r.json(); })
-.then(function (d) { if (Array.isArray(d) && d.length) { d.forEach(function (s) { if (s.ytClip) s.preview = s.ytClip; }); SONGS = d; } ready(); })
+var songsJsonText = "";
+function applySongsData(d) { d.forEach(function (s) { if (s.ytClip) s.preview = s.ytClip; }); SONGS = d; }
+function fetchSongsText() { return fetch("songs.json?t=" + Date.now(), { cache: "no-store" }).then(function (r) { if (!r.ok) throw new Error("ng"); return r.text(); }); }
+fetchSongsText()
+.then(function (text) { songsJsonText = text; var d = JSON.parse(text); if (Array.isArray(d) && d.length) applySongsData(d); ready(); })
 .catch(function () { ready(); });
 setTimeout(function () { var sk = document.getElementById("skeleton"); if (sk && !sk.classList.contains("done")) ready(); }, 2500);
+// ===== 自動更新：開いたまま60秒ごとにデータを確認し、変わっていたら画面の状態を保って差し替える =====
+function autoRefreshSongs() {
+if (document.hidden) return;
+fetchSongsText().then(function (text) {
+if (text === songsJsonText) return;
+var d;
+try { d = JSON.parse(text); } catch (e) { return; }
+if (!Array.isArray(d) || !d.length) return;
+songsJsonText = text;
+var sy = window.scrollY;
+applySongsData(d);
+buildGenreChips();
+buildArtistOptions();
+buildInfoBand();
+render();
+if (sheetSongId) {
+var alive = false;
+SONGS.forEach(function (s) { if (s.id === sheetSongId) alive = true; });
+if (alive) renderSheet(); else closeSheet();
+}
+window.scrollTo(0, sy);
+}).catch(function () {});
+}
+setInterval(autoRefreshSongs, 60000);
+document.addEventListener("visibilitychange", function () { if (!document.hidden) autoRefreshSongs(); });
 </script>
 </body>
 </html>

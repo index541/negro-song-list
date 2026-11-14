@@ -399,12 +399,23 @@ function loadSongs() {
 if (token) {
 return fetch("https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/" + FILEPATH, { headers: ghHeaders() })
 .then(function (r) { if (!r.ok) throw new Error("gh " + r.status); return r.json(); })
-.then(function (d) { fileSha = d.sha; songs = JSON.parse(b64decode(d.content)); songsBase = JSON.parse(JSON.stringify(songs)); renderSongs(); });
+.then(function (d) { fileSha = d.sha; var fresh = JSON.parse(b64decode(d.content)); if (JSON.stringify(fresh) === JSON.stringify(songs)) return; songs = fresh; songsBase = JSON.parse(JSON.stringify(songs)); renderSongs(); });
 }
 return fetch("songs.json", { cache: "no-store" })
 .then(function (r) { if (!r.ok) throw new Error("local"); return r.json(); })
-.then(function (d) { songs = d; renderSongs(); });
+.then(function (d) { if (JSON.stringify(d) === JSON.stringify(songs)) return; songs = d; renderSongs(); });
 }
+// ===== 自動更新：開いたまま60秒ごとに最新データを取り込む（編集中・保存中は触らない） =====
+var autoRefreshBusy = false;
+function autoRefreshAdmin() {
+if (autoRefreshBusy || document.hidden || commitBusy) return;
+if (editorOverlay && editorOverlay.classList.contains("open")) return;
+autoRefreshBusy = true;
+var sy = window.scrollY;
+loadSongs().then(function () { autoRefreshBusy = false; window.scrollTo(0, sy); }, function () { autoRefreshBusy = false; });
+}
+setInterval(autoRefreshAdmin, 60000);
+document.addEventListener("visibilitychange", function () { if (!document.hidden) autoRefreshAdmin(); });
 var admState = { q: "", genre: "", sort: "title" };
 /* 公開ページと同一の五十音ソート（読み仮名基準） */
 var SMALL_KANA = { "ぁ": "あ", "ぃ": "い", "ぅ": "う", "ぇ": "え", "ぉ": "お", "ゃ": "や", "ゅ": "ゆ", "ょ": "よ", "っ": "つ", "ゎ": "わ" };
@@ -572,9 +583,11 @@ if (!token) { setStatus("save-status", "先にトークンを保存してくだ�
 if (!fileSha) return loadSongs().then(function () { return commitSongs(message); });
 return putSongs(message, false);
 }
+var commitBusy = false;
 function putSongs(message, retried) {
+commitBusy = true;
 var body = { message: message, content: b64encode(JSON.stringify(songs, null, 2) + "\n"), sha: fileSha };
-return fetch("https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/" + FILEPATH, { method: "PUT", headers: ghHeaders(), body: JSON.stringify(body) })
+var putP = fetch("https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/" + FILEPATH, { method: "PUT", headers: ghHeaders(), body: JSON.stringify(body) })
 .then(function (r) {
 if (r.status === 409 && !retried) {
 return fetch("https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/" + FILEPATH, { headers: ghHeaders() })
@@ -589,6 +602,7 @@ if (!r.ok) return r.text().then(function (t) { throw new Error("保存に失敗�
 return r.json();
 })
 .then(function (d) { if (d && d.content) { fileSha = d.content.sha; songsBase = JSON.parse(JSON.stringify(songs)); } });
+return putP.then(function (v) { commitBusy = false; return v; }, function (e) { commitBusy = false; throw e; });
 }
 
 // ===== 折りたたみ =====
