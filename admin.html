@@ -246,6 +246,7 @@ body.has-bulk-float { padding-bottom:86px; }
 <label for="f-jacket">ジャケット画像 URL</label>
 <input id="f-jacket" type="url" placeholder="https://…" />
 </div>
+<div class="btn-row"><button type="button" class="btn sub" id="jfile-btn">画像ファイルを選ぶ</button><input id="jfile-input" type="file" accept="image/*" style="display:none" /></div>
 <img id="f-preview" class="preview" alt="" style="display:none" />
 <div id="jpos-ui" style="display:none">
 <p class="desc">正方形で見える位置は、画像をドラッグして変えられます。</p>
@@ -744,7 +745,7 @@ $("f-jacket").addEventListener("input", function () {
 var v = $("f-jacket").value.trim();
 var p = $("f-preview");
 if (v !== jUrl) { jUrl = v; pendingJacket = null; $("jfile-note").style.display = "none"; setJPos(50, 50); }
-if (v) { p.src = v; p.style.display = "block"; showJacketUI(true); p.onerror = function () { p.style.display = "none"; showJacketUI(false); }; }
+if (v) { p.src = v; p.style.display = "block"; showJacketUI(true); p.onerror = function () { p.style.display = "none"; showJacketUI(false); setStatus("save-status", v.indexOf("pximg") >= 0 ? "pixivの画像は直リンクできない決まりのため、URLでは表示できません。pixivで画像そのものをコピーして貼り付けるか、画像を保存してから「画像ファイルを選ぶ」かドラッグ＆ドロップしてください。" : "画像を読み込めませんでした。URLを確認してください。", false); }; }
 else { p.style.display = "none"; showJacketUI(false); }
 applyJPos();
 });
@@ -757,6 +758,8 @@ p.addEventListener("pointerup", function () { drag = null; });
 p.addEventListener("pointercancel", function () { drag = null; });
 })();
 $("jpos-reset").addEventListener("click", function () { setJPos(50, 50); });
+$("jfile-btn").addEventListener("click", function () { $("jfile-input").click(); });
+$("jfile-input").addEventListener("change", function () { var f = $("jfile-input").files && $("jfile-input").files[0]; if (f) acceptImageFile(f); $("jfile-input").value = ""; });
 function acceptImageFile(file) {
 if (!file || !file.type || file.type.indexOf("image/") !== 0) return false;
 var rd = new FileReader();
@@ -787,8 +790,6 @@ if (t && /^https?:\/\//.test(t.trim())) { $("f-jacket").value = t.trim(); $("f-j
 });
 document.addEventListener("paste", function (e) {
 if (!(editorOverlay && editorOverlay.classList.contains("open"))) return;
-var tg = e.target;
-if (tg && (tg.tagName === "TEXTAREA" || (tg.tagName === "INPUT" && tg.id !== "f-jacket"))) return;
 var items = e.clipboardData && e.clipboardData.items;
 if (!items) return;
 for (var i = 0; i < items.length; i++) {
