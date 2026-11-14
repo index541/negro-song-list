@@ -9262,5 +9262,21 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/b3/30/2b/b3302b25-e7d1-3c19-36ea-b5ced302abe5/mzaf_14574855308484119079.plus.aac.p.m4a",
     "ytClip": "audio/smwg36bcg.m4a",
     "ytClipKey": "https://www.youtube.com/watch?v=jpV5jeFlt_E|73|111"
+  },
+  {
+    "id": "smwg63ial",
+    "addedAt": "2026-11-14",
+    "title": "愛がひとりぼっち",
+    "artist": "岩崎良美",
+    "work": "タッチ",
+    "genre": "アニソン",
+    "keyLabel": "原曲 −4",
+    "keyShift": -4,
+    "memo": "",
+    "memory": 5,
+    "jacket": "https://i.ytimg.com/vi/vfRL1SwyGNA/hqdefault.jpg",
+    "ytLink": "https://www.youtube.com/watch?v=vfRL1SwyGNA",
+    "ytStart": 52,
+    "ytEnd": 90
   }
 ]
