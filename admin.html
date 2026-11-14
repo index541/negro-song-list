@@ -1087,6 +1087,12 @@ var title = $("f-title").value.trim();
 var artist = $("f-artist").value.trim();
 if (!title || !artist) { setStatus("save-status", "曲名とアーティストは必須です。", false); return; }
 var id = $("f-id").value;
+// 「次の曲」は保存前の並びで決める（よみがな等を直して曲の位置が動いても飛ばさない）
+var nextId = null;
+if (goNext && id) {
+var preView = adminViewSongs();
+for (var pvi = 0; pvi < preView.length; pvi++) { if (preView[pvi].id === id) { if (pvi + 1 < preView.length) nextId = preView[pvi + 1].id; break; } }
+}
 var similar = findSimilarSongs(title, id);
 if (similar.length) {
 var lines = similar.map(function (s) { return "・" + s.title + " ／ " + s.artist + "（" + s.keyLabel + "）"; });
@@ -1129,10 +1135,10 @@ commitSongs((isNew ? "曲を追加: " : "曲を更新: ") + title)
 .then(function () {
 btn.disabled = false; btnNext.disabled = false;
 renderSongs();
-var nextId = null;
-if (goNext && id) {
-var view = adminViewSongs();
-for (var vi = 0; vi < view.length; vi++) { if (view[vi].id === id) { if (vi + 1 < view.length) nextId = view[vi + 1].id; break; } }
+if (nextId) {
+var aliveNext = false;
+songs.forEach(function (x) { if (x.id === nextId) aliveNext = true; });
+if (!aliveNext) nextId = null;
 }
 if (nextId) {
 editSong(nextId);
