@@ -3834,16 +3834,18 @@
   {
     "id": "w276",
     "title": "生霊",
-    "artist": "犬神サアカス團",
-    "genre": "J-POP",
+    "artist": "鬱P feat. 鏡音リン",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/90/b1/bf/90b1bf98-542a-661b-9136-370a42f682b7/4543034026258_cov.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/10/36/70/103670d0-e8f2-3611-f7f9-fad2f189b7b6/mzaf_17849605904409962542.plus.aac.p.m4a",
     "titleYomi": "いきりょう",
-    "artistYomi": "いぬしんさあかすだん"
+    "artistYomi": "うつぴーかがみねりん",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/10/36/70/103670d0-e8f2-3611-f7f9-fad2f189b7b6/mzaf_17849605904409962542.plus.aac.p.m4a"
   },
   {
     "id": "w279",
