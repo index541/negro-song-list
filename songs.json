@@ -2036,15 +2036,17 @@
   {
     "id": "u177",
     "title": "骸Attack!!",
-    "artist": "鬱P feat.初音ミク",
-    "genre": "J-POP",
+    "artist": "鬱P feat. 初音ミク",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": 4,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music7/v4/e5/8f/99/e58f9960-afd0-8caa-9b09-b3f0c0243df3/QWCE_00175_itunes.png/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "titleYomi": "むくろAttack!!",
-    "artistYomi": "鬱P feat.はつねみく"
+    "titleYomi": "むくろあたっく",
+    "artistYomi": "うつぴーはつねみく"
   },
   {
     "id": "u178",
