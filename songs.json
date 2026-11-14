@@ -198,15 +198,17 @@
   {
     "id": "u013",
     "title": "行きます! カラオケ一曲目",
-    "artist": "ほぼ日P",
-    "genre": "アニソン",
+    "artist": "ほぼ日P feat. 初音ミク",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲 +2",
     "keyShift": 2,
     "memo": "",
+    "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music1/v4/6d/25/87/6d258747-2142-2ebf-79d1-cf83d25b1324/QWCE_00215_itunes.png/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "titleYomi": "いきます! からおけいちきょくめ",
-    "artistYomi": "ほぼにちP"
+    "titleYomi": "いきます! からおけいっきょくめ",
+    "artistYomi": "ほぼびぴーはつねみく"
   },
   {
     "id": "u014",
