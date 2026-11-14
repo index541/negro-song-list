@@ -449,12 +449,32 @@ try { pvAudio.volume = Math.min(1, Math.max(0, from + (target - from) * (i / ste
 if (i >= steps) { clearInterval(pvFadeTimer); pvFadeTimer = null; if (done) done(); }
 }, 50);
 }
-// ===== テンポを変えずにキーだけ変える再生（SoundTouch / LGPL 2.1, soundtouch.js） =====
-var StModule = null, stLoadFailed = false;
+// ===== テンポを変えずにキーだけ変える再生（Rubber Band / GPL-2.0, rubberband-processor.js。読めない環境では SoundTouch に切替） =====
+var StModule = null, stLoadFailed = false, rbReady = false, rbLoadFailed = false;
+function RbShifter(ctx, buffer) {
+this._src = ctx.createBufferSource();
+this._src.buffer = buffer;
+this._node = new AudioWorkletNode(ctx, "rubberband-processor", { numberOfInputs: 1, numberOfOutputs: 1, outputChannelCount: [buffer.numberOfChannels || 2] });
+this._pitch = 0;
+this._src.connect(this._node);
+this._src.start();
+}
+Object.defineProperty(RbShifter.prototype, "pitchSemitones", {
+get: function () { return this._pitch; },
+set: function (v) { this._pitch = v; try { this._node.port.postMessage(JSON.stringify(["pitch", Math.pow(2, v / 12)])); } catch (e) {} }
+});
+RbShifter.prototype.connect = function (dest) { try { this._node.connect(dest); } catch (e) {} };
+RbShifter.prototype.disconnect = function () { try { this._src.stop(); } catch (e) {} try { this._src.disconnect(); } catch (e) {} try { this._node.disconnect(); } catch (e) {} };
+RbShifter.prototype.on = function () {};
+RbShifter.prototype.off = function () {};
 function loadStModule() {
+if (rbReady) return Promise.resolve("rb");
 if (StModule) return Promise.resolve(StModule);
-if (stLoadFailed) return Promise.reject(new Error("soundtouch unavailable"));
-return import("./soundtouch.js").then(function (m) { StModule = m; return m; }).catch(function (e) { stLoadFailed = true; throw e; });
+if (rbLoadFailed && stLoadFailed) return Promise.reject(new Error("pitch engine unavailable"));
+function loadSoundTouch() { return import("./soundtouch.js").then(function (m) { StModule = m; return m; }).catch(function (e) { stLoadFailed = true; throw e; }); }
+if (rbLoadFailed) return loadSoundTouch();
+if (!waEnsure()) return loadSoundTouch();
+return waCtx.audioWorklet.addModule("rubberband-processor.js").then(function () { rbReady = true; return "rb"; }).catch(function () { rbLoadFailed = true; return loadSoundTouch(); });
 }
 var waCtx = null, waGain = null, waShifter = null, waBuffer = null;
 var waOffset = 0, waPlayedBase = 0, waPlayEventCtx = 0;
@@ -504,7 +524,7 @@ waBuffer = buf;
 waOffset = fromSec || 0;
 waPlayedBase = 0;
 waPlayEventCtx = waCtx.currentTime;
-waShifter = new StModule.PitchShifter(waCtx, sliceBuffer(buf, waOffset), 4096);
+waShifter = rbReady ? new RbShifter(waCtx, sliceBuffer(buf, waOffset)) : new StModule.PitchShifter(waCtx, sliceBuffer(buf, waOffset), 4096);
 waShifter.pitchSemitones = getKey(id);
 waShifter.tempo = 1;
 waShifter.on("play", function (detail) {
