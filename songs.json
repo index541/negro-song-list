@@ -6182,14 +6182,17 @@
     "id": "w687",
     "title": "え？あぁ、そう。",
     "artist": "ヤマイ",
+    "work": "",
     "genre": "その他",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "https://cdn-images.dzcdn.net/images/cover/7f065c3ef38fd4d173e37e822419854a/1000x1000-000000-80-0-0.jpg",
+    "memory": null,
+    "jacket": "https://static.wikia.nocookie.net/vocaloid/images/7/79/E_A_sou.png/revision/latest/thumbnail/width/360/height/360?cb=20200308105147",
     "addedAt": "2026-11-12",
     "titleYomi": "え？あぁ、そう。",
-    "artistYomi": "やまい"
+    "artistYomi": "やまい",
+    "jacketPos": "10% 45%"
   },
   {
     "id": "w688",
