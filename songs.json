@@ -6254,15 +6254,17 @@
     "id": "w713",
     "title": "雨とカプチーノ",
     "artist": "ヨルシカ",
+    "work": "",
     "genre": "J-POP",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
+    "keyLabel": "原曲 −4",
+    "keyShift": -4,
     "memo": "",
+    "memory": 4,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8e/8e/19/8e8e1946-327d-7376-b75f-a49cb69b8686/19UMGIM62014.rgb.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c1/4d/20/c14d2059-d775-43d0-787b-02ad70f12c45/mzaf_17483091506519453428.plus.aac.p.m4a",
     "titleYomi": "あめとかぷちーの",
-    "artistYomi": "よるしか"
+    "artistYomi": "よるしか",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c1/4d/20/c14d2059-d775-43d0-787b-02ad70f12c45/mzaf_17483091506519453428.plus.aac.p.m4a"
   },
   {
     "id": "w723",
