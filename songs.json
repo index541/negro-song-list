@@ -213,15 +213,17 @@
   {
     "id": "u014",
     "title": "イケ恋歌",
-    "artist": "れれれP feat.鏡音レン",
-    "genre": "J-POP",
+    "artist": "れれれP feat. 鏡音レン",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲 −4",
     "keyShift": -4,
     "memo": "",
+    "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music3/v4/98/7c/63/987c635d-0f44-0867-369f-5ff2d3db46b2/4511820-93273.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "titleYomi": "いけこいうた",
-    "artistYomi": "れれれP feat.きょうおとれん"
+    "titleYomi": "いけれんか",
+    "artistYomi": "れれれぴーかがみねれん"
   },
   {
     "id": "u015",
