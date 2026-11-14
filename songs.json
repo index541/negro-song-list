@@ -8764,15 +8764,17 @@
   {
     "id": "w1116",
     "title": "アルビノ",
-    "artist": "鋼兵",
-    "genre": "ロック",
+    "artist": "BuzzG feat. 初音ミク",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/df/29/17/df291706-d852-af31-28e8-37d0d71c9127/859756590781_cover.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "あるびの",
-    "artistYomi": "はがねへい"
+    "artistYomi": "ばずじーはつねみく"
   },
   {
     "id": "w1117",
