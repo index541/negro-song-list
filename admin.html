@@ -871,6 +871,31 @@ commitSongs("曲を一括変更: " + targets.length + "曲")
 }
 function normTitleBasic(t) { return String(t || "").toLowerCase().replace(/\s+/g, ""); }
 function normTitleLoose(t) { return normTitleBasic(t).replace(/《[^》]*》/g, "").replace(/〈[^〉]*〉/g, ""); }
+function pvNorm(s) { s = (s || "").toLowerCase(); s = s.replace(/《[^》]*》|〈[^〉]*〉/g, ""); return s.replace(/[\s\-_・\/\\|()\[\]{}'".,!?☆★×:;〜~～＝=]+/g, ""); }
+function pvTitleScore(wantNorm, candTitle) { var c = pvNorm(candTitle); if (!c) return 0; if (c === wantNorm) return 100; if (wantNorm && (c.indexOf(wantNorm) === 0 || wantNorm.indexOf(c) === 0)) return 70; if (wantNorm && (wantNorm.indexOf(c) >= 0 || c.indexOf(wantNorm) >= 0)) return 60; return 0; }
+function pvArtistCore(a) { a = String(a || "").split(/\s+feat\.?|\s+Feat\.?|\(/)[0]; return a.split("[")[0].split("/")[0].trim(); }
+function pvArtistMatch(cand, mine) { var na = pvNorm(pvArtistCore(cand)), nb = pvNorm(pvArtistCore(mine)); if (!na || !nb) return false; return na === nb || na.indexOf(nb) >= 0 || nb.indexOf(na) >= 0; }
+function findPreviewUrl(title, artist) {
+var wn = pvNorm(title);
+var term = title + " " + pvArtistCore(artist);
+function pick(cands) { cands.sort(function (a, b) { return b.sc - a.sc; }); for (var i = 0; i < cands.length; i++) { if (pvArtistMatch(cands[i].artist, artist)) return cands[i].url; } return ""; }
+return fetch("https://itunes.apple.com/search?" + new URLSearchParams({ term: term, country: "JP", media: "music", entity: "song", limit: "8", lang: "ja_jp" }).toString())
+.then(function (r) { return r.json(); })
+.then(function (d) {
+var cands = [];
+(d.results || []).forEach(function (x) { var t = x.trackName || ""; if (t.indexOf("カラオケ") >= 0 || !x.previewUrl) return; var sc = pvTitleScore(wn, t); if (sc >= 80) cands.push({ sc: sc, artist: x.artistName || "", url: x.previewUrl }); });
+var hit = pick(cands);
+if (hit) return hit;
+return fetch("https://api.deezer.com/search?" + new URLSearchParams({ q: term, limit: "8" }).toString())
+.then(function (r) { return r.json(); })
+.then(function (d2) {
+var c2 = [];
+(d2.data || []).forEach(function (x) { var t = x.title || ""; if (t.indexOf("カラオケ") >= 0 || !x.preview) return; var sc = pvTitleScore(wn, t); if (sc >= 80) c2.push({ sc: sc, artist: (x.artist && x.artist.name) || "", url: x.preview }); });
+return pick(c2);
+});
+})
+.catch(function () { return ""; });
+}
 function findSimilarSongs(title, excludeId) {
 var basic = normTitleBasic(title);
 var loose = normTitleLoose(title);
@@ -915,6 +940,7 @@ songs = songs.map(function (x) { return x.id === id ? obj : x; });
 } else songs.push(obj);
 var btn = $("song-save");
 btn.disabled = true;
+function doCommit() {
 setStatus("save-status", "保存中…", null);
 commitSongs((isNew ? "曲を追加: " : "曲を更新: ") + title)
 .then(function () {
@@ -929,6 +955,11 @@ setStatus("save-status", "保存できました。", true);
 btn.disabled = false;
 setStatus("save-status", e.message || "保存に失敗しました。トークンを確認してください。", false);
 });
+}
+if (obj.ytLink && !obj.preview) {
+setStatus("save-status", "公式試聴を探しています…", null);
+findPreviewUrl(obj.title, obj.artist).then(function (url) { if (url) obj.preview = url; doCommit(); }).catch(function () { doCommit(); });
+} else doCommit();
 });
 
 // ===== Jacket search =====
