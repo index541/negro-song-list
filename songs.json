@@ -2453,15 +2453,17 @@
     "id": "w013",
     "title": "イチブトゼンブ",
     "artist": "B'z",
+    "work": "",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/ba/da/b6/badab6a8-2893-9af4-e8dc-584be7c96a72/BMCV-8030.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview124/v4/c7/aa/3d/c7aa3d3e-751c-d327-ac23-d3c675e4978c/mzaf_14831380701399734923.plus.aac.p.m4a",
     "titleYomi": "いちぶとぜんぶ",
-    "artistYomi": "B'z"
+    "artistYomi": "びーず",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview124/v4/c7/aa/3d/c7aa3d3e-751c-d327-ac23-d3c675e4978c/mzaf_14831380701399734923.plus.aac.p.m4a"
   },
   {
     "id": "w014",
