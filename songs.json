@@ -135,16 +135,18 @@
   {
     "id": "u009",
     "title": "飴か夢",
-    "artist": "doriko",
-    "genre": "J-POP",
+    "artist": "doriko feat. 初音ミク",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲 +4",
     "keyShift": 4,
     "memo": "",
+    "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/a2/b1/b7/a2b1b7be-a603-102f-df60-8ffa7a665ae3/PA00124503_0_171725_jacket.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/60/27/18/602718e4-1d23-992b-b31a-6cac56d7bec2/mzaf_15204453130671560772.plus.aac.p.m4a",
     "titleYomi": "あめかゆめ",
-    "artistYomi": "doriko"
+    "artistYomi": "どりこはつねみく",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/60/27/18/602718e4-1d23-992b-b31a-6cac56d7bec2/mzaf_15204453130671560772.plus.aac.p.m4a"
   },
   {
     "id": "u010",
