@@ -5281,15 +5281,16 @@
     "id": "w477",
     "title": "オトメロディー (TVサイズ)",
     "artist": "クロミ (竹内順子)",
+    "work": "おねがいマイメロディ",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "",
+    "memory": null,
+    "jacket": "https://i1.sndcdn.com/artworks-000075914594-rrrxm6-t500x500.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "おとめろでぃー (TVさいず)",
-    "artistYomi": "くろみ (たけうちじゅんこ)",
-    "work": "おねがいマイメロディ"
+    "artistYomi": "くろみ (たけうちじゅんこ)"
   },
   {
     "id": "w480",
