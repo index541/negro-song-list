@@ -351,15 +351,17 @@
     "id": "u024",
     "title": "海の幽霊",
     "artist": "米津玄師",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/6b/0f/0b/6b0f0b3d-e842-5ee1-83a8-1b12142a9dfd/dj.bpfbtyiy.jpg/600x600bb.jpg",
+    "memory": null,
+    "jacket": "https://reissuerecords.net/rr/wp-content/themes/rr/special/uminoyuurei/img/jacket.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/a6/07/48/a607484f-f18e-7a0a-0f43-0aca780c96c7/mzaf_14043499628828254750.plus.aac.p.m4a",
     "titleYomi": "うみのゆうれい",
-    "artistYomi": "よねつげんし"
+    "artistYomi": "よねつげんし",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/a6/07/48/a607484f-f18e-7a0a-0f43-0aca780c96c7/mzaf_14043499628828254750.plus.aac.p.m4a"
   },
   {
     "id": "u025",
