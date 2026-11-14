@@ -4489,7 +4489,9 @@
     "ytEnd": 84,
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/78/5e/d9/785ed9a5-9414-12b5-c690-206255c8b72d/mzaf_3946135746292474689.plus.aac.p.m4a",
     "titleYomi": "アイノウタ",
-    "artistYomi": "倖田來ヒツジ"
+    "artistYomi": "倖田來ヒツジ",
+    "ytClip": "audio/w366.m4a",
+    "ytClipKey": "https://www.youtube.com/watch?v=JiWEZbm6lhI|53|84"
   },
   {
     "id": "w368",
