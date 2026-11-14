@@ -185,6 +185,11 @@ body.has-bulk-float { padding-bottom:86px; }
 <label for="f-artist">アーティスト<span class="req">必須</span></label>
 <input id="f-artist" type="text"  />
 </div>
+<div class="field">
+<label for="f-work">作品名</label>
+<input id="f-work" type="text" list="work-list" placeholder="化物語" />
+<datalist id="work-list"></datalist>
+</div>
 <div class="grid2">
 <div class="field">
 <label for="f-genre">ジャンル</label>
@@ -294,6 +299,10 @@ body.has-bulk-float { padding-bottom:86px; }
 <div class="field">
 <label for="bulk-genre">ジャンルを変更</label>
 <input id="bulk-genre" type="text" list="genre-list" placeholder="変更しない場合は空のまま" />
+</div>
+<div class="field">
+<label for="bulk-work">作品名を変更</label>
+<input id="bulk-work" type="text" list="work-list" placeholder="変更しない場合は空のまま" />
 </div>
 <div class="field">
 <label for="bulk-key">キーを変更</label>
@@ -442,7 +451,7 @@ function adminViewSongs() {
 var arr = songs.filter(function (s) {
 if (admState.genre && s.genre !== admState.genre) return false;
 if (admState.q) {
-var hay = (s.title + " " + s.artist + " " + s.genre + " " + (s.memo || "")).toLowerCase();
+var hay = (s.title + " " + s.artist + " " + s.genre + " " + (s.work || "") + " " + (s.memo || "")).toLowerCase();
 var terms = admState.q.split(/\s+/);
 for (var i = 0; i < terms.length; i++) if (terms[i] && hay.indexOf(terms[i]) === -1) return false;
 }
@@ -482,7 +491,7 @@ row.innerHTML =
 '<button type="button" class="mini" style="background:var(--surface-2);color:var(--ink-2)" data-act="edit">編集</button>' +
 '<button type="button" class="mini" style="background:var(--accent-soft);color:var(--accent)" data-act="del">削除</button>';
 row.querySelector(".t").textContent = s.title;
-row.querySelector(".a").textContent = s.artist + " ／ " + s.genre + " ／ " + s.keyLabel;
+row.querySelector(".a").textContent = s.artist + " ／ " + s.genre + (s.work ? " ／ " + s.work : "") + " ／ " + s.keyLabel;
 var cb = row.querySelector(".sel");
 cb.checked = !!selectedIds[s.id];
 cb.addEventListener("change", function () {
@@ -497,6 +506,9 @@ wrap.appendChild(row);
 var seen = {};
 songs.forEach(function (s) { seen[s.genre] = true; });
 $("genre-list").innerHTML = Object.keys(seen).map(function (g) { return '<option value="' + esc(g) + '"></option>'; }).join("");
+var wseen = {};
+songs.forEach(function (s) { if (s.work) wseen[s.work] = true; });
+$("work-list").innerHTML = Object.keys(wseen).sort().map(function (g) { return '<option value="' + esc(g) + '"></option>'; }).join("");
 updateBulkBar();
 }
 function commitSongs(message) {
@@ -613,7 +625,7 @@ else setStatus("token-status", "接続できませんでした（" + r.status + 
 function clearEditor() {
 var st = document.getElementById("sheet-title");
 if (st) st.textContent = "曲の編集";
-$("f-id").value = ""; $("f-title").value = ""; $("f-artist").value = ""; $("f-genre").value = "";
+$("f-id").value = ""; $("f-title").value = ""; $("f-artist").value = ""; $("f-work").value = ""; $("f-genre").value = "";
 $("f-keylabel").value = ""; $("f-memory").value = ""; $("f-memo").value = ""; $("f-jacket").value = "";
 $("f-ytlink").value = ""; $("f-ytstart").value = ""; $("f-ytend").value = "";
 $("f-import-url").value = ""; $("import-status").textContent = "";
@@ -634,6 +646,7 @@ var s = null;
 songs.forEach(function (x) { if (x.id === id) s = x; });
 if (!s) return;
 $("f-id").value = s.id; $("f-title").value = s.title; $("f-artist").value = s.artist;
+$("f-work").value = s.work || "";
 $("f-genre").value = s.genre; $("f-keylabel").value = s.keyLabel;
 $("f-memory").value = (s.memory === null || s.memory === undefined) ? "" : String(s.memory);
 $("f-memo").value = s.memo || ""; $("f-jacket").value = s.jacket || "";
@@ -834,23 +847,26 @@ function bulkApply() {
 var targets = songs.filter(function (s) { return selectedIds[s.id]; });
 if (!targets.length) return;
 var genre = $("bulk-genre").value.trim();
+var work = $("bulk-work").value.trim();
 var keySel = $("bulk-key");
 var keyLabel = keySel.value;
 var keyShift = keyLabel === "" ? null : parseInt(keySel.options[keySel.selectedIndex].getAttribute("data-shift"), 10);
 var memVal = $("bulk-memory").value;
-if (!genre && keyLabel === "" && memVal === "") { setStatus("save-status", "変更する項目を指定してください（ジャンル・キー・覚えてる度のどれか1つでも）。", false); return; }
+if (!genre && !work && keyLabel === "" && memVal === "") { setStatus("save-status", "変更する項目を指定してください（ジャンル・作品名・キー・覚えてる度のどれか1つでも）。", false); return; }
 var parts = [];
 if (genre) parts.push("ジャンルを「" + genre + "」に変更");
+if (work) parts.push("作品名を「" + work + "」に変更");
 if (keyLabel !== "") parts.push("キーを「" + keyLabel + "」に変更");
 if (memVal !== "") parts.push(memVal === "null" ? "覚えてる度を未設定に戻す" : "覚えてる度を " + memVal + " に変更");
 if (!confirm("選択した " + targets.length + " 曲について、\n" + parts.join("\n") + "\n\nよろしいですか？")) return;
 targets.forEach(function (s) {
 if (genre) s.genre = genre;
+if (work) s.work = work;
 if (keyLabel !== "") { s.keyLabel = keyLabel; s.keyShift = keyShift; }
 if (memVal !== "") s.memory = memVal === "null" ? null : parseInt(memVal, 10);
 });
 commitSongs("曲を一括変更: " + targets.length + "曲")
-.then(function () { $("bulk-genre").value = ""; $("bulk-key").value = ""; $("bulk-memory").value = ""; collapseBulkFields(); renderSongs(); toast(targets.length + "曲を変更しました。公開ページへの反映は1分ほどかかります"); })
+.then(function () { $("bulk-genre").value = ""; $("bulk-work").value = ""; $("bulk-key").value = ""; $("bulk-memory").value = ""; collapseBulkFields(); renderSongs(); toast(targets.length + "曲を変更しました。公開ページへの反映は1分ほどかかります"); })
 .catch(function (e) { setStatus("save-status", e.message || "変更に失敗しました。", false); loadSongs().catch(function () {}); });
 }
 function normTitleBasic(t) { return String(t || "").toLowerCase().replace(/\s+/g, ""); }
@@ -878,6 +894,7 @@ var keyLabel = $("f-keylabel").value.trim() || "原曲キー";
 var obj = {
 id: id || ("s" + Date.now().toString(36)),
 title: title, artist: artist,
+work: $("f-work").value.trim(),
 genre: $("f-genre").value.trim() || "その他",
 keyLabel: keyLabel, keyShift: keyShiftFromLabel(keyLabel),
 memo: $("f-memo").value.trim(),

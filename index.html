@@ -123,6 +123,7 @@ img.thumb.ld { opacity: 1;}
 .tag { display: inline-flex; align-items: center; gap: 6px; background: var(--surface-2); border-radius: 8px; padding: 5px 11px; font-size: 13px; font-weight: 700; color: var(--ink-2);}
 .tag.key { background: var(--accent-soft); color: var(--accent);}
 .tag.genre { color: #ffffff;}
+.tag.work { background: #5053f0; color: #ffffff;}
 .tag .k-label { font-size: 11px; font-weight: 700; opacity:.75; letter-spacing:.06em;}
 .tag.ext { background: var(--surface); border: 1.5px solid var(--line); color: var(--ink-2); text-decoration: none; cursor: pointer;}
 .tag.ext:active { transform: scale(.96);}
@@ -1014,6 +1015,7 @@ function metaHTML(s) {
 var kl = String(s.keyLabel || "原曲キー").replace(/\s+/g, "").replace("+", "＋");
 return '<span class="tag key">' + esc(kl) + "</span>" +
 genreTag(s) +
+(s.work ? '<span class="tag work">' + esc(s.work) + "</span>" : "") +
 '<a class="tag ext" href="' + esc(ytSearchURL(s)) + '" target="_blank" rel="noopener">YouTube</a>' +
 '<a class="tag ext ext-app" data-pkg="jp.nicovideo.android" href="' + esc(nicoSearchURL(s)) + '" target="_blank" rel="noopener">ニコニコ</a>';
 }
@@ -1149,7 +1151,7 @@ var arr = SONGS.filter(function (s) {
 if (state.genre !== "すべて" && s.genre !== state.genre) return false;
 if (state.artist && s.artist !== state.artist) return false;
 if (state.q) {
-var hay = (s.title + " " + s.artist + " " + s.genre + " " + (s.memo || "")).toLowerCase();
+var hay = (s.title + " " + s.artist + " " + s.genre + " " + (s.work || "") + " " + (s.memo || "")).toLowerCase();
 var terms = state.q.split(/\s+/);
 for (var i = 0; i < terms.length; i++) if (terms[i] && hay.indexOf(terms[i]) === -1) return false;
 }
