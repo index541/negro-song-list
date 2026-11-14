@@ -9258,5 +9258,21 @@
     "addedAt": "2026-11-12",
     "titleYomi": "ジャマ",
     "artistYomi": "ソウクウトネス"
+  },
+  {
+    "id": "smwg36bcg",
+    "addedAt": "2026-11-14",
+    "title": "君の知らない物語",
+    "artist": "supercell",
+    "work": "化物語",
+    "genre": "アニソン",
+    "keyLabel": "原曲キー",
+    "keyShift": 0,
+    "memo": "",
+    "memory": null,
+    "jacket": "https://i.ytimg.com/vi/jpV5jeFlt_E/hqdefault.jpg",
+    "ytLink": "https://www.youtube.com/watch?v=jpV5jeFlt_E",
+    "ytStart": 74,
+    "ytEnd": 111
   }
 ]
