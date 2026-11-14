@@ -9152,15 +9152,17 @@
     "id": "w1161",
     "title": "踊る恐竜さん",
     "artist": "音街ウナ",
+    "work": "",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/5b/80/f2/5b80f2e4-c87e-9811-ec62-5f6693687e14/HHMV-123.jpg/600x600bb.jpg",
+    "memory": null,
+    "jacket": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBrVflUiB-9L88_KzAOEAPFNNgERA-8MnnVBVK5oVWRZZNsfeq_WDfrnU&s=10",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview118/v4/c1/74/18/c1741895-a7a8-2313-f1ab-9755e63b2b5c/mzaf_1783874569566958209.plus.aac.p.m4a",
     "titleYomi": "おどるきょうりゅうさん",
-    "artistYomi": "おとがいうな"
+    "artistYomi": "おとがいうな",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview118/v4/c1/74/18/c1741895-a7a8-2313-f1ab-9755e63b2b5c/mzaf_1783874569566958209.plus.aac.p.m4a"
   },
   {
     "id": "w1163",
