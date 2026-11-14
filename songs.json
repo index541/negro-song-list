@@ -3012,15 +3012,17 @@
   {
     "id": "w102",
     "title": "アンインストール",
-    "artist": "igared55",
+    "artist": "石川智晶",
+    "work": "ぼくらの",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/f5/98/ab/f598ab0c-4ce1-c771-051e-05b076b5dcf5/mzi.etxvremi.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "あんいんすとーる",
-    "artistYomi": "igared55"
+    "artistYomi": "いしかわちあき"
   },
   {
     "id": "w108",
