@@ -366,6 +366,7 @@ var token = "";
 try { token = localStorage.getItem("nsl.token") || ""; } catch (e) {}
 var songs = [];
 var fileSha = null;
+var songsBase = null;
 
 function $(id) { return document.getElementById(id); }
 function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
@@ -387,7 +388,7 @@ function loadSongs() {
 if (token) {
 return fetch("https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/" + FILEPATH, { headers: ghHeaders() })
 .then(function (r) { if (!r.ok) throw new Error("gh " + r.status); return r.json(); })
-.then(function (d) { fileSha = d.sha; songs = JSON.parse(b64decode(d.content)); renderSongs(); });
+.then(function (d) { fileSha = d.sha; songs = JSON.parse(b64decode(d.content)); songsBase = JSON.parse(JSON.stringify(songs)); renderSongs(); });
 }
 return fetch("songs.json", { cache: "no-store" })
 .then(function (r) { if (!r.ok) throw new Error("local"); return r.json(); })
@@ -527,13 +528,56 @@ songs.forEach(function (s) { if (s.work) wseen[s.work] = true; });
 $("work-list").innerHTML = Object.keys(wseen).sort().map(function (g) { return '<option value="' + esc(g) + '"></option>'; }).join("");
 updateBulkBar();
 }
+function canonSong(s) {
+if (!s || typeof s !== "object") return JSON.stringify(s);
+var out = {};
+Object.keys(s).sort().forEach(function (k) { out[k] = s[k]; });
+return JSON.stringify(out);
+}
+// 409（他の更新が先に入った）時の3方向マージ: 読み込み時点(base)・自分の編集(local)・最新(remote)
+// 自分が編集した曲は自分の内容を優先するが、見回りが更新した ytClip / ytClipKey だけは最新を残す。
+function mergeSongs(base, local, remote) {
+var baseById = {}, localById = {}, remoteIds = {};
+base.forEach(function (s) { baseById[s.id] = s; });
+local.forEach(function (s) { localById[s.id] = s; });
+var merged = [];
+remote.forEach(function (r) {
+remoteIds[r.id] = true;
+var l = localById[r.id], b = baseById[r.id];
+if (!l) { if (!b) merged.push(r); return; }
+if (b && canonSong(l) === canonSong(b)) { merged.push(r); return; }
+var m = JSON.parse(JSON.stringify(l));
+if (b && (r.ytClip !== b.ytClip || r.ytClipKey !== b.ytClipKey)) {
+if (r.ytClip) m.ytClip = r.ytClip; else delete m.ytClip;
+if (r.ytClipKey) m.ytClipKey = r.ytClipKey; else delete m.ytClipKey;
+}
+merged.push(m);
+});
+local.forEach(function (l) { if (!remoteIds[l.id] && !baseById[l.id]) merged.push(l); });
+return merged;
+}
 function commitSongs(message) {
 if (!token) { setStatus("save-status", "先にトークンを保存してください。", false); return Promise.reject(new Error("no token")); }
 if (!fileSha) return loadSongs().then(function () { return commitSongs(message); });
+return putSongs(message, false);
+}
+function putSongs(message, retried) {
 var body = { message: message, content: b64encode(JSON.stringify(songs, null, 2) + "\n"), sha: fileSha };
 return fetch("https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/" + FILEPATH, { method: "PUT", headers: ghHeaders(), body: JSON.stringify(body) })
-.then(function (r) { if (!r.ok) return r.text().then(function (t) { throw new Error("保存に失敗しました（" + r.status + "）"); }); return r.json(); })
-.then(function (d) { fileSha = d.content.sha; });
+.then(function (r) {
+if (r.status === 409 && !retried) {
+return fetch("https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/" + FILEPATH, { headers: ghHeaders() })
+.then(function (r2) { if (!r2.ok) throw new Error("保存に失敗しました（409）"); return r2.json(); })
+.then(function (d) {
+songs = mergeSongs(songsBase || [], songs, JSON.parse(b64decode(d.content)));
+fileSha = d.sha;
+return putSongs(message, true);
+});
+}
+if (!r.ok) return r.text().then(function (t) { throw new Error("保存に失敗しました（" + r.status + "）"); });
+return r.json();
+})
+.then(function (d) { if (d && d.content) { fileSha = d.content.sha; songsBase = JSON.parse(JSON.stringify(songs)); } });
 }
 
 // ===== 折りたたみ =====
@@ -630,7 +674,7 @@ if (!token) { setStatus("token-status", "先にトークンを貼って保存し
 setStatus("token-status", "接続中…", null);
 fetch("https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/" + FILEPATH, { headers: ghHeaders() })
 .then(function (r) {
-if (r.ok) { setStatus("token-status", "接続OKです。このブラウザから曲を保存できます。", true); return r.json().then(function (d) { fileSha = d.sha; songs = JSON.parse(b64decode(d.content)); renderSongs(); }); }
+if (r.ok) { setStatus("token-status", "接続OKです。このブラウザから曲を保存できます。", true); return r.json().then(function (d) { fileSha = d.sha; songs = JSON.parse(b64decode(d.content)); songsBase = JSON.parse(JSON.stringify(songs)); renderSongs(); }); }
 if (r.status === 401 || r.status === 403) setStatus("token-status", "トークンが違うか、権限が足りません。作り方を確認してください。", false);
 else if (r.status === 404) setStatus("token-status", "リポジトリか曲ファイルに届きませんでした。トークンの対象リポジトリを確認してください。", false);
 else setStatus("token-status", "接続できませんでした（" + r.status + "）。", false);
