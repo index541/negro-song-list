@@ -140,6 +140,9 @@ body.has-bulk-float { padding-bottom:86px; }
 .key-ctl .kchip { font:inherit; font-size:12px; font-weight:700; border:1.5px solid var(--line); background:var(--surface); color:var(--ink-2); border-radius:999px; padding:5px 8px; cursor:pointer; flex:none; }
 .key-ctl .kchip.on { background:var(--accent); border-color:var(--accent); color:#fff; }
 @media (max-width:560px) { .jk-row { grid-template-columns:1fr 1fr; } }
+.names-row { grid-template-columns:minmax(0,1.05fr) repeat(4,minmax(0,1fr)); }
+.names-row .nrow-check { width:20px; height:20px; flex:none; padding:0; border:0; accent-color:var(--accent); cursor:pointer; }
+@media (max-width:560px) { .names-row { grid-template-columns:1fr 1fr; } }
 .memory-row .yr-name { display:flex; align-items:center; gap:8px; }
 .memory-row .yr-text { min-width:0; flex:1; }
 .chip-row { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:6px; }
@@ -397,8 +400,8 @@ body.has-bulk-float { padding-bottom:86px; }
 </section>
 
 <section class="card" id="yomi-card">
-<h2>よみがな一括修正</h2>
-<p class="desc">読みをまとめて直すための画面です。各行の「曲名の読み」と「アーティストの読み」を直して「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。空欄にすると自動判定に戻ります。カタカナで打っても、保存の時にひらがなに直ります。各欄では入力すると候補が出て、空欄で欄を押すとその曲やアーティストに紐づく読みの候補が出ます。</p>
+<h2>曲名・アーティスト・よみがな一括設定</h2>
+<p class="desc">曲名・アーティスト名と、その読みをまとめて直すための画面です。各行で直して「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。曲名とアーティスト名は空にはできません。読みは空欄にすると自動判定に戻り、カタカナで打っても保存の時にひらがなに直ります。各欄では入力すると候補が出て、読みの欄は空欄で押すとその曲やアーティストに紐づく読みの候補が出ます。行のチェックで曲を選んで、下の欄から同じアーティスト名をまとめて設定もできます（表記の統一に便利です）。</p>
 <div class="grid2">
 <div class="field">
 <label for="yomi-row-filter">行で絞り込み</label>
@@ -421,6 +424,16 @@ body.has-bulk-float { padding-bottom:86px; }
 <label>まとめて保存</label>
 <button type="button" class="btn primary" id="yomi-save" style="width:100%" disabled>変更をまとめて保存</button>
 </div>
+</div>
+<div class="field">
+<label for="name-bulk-artist">選択した曲にまとめて設定するアーティスト名</label>
+<input id="name-bulk-artist" type="text" list="artist-list" placeholder="アーティスト名を入力" />
+</div>
+<div class="bulk-bar">
+<button type="button" class="mini" id="name-sel-all">表示中をすべて選択</button>
+<button type="button" class="mini" id="name-sel-none">選択を解除</button>
+<span class="bulk-count" id="name-sel-count">選択中 0曲</span>
+<button type="button" class="btn sub" id="name-bulk-apply" disabled>選択した曲に設定</button>
 </div>
 <p class="status" id="yomi-status"></p>
 <div id="yomi-rows"></div>
@@ -491,46 +504,6 @@ body.has-bulk-float { padding-bottom:86px; }
 </div>
 <p class="status" id="memory-status"></p>
 <div id="memory-rows"></div>
-</section>
-
-<section class="card" id="name-card">
-<h2>曲名・アーティスト一括設定</h2>
-<p class="desc">曲名とアーティスト名をまとめて直すための画面です。各行で直して「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。曲名とアーティスト名は空にはできません。各欄では入力すると候補が出ます。行のチェックで曲を選んで、下の欄から同じアーティスト名をまとめて設定もできます（表記の統一に便利です）。</p>
-<div class="grid2">
-<div class="field">
-<label for="name-row-filter">行で絞り込み</label>
-<select id="name-row-filter">
-<option value="">すべての行</option>
-<option value="あ">あ行</option>
-<option value="か">か行</option>
-<option value="さ">さ行</option>
-<option value="た">た行</option>
-<option value="な">な行</option>
-<option value="は">は行</option>
-<option value="ま">ま行</option>
-<option value="や">や行</option>
-<option value="ら">ら行</option>
-<option value="わ">わ行</option>
-<option value="AZ">英字・数字・その他</option>
-</select>
-</div>
-<div class="field">
-<label>まとめて保存</label>
-<button type="button" class="btn primary" id="name-save" style="width:100%" disabled>変更をまとめて保存</button>
-</div>
-</div>
-<div class="field">
-<label for="name-bulk-artist">選択した曲にまとめて設定するアーティスト名</label>
-<input id="name-bulk-artist" type="text" list="artist-list" placeholder="アーティスト名を入力" />
-</div>
-<div class="bulk-bar">
-<button type="button" class="mini" id="name-sel-all">表示中をすべて選択</button>
-<button type="button" class="mini" id="name-sel-none">選択を解除</button>
-<span class="bulk-count" id="name-sel-count">選択中 0曲</span>
-<button type="button" class="btn sub" id="name-bulk-apply" disabled>選択した曲に設定</button>
-</div>
-<p class="status" id="name-status"></p>
-<div id="name-rows"></div>
 </section>
 
 <section class="card" id="jk-card">
@@ -1747,7 +1720,7 @@ function renderYomiRows() {
 var box = $("yomi-rows"); if (!box) return;
 if (box.contains(document.activeElement) || yomiDirty) return;
 var filter = $("yomi-row-filter").value;
-var sig = filter + "|" + songs.map(function (s) { return s.id + ":" + (s.titleYomi || "") + ":" + (s.artistYomi || ""); }).join("|");
+var sig = filter + "|" + songs.map(function (s) { return s.id + ":" + s.title + ":" + s.artist + ":" + (s.titleYomi || "") + ":" + (s.artistYomi || ""); }).join("|");
 if (sig === yomiSig) return;
 yomiSig = sig;
 var arr = songs.slice().sort(cmpTitle);
@@ -1757,26 +1730,36 @@ arr.forEach(function (s) {
 if (filter && yomiRowOf(s) !== filter) return;
 shown++;
 var row = document.createElement("div");
-row.className = "yomi-row"; row.setAttribute("data-id", s.id);
-row.innerHTML = '<div class="yr-name"><b></b><span></span></div><div><label>曲名の読み</label><input type="text" data-yomi="title" /></div><div><label>アーティストの読み</label><input type="text" data-yomi="artist" /></div>';
+row.className = "yomi-row names-row"; row.setAttribute("data-id", s.id);
+row.innerHTML = '<div class="yr-name"><input type="checkbox" class="nrow-check" /><div class="yr-text"><b></b><span></span></div></div><div><label>曲名</label><input type="text" data-nm="title" /></div><div><label>アーティスト</label><input type="text" data-nm="artist" /></div><div><label>曲名の読み</label><input type="text" data-yomi="title" /></div><div><label>アーティストの読み</label><input type="text" data-yomi="artist" /></div>';
 row.querySelector("b").textContent = s.title;
 row.querySelector("span").textContent = s.artist;
+var ni = row.querySelector('[data-nm="title"]'); ni.value = s.title || "";
+var na = row.querySelector('[data-nm="artist"]'); na.value = s.artist || "";
 var ti = row.querySelector('[data-yomi="title"]'); ti.value = s.titleYomi || "";
 var ai = row.querySelector('[data-yomi="artist"]'); ai.value = s.artistYomi || "";
+ni.addEventListener("input", function () { refreshYomiRowState(row); updateYomiSaveBtn(); });
+na.addEventListener("input", function () { refreshYomiRowState(row); updateYomiSaveBtn(); });
 ti.addEventListener("input", function () { refreshYomiRowState(row); updateYomiSaveBtn(); });
 ai.addEventListener("input", function () { refreshYomiRowState(row); updateYomiSaveBtn(); });
+var ncb = row.querySelector(".nrow-check"); ncb.checked = !!namesSelected[s.id];
+ncb.addEventListener("change", function () { if (ncb.checked) namesSelected[s.id] = true; else delete namesSelected[s.id]; updateNamesSelUI(); });
 box.appendChild(row);
 });
 if (!shown) box.innerHTML = '<p class="desc">この行の曲はありません。</p>';
 updateYomiSaveBtn();
+updateNamesSelUI();
 }
+var namesSelected = {};
 function refreshYomiRowState(row) {
 var id = row.getAttribute("data-id");
 var s = null; songs.forEach(function (x) { if (x.id === id) s = x; });
 if (!s) return;
+var nt = row.querySelector('[data-nm="title"]').value.trim();
+var na = row.querySelector('[data-nm="artist"]').value.trim();
 var t = yomiHira(row.querySelector('[data-yomi="title"]').value.trim());
 var a = yomiHira(row.querySelector('[data-yomi="artist"]').value.trim());
-row.classList.toggle("changed", t !== (s.titleYomi || "") || a !== (s.artistYomi || ""));
+row.classList.toggle("changed", nt !== (s.title || "") || na !== (s.artist || "") || t !== (s.titleYomi || "") || a !== (s.artistYomi || ""));
 }
 function updateYomiSaveBtn() {
 var n = 0;
@@ -1787,17 +1770,27 @@ b.disabled = n === 0;
 b.textContent = n ? "変更をまとめて保存（" + n + "件）" : "変更をまとめて保存";
 }
 $("yomi-row-filter").addEventListener("change", function () {
-if (yomiDirty && !confirm("保存していない読みの変更があります。行を変えると変更が消えます。続けますか？")) { $("yomi-row-filter").value = yomiPrevFilter; return; }
+if (yomiDirty && !confirm("保存していない変更があります。行を変えると変更が消えます。続けますか？")) { $("yomi-row-filter").value = yomiPrevFilter; return; }
 yomiDirty = false; yomiPrevFilter = $("yomi-row-filter").value; yomiSig = ""; renderYomiRows();
 });
 $("yomi-save").addEventListener("click", function () {
 var rows = document.querySelectorAll("#yomi-rows .yomi-row.changed");
 if (!rows.length) return;
+var bad = "";
+rows.forEach(function (row) {
+if (bad) return;
+var nt = row.querySelector('[data-nm="title"]').value.trim();
+var na = row.querySelector('[data-nm="artist"]').value.trim();
+if (!nt || !na) { var s0 = null; songs.forEach(function (x) { if (x.id === row.getAttribute("data-id")) s0 = x; }); bad = s0 ? s0.title : ""; }
+});
+if (bad) { setStatus("yomi-status", "曲名とアーティスト名は空にできません（" + bad + "）。直してから保存してください。", false); return; }
 var n = 0;
 rows.forEach(function (row) {
 var id = row.getAttribute("data-id");
 var s = null; songs.forEach(function (x) { if (x.id === id) s = x; });
 if (!s) return;
+s.title = row.querySelector('[data-nm="title"]').value.trim();
+s.artist = row.querySelector('[data-nm="artist"]').value.trim();
 var t = yomiHira(row.querySelector('[data-yomi="title"]').value.trim());
 var a = yomiHira(row.querySelector('[data-yomi="artist"]').value.trim());
 if (t) s.titleYomi = t; else delete s.titleYomi;
@@ -1806,9 +1799,40 @@ n++;
 });
 var btn = $("yomi-save"); btn.disabled = true;
 setStatus("yomi-status", "保存中…", null);
-commitSongs("よみがなを一括修正（" + n + "件）")
-.then(function () { yomiDirty = false; yomiSig = ""; setStatus("yomi-status", "保存しました。公開ページへの反映は1分ほどかかります。", true); renderSongs(); toast("よみがなを保存しました"); })
+commitSongs("曲名・アーティスト・よみがなを一括設定（" + n + "件）")
+.then(function () { yomiDirty = false; yomiSig = ""; namesSelected = {}; setStatus("yomi-status", "保存しました。公開ページへの反映は1分ほどかかります。", true); renderSongs(); toast("曲名・アーティスト・よみがなを保存しました"); })
 .catch(function (e) { setStatus("yomi-status", e.message || "保存に失敗しました。", false); updateYomiSaveBtn(); });
+});
+function updateNamesSelUI() {
+var n = Object.keys(namesSelected).length;
+var c = $("name-sel-count"); if (c) c.textContent = "選択中 " + n + "曲";
+var b = $("name-bulk-apply"); if (b) b.disabled = n === 0;
+}
+$("name-sel-all").addEventListener("click", function () {
+document.querySelectorAll("#yomi-rows .yomi-row").forEach(function (row) {
+namesSelected[row.getAttribute("data-id")] = true;
+var cb = row.querySelector(".nrow-check"); if (cb) cb.checked = true;
+});
+updateNamesSelUI();
+});
+$("name-sel-none").addEventListener("click", function () {
+namesSelected = {};
+document.querySelectorAll("#yomi-rows .nrow-check").forEach(function (cb) { cb.checked = false; });
+updateNamesSelUI();
+});
+$("name-bulk-apply").addEventListener("click", function () {
+var v = $("name-bulk-artist").value.trim();
+if (!v) { setStatus("yomi-status", "設定するアーティスト名を入力してください。", false); return; }
+var n = 0;
+document.querySelectorAll("#yomi-rows .yomi-row").forEach(function (row) {
+if (!namesSelected[row.getAttribute("data-id")]) return;
+var ai = row.querySelector('[data-nm="artist"]');
+if (ai.value.trim() !== v) { ai.value = v; refreshYomiRowState(row); }
+n++;
+});
+updateYomiSaveBtn();
+if (n) setStatus("yomi-status", n + "曲のアーティストを「" + v + "」にしました。「変更をまとめて保存」を押すと反映されます。", true);
+else setStatus("yomi-status", "いま表示されている行には選択中の曲がありません。絞り込みを変えると選択は残ります。", false);
 });
 
 // ジャンル一括設定
@@ -2437,104 +2461,6 @@ ctl.querySelectorAll(".kchip").forEach(function (c) { c.classList.toggle("on", p
 }
 function findSongById(id) { var s = null; songs.forEach(function (x) { if (x.id === id) s = x; }); return s; }
 
-// ---- 曲名・アーティスト ----
-function renderNameRows() {
-var box = $("name-rows"); if (!box) return;
-if (box.contains(document.activeElement) || nameDirty) return;
-var filter = $("name-row-filter").value;
-var sig = filter + "|" + songs.map(function (s) { return s.id + ":" + s.title + ":" + s.artist; }).join("|");
-if (sig === nameSig) return;
-nameSig = sig;
-var arr = songs.slice().sort(cmpTitle);
-box.innerHTML = "";
-var shown = 0;
-arr.forEach(function (s) {
-if (filter && yomiRowOf(s) !== filter) return;
-shown++;
-var row = document.createElement("div");
-row.className = "yomi-row name-row"; row.setAttribute("data-id", s.id);
-row.innerHTML = '<div class="yr-name"><input type="checkbox" class="mrow-check" /><div class="yr-text"><b></b><span></span></div></div><div><label>曲名</label><input type="text" data-name="title" /></div><div><label>アーティスト</label><input type="text" data-name="artist" /></div>';
-row.querySelector("b").textContent = s.title;
-row.querySelector("span").textContent = s.artist;
-var ti = row.querySelector('[data-name="title"]'); ti.value = s.title || "";
-var ai = row.querySelector('[data-name="artist"]'); ai.value = s.artist || "";
-ti.addEventListener("input", function () { refreshNameRowState(row); updateNameSaveBtn(); });
-ai.addEventListener("input", function () { refreshNameRowState(row); updateNameSaveBtn(); });
-var cb = row.querySelector(".mrow-check"); cb.checked = !!nameSelected[s.id];
-cb.addEventListener("change", function () { if (cb.checked) nameSelected[s.id] = true; else delete nameSelected[s.id]; updateNameSelUI(); });
-box.appendChild(row);
-});
-if (!shown) box.innerHTML = '<p class="desc">この行の曲はありません。</p>';
-updateNameSaveBtn(); updateNameSelUI();
-}
-function refreshNameRowState(row) {
-var s = findSongById(row.getAttribute("data-id")); if (!s) return;
-var t = row.querySelector('[data-name="title"]').value.trim();
-var a = row.querySelector('[data-name="artist"]').value.trim();
-row.classList.toggle("changed", t !== (s.title || "") || a !== (s.artist || ""));
-}
-function updateNameSaveBtn() {
-var n = 0;
-document.querySelectorAll("#name-rows .name-row.changed").forEach(function () { n++; });
-nameDirty = n > 0;
-var b = $("name-save");
-b.disabled = n === 0;
-b.textContent = n ? "変更をまとめて保存（" + n + "件）" : "変更をまとめて保存";
-}
-function updateNameSelUI() {
-var n = Object.keys(nameSelected).length;
-$("name-sel-count").textContent = "選択中 " + n + "曲";
-$("name-bulk-apply").disabled = n === 0;
-}
-$("name-row-filter").addEventListener("change", function () {
-if (nameDirty && !confirm("保存していない曲名・アーティストの変更があります。絞り込みを変えると変更が消えます。続けますか？")) { $("name-row-filter").value = namePrevFilter; return; }
-nameDirty = false; namePrevFilter = $("name-row-filter").value; nameSig = ""; renderNameRows();
-});
-$("name-save").addEventListener("click", function () {
-var rows = document.querySelectorAll("#name-rows .name-row.changed");
-if (!rows.length) return;
-var n = 0, bad = "";
-rows.forEach(function (row) {
-var s = findSongById(row.getAttribute("data-id")); if (!s) return;
-var t = row.querySelector('[data-name="title"]').value.trim();
-var a = row.querySelector('[data-name="artist"]').value.trim();
-if (!t || !a) { bad = s.title; return; }
-s.title = t; s.artist = a; n++;
-});
-if (bad) { setStatus("name-status", "曲名とアーティスト名は空にできません（" + bad + "）。直してから保存してください。", false); return; }
-var btn = $("name-save"); btn.disabled = true;
-setStatus("name-status", "保存中…", null);
-commitSongs("曲名・アーティストを一括設定（" + n + "件）")
-.then(function () { nameDirty = false; nameSig = ""; nameSelected = {}; setStatus("name-status", "保存しました。公開ページへの反映は1分ほどかかります。", true); renderSongs(); toast("曲名・アーティストを保存しました"); })
-.catch(function (e) { setStatus("name-status", e.message || "保存に失敗しました。", false); updateNameSaveBtn(); });
-});
-$("name-sel-all").addEventListener("click", function () {
-document.querySelectorAll("#name-rows .name-row").forEach(function (row) {
-nameSelected[row.getAttribute("data-id")] = true;
-var cb = row.querySelector(".mrow-check"); if (cb) cb.checked = true;
-});
-updateNameSelUI();
-});
-$("name-sel-none").addEventListener("click", function () {
-nameSelected = {};
-document.querySelectorAll("#name-rows .mrow-check").forEach(function (cb) { cb.checked = false; });
-updateNameSelUI();
-});
-$("name-bulk-apply").addEventListener("click", function () {
-var v = $("name-bulk-artist").value.trim();
-if (!v) { setStatus("name-status", "設定するアーティスト名を入力してください。", false); return; }
-var n = 0;
-document.querySelectorAll("#name-rows .name-row").forEach(function (row) {
-if (!nameSelected[row.getAttribute("data-id")]) return;
-var ai = row.querySelector('[data-name="artist"]');
-if (ai.value.trim() !== v) { ai.value = v; refreshNameRowState(row); }
-n++;
-});
-updateNameSaveBtn();
-if (n) setStatus("name-status", n + "曲のアーティストを「" + v + "」にしました。「変更をまとめて保存」を押すと反映されます。", true);
-else setStatus("name-status", "いま表示されている行には選択中の曲がありません。絞り込みを変えると選択は残ります。", false);
-});
-
 // ---- ジャケット・キー ----
 function jkRowMatch(s, filter) {
 if (!filter) return true;
@@ -2652,8 +2578,7 @@ else setStatus("jk-status", "いま表示されている行には選択中の曲
 });
 
 var renderSongsPrevBulk = renderSongs;
-renderSongs = function () { renderSongsPrevBulk(); renderNameRows(); renderJkRows(); };
-renderNameRows();
+renderSongs = function () { renderSongsPrevBulk(); renderJkRows(); };
 renderJkRows();
 </script>
 <script>
@@ -2720,11 +2645,11 @@ document.querySelectorAll('#yomi-rows [data-yomi="artist"]').forEach(function (i
 if (inp.dataset.sgDone) return; inp.dataset.sgDone = "1";
 attachFieldSuggest(inp, bulkYomiCollect(inp, "artist"), function (c, close) { sgSetValue(inp, c.yomi); close(); });
 });
-document.querySelectorAll('#name-rows [data-name="title"]').forEach(function (inp) {
+document.querySelectorAll('#yomi-rows [data-nm="title"]').forEach(function (inp) {
 if (inp.dataset.sgDone) return; inp.dataset.sgDone = "1";
 attachFieldSuggest(inp, bulkTitleCands, fillPickInto(inp));
 });
-document.querySelectorAll('#name-rows [data-name="artist"]').forEach(function (inp) {
+document.querySelectorAll('#yomi-rows [data-nm="artist"]').forEach(function (inp) {
 if (inp.dataset.sgDone) return; inp.dataset.sgDone = "1";
 attachFieldSuggest(inp, bulkArtistCands, fillPickInto(inp));
 });
@@ -2738,7 +2663,7 @@ var nba = $("name-bulk-artist");
 if (nba) { nba.removeAttribute("list"); attachFieldSuggest(nba, bulkArtistCands, fillPickInto(nba)); }
 var gbv = $("genre-bulk-value");
 if (gbv) { gbv.removeAttribute("list"); attachFieldSuggest(gbv, bulkGenreCollect(gbv), bulkGenrePick(gbv)); }
-["renderYomiRows", "renderGenreRows", "renderNameRows"].forEach(function (fname) {
+["renderYomiRows", "renderGenreRows"].forEach(function (fname) {
 var orig = window[fname];
 if (typeof orig !== "function") return;
 window[fname] = function () { orig(); attachBulkSuggests(); };
