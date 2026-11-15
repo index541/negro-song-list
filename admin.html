@@ -214,7 +214,7 @@ body.has-bulk-float { padding-bottom:86px; }
 </div>
 <div class="field">
 <label for="f-artist">アーティスト<span class="req">必須</span></label>
-<input id="f-artist" type="text" list="artist-list" />
+<input id="f-artist" type="text" />
 <datalist id="artist-list"></datalist>
 </div>
 <div class="field">
@@ -1774,6 +1774,120 @@ document.addEventListener("mousedown", function (e) { if (e.target !== input && 
 var admField = $("adm-q").closest(".field");
 admField.classList.add("has-suggest");
 attachSuggest($("adm-q"), admField, function () { return songs; }, function (s) { editSong(s.id); });
+</script>
+<script>
+// ===== 編集フォームの候補 =====
+function sgSongNode(s) {
+var frag = document.createDocumentFragment();
+if (s.jacket) { var img = document.createElement("img"); img.src = s.jacket; img.alt = ""; img.addEventListener("error", function () { img.style.display = "none"; }); frag.appendChild(img); }
+else { var ph = document.createElement("span"); ph.className = "sg-ph"; ph.textContent = String(s.title || "?").charAt(0); frag.appendChild(ph); }
+var main = document.createElement("span"); main.className = "sg-main";
+var bt = document.createElement("b"); bt.textContent = s.title;
+var it = document.createElement("i"); it.textContent = s.artist;
+main.appendChild(bt); main.appendChild(it); frag.appendChild(main);
+return frag;
+}
+function sgTextNode(mainText, subText, countText) {
+var frag = document.createDocumentFragment();
+var main = document.createElement("span"); main.className = "sg-main";
+var b = document.createElement("b"); b.textContent = mainText; main.appendChild(b);
+if (subText) { var i = document.createElement("i"); i.textContent = subText; main.appendChild(i); }
+frag.appendChild(main);
+if (countText) { var c = document.createElement("span"); c.className = "sg-count"; c.textContent = countText; frag.appendChild(c); }
+return frag;
+}
+function attachFieldSuggest(input, collect, onPick) {
+var field = input.closest(".field");
+if (!field) return;
+field.classList.add("has-suggest");
+var box = document.createElement("div");
+box.className = "sg-box"; box.style.display = "none";
+field.appendChild(box);
+var items = [], active = -1;
+function close() { box.style.display = "none"; box.innerHTML = ""; items = []; active = -1; }
+function highlight() { for (var i = 0; i < box.children.length; i++) box.children[i].classList.toggle("on", i === active); }
+function open() {
+var cands = collect(input.value);
+if (!cands.length) { close(); return; }
+box.innerHTML = ""; items = cands; active = -1;
+cands.forEach(function (c) {
+var b = document.createElement("button");
+b.type = "button"; b.className = "sg-row";
+b.appendChild(c.node);
+b.addEventListener("mousedown", function (e) { e.preventDefault(); onPick(c, close); });
+box.appendChild(b);
+});
+box.style.display = "";
+}
+input.addEventListener("input", open);
+input.addEventListener("focus", function () { if (input.value.trim()) open(); });
+input.addEventListener("keydown", function (e) {
+if (box.style.display === "none") return;
+if (e.key === "ArrowDown") { e.preventDefault(); active = Math.min(active + 1, items.length - 1); highlight(); }
+else if (e.key === "ArrowUp") { e.preventDefault(); active = Math.max(active - 1, 0); highlight(); }
+else if (e.key === "Enter") { if (items.length) { e.preventDefault(); onPick(items[active >= 0 ? active : 0], close); } }
+else if (e.key === "Escape") { close(); }
+});
+document.addEventListener("mousedown", function (e) { if (e.target !== input && !box.contains(e.target)) close(); });
+}
+function collectTitleCands(v) {
+return sgCandidates(v, songs).filter(function (c) { return c.type === "song"; }).map(function (c) { return { s: c.s, node: sgSongNode(c.s) }; });
+}
+function pickTitle(c, close) {
+close();
+if (c.s.id === $("f-id").value) return;
+if (editorDirty && !confirm("いま編集中の内容は破棄されます。「" + c.s.title + "」の編集に切り替えますか？")) return;
+editSong(c.s.id);
+}
+function artistInfoMap() {
+var map = {};
+songs.forEach(function (s) {
+if (!s.artist) return;
+if (!map[s.artist]) map[s.artist] = { count: 0, yomi: {} };
+map[s.artist].count++;
+if (s.artistYomi) map[s.artist].yomi[s.artistYomi] = (map[s.artist].yomi[s.artistYomi] || 0) + 1;
+});
+Object.keys(map).forEach(function (k) {
+var ys = Object.keys(map[k].yomi);
+var hira = ys.filter(function (y) { return /[ぁ-ん]/.test(y); });
+var pool = (hira.length ? hira : ys).sort(function (a, b) { return map[k].yomi[b] - map[k].yomi[a]; });
+map[k].topYomi = pool.length ? pool[0] : "";
+});
+return map;
+}
+function collectArtistCands(v) {
+var needle = sgNorm(v).trim(); if (!needle) return [];
+var map = artistInfoMap();
+return Object.keys(map).filter(function (name) { return sgNorm(name).indexOf(needle) >= 0 || Object.keys(map[name].yomi).some(function (y) { return sgNorm(y).indexOf(needle) >= 0; }); })
+.sort(function (a, b) { return map[b].count - map[a].count; }).slice(0, 8)
+.map(function (name) { return { name: name, yomi: map[name].topYomi, node: sgTextNode(name, map[name].topYomi, map[name].count + "曲") }; });
+}
+function pickArtist(c, close) {
+var a = $("f-artist"); a.value = c.name; a.dispatchEvent(new Event("input"));
+var y = $("f-artistyomi");
+if (c.yomi && !y.value.trim()) { y.value = c.yomi; y.dispatchEvent(new Event("input")); }
+close();
+}
+function collectYomiCands(v, kind) {
+var needle = yomiHira(String(v || "").trim()); if (!needle) return [];
+var seen = {};
+songs.forEach(function (s) {
+var y = kind === "title" ? s.titleYomi : s.artistYomi;
+if (!y) return;
+if (!seen[y]) seen[y] = kind === "title" ? s.title : s.artist;
+});
+return Object.keys(seen).filter(function (y) { return y.indexOf(needle) >= 0; })
+.sort(function (a, b) { return (a.indexOf(needle) === 0 ? 0 : 1) - (b.indexOf(needle) === 0 ? 0 : 1) || a.localeCompare(b, "ja"); })
+.slice(0, 8)
+.map(function (y) { return { yomi: y, node: sgTextNode(y, seen[y], "") }; });
+}
+function pickYomiInto(input) {
+return function (c, close) { input.value = c.yomi; input.dispatchEvent(new Event("input")); close(); };
+}
+attachFieldSuggest($("f-title"), collectTitleCands, pickTitle);
+attachFieldSuggest($("f-artist"), collectArtistCands, pickArtist);
+attachFieldSuggest($("f-titleyomi"), function (v) { return collectYomiCands(v, "title"); }, pickYomiInto($("f-titleyomi")));
+attachFieldSuggest($("f-artistyomi"), function (v) { return collectYomiCands(v, "artist"); }, pickYomiInto($("f-artistyomi")));
 </script>
 </body>
 </html>
