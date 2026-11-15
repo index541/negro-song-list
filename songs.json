@@ -7171,16 +7171,18 @@
   {
     "id": "w893",
     "title": "サイノウサンプラー",
-    "artist": "koyori",
+    "artist": "電ポルP feat. 初音ミク",
+    "work": "",
     "genre": "エレクトロニック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/e8/d6/ec/e8d6ecbf-42e5-4d32-167c-f9e973d1ff5c/PA00156965_0_196078_jacket.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/89/19/e7/8919e712-bd0a-f7d7-8942-bd1a58f4898c/mzaf_7576291199000154618.plus.aac.p.m4a",
     "titleYomi": "さいのうさんぷらー",
-    "artistYomi": "koyori"
+    "artistYomi": "でんぽるぴーはつねみく",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/89/19/e7/8919e712-bd0a-f7d7-8942-bd1a58f4898c/mzaf_7576291199000154618.plus.aac.p.m4a"
   },
   {
     "id": "w895",
