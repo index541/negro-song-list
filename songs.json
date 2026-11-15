@@ -745,16 +745,18 @@
   {
     "id": "u057",
     "title": "金曜日のおはよう",
-    "artist": "Gero",
+    "artist": "HoneyWorks feat. Gero",
+    "work": "",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/d9/b3/17/d9b31745-6974-2560-3e8d-88e500de9dfb/5021732647412.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/b7/ff/68/b7ff6875-eb45-bcc3-b532-aeea956e0b50/mzaf_5851898836480930719.plus.aac.p.m4a",
     "titleYomi": "きんようびのおはよう",
-    "artistYomi": "Gero"
+    "artistYomi": "はにーわーくすげろ",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/b7/ff/68/b7ff6875-eb45-bcc3-b532-aeea956e0b50/mzaf_5851898836480930719.plus.aac.p.m4a"
   },
   {
     "id": "u058",
