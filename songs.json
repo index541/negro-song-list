@@ -1096,17 +1096,19 @@
   },
   {
     "id": "u089",
-    "title": "少年と魔法のロボット(Album Edit Ver.)",
-    "artist": "40mP feat.GUMI",
+    "title": "少年と魔法のロボット",
+    "artist": "40mP feat. GUMI",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲 +4",
     "keyShift": 4,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/cc/0d/3f/cc0d3f9b-bbaf-61ed-cb8a-daae3a1afdd7/RGB_forDummy_small.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ef/d7/14/efd7145c-b980-f12b-6778-8dd452348420/mzaf_1754788073475414848.plus.aac.p.m4a",
-    "titleYomi": "しょうねんとまほうのろぼっと(Album Edit Ver.)",
-    "artistYomi": "40mP feat.GUMI"
+    "titleYomi": "しょうねんとまほうのろぼっと",
+    "artistYomi": "よんじゅーめーとるぴーぐみ",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ef/d7/14/efd7145c-b980-f12b-6778-8dd452348420/mzaf_1754788073475414848.plus.aac.p.m4a"
   },
   {
     "id": "u090",
