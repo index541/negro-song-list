@@ -5194,17 +5194,18 @@
   {
     "id": "w450",
     "title": "小さなてのひら",
-    "artist": "Lia",
+    "artist": "riya",
+    "work": "CLANNAD",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/de/db/33/dedb333b-8b79-3b07-3481-2c3778d2a4a0/4582364267689_cover.png/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/36/2a/c7/362ac7e6-4771-16cc-0721-0d26d8fa1d06/mzaf_12960812081220518926.plus.aac.p.m4a",
     "titleYomi": "ちいさなてのひら",
-    "artistYomi": "Lia",
-    "work": "CLANNAD"
+    "artistYomi": "りや",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/36/2a/c7/362ac7e6-4771-16cc-0721-0d26d8fa1d06/mzaf_12960812081220518926.plus.aac.p.m4a"
   },
   {
     "id": "w452",
