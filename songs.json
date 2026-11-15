@@ -3443,16 +3443,18 @@
   {
     "id": "w155",
     "title": "少女レイ",
-    "artist": "NORISTRY",
+    "artist": "みきとP feat. 初音ミク",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/99/32/8a/99328a84-9761-137a-6ed3-23d11edce5ef/NORISTRY_COVER.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/18/9e/47/189e4758-c3ee-47e3-33f7-c99b2a44267b/mzaf_13069700978329030413.plus.aac.p.m4a",
     "titleYomi": "しょうじょれい",
-    "artistYomi": "NORISTRY"
+    "artistYomi": "みきとぴーはつねみく",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/18/9e/47/189e4758-c3ee-47e3-33f7-c99b2a44267b/mzaf_13069700978329030413.plus.aac.p.m4a"
   },
   {
     "id": "w174",
