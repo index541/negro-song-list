@@ -3388,15 +3388,16 @@
     "id": "w142",
     "title": "もののけ姫",
     "artist": "Lorenzo Carrera&Erik Castello&Yoko Hallelujah",
+    "work": "もののけ姫",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/61/14/d9/6114d97c-6848-30f2-9eda-cbb5f077f6cd/10774600.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "もののけひめ",
-    "artistYomi": "Lorenzo Carrera&Erik Castello&Yoko Hallelujah",
-    "work": "もののけ姫"
+    "artistYomi": "ろれんつぉかれらえりっくかすてっろよーこはれるや"
   },
   {
     "id": "w143",
