@@ -4403,16 +4403,17 @@
     "id": "w345",
     "title": "ナイショの話",
     "artist": "ClariS",
+    "work": "偽物語",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/55/3f/f1/553ff15f-c6f5-9a37-cec0-5b7f5b0137e6/jacket_ANXX00880B00Z_550.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d4/ad/f8/d4adf839-a016-0b7a-dc46-fca42a732350/mzaf_4496140481223966401.plus.aac.p.m4a",
     "titleYomi": "ないしょのはなし",
-    "artistYomi": "ClariS",
-    "work": "偽物語"
+    "artistYomi": "くらりす",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d4/ad/f8/d4adf839-a016-0b7a-dc46-fca42a732350/mzaf_4496140481223966401.plus.aac.p.m4a"
   },
   {
     "id": "w346",
