@@ -120,10 +120,13 @@ body.has-bulk-float { padding-bottom:86px; }
 .yomi-row .yr-name b { display:block; font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .yomi-row .yr-name span { display:block; color:var(--ink-3); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .yomi-row label { font-size:11px; font-weight:700; color:var(--ink-3); display:block; margin-bottom:3px; }
-.yomi-row input { width:100%; font:inherit; font-size:15px; color:var(--ink); background:var(--bg); border:1.5px solid var(--line); border-radius:10px; padding:8px 10px; outline:0; }
-.yomi-row input:focus { border-color:var(--accent); }
+.yomi-row input, .yomi-row select { width:100%; font:inherit; font-size:15px; color:var(--ink); background:var(--bg); border:1.5px solid var(--line); border-radius:10px; padding:8px 10px; outline:0; }
+.yomi-row input:focus, .yomi-row select:focus { border-color:var(--accent); }
 .yomi-row.changed { background:var(--accent-soft); }
 .genre-row { grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); }
+.memory-row { grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); }
+.memory-row .yr-name { display:flex; align-items:center; gap:8px; }
+.memory-row .yr-text { min-width:0; flex:1; }
 .chip-row { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:6px; }
 .chip-row:empty { margin-bottom:0; }
 .gchip { display:inline-flex; align-items:center; gap:6px; background:var(--accent-soft); color:var(--ink); border-radius:999px; padding:5px 6px 5px 12px; font-size:13.5px; font-weight:700; }
@@ -434,6 +437,44 @@ body.has-bulk-float { padding-bottom:86px; }
 </div>
 <p class="status" id="genre-status"></p>
 <div id="genre-rows"></div>
+</section>
+
+<section class="card" id="memory-card">
+<h2>覚えてる度一括設定</h2>
+<p class="desc">覚えてる度をまとめて直すための画面です。各行の覚えてる度を変えて「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。行のチェックで曲を選んで、下の欄から同じ覚えてる度をまとめて設定もできます。</p>
+<div class="grid2">
+<div class="field">
+<label for="memory-row-filter">絞り込み</label>
+<select id="memory-row-filter">
+<option value="">すべての曲</option>
+</select>
+</div>
+<div class="field">
+<label>まとめて保存</label>
+<button type="button" class="btn primary" id="memory-save" style="width:100%" disabled>変更をまとめて保存</button>
+</div>
+</div>
+<div class="field">
+<label for="memory-bulk-value">選択した曲にまとめて設定する覚えてる度</label>
+<select id="memory-bulk-value">
+<option value="">選んでください</option>
+<option value="null">未設定に戻す</option>
+<option value="0">0（あんまり覚えてない）</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5（よく覚えてる）</option>
+</select>
+</div>
+<div class="bulk-bar">
+<button type="button" class="mini" id="memory-sel-all">表示中をすべて選択</button>
+<button type="button" class="mini" id="memory-sel-none">選択を解除</button>
+<span class="bulk-count" id="memory-sel-count">選択中 0曲</span>
+<button type="button" class="btn sub" id="memory-bulk-apply" disabled>選択した曲に設定</button>
+</div>
+<p class="status" id="memory-status"></p>
+<div id="memory-rows"></div>
 </section>
 
 <section class="card" id="artist-card">
@@ -1561,9 +1602,13 @@ var genreDirty = false;
 var genreSig = "";
 var genrePrevFilter = "";
 var genreSelected = {};
+var memoryDirty = false;
+var memorySig = "";
+var memoryPrevFilter = "";
+var memorySelected = {};
 
 var renderSongsBase = renderSongs;
-renderSongs = function () { renderSongsBase(); renderYomiRows(); renderGenreRows(); renderArtistVariants(); };
+renderSongs = function () { renderSongsBase(); renderYomiRows(); renderGenreRows(); renderMemoryRows(); renderArtistVariants(); };
 var importFillBase = importFill;
 importFill = function (id, val) { importFillBase(id, val); if (val) editorDirty = true; };
 var setJPosBase = setJPos;
@@ -1577,7 +1622,7 @@ $("ka-apply").addEventListener("click", function () { editorDirty = true; });
 $("yt-set-start").addEventListener("click", function () { editorDirty = true; });
 $("yt-set-end").addEventListener("click", function () { editorDirty = true; });
 $("jfile-input").addEventListener("change", function () { editorDirty = true; });
-window.addEventListener("beforeunload", function (e) { if (editorDirty || yomiDirty || genreDirty) { e.preventDefault(); e.returnValue = ""; } });
+window.addEventListener("beforeunload", function (e) { if (editorDirty || yomiDirty || genreDirty || memoryDirty) { e.preventDefault(); e.returnValue = ""; } });
 
 // 要対応で絞り込み
 $("adm-todo").addEventListener("change", function () { admState.todo = $("adm-todo").value; renderSongs(); });
@@ -1787,6 +1832,132 @@ if (n) setStatus("genre-status", n + "曲のジャンルを「" + v + "」にし
 else setStatus("genre-status", "いま表示されている行には選択中の曲がありません。絞り込みを変えると選択は残ります。", false);
 });
 
+// 覚えてる度一括設定
+var memoryFilterSig = "";
+function memKey(s) { return (s.memory === null || s.memory === undefined) ? "null" : String(s.memory); }
+function renderMemoryFilterOptions() {
+var sel = $("memory-row-filter"); if (!sel) return;
+var counts = { "null": 0, "0": 0, "1": 0, "2": 0, "3": 0, "4": 0, "5": 0 };
+songs.forEach(function (s) { counts[memKey(s)]++; });
+var keys = ["null", "0", "1", "2", "3", "4", "5"];
+var sig = keys.map(function (k) { return counts[k]; }).join("|");
+if (sig === memoryFilterSig) return;
+memoryFilterSig = sig;
+var labels = { "null": "未設定の曲", "0": "覚えてる度 0 の曲", "1": "覚えてる度 1 の曲", "2": "覚えてる度 2 の曲", "3": "覚えてる度 3 の曲", "4": "覚えてる度 4 の曲", "5": "覚えてる度 5 の曲" };
+var cur = sel.value;
+sel.innerHTML = "";
+var all = document.createElement("option"); all.value = ""; all.textContent = "すべての曲"; sel.appendChild(all);
+keys.forEach(function (k) { var o = document.createElement("option"); o.value = k; o.textContent = labels[k] + "（" + counts[k] + "曲）"; sel.appendChild(o); });
+sel.value = (cur === "" || counts.hasOwnProperty(cur)) ? cur : "";
+if (sel.value !== cur) memoryPrevFilter = sel.value;
+}
+function memoryRowMatch(s, filter) {
+if (!filter) return true;
+return memKey(s) === filter;
+}
+function renderMemoryRows() {
+renderMemoryFilterOptions();
+var box = $("memory-rows"); if (!box) return;
+if (box.contains(document.activeElement) || memoryDirty) return;
+var filter = $("memory-row-filter").value;
+var sig = filter + "|" + songs.map(function (s) { return s.id + ":" + memKey(s); }).join("|");
+if (sig === memorySig) return;
+memorySig = sig;
+var arr = songs.slice().sort(cmpTitle);
+box.innerHTML = "";
+var shown = 0;
+arr.forEach(function (s) {
+if (!memoryRowMatch(s, filter)) return;
+shown++;
+var row = document.createElement("div");
+row.className = "yomi-row memory-row"; row.setAttribute("data-id", s.id);
+row.innerHTML = '<div class="yr-name"><input type="checkbox" class="mrow-check" /><div class="yr-text"><b></b><span></span></div></div><div><label>覚えてる度</label><select data-memory="1"><option value="">未設定（表示しない）</option><option value="0">0（あんまり覚えてない）</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5（よく覚えてる）</option></select></div>';
+row.querySelector("b").textContent = s.title;
+row.querySelector("span").textContent = s.artist;
+var ms = row.querySelector('[data-memory="1"]'); ms.value = memKey(s) === "null" ? "" : memKey(s);
+ms.addEventListener("change", function () { refreshMemoryRowState(row); updateMemorySaveBtn(); });
+var cb = row.querySelector(".mrow-check"); cb.checked = !!memorySelected[s.id];
+cb.addEventListener("change", function () { if (cb.checked) memorySelected[s.id] = true; else delete memorySelected[s.id]; updateMemorySelUI(); });
+box.appendChild(row);
+});
+if (!shown) box.innerHTML = '<p class="desc">この絞り込みの曲はありません。</p>';
+updateMemorySaveBtn();
+updateMemorySelUI();
+}
+function refreshMemoryRowState(row) {
+var id = row.getAttribute("data-id");
+var s = null; songs.forEach(function (x) { if (x.id === id) s = x; });
+if (!s) return;
+var v = row.querySelector('[data-memory="1"]').value;
+var cur = v === "" ? null : parseInt(v, 10);
+var orig = (s.memory === undefined) ? null : s.memory;
+row.classList.toggle("changed", cur !== orig);
+}
+function updateMemorySaveBtn() {
+var n = 0;
+document.querySelectorAll("#memory-rows .memory-row.changed").forEach(function () { n++; });
+memoryDirty = n > 0;
+var b = $("memory-save");
+b.disabled = n === 0;
+b.textContent = n ? "変更をまとめて保存（" + n + "件）" : "変更をまとめて保存";
+}
+$("memory-row-filter").addEventListener("change", function () {
+if (memoryDirty && !confirm("保存していない覚えてる度の変更があります。絞り込みを変えると変更が消えます。続けますか？")) { $("memory-row-filter").value = memoryPrevFilter; return; }
+memoryDirty = false; memoryPrevFilter = $("memory-row-filter").value; memorySig = ""; renderMemoryRows();
+});
+$("memory-save").addEventListener("click", function () {
+var rows = document.querySelectorAll("#memory-rows .memory-row.changed");
+if (!rows.length) return;
+var n = 0;
+rows.forEach(function (row) {
+var id = row.getAttribute("data-id");
+var s = null; songs.forEach(function (x) { if (x.id === id) s = x; });
+if (!s) return;
+var v = row.querySelector('[data-memory="1"]').value;
+s.memory = v === "" ? null : parseInt(v, 10);
+n++;
+});
+var btn = $("memory-save"); btn.disabled = true;
+setStatus("memory-status", "保存中…", null);
+commitSongs("覚えてる度を一括設定（" + n + "件）")
+.then(function () { memoryDirty = false; memorySig = ""; memorySelected = {}; setStatus("memory-status", "保存しました。公開ページへの反映は1分ほどかかります。", true); renderSongs(); toast("覚えてる度を保存しました"); })
+.catch(function (e) { setStatus("memory-status", e.message || "保存に失敗しました。", false); updateMemorySaveBtn(); });
+});
+
+function updateMemorySelUI() {
+var n = Object.keys(memorySelected).length;
+$("memory-sel-count").textContent = "選択中 " + n + "曲";
+$("memory-bulk-apply").disabled = n === 0;
+}
+$("memory-sel-all").addEventListener("click", function () {
+document.querySelectorAll("#memory-rows .memory-row").forEach(function (row) {
+memorySelected[row.getAttribute("data-id")] = true;
+var cb = row.querySelector(".mrow-check"); if (cb) cb.checked = true;
+});
+updateMemorySelUI();
+});
+$("memory-sel-none").addEventListener("click", function () {
+memorySelected = {};
+document.querySelectorAll("#memory-rows .mrow-check").forEach(function (cb) { cb.checked = false; });
+updateMemorySelUI();
+});
+$("memory-bulk-apply").addEventListener("click", function () {
+var v = $("memory-bulk-value").value;
+if (v === "") { setStatus("memory-status", "設定する覚えてる度を選んでください。", false); return; }
+var target = v === "null" ? "" : v;
+var n = 0;
+document.querySelectorAll("#memory-rows .memory-row").forEach(function (row) {
+if (!memorySelected[row.getAttribute("data-id")]) return;
+var ms = row.querySelector('[data-memory="1"]');
+if (ms.value !== target) { ms.value = target; refreshMemoryRowState(row); }
+n++;
+});
+updateMemorySaveBtn();
+var label = v === "null" ? "未設定" : v;
+if (n) setStatus("memory-status", n + "曲の覚えてる度を「" + label + "」にしました。「変更をまとめて保存」を押すと反映されます。", true);
+else setStatus("memory-status", "いま表示されている行には選択中の曲がありません。絞り込みを変えると選択は残ります。", false);
+});
+
 // アーティスト表記のゆれ
 function normArtistFull(a) { return String(a || "").normalize("NFKC").toLowerCase().replace(/[\s・]/g, ""); }
 function renderArtistVariants() {
@@ -1874,6 +2045,7 @@ return loadSongs().then(function () { songs = restored; return commitSongs("変�
 
 renderYomiRows();
 renderGenreRows();
+renderMemoryRows();
 renderArtistVariants();
 </script>
 <script>
