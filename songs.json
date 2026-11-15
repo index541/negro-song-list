@@ -1054,15 +1054,17 @@
     "id": "u086",
     "title": "車輪の唄",
     "artist": "BUMP OF CHICKEN",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/c1/76/35/c17635c7-6655-f866-a1b8-af1ea25a481c/dj.soivxalm.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/46/f7/ca/46f7cadd-058f-4b3a-8c9c-4ae8c768d0b0/mzaf_18432668685206173392.plus.aac.p.m4a",
     "titleYomi": "しゃりんのうた",
-    "artistYomi": "BUMP OF CHICKEN"
+    "artistYomi": "ばんぷおぶちきん",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/46/f7/ca/46f7cadd-058f-4b3a-8c9c-4ae8c768d0b0/mzaf_18432668685206173392.plus.aac.p.m4a"
   },
   {
     "id": "u087",
