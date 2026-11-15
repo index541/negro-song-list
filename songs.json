@@ -1909,15 +1909,17 @@
     "id": "u159",
     "title": "プレゼント",
     "artist": "BUMP OF CHICKEN",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/f1/9e/9b/f19e9bce-c91b-4865-b853-b7c89f1f06aa/TFCC-86257WW.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/a5/fe/61/a5fe6132-52be-657d-cb4e-d78a89e1bcdc/mzaf_8203047532997969240.plus.aac.p.m4a",
     "titleYomi": "ぷれぜんと",
-    "artistYomi": "BUMP OF CHICKEN"
+    "artistYomi": "ばんぷおぶちきん",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/a5/fe/61/a5fe6132-52be-657d-cb4e-d78a89e1bcdc/mzaf_8203047532997969240.plus.aac.p.m4a"
   },
   {
     "id": "u160",
