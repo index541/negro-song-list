@@ -2502,15 +2502,17 @@
   {
     "id": "w012",
     "title": "＊ハロー、プラネット。",
-    "artist": "ASK",
-    "genre": "ロック",
+    "artist": "sasakure.UK feat. 初音ミク",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/3b/98/3e/3b983e3c-a55b-bd98-466d-5f3a6eac8452/4550757205006_cover.png/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "titleYomi": "＊はろー、ぷらねっと。",
-    "artistYomi": "ASK"
+    "titleYomi": "はろーぷらねっと",
+    "artistYomi": "ささくれゆーけーはつねみく"
   },
   {
     "id": "w013",
