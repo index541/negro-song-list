@@ -124,6 +124,9 @@ body.has-bulk-float { padding-bottom:86px; }
 .yomi-row input:focus { border-color:var(--accent); }
 .yomi-row.changed { background:var(--accent-soft); }
 .genre-row { grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); }
+.genre-row .yr-name { display:flex; align-items:center; gap:8px; }
+.genre-row .yr-text { min-width:0; flex:1; }
+.genre-row .grow-check { width:20px; height:20px; flex:none; padding:0; border:0; accent-color:var(--accent); cursor:pointer; }
 .hist-row, .var-row { display:flex; gap:10px; align-items:center; justify-content:space-between; padding:9px 2px; border-bottom:1px solid var(--line); font-size:13.5px; line-height:1.6; }
 .var-row .vname { font-weight:900; }
 .var-row select { font:inherit; font-size:14px; color:var(--ink); background:var(--bg); border:1.5px solid var(--line); border-radius:10px; padding:7px 10px; }
@@ -401,7 +404,7 @@ body.has-bulk-float { padding-bottom:86px; }
 
 <section class="card" id="genre-card">
 <h2>ジャンル一括設定</h2>
-<p class="desc">ジャンルをまとめて直すための画面です。各行のジャンルを直して「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。空欄にすると「その他」になります。入力すると今あるジャンル名が候補で出ます。</p>
+<p class="desc">ジャンルをまとめて直すための画面です。各行のジャンルを直して「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。空欄にすると「その他」になります。入力すると今あるジャンル名が候補で出ます。行のチェックで曲を選んで、下の欄から同じジャンルをまとめて設定もできます。</p>
 <div class="grid2">
 <div class="field">
 <label for="genre-row-filter">絞り込み</label>
@@ -425,6 +428,16 @@ body.has-bulk-float { padding-bottom:86px; }
 <label>まとめて保存</label>
 <button type="button" class="btn primary" id="genre-save" style="width:100%" disabled>変更をまとめて保存</button>
 </div>
+</div>
+<div class="field">
+<label for="genre-bulk-value">選択した曲にまとめて設定するジャンル</label>
+<input id="genre-bulk-value" type="text" list="genre-list" placeholder="ジャンル名を入力" />
+</div>
+<div class="bulk-bar">
+<button type="button" class="mini" id="genre-sel-all">表示中をすべて選択</button>
+<button type="button" class="mini" id="genre-sel-none">選択を解除</button>
+<span class="bulk-count" id="genre-sel-count">選択中 0曲</span>
+<button type="button" class="btn sub" id="genre-bulk-apply" disabled>選択した曲に設定</button>
 </div>
 <p class="status" id="genre-status"></p>
 <div id="genre-rows"></div>
@@ -1532,6 +1545,7 @@ var yomiPrevFilter = "";
 var genreDirty = false;
 var genreSig = "";
 var genrePrevFilter = "";
+var genreSelected = {};
 
 var renderSongsBase = renderSongs;
 renderSongs = function () { renderSongsBase(); renderYomiRows(); renderGenreRows(); renderArtistVariants(); };
@@ -1660,15 +1674,18 @@ if (!genreRowMatch(s, filter)) return;
 shown++;
 var row = document.createElement("div");
 row.className = "yomi-row genre-row"; row.setAttribute("data-id", s.id);
-row.innerHTML = '<div class="yr-name"><b></b><span></span></div><div><label>ジャンル</label><input type="text" data-genre="1" list="genre-list" /></div>';
+row.innerHTML = '<div class="yr-name"><input type="checkbox" class="grow-check" /><div class="yr-text"><b></b><span></span></div></div><div><label>ジャンル</label><input type="text" data-genre="1" list="genre-list" /></div>';
 row.querySelector("b").textContent = s.title;
 row.querySelector("span").textContent = s.artist;
 var gi = row.querySelector('[data-genre="1"]'); gi.value = s.genre || "";
 gi.addEventListener("input", function () { refreshGenreRowState(row); updateGenreSaveBtn(); });
+var cb = row.querySelector(".grow-check"); cb.checked = !!genreSelected[s.id];
+cb.addEventListener("change", function () { if (cb.checked) genreSelected[s.id] = true; else delete genreSelected[s.id]; updateGenreSelUI(); });
 box.appendChild(row);
 });
 if (!shown) box.innerHTML = '<p class="desc">この絞り込みの曲はありません。</p>';
 updateGenreSaveBtn();
+updateGenreSelUI();
 }
 function refreshGenreRowState(row) {
 var id = row.getAttribute("data-id");
@@ -1703,8 +1720,40 @@ n++;
 var btn = $("genre-save"); btn.disabled = true;
 setStatus("genre-status", "保存中…", null);
 commitSongs("ジャンルを一括設定（" + n + "件）")
-.then(function () { genreDirty = false; genreSig = ""; setStatus("genre-status", "保存しました。公開ページへの反映は1分ほどかかります。", true); renderSongs(); toast("ジャンルを保存しました"); })
+.then(function () { genreDirty = false; genreSig = ""; genreSelected = {}; setStatus("genre-status", "保存しました。公開ページへの反映は1分ほどかかります。", true); renderSongs(); toast("ジャンルを保存しました"); })
 .catch(function (e) { setStatus("genre-status", e.message || "保存に失敗しました。", false); updateGenreSaveBtn(); });
+});
+
+function updateGenreSelUI() {
+var n = Object.keys(genreSelected).length;
+$("genre-sel-count").textContent = "選択中 " + n + "曲";
+$("genre-bulk-apply").disabled = n === 0;
+}
+$("genre-sel-all").addEventListener("click", function () {
+document.querySelectorAll("#genre-rows .genre-row").forEach(function (row) {
+genreSelected[row.getAttribute("data-id")] = true;
+var cb = row.querySelector(".grow-check"); if (cb) cb.checked = true;
+});
+updateGenreSelUI();
+});
+$("genre-sel-none").addEventListener("click", function () {
+genreSelected = {};
+document.querySelectorAll("#genre-rows .grow-check").forEach(function (cb) { cb.checked = false; });
+updateGenreSelUI();
+});
+$("genre-bulk-apply").addEventListener("click", function () {
+var v = $("genre-bulk-value").value.trim();
+if (!v) { setStatus("genre-status", "設定するジャンル名を入れてください。", false); return; }
+var n = 0;
+document.querySelectorAll("#genre-rows .genre-row").forEach(function (row) {
+if (!genreSelected[row.getAttribute("data-id")]) return;
+var gi = row.querySelector('[data-genre="1"]');
+if (gi.value !== v) { gi.value = v; refreshGenreRowState(row); }
+n++;
+});
+updateGenreSaveBtn();
+if (n) setStatus("genre-status", n + "曲のジャンルを「" + v + "」にしました。「変更をまとめて保存」を押すと反映されます。", true);
+else setStatus("genre-status", "いま表示されている行には選択中の曲がありません。絞り込みを変えると選択は残ります。", false);
 });
 
 // アーティスト表記のゆれ
