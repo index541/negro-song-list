@@ -124,7 +124,15 @@ body.has-bulk-float { padding-bottom:86px; }
 .yomi-row input:focus, .yomi-row select:focus { border-color:var(--accent); }
 .yomi-row.changed { background:var(--accent-soft); }
 .genre-row { grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); }
-.memory-row { grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); }
+.memory-row { grid-template-columns:minmax(0,1fr) auto; }
+.mem-ctl { display:flex; align-items:center; gap:6px; }
+.mem-ctl .mdot-btn { width:30px; height:30px; border-radius:50%; border:2px solid var(--line); background:#e7e1d6; cursor:pointer; padding:0; flex:none; }
+.mem-ctl .mdot-btn.on { border-color:transparent; }
+.mem-face-btn { font-size:19px; line-height:1; border:2px solid transparent; background:none; border-radius:50%; width:34px; height:34px; cursor:pointer; padding:0; flex:none; }
+.mem-face-btn.on { border-color:var(--accent); background:var(--accent-soft); }
+.mem-face-static { font-size:19px; line-height:1; flex:none; }
+.mem-clear { font:inherit; font-size:12px; font-weight:700; border:1.5px solid var(--line); background:var(--surface); color:var(--ink-2); border-radius:999px; padding:5px 10px; cursor:pointer; flex:none; }
+.mem-clear.on { background:var(--accent-soft); border-color:var(--accent); color:var(--ink); }
 .memory-row .yr-name { display:flex; align-items:center; gap:8px; }
 .memory-row .yr-text { min-width:0; flex:1; }
 .chip-row { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:6px; }
@@ -442,7 +450,7 @@ body.has-bulk-float { padding-bottom:86px; }
 
 <section class="card" id="memory-card">
 <h2>覚えてる度一括設定</h2>
-<p class="desc">覚えてる度をまとめて直すための画面です。各行の覚えてる度を変えて「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。行のチェックで曲を選んで、下の欄から同じ覚えてる度をまとめて設定もできます。</p>
+<p class="desc">覚えてる度をまとめて直すための画面です。各行の〇をタップして覚えてる度を設定し、「変更をまとめて保存」を押すと1回の保存でまとめて反映されます。😵‍💫をタップすると0、「未設定」ボタンで未設定に戻ります。行のチェックで曲を選んで、下の欄から同じ覚えてる度をまとめて設定もできます。</p>
 <div class="grid2">
 <div class="field">
 <label for="memory-row-filter">絞り込み</label>
@@ -1872,11 +1880,16 @@ if (!memoryRowMatch(s, filter)) return;
 shown++;
 var row = document.createElement("div");
 row.className = "yomi-row memory-row"; row.setAttribute("data-id", s.id);
-row.innerHTML = '<div class="yr-name"><input type="checkbox" class="mrow-check" /><div class="yr-text"><b></b><span></span></div></div><div><label>覚えてる度</label><select data-memory="1"><option value="">未設定（表示しない）</option><option value="0">0（あんまり覚えてない）</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5（よく覚えてる）</option></select></div>';
+row.innerHTML = '<div class="yr-name"><input type="checkbox" class="mrow-check" /><div class="yr-text"><b></b><span></span></div></div><div><label>覚えてる度</label><div class="mem-ctl" data-memory="1"><button type="button" class="mem-face-btn" data-setval="0" aria-label="0（あんまり覚えてない）">😵‍💫</button><button type="button" class="mdot-btn" data-setval="1" aria-label="覚えてる度1"></button><button type="button" class="mdot-btn" data-setval="2" aria-label="覚えてる度2"></button><button type="button" class="mdot-btn" data-setval="3" aria-label="覚えてる度3"></button><button type="button" class="mdot-btn" data-setval="4" aria-label="覚えてる度4"></button><button type="button" class="mdot-btn" data-setval="5" aria-label="覚えてる度5（よく覚えてる）"></button><span class="mem-face-static" aria-hidden="true">😆</span><button type="button" class="mem-clear" data-setval="">未設定</button></div></div>';
 row.querySelector("b").textContent = s.title;
 row.querySelector("span").textContent = s.artist;
-var ms = row.querySelector('[data-memory="1"]'); ms.value = memKey(s) === "null" ? "" : memKey(s);
-ms.addEventListener("change", function () { refreshMemoryRowState(row); updateMemorySaveBtn(); });
+var ctl = row.querySelector('[data-memory="1"]');
+memCtlSet(ctl, memKey(s) === "null" ? "" : memKey(s));
+ctl.addEventListener("click", function (e) {
+var b = e.target.closest("[data-setval]"); if (!b) return;
+memCtlSet(ctl, b.getAttribute("data-setval"));
+refreshMemoryRowState(row); updateMemorySaveBtn();
+});
 var cb = row.querySelector(".mrow-check"); cb.checked = !!memorySelected[s.id];
 cb.addEventListener("change", function () { if (cb.checked) memorySelected[s.id] = true; else delete memorySelected[s.id]; updateMemorySelUI(); });
 box.appendChild(row);
@@ -1885,11 +1898,23 @@ if (!shown) box.innerHTML = '<p class="desc">この絞り込みの曲はあり�
 updateMemorySaveBtn();
 updateMemorySelUI();
 }
+var MEM_COLORS_EDIT = ["#e2483d", "#ef7d1a", "#f2b01e", "#8fbf3f", "#28a35c"];
+function memCtlSet(ctl, v) {
+ctl.setAttribute("data-val", v);
+var n = v === "" ? -1 : parseInt(v, 10);
+ctl.querySelectorAll(".mdot-btn").forEach(function (d, i) {
+var on = n > i;
+d.style.background = on ? MEM_COLORS_EDIT[i] : "";
+d.classList.toggle("on", on);
+});
+ctl.querySelector(".mem-face-btn").classList.toggle("on", n === 0);
+ctl.querySelector(".mem-clear").classList.toggle("on", n === -1);
+}
 function refreshMemoryRowState(row) {
 var id = row.getAttribute("data-id");
 var s = null; songs.forEach(function (x) { if (x.id === id) s = x; });
 if (!s) return;
-var v = row.querySelector('[data-memory="1"]').value;
+var v = row.querySelector('[data-memory="1"]').getAttribute("data-val");
 var cur = v === "" ? null : parseInt(v, 10);
 var orig = (s.memory === undefined) ? null : s.memory;
 row.classList.toggle("changed", cur !== orig);
@@ -1914,7 +1939,7 @@ rows.forEach(function (row) {
 var id = row.getAttribute("data-id");
 var s = null; songs.forEach(function (x) { if (x.id === id) s = x; });
 if (!s) return;
-var v = row.querySelector('[data-memory="1"]').value;
+var v = row.querySelector('[data-memory="1"]').getAttribute("data-val");
 s.memory = v === "" ? null : parseInt(v, 10);
 n++;
 });
@@ -1949,8 +1974,8 @@ var target = v === "null" ? "" : v;
 var n = 0;
 document.querySelectorAll("#memory-rows .memory-row").forEach(function (row) {
 if (!memorySelected[row.getAttribute("data-id")]) return;
-var ms = row.querySelector('[data-memory="1"]');
-if (ms.value !== target) { ms.value = target; refreshMemoryRowState(row); }
+var ctl2 = row.querySelector('[data-memory="1"]');
+if (ctl2.getAttribute("data-val") !== target) { memCtlSet(ctl2, target); refreshMemoryRowState(row); }
 n++;
 });
 updateMemorySaveBtn();
