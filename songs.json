@@ -3445,15 +3445,17 @@
     "id": "w174",
     "title": "恋のマイアヒ",
     "artist": "O-Zone",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/27/6e/22/276e225c-6e07-f375-ad4e-0ef1abeb166b/dj.uotavlcc.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/09/70/7b/09707b93-85fc-dede-335c-cfca1533fc43/mzaf_5106409173794692089.plus.aac.p.m4a",
     "titleYomi": "こいのまいあひ",
-    "artistYomi": "O-Zone"
+    "artistYomi": "おぞん",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/09/70/7b/09707b93-85fc-dede-335c-cfca1533fc43/mzaf_5106409173794692089.plus.aac.p.m4a"
   },
   {
     "id": "w175",
