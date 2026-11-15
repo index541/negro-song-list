@@ -928,15 +928,17 @@
     "id": "u073",
     "title": "さぁ",
     "artist": "surface",
+    "work": "",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/67/44/a5/6744a5f8-40a4-909d-d8b9-7e488f2de299/00044002118424.rgb.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/99/2f/45/992f453b-376d-a589-717c-7ab2980d319c/mzaf_2015169493028262660.plus.aac.p.m4a",
     "titleYomi": "さぁ",
-    "artistYomi": "surface"
+    "artistYomi": "さーふぇいす",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/99/2f/45/992f453b-376d-a589-717c-7ab2980d319c/mzaf_2015169493028262660.plus.aac.p.m4a"
   },
   {
     "id": "u074",
