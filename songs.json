@@ -1489,15 +1489,17 @@
     "id": "u122",
     "title": "ドラマチック",
     "artist": "Base Ball Bear",
+    "work": "",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/4d/50/2d/4d502d09-c807-7df7-075a-bac7769faf8c/05099951589752.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/60/36/ed/6036ed99-77b9-0627-0171-cd65777ebaa2/mzaf_12858544415629907843.plus.aac.p.m4a",
     "titleYomi": "どらまちっく",
-    "artistYomi": "Base Ball Bear"
+    "artistYomi": "べーすぼーるべあー",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/60/36/ed/6036ed99-77b9-0627-0171-cd65777ebaa2/mzaf_12858544415629907843.plus.aac.p.m4a"
   },
   {
     "id": "u125",
