@@ -123,6 +123,7 @@ body.has-bulk-float { padding-bottom:86px; }
 .yomi-row input { width:100%; font:inherit; font-size:15px; color:var(--ink); background:var(--bg); border:1.5px solid var(--line); border-radius:10px; padding:8px 10px; outline:0; }
 .yomi-row input:focus { border-color:var(--accent); }
 .yomi-row.changed { background:var(--accent-soft); }
+.genre-row { grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); }
 .hist-row, .var-row { display:flex; gap:10px; align-items:center; justify-content:space-between; padding:9px 2px; border-bottom:1px solid var(--line); font-size:13.5px; line-height:1.6; }
 .var-row .vname { font-weight:900; }
 .var-row select { font:inherit; font-size:14px; color:var(--ink); background:var(--bg); border:1.5px solid var(--line); border-radius:10px; padding:7px 10px; }
@@ -236,7 +237,7 @@ body.has-bulk-float { padding-bottom:86px; }
 <p class="desc">画像ファイルは、この編集画面へのドラッグ＆ドロップや貼り付け（Ctrl+V）でも設定できます。画像のURLを落とした時も入ります。</p>
 <div class="field">
 <label for="f-work">作品名</label>
-<input id="f-work" type="text" list="work-list" placeholder="化物語" />
+<input id="f-work" type="text" placeholder="化物語" />
 <datalist id="work-list"></datalist>
 </div>
 <div class="grid2">
@@ -396,6 +397,37 @@ body.has-bulk-float { padding-bottom:86px; }
 </div>
 <p class="status" id="yomi-status"></p>
 <div id="yomi-rows"></div>
+</section>
+
+<section class="card" id="genre-card">
+<h2>ジャンル一括設定</h2>
+<p class="desc">ジャンルをまとめて直すための画面です。各行のジャンルを直して「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。空欄にすると「その他」になります。入力すると今あるジャンル名が候補で出ます。</p>
+<div class="grid2">
+<div class="field">
+<label for="genre-row-filter">絞り込み</label>
+<select id="genre-row-filter">
+<option value="">すべての曲</option>
+<option value="other">その他・未設定</option>
+<option value="あ">あ行</option>
+<option value="か">か行</option>
+<option value="さ">さ行</option>
+<option value="た">た行</option>
+<option value="な">な行</option>
+<option value="は">は行</option>
+<option value="ま">ま行</option>
+<option value="や">や行</option>
+<option value="ら">ら行</option>
+<option value="わ">わ行</option>
+<option value="AZ">英字・数字・その他</option>
+</select>
+</div>
+<div class="field">
+<label>まとめて保存</label>
+<button type="button" class="btn primary" id="genre-save" style="width:100%" disabled>変更をまとめて保存</button>
+</div>
+</div>
+<p class="status" id="genre-status"></p>
+<div id="genre-rows"></div>
 </section>
 
 <section class="card" id="artist-card">
@@ -1497,9 +1529,12 @@ var yomiDirty = false;
 var yomiSig = "";
 var artistSig = "";
 var yomiPrevFilter = "";
+var genreDirty = false;
+var genreSig = "";
+var genrePrevFilter = "";
 
 var renderSongsBase = renderSongs;
-renderSongs = function () { renderSongsBase(); renderYomiRows(); renderArtistVariants(); };
+renderSongs = function () { renderSongsBase(); renderYomiRows(); renderGenreRows(); renderArtistVariants(); };
 var importFillBase = importFill;
 importFill = function (id, val) { importFillBase(id, val); if (val) editorDirty = true; };
 var setJPosBase = setJPos;
@@ -1513,7 +1548,7 @@ $("ka-apply").addEventListener("click", function () { editorDirty = true; });
 $("yt-set-start").addEventListener("click", function () { editorDirty = true; });
 $("yt-set-end").addEventListener("click", function () { editorDirty = true; });
 $("jfile-input").addEventListener("change", function () { editorDirty = true; });
-window.addEventListener("beforeunload", function (e) { if (editorDirty || yomiDirty) { e.preventDefault(); e.returnValue = ""; } });
+window.addEventListener("beforeunload", function (e) { if (editorDirty || yomiDirty || genreDirty) { e.preventDefault(); e.returnValue = ""; } });
 
 // 要対応で絞り込み
 $("adm-todo").addEventListener("change", function () { admState.todo = $("adm-todo").value; renderSongs(); });
@@ -1604,6 +1639,74 @@ commitSongs("よみがなを一括修正（" + n + "件）")
 .catch(function (e) { setStatus("yomi-status", e.message || "保存に失敗しました。", false); updateYomiSaveBtn(); });
 });
 
+// ジャンル一括設定
+function genreRowMatch(s, filter) {
+if (!filter) return true;
+if (filter === "other") return !s.genre || s.genre === "その他";
+return yomiRowOf(s) === filter;
+}
+function renderGenreRows() {
+var box = $("genre-rows"); if (!box) return;
+if (box.contains(document.activeElement) || genreDirty) return;
+var filter = $("genre-row-filter").value;
+var sig = filter + "|" + songs.map(function (s) { return s.id + ":" + (s.genre || ""); }).join("|");
+if (sig === genreSig) return;
+genreSig = sig;
+var arr = songs.slice().sort(cmpTitle);
+box.innerHTML = "";
+var shown = 0;
+arr.forEach(function (s) {
+if (!genreRowMatch(s, filter)) return;
+shown++;
+var row = document.createElement("div");
+row.className = "yomi-row genre-row"; row.setAttribute("data-id", s.id);
+row.innerHTML = '<div class="yr-name"><b></b><span></span></div><div><label>ジャンル</label><input type="text" data-genre="1" list="genre-list" /></div>';
+row.querySelector("b").textContent = s.title;
+row.querySelector("span").textContent = s.artist;
+var gi = row.querySelector('[data-genre="1"]'); gi.value = s.genre || "";
+gi.addEventListener("input", function () { refreshGenreRowState(row); updateGenreSaveBtn(); });
+box.appendChild(row);
+});
+if (!shown) box.innerHTML = '<p class="desc">この絞り込みの曲はありません。</p>';
+updateGenreSaveBtn();
+}
+function refreshGenreRowState(row) {
+var id = row.getAttribute("data-id");
+var s = null; songs.forEach(function (x) { if (x.id === id) s = x; });
+if (!s) return;
+var g = row.querySelector('[data-genre="1"]').value.trim() || "その他";
+row.classList.toggle("changed", g !== (s.genre || "その他"));
+}
+function updateGenreSaveBtn() {
+var n = 0;
+document.querySelectorAll("#genre-rows .genre-row.changed").forEach(function () { n++; });
+genreDirty = n > 0;
+var b = $("genre-save");
+b.disabled = n === 0;
+b.textContent = n ? "変更をまとめて保存（" + n + "件）" : "変更をまとめて保存";
+}
+$("genre-row-filter").addEventListener("change", function () {
+if (genreDirty && !confirm("保存していないジャンルの変更があります。絞り込みを変えると変更が消えます。続けますか？")) { $("genre-row-filter").value = genrePrevFilter; return; }
+genreDirty = false; genrePrevFilter = $("genre-row-filter").value; genreSig = ""; renderGenreRows();
+});
+$("genre-save").addEventListener("click", function () {
+var rows = document.querySelectorAll("#genre-rows .genre-row.changed");
+if (!rows.length) return;
+var n = 0;
+rows.forEach(function (row) {
+var id = row.getAttribute("data-id");
+var s = null; songs.forEach(function (x) { if (x.id === id) s = x; });
+if (!s) return;
+s.genre = row.querySelector('[data-genre="1"]').value.trim() || "その他";
+n++;
+});
+var btn = $("genre-save"); btn.disabled = true;
+setStatus("genre-status", "保存中…", null);
+commitSongs("ジャンルを一括設定（" + n + "件）")
+.then(function () { genreDirty = false; genreSig = ""; setStatus("genre-status", "保存しました。公開ページへの反映は1分ほどかかります。", true); renderSongs(); toast("ジャンルを保存しました"); })
+.catch(function (e) { setStatus("genre-status", e.message || "保存に失敗しました。", false); updateGenreSaveBtn(); });
+});
+
 // アーティスト表記のゆれ
 function normArtistFull(a) { return String(a || "").normalize("NFKC").toLowerCase().replace(/[\s・]/g, ""); }
 function renderArtistVariants() {
@@ -1690,6 +1793,7 @@ return loadSongs().then(function () { songs = restored; return commitSongs("変�
 }
 
 renderYomiRows();
+renderGenreRows();
 renderArtistVariants();
 </script>
 <script>
@@ -1918,10 +2022,19 @@ return Object.keys(seen).filter(function (y) { return y.indexOf(needle) >= 0; })
 function pickYomiInto(input) {
 return function (c, close) { sgSetValue(input, c.yomi); close(); };
 }
+function collectWorkCands(v) {
+var needle = sgNorm(v).trim(); if (!needle) return [];
+var counts = {};
+songs.forEach(function (s) { if (s.work && sgNorm(s.work).indexOf(needle) >= 0) counts[s.work] = (counts[s.work] || 0) + 1; });
+return Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a] || a.localeCompare(b, "ja"); }).slice(0, 8)
+.map(function (name) { return { name: name, node: sgTextNode(name, "", counts[name] + "曲") }; });
+}
+function pickWork(c, close) { sgSetValue($("f-work"), c.name); close(); }
 attachFieldSuggest($("f-title"), collectTitleCands, pickTitle);
 attachFieldSuggest($("f-artist"), collectArtistCands, pickArtist);
 attachFieldSuggest($("f-titleyomi"), function (v) { return collectYomiCands(v, "title"); }, pickYomiInto($("f-titleyomi")));
 attachFieldSuggest($("f-artistyomi"), function (v) { return collectYomiCands(v, "artist"); }, pickYomiInto($("f-artistyomi")));
+attachFieldSuggest($("f-work"), collectWorkCands, pickWork);
 </script>
 </body>
 </html>
