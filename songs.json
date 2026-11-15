@@ -2775,16 +2775,18 @@
   {
     "id": "w065",
     "title": "二息歩行",
-    "artist": "DECO*27",
+    "artist": "DECO*27 feat. 初音ミク",
+    "work": "",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/01/92/95/019295f9-b888-5ac4-7c0a-bd4a5f36906a/DECO27_JKT.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c5/b6/a9/c5b6a992-6671-cd2a-2d29-4672d19e3725/mzaf_17616217040043094331.plus.aac.p.m4a",
     "titleYomi": "にいきほこう",
-    "artistYomi": "DECO*27"
+    "artistYomi": "でこにーなはつねみく",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c5/b6/a9/c5b6a992-6671-cd2a-2d29-4672d19e3725/mzaf_17616217040043094331.plus.aac.p.m4a"
   },
   {
     "id": "w067",
