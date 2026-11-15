@@ -2519,14 +2519,16 @@
     "id": "w015",
     "title": "恋はみずいろ",
     "artist": "BENI",
+    "work": "",
     "genre": "ジャズ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/ab/1c/92/ab1c92bb-1cf6-3f65-0066-ee2f35e1a2e9/KICP-4040.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "こいはみずいろ",
-    "artistYomi": "BENI"
+    "artistYomi": "べに"
   },
   {
     "id": "w017",
