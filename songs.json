@@ -2917,16 +2917,18 @@
   {
     "id": "w082",
     "title": "最後のリボルバー",
-    "artist": "GUMI",
+    "artist": "悪ノP feat. GUMI",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music3/v4/d4/da/f0/d4daf096-4186-1a49-f462-c4443b671b0d/825646135615.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/8b/7a/a0/8b7aa00d-e526-26ce-e0b5-404f8893bc44/mzaf_275711612985735328.plus.aac.p.m4a",
     "titleYomi": "さいごのりぼるばー",
-    "artistYomi": "GUMI"
+    "artistYomi": "あくのぴーぐみ",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/8b/7a/a0/8b7aa00d-e526-26ce-e0b5-404f8893bc44/mzaf_275711612985735328.plus.aac.p.m4a"
   },
   {
     "id": "w083",
