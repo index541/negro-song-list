@@ -2022,15 +2022,17 @@
     "id": "u168",
     "title": "ホリデイ",
     "artist": "BUMP OF CHICKEN",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲 +1",
     "keyShift": 1,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/f1/9e/9b/f19e9bce-c91b-4865-b853-b7c89f1f06aa/TFCC-86257WW.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/82/91/ae/8291ae38-3187-aa63-a948-1790da243179/mzaf_2995753127783555314.plus.aac.p.m4a",
     "titleYomi": "ほりでい",
-    "artistYomi": "BUMP OF CHICKEN"
+    "artistYomi": "ばんぷおぶちきん",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/82/91/ae/8291ae38-3187-aa63-a948-1790da243179/mzaf_2995753127783555314.plus.aac.p.m4a"
   },
   {
     "id": "u169",
