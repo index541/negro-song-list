@@ -8946,16 +8946,18 @@
   {
     "id": "w1110",
     "title": "妄想スケッチ",
-    "artist": "40mP",
-    "genre": "J-POP",
+    "artist": "40mP feat.初音ミク",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/cc/0d/3f/cc0d3f9b-bbaf-61ed-cb8a-daae3a1afdd7/RGB_forDummy_small.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ac/ef/30/acef30e2-cc2d-8233-7eba-224eb7deb5ae/mzaf_8597571498321921477.plus.aac.p.m4a",
     "titleYomi": "もうそうすけっち",
-    "artistYomi": "40mP"
+    "artistYomi": "よんじゅーめーとるぴーはつねみく",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ac/ef/30/acef30e2-cc2d-8233-7eba-224eb7deb5ae/mzaf_8597571498321921477.plus.aac.p.m4a"
   },
   {
     "id": "w1112",
