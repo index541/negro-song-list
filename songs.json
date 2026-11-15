@@ -1703,15 +1703,17 @@
     "id": "u141",
     "title": "パレード",
     "artist": "CHABA",
-    "genre": "J-POP",
+    "work": "NARUTO",
+    "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/3d/3d/e7/3d3de744-1050-3d3e-68c1-222f0dc9b9d4/jacket_KSCL01018B00Z_550.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/c9/ff/78/c9ff7879-188d-3add-1c27-3b9fbc6a41b6/mzaf_14291714837605938795.plus.aac.p.m4a",
     "titleYomi": "ぱれーど",
-    "artistYomi": "CHABA"
+    "artistYomi": "ちゃば",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/c9/ff/78/c9ff7879-188d-3add-1c27-3b9fbc6a41b6/mzaf_14291714837605938795.plus.aac.p.m4a"
   },
   {
     "id": "u142",
