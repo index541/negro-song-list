@@ -5128,16 +5128,18 @@
   {
     "id": "w420",
     "title": "メランコリック",
-    "artist": "Junky",
-    "genre": "J-POP",
+    "artist": "Junky feat. 鏡音リン",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/0a/de/46/0ade46c1-7b7a-bd7e-9fa2-3ff2373e7b82/Ichiisenshin_TFCC86453.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/17/b2/39/17b239c1-5d4d-eeed-72b1-3a7f9c7ca796/mzaf_3444893180932411248.plus.aac.p.m4a",
     "titleYomi": "めらんこりっく",
-    "artistYomi": "Junky"
+    "artistYomi": "じゃんきーかがみねりん",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/17/b2/39/17b239c1-5d4d-eeed-72b1-3a7f9c7ca796/mzaf_3444893180932411248.plus.aac.p.m4a"
   },
   {
     "id": "w421",
