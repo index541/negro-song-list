@@ -3365,15 +3365,17 @@
     "id": "w151",
     "title": "絵空事",
     "artist": "nano.RIPE",
+    "work": "",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/a4/21/7d/a4217da9-7fb7-0060-70e1-79c4d488abdc/4562409334101.png/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ab/22/8b/ab228b27-995d-957c-305f-566909e5c632/mzaf_15902446155177931592.plus.aac.p.m4a",
     "titleYomi": "えそらごと",
-    "artistYomi": "nano.RIPE"
+    "artistYomi": "なのらいぷ",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ab/22/8b/ab228b27-995d-957c-305f-566909e5c632/mzaf_15902446155177931592.plus.aac.p.m4a"
   },
   {
     "id": "w152",
