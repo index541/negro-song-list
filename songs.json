@@ -3554,15 +3554,17 @@
   {
     "id": "w175",
     "title": "雪、無音、窓辺にて。",
-    "artist": "otetu",
+    "artist": "長門有希 (CV.茅原実里)",
+    "work": "涼宮ハルヒの憂鬱",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/ed/b9/b9/edb9b9bd-a7f4-2073-7b5a-c9f36ef31f38/4540774402700.png/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "titleYomi": "ゆき、むおん、まどべにて。",
-    "artistYomi": "otetu"
+    "titleYomi": "ゆきむおんまどべにて",
+    "artistYomi": "ながとゆきちはらみのり"
   },
   {
     "id": "w177",
