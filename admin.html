@@ -2288,7 +2288,7 @@ if (countText) { var c = document.createElement("span"); c.className = "sg-count
 return frag;
 }
 function attachFieldSuggest(input, collect, onPick) {
-var field = input.closest(".field");
+var field = input.closest(".field") || input.parentElement;
 if (!field) return;
 field.classList.add("has-suggest");
 var box = document.createElement("div");
