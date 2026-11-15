@@ -3596,15 +3596,17 @@
     "id": "w184",
     "title": "なんでもないや",
     "artist": "RADWIMPS",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/f6/eb/06/f6eb06b6-14f5-7933-84fe-9b6a3188631a/19UM1IM09935.rgb.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ef/77/ce/ef77ce47-f6e4-cb3d-4ac3-65ad5c3b04e6/mzaf_5148680883238761530.plus.aac.p.m4a",
     "titleYomi": "なんでもないや",
-    "artistYomi": "RADWIMPS"
+    "artistYomi": "らっどうぃんぷす",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ef/77/ce/ef77ce47-f6e4-cb3d-4ac3-65ad5c3b04e6/mzaf_5148680883238761530.plus.aac.p.m4a"
   },
   {
     "id": "w190",
