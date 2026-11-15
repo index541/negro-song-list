@@ -3410,16 +3410,18 @@
   {
     "id": "w145",
     "title": "メトロノーム",
-    "artist": "Lvoe",
+    "artist": "米津玄師",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/7e/7e/da/7e7eda2a-9a22-6557-472c-3d57cdbd6d96/00600406634559.rgb.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/6c/58/59/6c585906-c416-d3ab-63a6-9dbb4d325242/mzaf_6560102612056968220.plus.aac.p.m4a",
     "titleYomi": "めとろのーむ",
-    "artistYomi": "Lvoe"
+    "artistYomi": "よねづけんし",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/6c/58/59/6c585906-c416-d3ab-63a6-9dbb4d325242/mzaf_6560102612056968220.plus.aac.p.m4a"
   },
   {
     "id": "w148",
