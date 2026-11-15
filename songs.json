@@ -3932,16 +3932,18 @@
   {
     "id": "w261",
     "title": "バイビーベイビーサヨウナラ",
-    "artist": "saiB",
+    "artist": "saiB feat. 初音ミク",
+    "work": "",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/fa/98/5d/mzi.zpvzayui.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/cb/85/2d/cb852d59-2a5d-646a-ab0a-1b617a398a6a/mzaf_5046652094365270298.plus.aac.p.m4a",
     "titleYomi": "ばいびーべいびーさようなら",
-    "artistYomi": "saiB"
+    "artistYomi": "さいびーはつねみく",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/cb/85/2d/cb852d59-2a5d-646a-ab0a-1b617a398a6a/mzaf_5046652094365270298.plus.aac.p.m4a"
   },
   {
     "id": "w271",
