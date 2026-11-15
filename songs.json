@@ -3606,16 +3606,18 @@
   },
   {
     "id": "w190",
-    "title": "なでなで1",
-    "artist": "roro",
+    "title": "なでなで",
+    "artist": "えへへP feat. 初音ミク",
+    "work": "",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/cc/65/aa/cc65aad9-98ad-1b13-56cc-903371f7077c/4562251594524_cover.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "titleYomi": "なでなで1",
-    "artistYomi": "roro"
+    "titleYomi": "なでなで",
+    "artistYomi": "えへへぴーはつねみく"
   },
   {
     "id": "w191",
