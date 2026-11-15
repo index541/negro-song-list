@@ -1619,6 +1619,7 @@ document.addEventListener("visibilitychange", function () { if (!document.hidden
 function sgNorm(s) { return String(s || "").toLowerCase().replace(/[ァ-ヶ]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0x60); }); }
 var sgSuppress = false;
 function sgSetValue(input, value) {
+var before = input.value;
 var wasFocused = document.activeElement === input;
 if (wasFocused) input.blur();
 input.value = value;
@@ -1626,6 +1627,16 @@ sgSuppress = true;
 input.dispatchEvent(new Event("input"));
 sgSuppress = false;
 if (wasFocused) input.focus();
+if (before && before !== value) {
+var until = Date.now() + 2000;
+var guard = function () {
+if (Date.now() > until) { input.removeEventListener("input", guard); input.removeEventListener("compositionend", guard); return; }
+if (input.value === value + before) input.value = value;
+};
+input.addEventListener("input", guard);
+input.addEventListener("compositionend", guard);
+setTimeout(function () { input.removeEventListener("input", guard); input.removeEventListener("compositionend", guard); }, 2100);
+}
 }
 function sgCandidates(q, arr) {
 var needle = sgNorm(q).trim();
