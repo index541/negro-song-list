@@ -2591,15 +2591,17 @@
     "id": "w044",
     "title": "ダリア",
     "artist": "CRIPTON",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/6f/08/29/6f0829e5-0393-ed38-6312-e643517d382a/COCA-13711.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/6d/7c/89/6d7c895f-8477-5c5c-75c3-3ccf5a6ea4c4/mzaf_364267291288563654.plus.aac.p.m4a",
     "titleYomi": "だりあ",
-    "artistYomi": "CRIPTON"
+    "artistYomi": "くりぷとん",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/6d/7c/89/6d7c895f-8477-5c5c-75c3-3ccf5a6ea4c4/mzaf_364267291288563654.plus.aac.p.m4a"
   },
   {
     "id": "w045",
