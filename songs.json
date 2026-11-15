@@ -5644,16 +5644,18 @@
   {
     "id": "w521",
     "title": "ゴーストルール",
-    "artist": "DECO*27",
+    "artist": "DECO*27 feat. 初音ミク",
+    "work": "",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/39/41/89/394189a4-f84a-0384-ac8b-35020bc218da/GHOST_shokai_Jacket3000.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/3b/49/9a/3b499a80-f3a8-760e-2040-75b125215996/mzaf_5664174503272919592.plus.aac.p.m4a",
     "titleYomi": "ごーすとるーる",
-    "artistYomi": "DECO*27"
+    "artistYomi": "でこにーなはつねみく",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/3b/49/9a/3b499a80-f3a8-760e-2040-75b125215996/mzaf_5664174503272919592.plus.aac.p.m4a"
   },
   {
     "id": "w523",
