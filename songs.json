@@ -6090,15 +6090,17 @@
   {
     "id": "w624",
     "title": "人間が大好きなこわれた妖怪の唄",
-    "artist": "COOL&CREATE",
-    "genre": "J-POP",
+    "artist": "ビートまりお(COOL&CREATE)",
+    "work": "",
+    "genre": "東方Project",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/96/2c/0b/962c0b0b-f818-08b8-7076-aaae4651bcd3/4580547325027.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "にんげんがだいすきなこわれたようかいのうた",
-    "artistYomi": "COOL&CREATE"
+    "artistYomi": "びーとまりおくーるくりえいと"
   },
   {
     "id": "w625",
