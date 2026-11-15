@@ -6056,15 +6056,17 @@
   {
     "id": "w625",
     "title": "最終鬼畜一部声",
-    "artist": "COOL&CREATE",
+    "artist": "ビートまりお(COOL&CREATE)",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/46/c5/4a/46c54a19-c686-f283-e4e4-1891958ec21f/4580547325003.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "さいしゅうきちくいちぶごえ",
-    "artistYomi": "COOL&CREATE"
+    "artistYomi": "びーとまりおくーるくりえいと"
   },
   {
     "id": "w627",
