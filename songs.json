@@ -3835,15 +3835,17 @@
     "id": "w210",
     "title": "日曜日の太陽",
     "artist": "THE NEUTRAL",
-    "genre": "J-POP",
+    "work": "なるたる",
+    "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/c1/42/57/c14257e0-e7d5-28db-486b-7e07a2d6c14e/QACJ_30032.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/a1/99/bc/a199bc89-86b8-e999-2a14-1d880c99fbfc/mzaf_16604044889489087946.plus.aac.p.m4a",
     "titleYomi": "にちようびのたいよう",
-    "artistYomi": "THE NEUTRAL"
+    "artistYomi": "ざにゅーとらる",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/a1/99/bc/a199bc89-86b8-e999-2a14-1d880c99fbfc/mzaf_16604044889489087946.plus.aac.p.m4a"
   },
   {
     "id": "w1102",
