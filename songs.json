@@ -4762,16 +4762,18 @@
   {
     "id": "w382",
     "title": "ブラック★ロックシューター",
-    "artist": "ryo (supercell)",
-    "genre": "アニソン",
+    "artist": "supercell feat. 初音ミク",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/9d/3d/71/9d3d717d-a7c6-1a5c-afcd-6f5ad095409c/a6584c78-346a-4d60-925e-c524e31e2da8.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/16/f0/d5/16f0d5b8-d778-89be-55f1-34c01b8b6659/mzaf_4074107265086907137.plus.aac.p.m4a",
-    "titleYomi": "ぶらっく★ろっくしゅーたー",
-    "artistYomi": "ryo (supercell)"
+    "titleYomi": "ぶらっくろっくしゅーたー",
+    "artistYomi": "すーぱーせるはつねみく",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/16/f0/d5/16f0d5b8-d778-89be-55f1-34c01b8b6659/mzaf_4074107265086907137.plus.aac.p.m4a"
   },
   {
     "id": "w383",
