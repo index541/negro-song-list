@@ -398,7 +398,7 @@ body.has-bulk-float { padding-bottom:86px; }
 
 <section class="card" id="yomi-card">
 <h2>よみがな一括修正</h2>
-<p class="desc">読みをまとめて直すための画面です。各行の「曲名の読み」と「アーティストの読み」を直して「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。空欄にすると自動判定に戻ります。カタカナで打っても、保存の時にひらがなに直ります。</p>
+<p class="desc">読みをまとめて直すための画面です。各行の「曲名の読み」と「アーティストの読み」を直して「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。空欄にすると自動判定に戻ります。カタカナで打っても、保存の時にひらがなに直ります。各欄では入力すると候補が出て、空欄で欄を押すとその曲やアーティストに紐づく読みの候補が出ます。</p>
 <div class="grid2">
 <div class="field">
 <label for="yomi-row-filter">行で絞り込み</label>
@@ -495,7 +495,7 @@ body.has-bulk-float { padding-bottom:86px; }
 
 <section class="card" id="name-card">
 <h2>曲名・アーティスト一括設定</h2>
-<p class="desc">曲名とアーティスト名をまとめて直すための画面です。各行で直して「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。曲名とアーティスト名は空にはできません。行のチェックで曲を選んで、下の欄から同じアーティスト名をまとめて設定もできます（表記の統一に便利です）。</p>
+<p class="desc">曲名とアーティスト名をまとめて直すための画面です。各行で直して「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。曲名とアーティスト名は空にはできません。各欄では入力すると候補が出ます。行のチェックで曲を選んで、下の欄から同じアーティスト名をまとめて設定もできます（表記の統一に便利です）。</p>
 <div class="grid2">
 <div class="field">
 <label for="name-row-filter">行で絞り込み</label>
@@ -2655,6 +2655,95 @@ var renderSongsPrevBulk = renderSongs;
 renderSongs = function () { renderSongsPrevBulk(); renderNameRows(); renderJkRows(); };
 renderNameRows();
 renderJkRows();
+</script>
+<script>
+// ===== 一括設定カードの予測候補 =====
+function sgRowSong(input) { var row = input.closest("[data-id]"); return row ? findSongById(row.getAttribute("data-id")) : null; }
+function bulkYomiCollect(input, kind) {
+return function (v) {
+var needle = yomiHira(String(v || "").trim());
+if (needle) return collectYomiCands(v, kind);
+var song = sgRowSong(input); if (!song) return [];
+var counts = {};
+songs.forEach(function (s) {
+var n = kind === "title" ? s.title : s.artist;
+var y = kind === "title" ? s.titleYomi : s.artistYomi;
+var base = kind === "title" ? song.title : song.artist;
+if (y && sgNorm(n) === sgNorm(base)) counts[y] = (counts[y] || 0) + 1;
+});
+return Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; }).slice(0, 8)
+.map(function (y) { return { yomi: y, node: sgTextNode(y, kind === "title" ? "同名の曲の読み" : "このアーティストの読み", counts[y] + "曲") }; });
+};
+}
+function bulkTitleCands(v) {
+var needle = sgNorm(String(v || "").trim()); if (!needle) return [];
+var seen = {}, list = [];
+songs.forEach(function (s) {
+if (seen[s.title]) return;
+var tHit = sgNorm(s.title).indexOf(needle);
+var yHit = s.titleYomi ? sgNorm(s.titleYomi).indexOf(needle) : -1;
+if (tHit >= 0 || yHit >= 0) { seen[s.title] = 1; list.push({ s: s, score: tHit === 0 ? 0 : (yHit === 0 ? 1 : 2) }); }
+});
+list.sort(function (a, b) { return a.score - b.score || a.s.title.localeCompare(b.s.title, "ja"); });
+return list.slice(0, 8).map(function (x) { return { value: x.s.title, node: sgTextNode(x.s.title, x.s.artist, "") }; });
+}
+function bulkArtistCands(v) {
+return collectArtistCands(v).map(function (c) { return { value: c.name, node: c.node }; });
+}
+function genreSegOf(input) {
+var parts = String(input.value || "").split("、");
+return { head: parts.slice(0, -1).map(function (x) { return x.trim(); }).filter(Boolean), seg: (parts[parts.length - 1] || "").trim() };
+}
+function bulkGenreCollect(input) {
+return function () {
+var info = genreSegOf(input);
+var needle = sgNorm(info.seg);
+var counts = {};
+songs.forEach(function (s) { genresOf(s).forEach(function (g) { counts[g] = (counts[g] || 0) + 1; }); });
+return Object.keys(counts).filter(function (g) { return info.head.indexOf(g) < 0 && (!needle || sgNorm(g).indexOf(needle) >= 0); })
+.sort(function (a, b) { var pa = needle && sgNorm(a).indexOf(needle) === 0 ? 0 : 1, pb = needle && sgNorm(b).indexOf(needle) === 0 ? 0 : 1; return pa - pb || counts[b] - counts[a]; })
+.slice(0, 8).map(function (g) { return { value: g, node: sgTextNode(g, "", counts[g] + "曲") }; });
+};
+}
+function bulkGenrePick(input) {
+return function (c, close) { sgSetValue(input, genreSegOf(input).head.concat([c.value]).join("、") + "、"); close(); };
+}
+function fillPickInto(input) {
+return function (c, close) { sgSetValue(input, c.value); close(); };
+}
+function attachBulkSuggests() {
+document.querySelectorAll('#yomi-rows [data-yomi="title"]').forEach(function (inp) {
+if (inp.dataset.sgDone) return; inp.dataset.sgDone = "1";
+attachFieldSuggest(inp, bulkYomiCollect(inp, "title"), function (c, close) { sgSetValue(inp, c.yomi); close(); });
+});
+document.querySelectorAll('#yomi-rows [data-yomi="artist"]').forEach(function (inp) {
+if (inp.dataset.sgDone) return; inp.dataset.sgDone = "1";
+attachFieldSuggest(inp, bulkYomiCollect(inp, "artist"), function (c, close) { sgSetValue(inp, c.yomi); close(); });
+});
+document.querySelectorAll('#name-rows [data-name="title"]').forEach(function (inp) {
+if (inp.dataset.sgDone) return; inp.dataset.sgDone = "1";
+attachFieldSuggest(inp, bulkTitleCands, fillPickInto(inp));
+});
+document.querySelectorAll('#name-rows [data-name="artist"]').forEach(function (inp) {
+if (inp.dataset.sgDone) return; inp.dataset.sgDone = "1";
+attachFieldSuggest(inp, bulkArtistCands, fillPickInto(inp));
+});
+document.querySelectorAll('#genre-rows [data-genre="1"]').forEach(function (inp) {
+if (inp.dataset.sgDone) return; inp.dataset.sgDone = "1";
+inp.removeAttribute("list");
+attachFieldSuggest(inp, bulkGenreCollect(inp), bulkGenrePick(inp));
+});
+}
+var nba = $("name-bulk-artist");
+if (nba) { nba.removeAttribute("list"); attachFieldSuggest(nba, bulkArtistCands, fillPickInto(nba)); }
+var gbv = $("genre-bulk-value");
+if (gbv) { gbv.removeAttribute("list"); attachFieldSuggest(gbv, bulkGenreCollect(gbv), bulkGenrePick(gbv)); }
+["renderYomiRows", "renderGenreRows", "renderNameRows"].forEach(function (fname) {
+var orig = window[fname];
+if (typeof orig !== "function") return;
+window[fname] = function () { orig(); attachBulkSuggests(); };
+});
+attachBulkSuggests();
 </script>
 </body>
 </html>
