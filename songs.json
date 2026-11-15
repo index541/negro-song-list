@@ -2133,16 +2133,18 @@
   {
     "id": "u178",
     "title": "妄想感傷代償連盟",
-    "artist": "DECO*27",
-    "genre": "アニソン",
+    "artist": "DECO*27 feat. 初音ミク",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲 +4",
     "keyShift": 4,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/39/41/89/394189a4-f84a-0384-ac8b-35020bc218da/GHOST_shokai_Jacket3000.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/6f/62/93/6f62930e-3c36-d692-afea-4fb40d207f79/mzaf_4772667705735950029.plus.aac.p.m4a",
     "titleYomi": "もうそうかんしょうだいしょうれんめい",
-    "artistYomi": "DECO*27"
+    "artistYomi": "でこにーなはつねみく",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/6f/62/93/6f62930e-3c36-d692-afea-4fb40d207f79/mzaf_4772667705735950029.plus.aac.p.m4a"
   },
   {
     "id": "u179",
