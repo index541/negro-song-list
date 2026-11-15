@@ -730,15 +730,17 @@
     "id": "u056",
     "title": "極限Dreamer",
     "artist": "SCREEN mode",
+    "work": "",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music1/v4/c3/2a/b0/c32ab017-f23c-70b2-8903-2568b8358594/LACA-15488.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview71/v4/5b/14/c3/5b14c341-b6ae-67fc-5c3c-befe47ebdf7b/mzaf_5660277023481897619.plus.aac.p.m4a",
-    "titleYomi": "きょくげんDreamer",
-    "artistYomi": "SCREEN mode"
+    "titleYomi": "きょくげんどりーまー",
+    "artistYomi": "すくりーんもーど",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview71/v4/5b/14/c3/5b14c341-b6ae-67fc-5c3c-befe47ebdf7b/mzaf_5660277023481897619.plus.aac.p.m4a"
   },
   {
     "id": "u057",
