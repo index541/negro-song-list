@@ -5867,16 +5867,18 @@
   {
     "id": "w567",
     "title": "またあした",
-    "artist": "Every Little Thing",
-    "genre": "その他",
+    "artist": "遠藤正明",
+    "work": "みつどもえ",
+    "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music69/v4/76/5c/c2/765cc2a7-49e5-8451-b4c0-a3c73fb9d190/ANTCD-16960.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/fe/63/b2/fe63b221-4f77-fa90-ce65-2ca99320b214/mzaf_5390993567534023983.plus.aac.p.m4a",
     "titleYomi": "またあした",
-    "artistYomi": "Every Little Thing"
+    "artistYomi": "えんどうまさあき",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/fe/63/b2/fe63b221-4f77-fa90-ce65-2ca99320b214/mzaf_5390993567534023983.plus.aac.p.m4a"
   },
   {
     "id": "w569",
