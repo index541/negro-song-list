@@ -2946,15 +2946,17 @@
   {
     "id": "w080",
     "title": "ビビッド",
-    "artist": "GUMI",
-    "genre": "J-POP",
+    "artist": "あめのむらくもP feat. GUMI",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/f2/00/ba/f200ba07-14d9-9e38-4ae2-fe157728a74a/3617222412107.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "びびっど",
-    "artistYomi": "GUMI"
+    "artistYomi": "あめのむらくもぴーぐみ"
   },
   {
     "id": "w082",
