@@ -1617,6 +1617,16 @@ document.addEventListener("visibilitychange", function () { if (!document.hidden
 <script>
 // ===== 検索の予測候補 =====
 function sgNorm(s) { return String(s || "").toLowerCase().replace(/[ァ-ヶ]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0x60); }); }
+var sgSuppress = false;
+function sgSetValue(input, value) {
+var wasFocused = document.activeElement === input;
+if (wasFocused) input.blur();
+input.value = value;
+sgSuppress = true;
+input.dispatchEvent(new Event("input"));
+sgSuppress = false;
+if (wasFocused) input.focus();
+}
 function sgCandidates(q, arr) {
 var needle = sgNorm(q).trim();
 if (!needle) return [];
@@ -1650,12 +1660,11 @@ function close() { box.style.display = "none"; box.innerHTML = ""; items = []; a
 function highlight() { for (var i = 0; i < box.children.length; i++) box.children[i].classList.toggle("on", i === active); }
 function activate(c) {
 if (c.type === "song") { close(); onSong(c.s); return; }
-input.value = c.name;
-input.dispatchEvent(new Event("input"));
+sgSetValue(input, c.name);
 close();
-input.focus();
 }
 function open() {
+if (sgSuppress) return;
 var cands = sgCandidates(input.value, songsFn());
 if (!cands.length) { close(); return; }
 box.innerHTML = ""; items = cands; active = -1;
