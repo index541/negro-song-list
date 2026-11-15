@@ -5025,15 +5025,17 @@
   {
     "id": "w415",
     "title": "ピエロ",
-    "artist": "KEI",
-    "genre": "J-POP",
+    "artist": "KEI feat. 初音ミク",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/cd/84/e6/cd84e67c-9886-2f1c-0cb8-332d3fda8c57/VTCL-60551.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "ぴえろ",
-    "artistYomi": "KEI"
+    "artistYomi": "けいはつねみく"
   },
   {
     "id": "w1099",
