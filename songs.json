@@ -3004,15 +3004,17 @@
   {
     "id": "w084",
     "title": "モザイクロール",
-    "artist": "GUMI",
-    "genre": "J-POP",
+    "artist": "DECO*27 feat. GUMI",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/84/61/6e/84616e69-253c-252a-c6ac-755a88fd38dc/25UMGIM91047.rgb.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "もざいくろーる",
-    "artistYomi": "GUMI"
+    "artistYomi": "でこにーなぐみ"
   },
   {
     "id": "w085",
