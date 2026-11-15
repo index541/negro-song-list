@@ -3682,17 +3682,19 @@
   },
   {
     "id": "w199",
-    "title": "全人類ノ非想天則 (feat. 匠眞 & SOUND HOLIC/Camellia/Nana Takahashi)",
+    "title": "全人類ノ非想天則",
     "artist": "SOUND HOLIC",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/c3/9e/81/c39e81d0-b929-321b-741e-c1d43414eeda/4580547312720.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/65/c1/71/65c17171-c55e-a23d-2e0d-b236cd046c20/mzaf_7628679994711068334.plus.aac.p.m4a",
-    "titleYomi": "ぜんじんるいのひそうてんそく (feat. たくみまこと & SOUND HOLIC/Camellia/Nana Takahashi)",
-    "artistYomi": "SOUND HOLIC"
+    "titleYomi": "ぜんじんるいのひそうてんそく",
+    "artistYomi": "さうんどほりっく",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/65/c1/71/65c17171-c55e-a23d-2e0d-b236cd046c20/mzaf_7628679994711068334.plus.aac.p.m4a"
   },
   {
     "id": "w201",
