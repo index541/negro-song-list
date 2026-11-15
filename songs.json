@@ -6417,15 +6417,17 @@
   {
     "id": "w693",
     "title": "メルト",
-    "artist": "ryo (supercell)",
-    "genre": "アニソン",
+    "artist": "supercell feat. 初音ミク",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/68/cd/93/68cd9324-95c9-2f17-6518-846264ac3a89/PA00198170_0_226823_jacket.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "めると",
-    "artistYomi": "ryo (supercell)"
+    "artistYomi": "すーぱーせるはつねみく"
   },
   {
     "id": "w694",
