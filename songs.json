@@ -5361,16 +5361,18 @@
   {
     "id": "w464",
     "title": "皆殺しのマジック",
-    "artist": "鬱P",
-    "genre": "ロック",
+    "artist": "鬱P feat.GUMI",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/94/2e/da/942edac7-0f95-d462-adc4-1662673653b8/4511820-95133.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview114/v4/d3/ac/1b/d3ac1b60-f0bb-a544-65b2-962e9d7246f2/mzaf_15878406981879193055.plus.aac.p.m4a",
     "titleYomi": "みなごろしのまじっく",
-    "artistYomi": "鬱P"
+    "artistYomi": "うつぴーぐみ",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview114/v4/d3/ac/1b/d3ac1b60-f0bb-a544-65b2-962e9d7246f2/mzaf_15878406981879193055.plus.aac.p.m4a"
   },
   {
     "id": "w466",
