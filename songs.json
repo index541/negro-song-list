@@ -3493,15 +3493,17 @@
     "id": "w181",
     "title": "おしゃかしゃま",
     "artist": "RADWIMPS",
+    "work": "",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ad/4b/b8/ad4bb84d-85f9-8902-6876-c7dd2f93c24a/25UM1IM78298.rgb.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/37/cd/22/37cd22c6-ef07-f27b-811e-64c34e7dd146/mzaf_667530292146668221.plus.aac.p.m4a",
     "titleYomi": "おしゃかしゃま",
-    "artistYomi": "RADWIMPS"
+    "artistYomi": "らっどうぃんぷす",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/37/cd/22/37cd22c6-ef07-f27b-811e-64c34e7dd146/mzaf_667530292146668221.plus.aac.p.m4a"
   },
   {
     "id": "w183",
