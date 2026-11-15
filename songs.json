@@ -643,15 +643,17 @@
     "id": "u049",
     "title": "カルマ",
     "artist": "BUMP OF CHICKEN",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/fc/ca/8a/fcca8a2b-9b25-d2e5-89de-ab3af0954bda/dj.bdmpclto.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/34/fb/27/34fb27e9-f928-5009-87f0-6b85e0b74bde/mzaf_14005955066377920265.plus.aac.p.m4a",
     "titleYomi": "かるま",
-    "artistYomi": "BUMP OF CHICKEN"
+    "artistYomi": "ばんぷおぶちきん",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/34/fb/27/34fb27e9-f928-5009-87f0-6b85e0b74bde/mzaf_14005955066377920265.plus.aac.p.m4a"
   },
   {
     "id": "u050",
