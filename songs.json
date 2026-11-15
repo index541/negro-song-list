@@ -7567,16 +7567,18 @@
   {
     "id": "w961",
     "title": "火葬曲",
-    "artist": "No.D",
+    "artist": "No.D feat. 初音ミク",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/68/55/99/68559901-5592-0b1b-84c8-05bbf0db83a6/QWCE_00118_itunes.png/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/68/1a/9d/681a9d04-9816-48f5-6607-2ba0787fc4de/mzaf_9878810207038595595.plus.aac.p.m4a",
     "titleYomi": "かそうきょく",
-    "artistYomi": "No.D"
+    "artistYomi": "なんばーでぃはつねみく",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/68/1a/9d/681a9d04-9816-48f5-6607-2ba0787fc4de/mzaf_9878810207038595595.plus.aac.p.m4a"
   },
   {
     "id": "w964",
