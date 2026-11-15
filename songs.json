@@ -2981,15 +2981,17 @@
     "id": "w090",
     "title": "グロウアップ",
     "artist": "Hysteric Blue",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/8d/be/aa/8dbeaa13-f0ba-0132-7af6-28fe8d04a8c9/AVCD-38878.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/37/39/ff/3739ff4d-dc29-8631-028e-1cdb2979ef5d/mzaf_7891281572688606676.plus.aac.p.m4a",
     "titleYomi": "ぐろうあっぷ",
-    "artistYomi": "Hysteric Blue"
+    "artistYomi": "ひすてりっくぶるー",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/37/39/ff/3739ff4d-dc29-8631-028e-1cdb2979ef5d/mzaf_7891281572688606676.plus.aac.p.m4a"
   },
   {
     "id": "w096",
