@@ -1245,15 +1245,17 @@
     "id": "u101",
     "title": "大キライ!",
     "artist": "LINDBERG",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲 −6",
     "keyShift": -6,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music2/v4/96/70/22/9670227a-41e8-0bfd-5749-1c4bafc1684f/LINDBERG-TRIBUTE.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/Music2/v4/bc/48/c0/bc48c0db-2a27-7628-ace3-dd92223d37d9/mzaf_7649878436644315610.plus.aac.p.m4a",
     "titleYomi": "だいきらい!",
-    "artistYomi": "LINDBERG"
+    "artistYomi": "りんどばーぐ",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/Music2/v4/bc/48/c0/bc48c0db-2a27-7628-ace3-dd92223d37d9/mzaf_7649878436644315610.plus.aac.p.m4a"
   },
   {
     "id": "u103",
