@@ -3676,15 +3676,17 @@
     "id": "w194",
     "title": "マタアイマショウ",
     "artist": "SEAMO",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/9d/e7/c4/9de7c424-4302-3d50-a3fe-0f509e98c6fa/4988017695524.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/00/8c/cb/008ccb98-bd85-44fb-1848-e8b98c93882e/mzaf_10255025142566329100.plus.aac.p.m4a",
     "titleYomi": "またあいましょう",
-    "artistYomi": "SEAMO"
+    "artistYomi": "しーも",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/00/8c/cb/008ccb98-bd85-44fb-1848-e8b98c93882e/mzaf_10255025142566329100.plus.aac.p.m4a"
   },
   {
     "id": "w195",
