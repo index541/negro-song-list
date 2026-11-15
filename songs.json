@@ -3568,15 +3568,17 @@
   {
     "id": "w178",
     "title": "ポリリズム",
-    "artist": "PUPI",
+    "artist": "Perfume",
+    "work": "",
     "genre": "エレクトロニック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/4d/6e/36/4d6e3651-20a1-93b9-1f43-3fa5860e64e9/TKCA-73325.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "ぽりりずむ",
-    "artistYomi": "PUPI"
+    "artistYomi": "ぱふゅーむ"
   },
   {
     "id": "w180",
