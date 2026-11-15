@@ -1841,7 +1841,7 @@ box.appendChild(b);
 box.style.display = "";
 }
 input.addEventListener("input", open);
-input.addEventListener("focus", function () { if (input.value.trim()) open(); });
+input.addEventListener("focus", open);
 input.addEventListener("keydown", function (e) {
 if (box.style.display === "none") return;
 if (e.key === "ArrowDown") { e.preventDefault(); active = Math.min(active + 1, items.length - 1); highlight(); }
@@ -1889,8 +1889,21 @@ var y = $("f-artistyomi");
 if (c.yomi && !y.value.trim()) sgSetValue(y, c.yomi);
 close();
 }
+function collectLinkedYomiCands(kind) {
+var nameEl = kind === "title" ? $("f-title") : $("f-artist");
+var name = sgNorm(nameEl.value).trim();
+if (!name) return [];
+var counts = {};
+songs.forEach(function (s) {
+var n = kind === "title" ? s.title : s.artist;
+var y = kind === "title" ? s.titleYomi : s.artistYomi;
+if (y && sgNorm(n) === name) counts[y] = (counts[y] || 0) + 1;
+});
+return Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; }).slice(0, 8)
+.map(function (y) { return { yomi: y, node: sgTextNode(y, kind === "title" ? "同名の曲の読み" : "このアーティストの読み", counts[y] + "曲") }; });
+}
 function collectYomiCands(v, kind) {
-var needle = yomiHira(String(v || "").trim()); if (!needle) return [];
+var needle = yomiHira(String(v || "").trim()); if (!needle) return collectLinkedYomiCands(kind);
 var seen = {};
 songs.forEach(function (s) {
 var y = kind === "title" ? s.titleYomi : s.artistYomi;
