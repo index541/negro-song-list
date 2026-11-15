@@ -124,6 +124,10 @@ body.has-bulk-float { padding-bottom:86px; }
 .yomi-row input:focus { border-color:var(--accent); }
 .yomi-row.changed { background:var(--accent-soft); }
 .genre-row { grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); }
+.chip-row { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:6px; }
+.chip-row:empty { margin-bottom:0; }
+.gchip { display:inline-flex; align-items:center; gap:6px; background:var(--accent-soft); color:var(--ink); border-radius:999px; padding:5px 6px 5px 12px; font-size:13.5px; font-weight:700; }
+.gchip button { border:0; background:var(--surface); color:var(--ink-2); border-radius:50%; width:20px; height:20px; line-height:1; font-size:13px; cursor:pointer; padding:0; flex:none; }
 .genre-row .yr-name { display:flex; align-items:center; gap:8px; }
 .genre-row .yr-text { min-width:0; flex:1; }
 .genre-row .grow-check { width:20px; height:20px; flex:none; padding:0; border:0; accent-color:var(--accent); cursor:pointer; }
@@ -245,8 +249,9 @@ body.has-bulk-float { padding-bottom:86px; }
 </div>
 <div class="grid2">
 <div class="field">
-<label for="f-genre">ジャンル</label>
-<input id="f-genre" type="text" list="genre-list" placeholder="ボカロ" />
+<label for="f-genre">ジャンル（複数つけられます）</label>
+<div id="genre-chips" class="chip-row"></div>
+<input id="f-genre" type="text" placeholder="ジャンル名を入力して Enter か候補で追加" />
 <datalist id="genre-list"></datalist>
 </div>
 <div class="field">
@@ -404,7 +409,7 @@ body.has-bulk-float { padding-bottom:86px; }
 
 <section class="card" id="genre-card">
 <h2>ジャンル一括設定</h2>
-<p class="desc">ジャンルをまとめて直すための画面です。各行のジャンルを直して「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。空欄にすると「その他」になります。入力すると今あるジャンル名が候補で出ます。行のチェックで曲を選んで、下の欄から同じジャンルをまとめて設定もできます。</p>
+<p class="desc">ジャンルをまとめて直すための画面です。各行のジャンルを直して「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。複数のジャンルは「、」で区切って書いてください。空欄にすると「その他」になります。入力すると今あるジャンル名が候補で出ます。行のチェックで曲を選んで、下の欄から同じジャンルをまとめて設定もできます。</p>
 <div class="grid2">
 <div class="field">
 <label for="genre-row-filter">絞り込み</label>
@@ -548,6 +553,8 @@ loadSongs().then(function () { autoRefreshBusy = false; window.scrollTo(0, sy); 
 }
 setInterval(autoRefreshAdmin, 60000);
 document.addEventListener("visibilitychange", function () { if (!document.hidden) autoRefreshAdmin(); });
+function genresOf(s) { if (s.genres && s.genres.length) return s.genres; return [s.genre || "その他"]; }
+function parseGenres(text) { var out = []; String(text || "").split(/[、,，]/).forEach(function (p) { p = p.trim(); if (p && out.indexOf(p) === -1) out.push(p); }); return out; }
 var admState = { q: "", genre: "", sort: "title", todo: "" };
 /* 公開ページと同一の五十音ソート（読み仮名基準） */
 var SMALL_KANA = { "ぁ": "あ", "ぃ": "い", "ぅ": "う", "ぇ": "え", "ぉ": "お", "ゃ": "や", "ゅ": "ゆ", "ょ": "よ", "っ": "つ", "ゎ": "わ" };
@@ -620,7 +627,7 @@ if (n === 0) collapseBulkFields();
 }
 function adminViewSongs() {
 var arr = songs.filter(function (s) {
-if (admState.genre && s.genre !== admState.genre) return false;
+if (admState.genre && genresOf(s).indexOf(admState.genre) === -1) return false;
 if (admState.todo === "noaudio" && (s.preview || s.ytClip || s.ytLink)) return false;
 if (admState.todo === "nochorus" && s.ytLink) return false;
 if (admState.todo === "noclip" && !(s.ytLink && !s.ytClip)) return false;
@@ -628,7 +635,7 @@ if (admState.todo === "nojacket" && s.jacket) return false;
 if (admState.todo === "yomieng" && !(s.artistYomi && /[A-Za-z]/.test(s.artistYomi) && (!/[ぁ-んァ-ヶ]/.test(s.artistYomi) || s.artistYomi === s.artist))) return false;
 if (admState.todo === "key0" && (s.keyShift || 0) !== 0) return false;
 if (admState.q) {
-var hay = kanaNorm((s.title + " " + s.artist + " " + s.genre + " " + (s.work || "") + " " + (s.memo || "") + " " + (s.titleYomi || "") + " " + (s.artistYomi || "")).toLowerCase());
+var hay = kanaNorm((s.title + " " + s.artist + " " + genresOf(s).join(" ") + " " + (s.work || "") + " " + (s.memo || "") + " " + (s.titleYomi || "") + " " + (s.artistYomi || "")).toLowerCase());
 var terms = admState.q.split(/\s+/).map(function (t) { return kanaNorm(t); });
 for (var i = 0; i < terms.length; i++) if (terms[i] && hay.indexOf(terms[i]) === -1) return false;
 }
@@ -636,7 +643,7 @@ return true;
 });
 if (admState.sort === "title") arr.sort(cmpTitle);
 else if (admState.sort === "artist") arr.sort(cmpArtist);
-else if (admState.sort === "genre") arr.sort(function (a, b) { return a.genre.localeCompare(b.genre, "ja") || cmpTitle(a, b); });
+else if (admState.sort === "genre") arr.sort(function (a, b) { return (genresOf(a)[0] || "").localeCompare(genresOf(b)[0] || "", "ja") || cmpTitle(a, b); });
 else if (admState.sort === "new") arr.sort(function (a, b) { return String(b.addedAt || "").localeCompare(String(a.addedAt || "")); });
 else if (admState.sort === "key") arr.sort(function (a, b) { return (a.keyShift || 0) - (b.keyShift || 0); });
 return arr;
@@ -648,7 +655,7 @@ songs.forEach(function (s) { alive[s.id] = true; });
 for (var sk in selectedIds) if (!alive[sk]) delete selectedIds[sk];
 var genreSel = $("adm-genre");
 var seenAll = {};
-songs.forEach(function (s) { seenAll[s.genre] = true; });
+songs.forEach(function (s) { genresOf(s).forEach(function (g) { seenAll[g] = true; }); });
 var curGenre = genreSel.value;
 genreSel.innerHTML = '<option value="">すべてのジャンル</option>' + Object.keys(seenAll).sort(function (a, b) { return a.localeCompare(b, "ja"); }).map(function (g) { return '<option value="' + esc(g) + '">' + esc(g) + "</option>"; }).join("");
 genreSel.value = seenAll[curGenre] ? curGenre : "";
@@ -668,7 +675,7 @@ row.innerHTML =
 '<button type="button" class="mini" style="background:var(--surface-2);color:var(--ink-2)" data-act="edit">編集</button>' +
 '<button type="button" class="mini" style="background:var(--accent-soft);color:var(--accent)" data-act="del">削除</button>';
 row.querySelector(".t").textContent = s.title;
-row.querySelector(".a").textContent = s.artist + " ／ " + s.genre + (s.work ? " ／ " + s.work : "") + " ／ " + s.keyLabel;
+row.querySelector(".a").textContent = s.artist + " ／ " + genresOf(s).join("、") + (s.work ? " ／ " + s.work : "") + " ／ " + s.keyLabel;
 var cb = row.querySelector(".sel");
 cb.checked = !!selectedIds[s.id];
 cb.addEventListener("change", function () {
@@ -681,7 +688,7 @@ row.querySelector('[data-act="del"]').addEventListener("click", function () { de
 wrap.appendChild(row);
 });
 var seen = {};
-songs.forEach(function (s) { seen[s.genre] = true; });
+songs.forEach(function (s) { genresOf(s).forEach(function (g) { seen[g] = true; }); });
 $("genre-list").innerHTML = Object.keys(seen).map(function (g) { return '<option value="' + esc(g) + '"></option>'; }).join("");
 var wseen = {};
 songs.forEach(function (s) { if (s.work) wseen[s.work] = true; });
@@ -858,7 +865,7 @@ function clearEditor() {
 var st = document.getElementById("sheet-title");
 if (st) st.textContent = "曲の編集";
 $("song-save-next").style.display = "none";
-$("f-id").value = ""; $("f-title").value = ""; $("f-titleyomi").value = ""; $("f-artist").value = ""; $("f-artistyomi").value = ""; $("f-work").value = ""; $("f-genre").value = "";
+$("f-id").value = ""; $("f-title").value = ""; $("f-titleyomi").value = ""; $("f-artist").value = ""; $("f-artistyomi").value = ""; $("f-work").value = ""; $("f-genre").value = ""; editingGenres = []; renderGenreChips();
 $("f-keylabel").value = ""; $("f-memory").value = ""; $("f-memo").value = ""; $("f-jacket").value = "";
 $("f-ytlink").value = ""; $("f-ytstart").value = ""; $("f-ytend").value = "";
 $("f-import-url").value = ""; $("import-status").textContent = "";
@@ -944,7 +951,7 @@ songs.forEach(function (x) { if (x.id === id) s = x; });
 if (!s) return;
 $("f-id").value = s.id; $("f-title").value = s.title; $("f-titleyomi").value = s.titleYomi || ""; $("f-artist").value = s.artist; $("f-artistyomi").value = s.artistYomi || "";
 $("f-work").value = s.work || "";
-$("f-genre").value = s.genre; $("f-keylabel").value = s.keyLabel;
+editingGenres = genresOf(s).slice(); renderGenreChips(); $("f-genre").value = ""; $("f-keylabel").value = s.keyLabel;
 $("f-memory").value = (s.memory === null || s.memory === undefined) ? "" : String(s.memory);
 $("f-memo").value = s.memo || ""; $("f-jacket").value = s.jacket || "";
 $("f-ytlink").value = s.ytLink || ""; $("f-ytstart").value = (s.ytStart === null || s.ytStart === undefined) ? "" : String(s.ytStart);
@@ -1249,7 +1256,7 @@ if (keyLabel !== "") parts.push("キーを「" + keyLabel + "」に変更");
 if (memVal !== "") parts.push(memVal === "null" ? "覚えてる度を未設定に戻す" : "覚えてる度を " + memVal + " に変更");
 if (!confirm("選択した " + targets.length + " 曲について、\n" + parts.join("\n") + "\n\nよろしいですか？")) return;
 targets.forEach(function (s) {
-if (genre) s.genre = genre;
+if (genre) { s.genres = [genre]; delete s.genre; }
 if (work) s.work = work;
 if (keyLabel !== "") { s.keyLabel = keyLabel; s.keyShift = keyShift; }
 if (memVal !== "") s.memory = memVal === "null" ? null : parseInt(memVal, 10);
@@ -1325,6 +1332,25 @@ return fetch(url, { method: "PUT", headers: ghHeaders(), body: JSON.stringify(bo
 }
 return fetch(url, { headers: ghHeaders() }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) { return put(d && d.sha); });
 }
+var editingGenres = [];
+function renderGenreChips() {
+var box = $("genre-chips"); if (!box) return;
+box.innerHTML = "";
+editingGenres.forEach(function (g, i) {
+var chip = document.createElement("span"); chip.className = "gchip";
+var t = document.createElement("span"); t.textContent = g; chip.appendChild(t);
+var x = document.createElement("button"); x.type = "button"; x.textContent = "×"; x.setAttribute("aria-label", g + "を外す");
+x.addEventListener("click", function () { editingGenres.splice(i, 1); renderGenreChips(); editorDirty = true; });
+chip.appendChild(x); box.appendChild(chip);
+});
+}
+function addGenreChip(g) {
+parseGenres(g).forEach(function (p) { if (editingGenres.indexOf(p) === -1) { editingGenres.push(p); editorDirty = true; } });
+renderGenreChips();
+}
+$("f-genre").addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); addGenreChip($("f-genre").value); $("f-genre").value = ""; } });
+$("f-genre").addEventListener("change", function () { var v = $("f-genre").value; if (/[、,，]/.test(v)) { addGenreChip(v); $("f-genre").value = ""; } });
+
 function saveSong(goNext) {
 var title = $("f-title").value.trim();
 var artist = $("f-artist").value.trim();
@@ -1342,12 +1368,13 @@ var lines = similar.map(function (s) { return "・" + s.title + " ／ " + s.arti
 var msg = "既に似た曲の登録があります：\n\n" + lines.join("\n") + "\n\nこのまま登録を続けますか？";
 if (!confirm(msg)) { setStatus("save-status", "登録をやめました。", null); return; }
 }
+addGenreChip($("f-genre").value); $("f-genre").value = "";
 var keyLabel = $("f-keylabel").value.trim() || "原曲キー";
 var obj = {
 id: id || ("s" + Date.now().toString(36)),
 title: title, artist: artist,
 work: $("f-work").value.trim(),
-genre: $("f-genre").value.trim() || "その他",
+genres: editingGenres.length ? editingGenres.slice() : ["その他"],
 keyLabel: keyLabel, keyShift: keyShiftFromLabel(keyLabel),
 memo: $("f-memo").value.trim(),
 memory: $("f-memory").value === "" ? null : parseInt($("f-memory").value, 10),
@@ -1447,7 +1474,7 @@ $("f-jacket").value = c.full;
 $("f-jacket").dispatchEvent(new Event("input"));
 if (c.title) $("f-title").value = c.title;
 if (c.artist) $("f-artist").value = c.artist;
-if (c.genre) $("f-genre").value = GENRE_MAP[c.genre] || c.genre;
+if (c.genre) { editingGenres = [GENRE_MAP[c.genre] || c.genre]; renderGenreChips(); }
 toast(c.genre ? "ジャケット・曲名・アーティスト・ジャンルを反映しました" : "ジャケット・曲名・アーティストを反映しました");
 openEditor();
 }
@@ -1646,7 +1673,7 @@ var genreFilterSig = "";
 function renderGenreFilterOptions() {
 var sel = $("genre-row-filter"); if (!sel) return;
 var counts = {};
-songs.forEach(function (s) { var g = s.genre || "その他"; counts[g] = (counts[g] || 0) + 1; });
+songs.forEach(function (s) { genresOf(s).forEach(function (g) { counts[g] = (counts[g] || 0) + 1; }); });
 var names = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a] || a.localeCompare(b, "ja"); });
 var sig = names.join("|");
 if (sig === genreFilterSig) return;
@@ -1660,14 +1687,14 @@ if (sel.value !== cur) genrePrevFilter = sel.value;
 }
 function genreRowMatch(s, filter) {
 if (!filter) return true;
-return (s.genre || "その他") === filter;
+return genresOf(s).indexOf(filter) >= 0;
 }
 function renderGenreRows() {
 renderGenreFilterOptions();
 var box = $("genre-rows"); if (!box) return;
 if (box.contains(document.activeElement) || genreDirty) return;
 var filter = $("genre-row-filter").value;
-var sig = filter + "|" + songs.map(function (s) { return s.id + ":" + (s.genre || ""); }).join("|");
+var sig = filter + "|" + songs.map(function (s) { return s.id + ":" + genresOf(s).join("、"); }).join("|");
 if (sig === genreSig) return;
 genreSig = sig;
 var arr = songs.slice().sort(cmpTitle);
@@ -1678,10 +1705,10 @@ if (!genreRowMatch(s, filter)) return;
 shown++;
 var row = document.createElement("div");
 row.className = "yomi-row genre-row"; row.setAttribute("data-id", s.id);
-row.innerHTML = '<div class="yr-name"><input type="checkbox" class="grow-check" /><div class="yr-text"><b></b><span></span></div></div><div><label>ジャンル</label><input type="text" data-genre="1" list="genre-list" /></div>';
+row.innerHTML = '<div class="yr-name"><input type="checkbox" class="grow-check" /><div class="yr-text"><b></b><span></span></div></div><div><label>ジャンル</label><input type="text" data-genre="1" list="genre-list" placeholder="「、」で区切ると複数" /></div>';
 row.querySelector("b").textContent = s.title;
 row.querySelector("span").textContent = s.artist;
-var gi = row.querySelector('[data-genre="1"]'); gi.value = s.genre || "";
+var gi = row.querySelector('[data-genre="1"]'); gi.value = genresOf(s).join("、");
 gi.addEventListener("input", function () { refreshGenreRowState(row); updateGenreSaveBtn(); });
 var cb = row.querySelector(".grow-check"); cb.checked = !!genreSelected[s.id];
 cb.addEventListener("change", function () { if (cb.checked) genreSelected[s.id] = true; else delete genreSelected[s.id]; updateGenreSelUI(); });
@@ -1695,8 +1722,8 @@ function refreshGenreRowState(row) {
 var id = row.getAttribute("data-id");
 var s = null; songs.forEach(function (x) { if (x.id === id) s = x; });
 if (!s) return;
-var g = row.querySelector('[data-genre="1"]').value.trim() || "その他";
-row.classList.toggle("changed", g !== (s.genre || "その他"));
+var list = parseGenres(row.querySelector('[data-genre="1"]').value); if (!list.length) list = ["その他"];
+row.classList.toggle("changed", list.join("、") !== genresOf(s).join("、"));
 }
 function updateGenreSaveBtn() {
 var n = 0;
@@ -1718,7 +1745,7 @@ rows.forEach(function (row) {
 var id = row.getAttribute("data-id");
 var s = null; songs.forEach(function (x) { if (x.id === id) s = x; });
 if (!s) return;
-s.genre = row.querySelector('[data-genre="1"]').value.trim() || "その他";
+var glist = parseGenres(row.querySelector('[data-genre="1"]').value); s.genres = glist.length ? glist : ["その他"]; delete s.genre;
 n++;
 });
 var btn = $("genre-save"); btn.disabled = true;
@@ -2075,6 +2102,14 @@ return Object.keys(seen).filter(function (y) { return y.indexOf(needle) >= 0; })
 function pickYomiInto(input) {
 return function (c, close) { sgSetValue(input, c.yomi); close(); };
 }
+function collectGenreCands(v) {
+var needle = sgNorm(v).trim(); if (!needle) return [];
+var counts = {};
+songs.forEach(function (s) { genresOf(s).forEach(function (g) { if (sgNorm(g).indexOf(needle) >= 0) counts[g] = (counts[g] || 0) + 1; }); });
+return Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a] || a.localeCompare(b, "ja"); }).slice(0, 8)
+.map(function (name) { return { name: name, node: sgTextNode(name, "", counts[name] + "曲") }; });
+}
+function pickGenre(c, close) { addGenreChip(c.name); sgSetValue($("f-genre"), ""); close(); }
 function collectWorkCands(v) {
 var needle = sgNorm(v).trim(); if (!needle) return [];
 var counts = {};
@@ -2088,6 +2123,7 @@ attachFieldSuggest($("f-artist"), collectArtistCands, pickArtist);
 attachFieldSuggest($("f-titleyomi"), function (v) { return collectYomiCands(v, "title"); }, pickYomiInto($("f-titleyomi")));
 attachFieldSuggest($("f-artistyomi"), function (v) { return collectYomiCands(v, "artist"); }, pickYomiInto($("f-artistyomi")));
 attachFieldSuggest($("f-work"), collectWorkCands, pickWork);
+attachFieldSuggest($("f-genre"), collectGenreCands, pickGenre);
 </script>
 </body>
 </html>

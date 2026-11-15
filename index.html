@@ -429,8 +429,9 @@ var h = 0;
 for (var i = 0; i < (g || "").length; i++) h = (h * 31 + g.charCodeAt(i)) >>> 0;
 return GENRE_PALETTE[h % GENRE_PALETTE.length];
 }
+function genresOf(s) { if (s.genres && s.genres.length) return s.genres; return [s.genre || "その他"]; }
 function genreTag(s) {
-return '<span class="tag genre" style="background:' + genreColor(s.genre) + '">' + esc(s.genre) + "</span>";
+return genresOf(s).map(function (g) { return '<span class="tag genre" style="background:' + genreColor(g) + '">' + esc(g) + "</span>"; }).join("");
 }
 function ytSearchURL(s) { return "https://www.youtube.com/results?search_query=" + encodeURIComponent(s.title + " " + s.artist); }
 function nicoSearchURL(s) { return "https://www.nicovideo.jp/search/" + encodeURIComponent(s.title + " " + s.artist); }
@@ -1086,7 +1087,7 @@ return '<div class="memory"><span class="mem-label">覚えてる度</span><span 
 
 function buildGenreChips() {
 var counts = {};
-SONGS.forEach(function (s) { counts[s.genre] = (counts[s.genre] || 0) + 1; });
+SONGS.forEach(function (s) { genresOf(s).forEach(function (g) { counts[g] = (counts[g] || 0) + 1; }); });
 var genres = Object.keys(counts).sort(function (a, b) { return a.localeCompare(b, "ja"); });
 if (genres.indexOf(state.genre) === -1) state.genre = "すべて";
 genreSel.innerHTML = "";
@@ -1205,7 +1206,7 @@ nav.style.display = nav.children.length ? "" : "none";
 }
 function filtered() {
 var arr = SONGS.filter(function (s) {
-if (state.genre !== "すべて" && s.genre !== state.genre) return false;
+if (state.genre !== "すべて" && genresOf(s).indexOf(state.genre) === -1) return false;
 if (state.artist && s.artist !== state.artist) return false;
 if (state.q) {
 var hay = kanaNorm((s.title + " " + s.artist + " " + (s.work || "") + " " + (s.titleYomi || "") + " " + (s.artistYomi || "")).toLowerCase());
@@ -1258,7 +1259,7 @@ if (sec.key !== lastSecKey) { lastSecKey = sec.key; currentSections.push(sec); l
 }
 var card = document.createElement("article");
 card.className = "song";
-card.style.setProperty("--gc", genreColor(s.genre));
+card.style.setProperty("--gc", genreColor(genresOf(s)[0]));
 card.style.animationDelay = Math.min(i * 60, 360) + "ms";
 card.innerHTML =
 '<div class="song-head">' + jacketHTML(s) +
@@ -1298,7 +1299,7 @@ if (sec.key !== lastSecKey) { lastSecKey = sec.key; currentSections.push(sec); g
 var t = document.createElement("button");
 t.type = "button";
 t.className = "tile";
-t.style.setProperty("--gc", genreColor(s.genre));
+t.style.setProperty("--gc", genreColor(genresOf(s)[0]));
 t.style.animationDelay = Math.min(i * 40, 320) + "ms";
 t.setAttribute("aria-label", s.title + " / " + s.artist + " の詳細を開く");
 t.innerHTML =
@@ -1569,7 +1570,7 @@ var g = document.getElementById("ib-genres");
 if (c) c.textContent = SONGS.length;
 if (g) {
 var seen = {};
-SONGS.forEach(function (s) { seen[s.genre] = true; });
+SONGS.forEach(function (s) { genresOf(s).forEach(function (g) { seen[g] = true; }); });
 g.textContent = Object.keys(seen).length;
 }
 }
