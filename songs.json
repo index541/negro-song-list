@@ -8580,16 +8580,18 @@
   {
     "id": "w1070",
     "title": "ユカユカ☆ヘヴンリーナイト",
-    "artist": "samfree",
-    "genre": "アニソン",
+    "artist": "samfree feat. 結月ゆかり",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/b3/a5/82/b3a58245-481b-a9e8-b61d-274abec79fab/ANTCD-11105.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/Music4/v4/82/87/fa/8287fa9d-decf-41af-3f0f-26c6dc0ea953/mzaf_8256392890801616333.plus.aac.p.m4a",
     "titleYomi": "ゆかゆか☆へゔんりーないと",
-    "artistYomi": "samfree"
+    "artistYomi": "さむふりーゆづきゆかり",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/Music4/v4/82/87/fa/8287fa9d-decf-41af-3f0f-26c6dc0ea953/mzaf_8256392890801616333.plus.aac.p.m4a"
   },
   {
     "id": "w1071",
