@@ -1878,15 +1878,17 @@
     "id": "u157",
     "title": "プラネタリウム",
     "artist": "BUMP OF CHICKEN",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/69/45/86/694586f7-72c8-56f8-7097-6d55e7ea248a/dj.ooaxtiay.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ce/ed/4a/ceed4afc-579e-23df-4635-7f5bcce4f061/mzaf_3045978318750003253.plus.aac.p.m4a",
     "titleYomi": "ぷらねたりうむ",
-    "artistYomi": "BUMP OF CHICKEN"
+    "artistYomi": "ばんぷおぶちきん",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ce/ed/4a/ceed4afc-579e-23df-4635-7f5bcce4f061/mzaf_3045978318750003253.plus.aac.p.m4a"
   },
   {
     "id": "u158",
