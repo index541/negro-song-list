@@ -1532,15 +1532,17 @@
     "id": "u128",
     "title": "涙のふるさと",
     "artist": "BUMP OF CHICKEN",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/d6/3c/9c/d63c9cb5-c497-3d52-e7e7-72ef6239b066/TFCC-89191WW.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7e/e2/70/7ee270b0-8f24-e5ca-da99-c1ee616638ea/mzaf_7416839026201861590.plus.aac.p.m4a",
     "titleYomi": "なみだのふるさと",
-    "artistYomi": "BUMP OF CHICKEN"
+    "artistYomi": "ばんぷおぶちきん",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7e/e2/70/7ee270b0-8f24-e5ca-da99-c1ee616638ea/mzaf_7416839026201861590.plus.aac.p.m4a"
   },
   {
     "id": "u129",
