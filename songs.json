@@ -8624,16 +8624,18 @@
   {
     "id": "w1086",
     "title": "セツナトリップ",
-    "artist": "Last Note.",
+    "artist": "Last Note. feat. GUMI",
+    "work": "",
     "genre": "ロック",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/29/ab/f6/29abf686-a315-d52d-3d0b-7c722b03f36d/AVCD-38935.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/c9/aa/fe/c9aafe8a-2aea-57ed-4c30-77163a7dbc65/mzaf_13273911171188573194.plus.aac.p.m4a",
     "titleYomi": "せつなとりっぷ",
-    "artistYomi": "Last Note."
+    "artistYomi": "らすとのーとぐみ",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/c9/aa/fe/c9aafe8a-2aea-57ed-4c30-77163a7dbc65/mzaf_13273911171188573194.plus.aac.p.m4a"
   },
   {
     "id": "w1087",
