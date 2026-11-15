@@ -2823,16 +2823,18 @@
   {
     "id": "w070",
     "title": "チルノのパーフェクトさんすう教室",
-    "artist": "IOSYS",
+    "artist": "IOSYS feat. miko",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/44/59/4d/44594dc2-1de8-42b1-ed03-dfa123da35bf/4580547310139.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/87/c0/3f/87c03fae-d291-0aac-44d8-0f41461eacc7/mzaf_16831983599166770676.plus.aac.p.m4a",
     "titleYomi": "ちるののぱーふぇくとさんすうきょうしつ",
-    "artistYomi": "IOSYS"
+    "artistYomi": "いおしすみこ",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/87/c0/3f/87c03fae-d291-0aac-44d8-0f41461eacc7/mzaf_16831983599166770676.plus.aac.p.m4a"
   },
   {
     "id": "w071",
