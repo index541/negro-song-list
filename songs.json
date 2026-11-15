@@ -613,15 +613,17 @@
     "id": "u046",
     "title": "かさぶたぶたぶ",
     "artist": "BUMP OF CHICKEN",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/69/45/86/694586f7-72c8-56f8-7097-6d55e7ea248a/dj.ooaxtiay.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/14/34/3f/14343fee-562e-32fa-eedd-b932e02aa92e/mzaf_7251114220580861420.plus.aac.p.m4a",
     "titleYomi": "かさぶたぶたぶ",
-    "artistYomi": "BUMP OF CHICKEN"
+    "artistYomi": "ばんぷおぶちきん",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/14/34/3f/14343fee-562e-32fa-eedd-b932e02aa92e/mzaf_7251114220580861420.plus.aac.p.m4a"
   },
   {
     "id": "u048",
