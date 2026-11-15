@@ -592,7 +592,7 @@ if (admState.todo === "noaudio" && (s.preview || s.ytClip || s.ytLink)) return f
 if (admState.todo === "nochorus" && s.ytLink) return false;
 if (admState.todo === "noclip" && !(s.ytLink && !s.ytClip)) return false;
 if (admState.todo === "nojacket" && s.jacket) return false;
-if (admState.todo === "yomieng" && !(s.artistYomi && s.artistYomi === s.artist)) return false;
+if (admState.todo === "yomieng" && !(s.artistYomi && /[A-Za-z]/.test(s.artistYomi) && (!/[ぁ-んァ-ヶ]/.test(s.artistYomi) || s.artistYomi === s.artist))) return false;
 if (admState.todo === "key0" && (s.keyShift || 0) !== 0) return false;
 if (admState.q) {
 var hay = kanaNorm((s.title + " " + s.artist + " " + s.genre + " " + (s.work || "") + " " + (s.memo || "") + " " + (s.titleYomi || "") + " " + (s.artistYomi || "")).toLowerCase());
