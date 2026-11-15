@@ -869,15 +869,17 @@
   {
     "id": "u069",
     "title": "ゴーストヒバナ",
-    "artist": "DECO*27",
+    "artist": "DECO*27 feat. 初音ミク",
+    "work": "",
     "genre": "アニソン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/99/cb/f9/99cbf9a8-3581-c5ab-03d0-86ebc23783ed/QWCE_00685.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "ごーすとひばな",
-    "artistYomi": "DECO*27"
+    "artistYomi": "でこにーなはつねみく"
   },
   {
     "id": "u070",
