@@ -2421,16 +2421,18 @@
   {
     "id": "w006",
     "title": "桜ノ雨",
-    "artist": "halyosy",
+    "artist": "halyosy feat. 初音ミク",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/9b/7e/b1/9b7eb143-14ca-328d-bd03-25b5bb1ff756/CRCPX-10209.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/b2/9b/4f/b29b4fd9-7621-0aa7-d1b1-a57a457d5d03/mzaf_13645162468008219629.plus.aac.p.m4a",
     "titleYomi": "さくらのあめ",
-    "artistYomi": "halyosy"
+    "artistYomi": "はるよしはつねみく",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/b2/9b/4f/b29b4fd9-7621-0aa7-d1b1-a57a457d5d03/mzaf_13645162468008219629.plus.aac.p.m4a"
   },
   {
     "id": "w008",
