@@ -3424,15 +3424,17 @@
   {
     "id": "w148",
     "title": "ミキミキ★ロマンティックナイト",
-    "artist": "miki",
-    "genre": "アニソン",
+    "artist": "samfree feat. miki",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/04/69/cc/0469cc61-e997-d0cd-c59c-5ed05e7da79f/AVCD-38461.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "titleYomi": "みきみき★ろまんてぃっくないと",
-    "artistYomi": "miki"
+    "titleYomi": "みきみきろまんてぃっくないと",
+    "artistYomi": "さむふりーみき"
   },
   {
     "id": "w149",
