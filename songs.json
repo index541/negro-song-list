@@ -3783,15 +3783,17 @@
   {
     "id": "w204",
     "title": "ブリキノダンス-DIVELA REMIX",
-    "artist": "SymaG",
-    "genre": "その他",
+    "artist": "DIVELA feat. 鏡音リン",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "",
     "addedAt": "2026-11-12",
     "titleYomi": "ぶりきのだんす-DIVELA REMIX",
-    "artistYomi": "SymaG"
+    "artistYomi": "でぃべらかがみねりん"
   },
   {
     "id": "w205",
