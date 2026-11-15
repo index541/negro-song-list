@@ -410,18 +410,6 @@ body.has-bulk-float { padding-bottom:86px; }
 <label for="genre-row-filter">絞り込み</label>
 <select id="genre-row-filter">
 <option value="">すべての曲</option>
-<option value="other">その他・未設定</option>
-<option value="あ">あ行</option>
-<option value="か">か行</option>
-<option value="さ">さ行</option>
-<option value="た">た行</option>
-<option value="な">な行</option>
-<option value="は">は行</option>
-<option value="ま">ま行</option>
-<option value="や">や行</option>
-<option value="ら">ら行</option>
-<option value="わ">わ行</option>
-<option value="AZ">英字・数字・その他</option>
 </select>
 </div>
 <div class="field">
@@ -1654,12 +1642,28 @@ commitSongs("よみがなを一括修正（" + n + "件）")
 });
 
 // ジャンル一括設定
+var genreFilterSig = "";
+function renderGenreFilterOptions() {
+var sel = $("genre-row-filter"); if (!sel) return;
+var counts = {};
+songs.forEach(function (s) { var g = s.genre || "その他"; counts[g] = (counts[g] || 0) + 1; });
+var names = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a] || a.localeCompare(b, "ja"); });
+var sig = names.join("|");
+if (sig === genreFilterSig) return;
+genreFilterSig = sig;
+var cur = sel.value;
+sel.innerHTML = "";
+var all = document.createElement("option"); all.value = ""; all.textContent = "すべての曲"; sel.appendChild(all);
+names.forEach(function (g) { var o = document.createElement("option"); o.value = g; o.textContent = g + "（" + counts[g] + "曲）"; sel.appendChild(o); });
+sel.value = names.indexOf(cur) >= 0 ? cur : "";
+if (sel.value !== cur) genrePrevFilter = sel.value;
+}
 function genreRowMatch(s, filter) {
 if (!filter) return true;
-if (filter === "other") return !s.genre || s.genre === "その他";
-return yomiRowOf(s) === filter;
+return (s.genre || "その他") === filter;
 }
 function renderGenreRows() {
+renderGenreFilterOptions();
 var box = $("genre-rows"); if (!box) return;
 if (box.contains(document.activeElement) || genreDirty) return;
 var filter = $("genre-row-filter").value;
