@@ -8823,16 +8823,18 @@
   {
     "id": "w1094",
     "title": "メグメグ★ファイアーエンドレスナイト",
-    "artist": "samfree",
-    "genre": "J-POP",
+    "artist": "samfree feat. GUMI",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/86/ad/a1/mzi.qxpikezt.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/a0/43/f9/a043f906-de92-418d-f9d4-708226bad0c5/mzaf_5533709752219379789.plus.aac.p.m4a",
-    "titleYomi": "めぐめぐ★ふぁいあーえんどれすないと",
-    "artistYomi": "samfree"
+    "titleYomi": "めぐめぐふぁいあーえんどれすないと",
+    "artistYomi": "さむふりーぐみ",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/a0/43/f9/a043f906-de92-418d-f9d4-708226bad0c5/mzaf_5533709752219379789.plus.aac.p.m4a"
   },
   {
     "id": "w1095",
