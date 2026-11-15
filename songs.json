@@ -526,15 +526,17 @@
     "id": "u038",
     "title": "想い出がいっぱい",
     "artist": "H2O",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲 +2",
     "keyShift": 2,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/0c/91/f7/0c91f741-661e-bb02-7d35-cb5831614851/25UMGIM84612.rgb.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ef/07/ff/ef07ff3a-9f74-f5f2-e7db-83124b88c930/mzaf_14836033894381959401.plus.aac.p.m4a",
     "titleYomi": "おもいでがいっぱい",
-    "artistYomi": "H2O"
+    "artistYomi": "えいちつーおー",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ef/07/ff/ef07ff3a-9f74-f5f2-e7db-83124b88c930/mzaf_14836033894381959401.plus.aac.p.m4a"
   },
   {
     "id": "u041",
