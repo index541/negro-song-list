@@ -4163,15 +4163,17 @@
     "id": "w303",
     "title": "長い夢",
     "artist": "YUKI",
+    "work": "",
     "genre": "J-POP",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/c8/01/03/c80103f0-edc7-1070-0cd2-d0ffadc829fd/jacket_ESCL03837B00Z_550.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7a/f2/24/7af224c0-0688-7d82-883e-6b1cd19d617f/mzaf_6154651756041027280.plus.aac.p.m4a",
     "titleYomi": "ながいゆめ",
-    "artistYomi": "YUKI"
+    "artistYomi": "ゆき",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7a/f2/24/7af224c0-0688-7d82-883e-6b1cd19d617f/mzaf_6154651756041027280.plus.aac.p.m4a"
   },
   {
     "id": "w304",
