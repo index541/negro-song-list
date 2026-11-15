@@ -2149,15 +2149,17 @@
   {
     "id": "u179",
     "title": "妄想税",
-    "artist": "DECO*27",
-    "genre": "J-POP",
+    "artist": "DECO*27 feat. 初音ミク",
+    "work": "",
+    "genre": "ボカロ",
     "keyLabel": "原曲 −4",
     "keyShift": -4,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/51/9f/73/519f73e3-9fc1-bb97-48c3-74a2c582e96b/VICL-64257.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "もうそうぜい",
-    "artistYomi": "DECO*27"
+    "artistYomi": "でこにーなはつねみく"
   },
   {
     "id": "u180",
