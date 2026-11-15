@@ -659,16 +659,17 @@
     "id": "u050",
     "title": "牙狼～SAVIOR IN THE DARK～",
     "artist": "JAM Project",
+    "work": "牙狼〈GARO〉",
     "genre": "アニソン",
     "keyLabel": "原曲 −2",
     "keyShift": -2,
     "memo": "",
+    "memory": null,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/44/26/27/4426277c-d345-28e8-130e-a0c67aba758e/4562409333463.png/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ab/e6/ac/abe6acde-a2bf-0968-5f64-73a9c46c73e7/mzaf_5733912544896423045.plus.aac.p.m4a",
-    "titleYomi": "きばおおかみ～SAVIOR IN THE DARK～",
-    "artistYomi": "JAM Project",
-    "work": "牙狼〈GARO〉"
+    "titleYomi": "がろせいばーいんざだーく",
+    "artistYomi": "じゃむぷろじぇくと",
+    "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ab/e6/ac/abe6acde-a2bf-0968-5f64-73a9c46c73e7/mzaf_5733912544896423045.plus.aac.p.m4a"
   },
   {
     "id": "u051",
