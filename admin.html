@@ -152,6 +152,10 @@ body.has-bulk-float { padding-bottom:86px; }
 .genre-row .yr-name { display:flex; align-items:center; gap:8px; }
 .genre-row .yr-text { min-width:0; flex:1; }
 .genre-row .grow-check { width:20px; height:20px; flex:none; padding:0; border:0; accent-color:var(--accent); cursor:pointer; }
+.work-row { grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); }
+.work-row .yr-name { display:flex; align-items:center; gap:8px; }
+.work-row .yr-text { min-width:0; flex:1; }
+.work-row .wrow-check { width:20px; height:20px; flex:none; padding:0; border:0; accent-color:var(--accent); cursor:pointer; }
 .memory-row .mrow-check { width:20px; height:20px; flex:none; padding:0; border:0; accent-color:var(--accent); cursor:pointer; }
 .hist-row, .var-row { display:flex; gap:10px; align-items:center; justify-content:space-between; padding:9px 2px; border-bottom:1px solid var(--line); font-size:13.5px; line-height:1.6; }
 .var-row .vname { font-weight:900; }
@@ -466,6 +470,35 @@ body.has-bulk-float { padding-bottom:86px; }
 </div>
 <p class="status" id="genre-status"></p>
 <div id="genre-rows"></div>
+</section>
+
+<section class="card" id="work-card">
+<h2>作品名一括設定</h2>
+<p class="desc">作品名をまとめて直すための画面です。各行の作品名を直して「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。空欄にすると作品名なしに戻ります。入力すると今ある作品名が候補で出ます。行のチェックで曲を選んで、下の欄から同じ作品名をまとめて設定もできます（下の欄を空欄のまま設定すると、選んだ曲の作品名が消えます）。</p>
+<div class="grid2">
+<div class="field">
+<label for="work-row-filter">絞り込み</label>
+<select id="work-row-filter">
+<option value="">すべての曲</option>
+</select>
+</div>
+<div class="field">
+<label>まとめて保存</label>
+<button type="button" class="btn primary" id="work-save" style="width:100%" disabled>変更をまとめて保存</button>
+</div>
+</div>
+<div class="field">
+<label for="work-bulk-value">選択した曲にまとめて設定する作品名</label>
+<input id="work-bulk-value" type="text" placeholder="作品名を入力" />
+</div>
+<div class="bulk-bar">
+<button type="button" class="mini" id="work-sel-all">表示中をすべて選択</button>
+<button type="button" class="mini" id="work-sel-none">選択を解除</button>
+<span class="bulk-count" id="work-sel-count">選択中 0曲</span>
+<button type="button" class="btn sub" id="work-bulk-apply" disabled>選択した曲に設定</button>
+</div>
+<p class="status" id="work-status"></p>
+<div id="work-rows"></div>
 </section>
 
 <section class="card" id="memory-card">
@@ -1677,9 +1710,13 @@ var memoryDirty = false;
 var memorySig = "";
 var memoryPrevFilter = "";
 var memorySelected = {};
+var workDirty = false;
+var workSig = "";
+var workPrevFilter = "";
+var workSelected = {};
 
 var renderSongsBase = renderSongs;
-renderSongs = function () { renderSongsBase(); renderYomiRows(); renderGenreRows(); renderMemoryRows(); renderArtistVariants(); };
+renderSongs = function () { renderSongsBase(); renderYomiRows(); renderGenreRows(); renderWorkRows(); renderMemoryRows(); renderArtistVariants(); };
 var importFillBase = importFill;
 importFill = function (id, val) { importFillBase(id, val); if (val) editorDirty = true; };
 var setJPosBase = setJPos;
@@ -1693,7 +1730,7 @@ $("ka-apply").addEventListener("click", function () { editorDirty = true; });
 $("yt-set-start").addEventListener("click", function () { editorDirty = true; });
 $("yt-set-end").addEventListener("click", function () { editorDirty = true; });
 $("jfile-input").addEventListener("change", function () { editorDirty = true; });
-window.addEventListener("beforeunload", function (e) { if (editorDirty || yomiDirty || genreDirty || memoryDirty) { e.preventDefault(); e.returnValue = ""; } });
+window.addEventListener("beforeunload", function (e) { if (editorDirty || yomiDirty || genreDirty || workDirty || memoryDirty) { e.preventDefault(); e.returnValue = ""; } });
 
 // 要対応で絞り込み
 $("adm-todo").addEventListener("change", function () { admState.todo = $("adm-todo").value; renderSongs(); });
@@ -1954,6 +1991,126 @@ if (n) setStatus("genre-status", n + "曲のジャンルを「" + v + "」にし
 else setStatus("genre-status", "いま表示されている行には選択中の曲がありません。絞り込みを変えると選択は残ります。", false);
 });
 
+// 作品名一括設定
+var workFilterSig = "";
+function renderWorkFilterOptions() {
+var sel = $("work-row-filter"); if (!sel) return;
+var counts = {}; var none = 0;
+songs.forEach(function (s) { if (s.work) counts[s.work] = (counts[s.work] || 0) + 1; else none++; });
+var names = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a] || a.localeCompare(b, "ja"); });
+var sig = names.join("|") + "#" + none;
+if (sig === workFilterSig) return;
+workFilterSig = sig;
+var cur = sel.value;
+sel.innerHTML = "";
+var all = document.createElement("option"); all.value = ""; all.textContent = "すべての曲"; sel.appendChild(all);
+var no = document.createElement("option"); no.value = "__none__"; no.textContent = "作品名なし（" + none + "曲）"; sel.appendChild(no);
+names.forEach(function (w) { var o = document.createElement("option"); o.value = w; o.textContent = w + "（" + counts[w] + "曲）"; sel.appendChild(o); });
+sel.value = (cur === "__none__" || names.indexOf(cur) >= 0) ? cur : "";
+if (sel.value !== cur) workPrevFilter = sel.value;
+}
+function workRowMatch(s, filter) {
+if (!filter) return true;
+if (filter === "__none__") return !s.work;
+return s.work === filter;
+}
+function renderWorkRows() {
+renderWorkFilterOptions();
+var box = $("work-rows"); if (!box) return;
+if (box.contains(document.activeElement) || workDirty) return;
+var filter = $("work-row-filter").value;
+var sig = filter + "|" + songs.map(function (s) { return s.id + ":" + (s.work || ""); }).join("|");
+if (sig === workSig) return;
+workSig = sig;
+var arr = songs.slice().sort(cmpTitle);
+box.innerHTML = "";
+var shown = 0;
+arr.forEach(function (s) {
+if (!workRowMatch(s, filter)) return;
+shown++;
+var row = document.createElement("div");
+row.className = "yomi-row work-row"; row.setAttribute("data-id", s.id);
+row.innerHTML = '<div class="yr-name"><input type="checkbox" class="wrow-check" /><div class="yr-text"><b></b><span></span></div></div><div><label>作品名</label><input type="text" data-work="1" placeholder="作品名を入力（空欄でなし）" /></div>';
+row.querySelector("b").textContent = s.title;
+row.querySelector("span").textContent = s.artist;
+var wi = row.querySelector('[data-work="1"]'); wi.value = s.work || "";
+wi.addEventListener("input", function () { refreshWorkRowState(row); updateWorkSaveBtn(); });
+var cb = row.querySelector(".wrow-check"); cb.checked = !!workSelected[s.id];
+cb.addEventListener("change", function () { if (cb.checked) workSelected[s.id] = true; else delete workSelected[s.id]; updateWorkSelUI(); });
+box.appendChild(row);
+});
+if (!shown) box.innerHTML = '<p class="desc">この絞り込みの曲はありません。</p>';
+updateWorkSaveBtn();
+updateWorkSelUI();
+}
+function refreshWorkRowState(row) {
+var id = row.getAttribute("data-id");
+var s = null; songs.forEach(function (x) { if (x.id === id) s = x; });
+if (!s) return;
+var v = row.querySelector('[data-work="1"]').value.trim();
+row.classList.toggle("changed", v !== (s.work || ""));
+}
+function updateWorkSaveBtn() {
+var n = 0;
+document.querySelectorAll("#work-rows .work-row.changed").forEach(function () { n++; });
+workDirty = n > 0;
+var b = $("work-save");
+b.disabled = n === 0;
+b.textContent = n ? "変更をまとめて保存（" + n + "件）" : "変更をまとめて保存";
+}
+$("work-row-filter").addEventListener("change", function () {
+if (workDirty && !confirm("保存していない作品名の変更があります。絞り込みを変えると変更が消えます。続けますか？")) { $("work-row-filter").value = workPrevFilter; return; }
+workDirty = false; workPrevFilter = $("work-row-filter").value; workSig = ""; renderWorkRows();
+});
+$("work-save").addEventListener("click", function () {
+var rows = document.querySelectorAll("#work-rows .work-row.changed");
+if (!rows.length) return;
+var n = 0;
+rows.forEach(function (row) {
+var id = row.getAttribute("data-id");
+var s = null; songs.forEach(function (x) { if (x.id === id) s = x; });
+if (!s) return;
+var v = row.querySelector('[data-work="1"]').value.trim();
+if (v) s.work = v; else delete s.work;
+n++;
+});
+var btn = $("work-save"); btn.disabled = true;
+setStatus("work-status", "保存中…", null);
+commitSongs("作品名を一括設定（" + n + "件）")
+.then(function () { workDirty = false; workSig = ""; workSelected = {}; setStatus("work-status", "保存しました。公開ページへの反映は1分ほどかかります。", true); renderSongs(); toast("作品名を保存しました"); })
+.catch(function (e) { setStatus("work-status", e.message || "保存に失敗しました。", false); updateWorkSaveBtn(); });
+});
+function updateWorkSelUI() {
+var n = Object.keys(workSelected).length;
+$("work-sel-count").textContent = "選択中 " + n + "曲";
+$("work-bulk-apply").disabled = n === 0;
+}
+$("work-sel-all").addEventListener("click", function () {
+document.querySelectorAll("#work-rows .work-row").forEach(function (row) {
+workSelected[row.getAttribute("data-id")] = true;
+var cb = row.querySelector(".wrow-check"); if (cb) cb.checked = true;
+});
+updateWorkSelUI();
+});
+$("work-sel-none").addEventListener("click", function () {
+workSelected = {};
+document.querySelectorAll("#work-rows .wrow-check").forEach(function (cb) { cb.checked = false; });
+updateWorkSelUI();
+});
+$("work-bulk-apply").addEventListener("click", function () {
+var v = $("work-bulk-value").value.trim();
+var n = 0;
+document.querySelectorAll("#work-rows .work-row").forEach(function (row) {
+if (!workSelected[row.getAttribute("data-id")]) return;
+var wi = row.querySelector('[data-work="1"]');
+if (wi.value.trim() !== v) { wi.value = v; refreshWorkRowState(row); }
+n++;
+});
+updateWorkSaveBtn();
+if (n) setStatus("work-status", n + "曲の作品名を「" + (v || "（なし）") + "」にしました。「変更をまとめて保存」を押すと反映されます。", true);
+else setStatus("work-status", "いま表示されている行には選択中の曲がありません。絞り込みを変えると選択は残ります。", false);
+});
+
 // 覚えてる度一括設定
 var memoryFilterSig = "";
 function memKey(s) { return (s.memory === null || s.memory === undefined) ? "null" : String(s.memory); }
@@ -2184,6 +2341,7 @@ return loadSongs().then(function () { songs = restored; return commitSongs("変�
 
 renderYomiRows();
 renderGenreRows();
+renderWorkRows();
 renderMemoryRows();
 renderArtistVariants();
 </script>
@@ -2658,12 +2816,18 @@ if (inp.dataset.sgDone) return; inp.dataset.sgDone = "1";
 inp.removeAttribute("list");
 attachFieldSuggest(inp, bulkGenreCollect(inp), bulkGenrePick(inp));
 });
+document.querySelectorAll('#work-rows [data-work="1"]').forEach(function (inp) {
+if (inp.dataset.sgDone) return; inp.dataset.sgDone = "1";
+attachFieldSuggest(inp, collectWorkCands, fillPickInto(inp));
+});
 }
 var nba = $("name-bulk-artist");
 if (nba) { nba.removeAttribute("list"); attachFieldSuggest(nba, bulkArtistCands, fillPickInto(nba)); }
 var gbv = $("genre-bulk-value");
 if (gbv) { gbv.removeAttribute("list"); attachFieldSuggest(gbv, bulkGenreCollect(gbv), bulkGenrePick(gbv)); }
-["renderYomiRows", "renderGenreRows"].forEach(function (fname) {
+var wbv = $("work-bulk-value");
+if (wbv) attachFieldSuggest(wbv, collectWorkCands, fillPickInto(wbv));
+["renderYomiRows", "renderGenreRows", "renderWorkRows"].forEach(function (fname) {
 var orig = window[fname];
 if (typeof orig !== "function") return;
 window[fname] = function () { orig(); attachBulkSuggests(); };
