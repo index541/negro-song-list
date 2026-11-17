@@ -2428,7 +2428,9 @@
     "genres": [
       "ロック"
     ],
-    "memory": 4
+    "memory": 4,
+    "work": "DEATHNOTE",
+    "workYomi": "ですのーと"
   },
   {
     "id": "u170",
@@ -2687,7 +2689,8 @@
     "genres": [
       "アニソン"
     ],
-    "memory": 5
+    "memory": 5,
+    "workYomi": "けいおん"
   },
   {
     "id": "u189",
@@ -2736,7 +2739,9 @@
     "genres": [
       "ロック"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "鋼の錬金術師",
+    "workYomi": "はがねのれんきんじゅつし"
   },
   {
     "id": "u192",
@@ -2773,7 +2778,8 @@
     "genres": [
       "アニソン"
     ],
-    "memory": 5
+    "memory": 5,
+    "workYomi": "そらのおとしもの"
   },
   {
     "id": "u194",
@@ -2791,7 +2797,8 @@
     "genres": [
       "アニソン"
     ],
-    "memory": 5
+    "memory": 5,
+    "workYomi": "つばさくろにくる"
   },
   {
     "id": "u195",
@@ -2809,7 +2816,8 @@
     "genres": [
       "アニソン"
     ],
-    "memory": 5
+    "memory": 5,
+    "workYomi": "すまいるぷりきゅあ"
   },
   {
     "id": "u196",
@@ -2826,7 +2834,9 @@
     "genres": [
       "ロック"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "鋼の錬金術師",
+    "workYomi": "はがねのれんきんじゅつし"
   },
   {
     "id": "u197",
@@ -2980,11 +2990,12 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/98/ab/0d/98ab0d45-a4e8-2bf1-5cf8-7193a17f11d4/mzaf_5871776177690161441.plus.aac.p.m4a",
     "titleYomi": "りふれいんぼーい",
     "artistYomi": "おーるおふ",
-    "work": "ヘヴィーオブジェクト",
+    "work": "モブサイコ",
     "genres": [
       "アニソン"
     ],
-    "memory": 3
+    "memory": 3,
+    "workYomi": "もぶさいこ"
   },
   {
     "id": "w011",
@@ -4048,7 +4059,8 @@
     "artistYomi": "ろれんつぉかれらえりっくかすてっろよーこはれるや",
     "genres": [
       "アニソン"
-    ]
+    ],
+    "workYomi": "もののけひめ"
   },
   {
     "id": "w143",
@@ -4239,7 +4251,8 @@
     "artistYomi": "ながとゆきちはらみのり",
     "genres": [
       "アニソン"
-    ]
+    ],
+    "workYomi": "すずみやはるひのゆううつ"
   },
   {
     "id": "w177",
@@ -4506,7 +4519,8 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/45/13/0b/45130b47-26c6-f2ce-ee1e-fed1b8a6d1c7/mzaf_8228672425143035862.plus.aac.p.m4a",
     "genres": [
       "アニソン"
-    ]
+    ],
+    "workYomi": "うたわれるもの"
   },
   {
     "id": "w203",
@@ -5381,7 +5395,8 @@
     "genres": [
       "アニソン"
     ],
-    "memory": 5
+    "memory": 5,
+    "workYomi": "けものふれんず"
   },
   {
     "id": "w351",
@@ -5494,7 +5509,9 @@
     "genres": [
       "アニソン"
     ],
-    "memory": 4
+    "memory": 4,
+    "work": "おさわり探偵なめこ栽培キット",
+    "workYomi": "おさわりたんていなめこさいばいきっと"
   },
   {
     "id": "w361",
@@ -9236,7 +9253,8 @@
     "genres": [
       "アニソン"
     ],
-    "memory": 5
+    "memory": 5,
+    "workYomi": "らきすた"
   },
   {
     "id": "w971",
@@ -9450,7 +9468,9 @@
     "genres": [
       "J-POP"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "アンナチュラル",
+    "workYomi": "あんなちゅらる"
   },
   {
     "id": "w985",
@@ -10053,7 +10073,8 @@
     "genres": [
       "アニソン"
     ],
-    "memory": 5
+    "memory": 5,
+    "workYomi": "わたしがもてないのはどうかんがえてもおまえらがわるい"
   },
   {
     "id": "w1060",
