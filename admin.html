@@ -1456,7 +1456,7 @@ if (excludeId && s.id === excludeId) return false;
 return normTitleBasic(s.title) === basic || normTitleLoose(s.title) === loose;
 });
 }
-function yomiHira(s) { return (s || "").replace(/[ァ-ヶ]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0x60); }); }
+function yomiHira(s) { return (s || "").replace(/\s*feat\.\s*/gi, "").replace(/\s+feat\s+/gi, "").replace(/[&＆、・:：()（）\[\] 　\/／=]/g, "").replace(/[ァ-ヶ]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0x60); }); }
 function bakeJacket(dataUrl, pos) {
 return new Promise(function (resolve, reject) {
 var img = new Image();
