@@ -402,7 +402,7 @@
   "id": "u025",
   "title": "ウルトラマンパワード",
   "artist": "前田達也",
-  "work": "",
+  "work": "ウルトラマンパワード",
   "keyLabel": "原曲キー",
   "keyShift": 0,
   "memo": "",
@@ -414,7 +414,8 @@
   "jacketPos": "0% 100%",
   "genres": [
    "特撮"
-  ]
+  ],
+  "workYomi": "うるとらまんぱわーど"
  },
  {
   "id": "u026",
@@ -590,7 +591,7 @@
   "id": "u038",
   "title": "想い出がいっぱい",
   "artist": "H2O",
-  "work": "",
+  "work": "みゆき",
   "keyLabel": "原曲 +2",
   "keyShift": 2,
   "memo": "",
@@ -602,7 +603,8 @@
   "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ef/07/ff/ef07ff3a-9f74-f5f2-e7db-83124b88c930/mzaf_14836033894381959401.plus.aac.p.m4a",
   "genres": [
    "アニソン"
-  ]
+  ],
+  "workYomi": "みゆき"
  },
  {
   "id": "u041",
@@ -635,7 +637,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "けいおん！",
+  "workYomi": "けいおん"
  },
  {
   "id": "u043",
@@ -652,7 +656,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 3
+  "memory": 3,
+  "work": "干物妹！うまるちゃん",
+  "workYomi": "ひものいもうとうまるちゃん"
  },
  {
   "id": "u044",
@@ -729,7 +735,7 @@
   "id": "u049",
   "title": "カルマ",
   "artist": "BUMP OF CHICKEN",
-  "work": "",
+  "work": "テイルズ オブ ジ アビス",
   "keyLabel": "原曲キー",
   "keyShift": 0,
   "memo": "",
@@ -741,7 +747,8 @@
   "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/34/fb/27/34fb27e9-f928-5009-87f0-6b85e0b74bde/mzaf_14005955066377920265.plus.aac.p.m4a",
   "genres": [
    "アニソン"
-  ]
+  ],
+  "workYomi": "ているずおぶじあびす"
  },
  {
   "id": "u050",
@@ -1303,7 +1310,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 4
+  "memory": 4,
+  "work": "ひぐらしのなく頃に",
+  "workYomi": "ひぐらしのなくころに"
  },
  {
   "id": "u092",
@@ -1766,7 +1775,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "ひぐらしのなく頃に",
+  "workYomi": "ひぐらしのなくころに"
  },
  {
   "id": "u128",
@@ -1886,7 +1897,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "デジモンアドベンチャー",
+  "workYomi": "でじもんあどべんちゃー"
  },
  {
   "id": "u135",
@@ -1919,7 +1932,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "ひぐらしのなく頃に",
+  "workYomi": "ひぐらしのなくころに"
  },
  {
   "id": "u137",
@@ -2058,7 +2073,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "エルフェンリート",
+  "workYomi": "えるふぇんりーと"
  },
  {
   "id": "u148",
@@ -2127,7 +2144,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "STAND BY ME ドラえもん",
+  "workYomi": "すたんどばいみーどらえもん"
  },
  {
   "id": "u152",
@@ -2161,7 +2180,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 4
+  "memory": 4,
+  "work": "ONEPIECE",
+  "workYomi": "わんぴーす"
  },
  {
   "id": "u155",
@@ -2267,7 +2288,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "ひぐらしのなく頃に",
+  "workYomi": "ひぐらしのなくころに"
  },
  {
   "id": "u163",
@@ -2706,7 +2729,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 4
+  "memory": 4,
+  "work": "エルフェンリート",
+  "workYomi": "えるふぇんりーと"
  },
  {
   "id": "u193",
@@ -2794,7 +2819,9 @@
   "genres": [
    "ゲームソング"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "ロコロコ",
+  "workYomi": "ろころこ"
  },
  {
   "id": "u198",
@@ -2911,7 +2938,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 3
+  "memory": 3,
+  "work": "パンティ&ストッキングwithガーターベルト",
+  "workYomi": "ぱんてぃあんどすとっきんぐうぃずがーたーべると"
  },
  {
   "id": "w009",
@@ -3953,7 +3982,7 @@
   "id": "w141",
   "title": "ハナマル☆センセイション",
   "artist": "Little Non",
-  "work": "",
+  "work": "こどものじかん",
   "keyLabel": "原曲キー",
   "keyShift": 0,
   "memo": "",
@@ -3965,7 +3994,8 @@
   "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview62/v4/25/b5/b1/25b5b10d-7ae8-e7c2-c1dc-f3baee4a5ee0/mzaf_5248440995565523832.plus.aac.p.m4a",
   "genres": [
    "アニソン"
-  ]
+  ],
+  "workYomi": "こどものじかん"
  },
  {
   "id": "w142",
@@ -4266,7 +4296,7 @@
   "id": "w184",
   "title": "なんでもないや",
   "artist": "RADWIMPS",
-  "work": "",
+  "work": "君の名は。",
   "keyLabel": "原曲キー",
   "keyShift": 0,
   "memo": "",
@@ -4278,7 +4308,8 @@
   "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ef/77/ce/ef77ce47-f6e4-cb3d-4ac3-65ad5c3b04e6/mzaf_5148680883238761530.plus.aac.p.m4a",
   "genres": [
    "アニソン"
-  ]
+  ],
+  "workYomi": "きみのなは"
  },
  {
   "id": "w190",
@@ -4370,7 +4401,7 @@
   "id": "w197",
   "title": "呪文降臨〜マジカル・フォース",
   "artist": "Sister MAYO",
-  "work": "",
+  "work": "魔法戦隊マジレンジャー",
   "keyLabel": "原曲キー",
   "keyShift": 0,
   "memo": "",
@@ -4382,7 +4413,8 @@
   "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/50/00/d9/5000d9fe-2eed-6fca-7726-97ee989c8d81/mzaf_13397683832234472724.plus.aac.p.m4a",
   "genres": [
    "アニソン"
-  ]
+  ],
+  "workYomi": "まほうせんたいまじれんじゃー"
  },
  {
   "id": "w198",
@@ -4949,7 +4981,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 4
+  "memory": 4,
+  "work": "鋼の錬金術師",
+  "workYomi": "はがねのれんきんじゅつし"
  },
  {
   "id": "w303",
@@ -5170,7 +5204,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "キテレツ大百科",
+  "workYomi": "きてれつだいひゃっか"
  },
  {
   "id": "w333",
@@ -5757,7 +5793,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "けものフレンズ",
+  "workYomi": "けものふれんず"
  },
  {
   "id": "w400",
@@ -6335,7 +6373,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 4
+  "memory": 4,
+  "work": "天空の城ラピュタ",
+  "workYomi": "てんくうのしろらぴゅた"
  },
  {
   "id": "w477",
@@ -6578,7 +6618,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "化物語",
+  "workYomi": "ばけものがたり"
  },
  {
   "id": "w505",
@@ -6594,7 +6636,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "とっとこハム太郎",
+  "workYomi": "とっとこはむたろう"
  },
  {
   "id": "w507",
@@ -6798,7 +6842,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "デトロイト・メタル・シティ",
+  "workYomi": "でとろいとめたるしてぃ"
  },
  {
   "id": "w545",
@@ -6919,7 +6965,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "ふしぎの海のナディア",
+  "workYomi": "ふしぎのうみのなでぃあ"
  },
  {
   "id": "w583",
@@ -6975,7 +7023,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "けいおん！",
+  "workYomi": "けいおん"
  },
  {
   "id": "w592",
@@ -7107,7 +7157,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "魔女の宅急便",
+  "workYomi": "まじょのたっきゅうびん"
  },
  {
   "id": "w616",
@@ -7886,7 +7938,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "化物語",
+  "workYomi": "ばけものがたり"
  },
  {
   "id": "w801",
@@ -8490,7 +8544,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "GS美神",
+  "workYomi": "じーえすみかみ"
  },
  {
   "id": "w886",
@@ -8641,7 +8697,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 4
+  "memory": 4,
+  "work": "とある魔術の禁書目録",
+  "workYomi": "とあるまじゅつのいんでっくす"
  },
  {
   "id": "w909",
@@ -8658,7 +8716,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 2
+  "memory": 2,
+  "work": "名探偵コナン",
+  "workYomi": "めいたんていこなん"
  },
  {
   "id": "w910",
@@ -9038,7 +9098,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 4
+  "memory": 4,
+  "work": "デュラララ!!",
+  "workYomi": "でゅららら"
  },
  {
   "id": "w956",
@@ -9231,7 +9293,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "けいおん！",
+  "workYomi": "けいおん"
  },
  {
   "id": "w976",
@@ -9387,7 +9451,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "おとぎ銃士 赤ずきん",
+  "workYomi": "おとぎじゅうしあかずきん"
  },
  {
   "id": "w991",
@@ -9521,7 +9587,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "ひぐらしのなく頃に",
+  "workYomi": "ひぐらしのなくころに"
  },
  {
   "id": "w1018",
@@ -10792,7 +10860,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "サクラ大戦",
+  "workYomi": "さくらたいせん"
  },
  {
   "id": "w1138",
