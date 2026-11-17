@@ -14,7 +14,9 @@
   "artistYomi": "うみくん",
   "genres": [
    "アニソン"
-  ]
+  ],
+  "work": "ヤング ブラック・ジャック",
+  "workYomi": "やんぐぶらっくじゃっく"
  },
  {
   "id": "u002",
@@ -839,7 +841,7 @@
   "id": "u056",
   "title": "極限Dreamer",
   "artist": "SCREEN mode",
-  "work": "",
+  "work": "夜ノヤッターマン",
   "keyLabel": "原曲キー",
   "keyShift": 0,
   "memo": "",
@@ -851,7 +853,8 @@
   "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview71/v4/5b/14/c3/5b14c341-b6ae-67fc-5c3c-befe47ebdf7b/mzaf_5660277023481897619.plus.aac.p.m4a",
   "genres": [
    "アニソン"
-  ]
+  ],
+  "workYomi": "よるのやったーまん"
  },
  {
   "id": "u057",
@@ -934,7 +937,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "宇宙パトロールルル子",
+  "workYomi": "うちゅうぱとろーるるるこ"
  },
  {
   "id": "u062",
@@ -1041,7 +1046,7 @@
   "id": "u072",
   "title": "木の芽風",
   "artist": "IKU",
-  "work": "",
+  "work": "ハヤテのごとく!",
   "keyLabel": "原曲 +2",
   "keyShift": 2,
   "memo": "",
@@ -1053,7 +1058,8 @@
   "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c7/88/cd/c788cd03-89e7-93ef-a8b6-39e09cefd7bc/mzaf_10202351208315568838.plus.aac.p.m4a",
   "genres": [
    "アニソン"
-  ]
+  ],
+  "workYomi": "はやてのごとく"
  },
  {
   "id": "u073",
@@ -1439,7 +1445,7 @@
   "id": "u101",
   "title": "大キライ!",
   "artist": "LINDBERG",
-  "work": "",
+  "work": "平成犬物語バウ",
   "keyLabel": "原曲 −6",
   "keyShift": -6,
   "memo": "",
@@ -1451,7 +1457,8 @@
   "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/Music2/v4/bc/48/c0/bc48c0db-2a27-7628-ace3-dd92223d37d9/mzaf_7649878436644315610.plus.aac.p.m4a",
   "genres": [
    "アニソン"
-  ]
+  ],
+  "workYomi": "へいせいいぬものがたりばう"
  },
  {
   "id": "u103",
@@ -1672,7 +1679,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 3
+  "memory": 3,
+  "work": "魔法少女隊アルス",
+  "workYomi": "まほうしょうじょたいあるす"
  },
  {
   "id": "u117",
@@ -1689,7 +1698,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "ブルースワット",
+  "workYomi": "ぶるーすわっと"
  },
  {
   "id": "u119",
@@ -1950,7 +1961,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "むしむしQ",
+  "workYomi": "むしむしきゅー"
  },
  {
   "id": "u139",
@@ -2038,7 +2051,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 4
+  "memory": 4,
+  "work": "ブルースワット",
+  "workYomi": "ぶるーすわっと"
  },
  {
   "id": "u144",
@@ -2163,7 +2178,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 4
+  "memory": 4,
+  "work": "実は私は",
+  "workYomi": "じつはわたしは"
  },
  {
   "id": "u154",
