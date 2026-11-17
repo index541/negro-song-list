@@ -264,7 +264,7 @@
     "id": "u015",
     "title": "いすゞのトラック",
     "artist": "大友康平",
-    "work": "",
+    "work": "ISUZU",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -275,7 +275,8 @@
     "artistYomi": "おおともこうへい",
     "genres": [
       "J-POP"
-    ]
+    ],
+    "workYomi": "いすず"
   },
   {
     "id": "u016",
