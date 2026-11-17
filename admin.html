@@ -2761,6 +2761,9 @@ return Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; 
 function bulkTitleCands(v) {
 var needle = sgNorm(String(v || "").trim()); if (!needle) return [];
 var seen = {}, list = [];
+var yomiByTitle = {};
+songs.forEach(function (s) { if (s.titleYomi) { var m = yomiByTitle[s.title] = yomiByTitle[s.title] || {}; m[s.titleYomi] = (m[s.titleYomi] || 0) + 1; } });
+function topYomi(t) { var m = yomiByTitle[t]; if (!m) return ""; var ks = Object.keys(m); var hira = ks.filter(function (y) { return /[ぁ-ん]/.test(y); }); var pool = (hira.length ? hira : ks).sort(function (a, b) { return m[b] - m[a]; }); return pool.length ? pool[0] : ""; }
 songs.forEach(function (s) {
 if (seen[s.title]) return;
 var tHit = sgNorm(s.title).indexOf(needle);
@@ -2768,10 +2771,19 @@ var yHit = s.titleYomi ? sgNorm(s.titleYomi).indexOf(needle) : -1;
 if (tHit >= 0 || yHit >= 0) { seen[s.title] = 1; list.push({ s: s, score: tHit === 0 ? 0 : (yHit === 0 ? 1 : 2) }); }
 });
 list.sort(function (a, b) { return a.score - b.score || a.s.title.localeCompare(b.s.title, "ja"); });
-return list.slice(0, 8).map(function (x) { return { value: x.s.title, node: sgTextNode(x.s.title, x.s.artist, "") }; });
+return list.slice(0, 8).map(function (x) { return { value: x.s.title, yomi: topYomi(x.s.title), node: sgTextNode(x.s.title, x.s.artist, "") }; });
 }
 function bulkArtistCands(v) {
-return collectArtistCands(v).map(function (c) { return { value: c.name, node: c.node }; });
+return collectArtistCands(v).map(function (c) { return { value: c.name, yomi: c.yomi, node: c.node }; });
+}
+function bulkNamePick(input, kind) {
+return function (c, close) {
+sgSetValue(input, c.value);
+var row = input.closest(".yomi-row");
+var yi = row ? row.querySelector('[data-yomi="' + kind + '"]') : null;
+if (yi && c.yomi && !yi.value.trim()) sgSetValue(yi, c.yomi);
+close();
+};
 }
 function genreSegOf(input) {
 var parts = String(input.value || "").split("、");
@@ -2805,11 +2817,11 @@ attachFieldSuggest(inp, bulkYomiCollect(inp, "artist"), function (c, close) { sg
 });
 document.querySelectorAll('#yomi-rows [data-nm="title"]').forEach(function (inp) {
 if (inp.dataset.sgDone) return; inp.dataset.sgDone = "1";
-attachFieldSuggest(inp, bulkTitleCands, fillPickInto(inp));
+attachFieldSuggest(inp, bulkTitleCands, bulkNamePick(inp, "title"));
 });
 document.querySelectorAll('#yomi-rows [data-nm="artist"]').forEach(function (inp) {
 if (inp.dataset.sgDone) return; inp.dataset.sgDone = "1";
-attachFieldSuggest(inp, bulkArtistCands, fillPickInto(inp));
+attachFieldSuggest(inp, bulkArtistCands, bulkNamePick(inp, "artist"));
 });
 document.querySelectorAll('#genre-rows [data-genre="1"]').forEach(function (inp) {
 if (inp.dataset.sgDone) return; inp.dataset.sgDone = "1";
