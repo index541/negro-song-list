@@ -2374,7 +2374,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 4
+  "memory": 4,
+  "work": "石膏ボーイズ",
+  "workYomi": "せっこうぼーいず"
  },
  {
   "id": "u167",
@@ -2491,7 +2493,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 4
+  "memory": 4,
+  "work": "3丁目のタマ うちのタマ知りませんか？",
+  "workYomi": "さんちょうめのたまうちのたましりませんか"
  },
  {
   "id": "u176",
@@ -2645,7 +2649,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "ドラえもん のび太のドラビアンナイト",
+  "workYomi": "どらえもんのびたのどらびあんないと"
  },
  {
   "id": "u187",
@@ -2871,7 +2877,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "とある魔術の禁書目録",
+  "workYomi": "とあるまじゅつのいんでっくす"
  },
  {
   "id": "u200",
@@ -3117,7 +3125,7 @@
   "id": "w044",
   "title": "ダリア",
   "artist": "CRIPTON",
-  "work": "",
+  "work": "はりもぐハーリー",
   "keyLabel": "原曲キー",
   "keyShift": 0,
   "memo": "",
@@ -3129,7 +3137,8 @@
   "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/6d/7c/89/6d7c895f-8477-5c5c-75c3-3ccf5a6ea4c4/mzaf_364267291288563654.plus.aac.p.m4a",
   "genres": [
    "アニソン"
-  ]
+  ],
+  "workYomi": "はりもぐはーりー"
  },
  {
   "id": "w045",
@@ -3180,7 +3189,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "神曲奏界ポリフォニカ クリムゾンS",
+  "workYomi": "しんきょくそうかいぽりふぉにかにくりむぞんえす"
  },
  {
   "id": "w053",
@@ -3620,7 +3631,7 @@
   "id": "w090",
   "title": "グロウアップ",
   "artist": "Hysteric Blue",
-  "work": "",
+  "work": "学校の怪談",
   "keyLabel": "原曲キー",
   "keyShift": 0,
   "memo": "",
@@ -3632,7 +3643,8 @@
   "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/37/39/ff/3739ff4d-dc29-8631-028e-1cdb2979ef5d/mzaf_7891281572688606676.plus.aac.p.m4a",
   "genres": [
    "アニソン"
-  ]
+  ],
+  "workYomi": "がっこうのかいだん"
  },
  {
   "id": "w096",
@@ -3767,7 +3779,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "らき☆すた",
+  "workYomi": "らきすた"
  },
  {
   "id": "w124",
@@ -8994,7 +9008,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 5
+  "memory": 5,
+  "work": "神曲奏界ポリフォニカ クリムゾンS",
+  "workYomi": "しんきょくそうかいぽりふぉにかにくりむぞんえす"
  },
  {
   "id": "w1129",
