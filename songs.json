@@ -3857,7 +3857,7 @@
   "id": "w130",
   "title": "ぼくらのメッセージ",
   "artist": "Kiroro",
-  "work": "",
+  "work": "無人惑星サヴァイヴ",
   "keyLabel": "原曲キー",
   "keyShift": 0,
   "memo": "",
@@ -3868,7 +3868,8 @@
   "artistYomi": "きろろ",
   "genres": [
    "アニソン"
-  ]
+  ],
+  "workYomi": "むじんわくせいさゔぁいゔ"
  },
  {
   "id": "w131",
@@ -3908,7 +3909,7 @@
   "id": "w133",
   "title": "とっておきのキモチ",
   "artist": "KUKO",
-  "work": "",
+  "work": "ムカムカパラダイス",
   "keyLabel": "原曲キー",
   "keyShift": 0,
   "memo": "",
@@ -3919,13 +3920,14 @@
   "artistYomi": "くこ",
   "genres": [
    "アニソン"
-  ]
+  ],
+  "workYomi": "むかむかぱらだいす"
  },
  {
   "id": "w134",
   "title": "キテーラ・ミテーラ",
   "artist": "KUKO",
-  "work": "",
+  "work": "ムカムカパラダイス",
   "keyLabel": "原曲キー",
   "keyShift": 0,
   "memo": "",
@@ -3936,7 +3938,8 @@
   "artistYomi": "くこ",
   "genres": [
    "アニソン"
-  ]
+  ],
+  "workYomi": "むかむかぱらだいす"
  },
  {
   "id": "w135",
@@ -3977,7 +3980,7 @@
   "id": "w137",
   "title": "スキスキ♡マイガール",
   "artist": "L'luvia",
-  "work": "",
+  "work": "クレヨンしんちゃん",
   "keyLabel": "原曲キー",
   "keyShift": 0,
   "memo": "",
@@ -3989,7 +3992,8 @@
   "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/53/2c/cd/532ccdff-5f30-ac05-446b-4bbc66cf7ee9/mzaf_16259126147478977719.plus.aac.p.m4a",
   "genres": [
    "アニソン"
-  ]
+  ],
+  "workYomi": "くれよんしんちゃん"
  },
  {
   "id": "w139",
@@ -4135,7 +4139,7 @@
   "id": "w151",
   "title": "絵空事",
   "artist": "nano.RIPE",
-  "work": "",
+  "work": "さんかれあ",
   "keyLabel": "原曲キー",
   "keyShift": 0,
   "memo": "",
@@ -4147,7 +4151,8 @@
   "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ab/22/8b/ab228b27-995d-957c-305f-566909e5c632/mzaf_15902446155177931592.plus.aac.p.m4a",
   "genres": [
    "アニソン"
-  ]
+  ],
+  "workYomi": "さんかれあ"
  },
  {
   "id": "w152",
@@ -4374,7 +4379,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 3
+  "memory": 3,
+  "work": "無人惑星サヴァイヴ",
+  "workYomi": "むじんわくせいさゔぁいゔ"
  },
  {
   "id": "w194",
@@ -5208,7 +5215,7 @@
   "id": "w320",
   "title": "味楽る! ミミカ ナンバーワン",
   "artist": "おみむらまゆこ",
-  "work": "",
+  "work": "味楽る!ミミカ",
   "keyLabel": "原曲 +4",
   "keyShift": 4,
   "memo": "",
@@ -5219,7 +5226,8 @@
   "artistYomi": "おみむらまゆこ",
   "genres": [
    "アニソン"
-  ]
+  ],
+  "workYomi": "みらくるみみか"
  },
  {
   "id": "w332",
@@ -5727,7 +5735,9 @@
   "genres": [
    "アニソン"
   ],
-  "memory": 4
+  "memory": 4,
+  "work": "けものフレンズ",
+  "workYomi": "けものふれんず"
  },
  {
   "id": "w391",
