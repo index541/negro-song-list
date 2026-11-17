@@ -1861,8 +1861,8 @@
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/0b/90/21/mzi.hbfpreoj.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "titleYomi": "「ねぇ。」",
-    "artistYomi": "ほえほえPはつねみく",
+    "titleYomi": "ねぇ",
+    "artistYomi": "ほえほえぴー月面げつめんなのうはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -3320,7 +3320,7 @@
     "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/01/92/95/019295f9-b888-5ac4-7c0a-bd4a5f36906a/DECO27_JKT.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "titleYomi": "にいきほこう",
+    "titleYomi": "にそくほこう",
     "artistYomi": "でこにーなはつねみく",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c5/b6/a9/c5b6a992-6671-cd2a-2d29-4672d19e3725/mzaf_17616217040043094331.plus.aac.p.m4a",
     "genres": [
@@ -5192,14 +5192,14 @@
   {
     "id": "w332",
     "title": "はじめてのチュウ",
-    "artist": "さつきがてんこもり",
+    "artist": "あんしんパパ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/75/7e/f3/757ef389-b6a6-88e2-de9e-f07e52398900/COKM-44747.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "はじめてのちゅう",
-    "artistYomi": "さつきがてんこもり",
+    "artistYomi": "あんしんぱぱ",
     "genres": [
       "アニソン"
     ],
@@ -5292,14 +5292,14 @@
   {
     "id": "w346",
     "title": "初めての恋が終わる時",
-    "artist": "ちょうちょ",
+    "artist": "supercell feat.初音ミク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/81/60/ba/8160ba24-21cb-6676-e4e8-ea2ab725ee01/4511820-60313.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "はじめてのこいがおわるとき",
-    "artistYomi": "ちょうちょ",
+    "artistYomi": "すーぱーせるはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -5746,14 +5746,14 @@
   {
     "id": "w394",
     "title": "ニビョウカン",
-    "artist": "まふまふ",
+    "artist": "MARUDARUMA feat.GUMI",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music1/v4/29/09/fb/2909fb46-7a3a-3da4-be3c-f5f9bc0ea4b4/QWCE_00243_itunes.png/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "にびょうかん",
-    "artistYomi": "まふまふ",
+    "artistYomi": "まるだるまぐみ",
     "genres": [
       "ボカロ"
     ],
@@ -6252,15 +6252,15 @@
   },
   {
     "id": "w452",
-    "title": "野沢あや Everybody地図のない旅『ベイベーばあちゃんOP』",
-    "artist": "アーティスト名なし",
+    "title": "Everybody〜地図のない旅『ベイベーばあちゃんOP』",
+    "artist": "ふじのほのか",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "",
     "addedAt": "2026-11-12",
-    "titleYomi": "のざわあやEverybodyちずのないたび『べいべーばあちゃんOP』",
-    "artistYomi": "あーてぃすとめいなし",
+    "titleYomi": "えびばでぃちずのないたび",
+    "artistYomi": "ふじのほのか",
     "genres": [
       "アニソン"
     ],
@@ -6851,14 +6851,14 @@
   {
     "id": "w525",
     "title": "ハイパーリアリティショウ",
-    "artist": "ネグロ",
+    "artist": "鬱P feat.初音ミク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/99/79/a6/9979a65b-bdf0-0684-ed0a-68ac75975ea0/4511820-94889.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "はいぱーりありてぃしょう",
-    "artistYomi": "ねぐろ",
+    "artistYomi": "うつぴーはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -6867,14 +6867,14 @@
   {
     "id": "w526",
     "title": "ハッ",
-    "artist": "ネグロ",
+    "artist": "かぼちゃ feat.琴葉葵&琴葉茜",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/0c/cb/53/0ccb53e7-d71b-4300-3508-54da4bf8be6d/859759999765_cover.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "はっ",
-    "artistYomi": "ねぐろ",
+    "artistYomi": "かぼちゃことのはあおいことのはあかね",
     "genres": [
       "ボカロ"
     ],
@@ -7110,7 +7110,7 @@
   {
     "id": "w603",
     "title": "廃都アトリエスタにて",
-    "artist": "cosMo@暴走P",
+    "artist": "cosMo@暴走P feat.鏡音リン&鏡音レン",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -7118,7 +7118,7 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/a8/e5/c1/a8e5c17e-ba45-7da0-8919-95bb1adddc18/mzaf_10905311366520998417.plus.aac.p.m4a",
     "titleYomi": "はいとあとりえすたにて",
-    "artistYomi": "cosMo@ぼうそうP",
+    "artistYomi": "こすもあっとぼうそうぴーかがみねりんかがみねれん",
     "genres": [
       "ボカロ"
     ],
@@ -7242,7 +7242,7 @@
   {
     "id": "w619",
     "title": "拝啓ラブサマー",
-    "artist": "COOL&CREATE & ビートまりお",
+    "artist": "ビートまりお(COOL&CREATE)",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -7250,7 +7250,7 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c9/9c/ce/c99cce6e-9e0d-b408-a855-415060aaf29e/mzaf_8005412183448234711.plus.aac.p.m4a",
     "titleYomi": "はいけいらぶさまー",
-    "artistYomi": "COOLCREATEびーとまりお",
+    "artistYomi": "びーとまりおくーるくりえいと",
     "genres": [
       "ニコニコインディーズ"
     ],
@@ -7358,16 +7358,16 @@
   },
   {
     "id": "w630",
-    "title": "なりすましゲンガー (ver.ブロンズアームドライブ)",
-    "artist": "ブロンズアームドライブ",
+    "title": "なりすましゲンガー",
+    "artist": "KulfiQ feat.鏡音リン&初音ミク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/24/11/49/24114977-30ea-bd02-b273-9047efc5aabb/C.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/f9/d6/7f/f9d67fdb-14aa-9282-d6a7-d92a0f1c4ee8/mzaf_2348508212145429185.plus.aac.p.m4a",
-    "titleYomi": "なりすましげんがーver.ぶろんずあーむどらいぶ",
-    "artistYomi": "ぶろんずあーむどらいぶ",
+    "titleYomi": "なりすましげんがー",
+    "artistYomi": "くるふぃかがみねりんはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -7797,7 +7797,7 @@
   {
     "id": "w764",
     "title": "脳漿炸裂ガール",
-    "artist": "ロリコム",
+    "artist": "れるりり feat.初音ミク&GUMI",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -7805,7 +7805,7 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/58/5a/ce/585acef8-33a9-40ca-a129-f86c11badd00/mzaf_7039987027229985349.plus.aac.p.m4a",
     "titleYomi": "のうしょうさくれつがーる",
-    "artistYomi": "ろりこむ",
+    "artistYomi": "れるりりはつねみくぐみ",
     "genres": [
       "ボカロ"
     ],
@@ -8251,7 +8251,7 @@
   {
     "id": "w834",
     "title": "ハジメテノオト",
-    "artist": "初音ミク",
+    "artist": "malo feat.初音ミク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -8259,7 +8259,7 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ae/45/05/ae4505ce-aa17-f0e0-2dc1-11fcd9375701/mzaf_10278080531409537920.plus.aac.p.m4a",
     "titleYomi": "はじめてのおと",
-    "artistYomi": "はつねみく",
+    "artistYomi": "まろはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -8445,14 +8445,14 @@
   {
     "id": "w851",
     "title": "初音ミクの激唱",
-    "artist": "初音ミク",
+    "artist": "CosMo＠暴走P feat.初音ミク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/b3/f1/bc/b3f1bc97-7899-5e59-c096-b417cb2bb603/KRHS-37210_cosMo_P.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "titleYomi": "はつねみくのげき唱",
-    "artistYomi": "はつねみく",
+    "titleYomi": "はつねみくのげきしょう",
+    "artistYomi": "こすもあっとぼうそうぴーはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -8767,7 +8767,7 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/e2/68/b9/e268b9ce-9934-7b15-b450-f361ef02e324/mzaf_5342954994168742603.plus.aac.p.m4a",
     "titleYomi": "ねがいごとひとつだけ",
-    "artistYomi": "こまつみふ",
+    "artistYomi": "こまつみほ",
     "genres": [
       "アニソン"
     ],
@@ -9106,14 +9106,14 @@
   {
     "id": "w951",
     "title": "なんだ桜もう散りやがるか",
-    "artist": "杏ノ助",
+    "artist": "アキバヲタP feat.猫村いろは",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "",
     "addedAt": "2026-11-12",
     "titleYomi": "なんださくらもうちりやがるか",
-    "artistYomi": "あんずのすけ",
+    "artistYomi": "あきばおたあきばをたねこむらいろは",
     "genres": [
       "ボカロ"
     ],
@@ -9538,14 +9538,14 @@
   {
     "id": "w999",
     "title": "粘着系男子の15年ネチネチ",
-    "artist": "石敢當",
+    "artist": "家の裏でマンボウが死んでるP feat.初音ミク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/3c/c2/2e/3cc22ea1-e9dc-8c2b-d451-6b34ebe33c33/VICL-63861.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "ねんちゃくけいだんしの15ねんねちねち",
-    "artistYomi": "いし敢當",
+    "artistYomi": "いえのうらでまんぼうがしんでるぴーはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -9639,14 +9639,14 @@
   {
     "id": "w1018",
     "title": "なのです☆〜ハイスピードあうあうトランス〜",
-    "artist": "羽入",
+    "artist": "羽入(CV:堀江由衣)",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/81/ed/e8/81ede811-dd23-5f61-3c3d-0bcaff5ca905/4538182558249_cov.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "titleYomi": "なのです☆〜はいすぴーどあうあうとらんす〜",
-    "artistYomi": "はにゅう",
+    "titleYomi": "なのですはいすぴーどあうあうとらんす",
+    "artistYomi": "はにゅうほりえゆい",
     "genres": [
       "ロック"
     ],
@@ -10321,14 +10321,14 @@
   {
     "id": "w1078",
     "title": "ネコネコ★スーパーフィーバーナイト",
-    "artist": "鋼兵",
+    "artist": "samfree feat.猫村いろは",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/04/69/cc/0469cc61-e997-d0cd-c59c-5ed05e7da79f/AVCD-38461.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "titleYomi": "ねこねこ★すーぱーふぃーばーないと",
-    "artistYomi": "はがねへい",
+    "titleYomi": "ねこねこすーぱーふぃーばーないと",
+    "artistYomi": "さむふりーねこむらいろは",
     "genres": [
       "ボカロ"
     ],
