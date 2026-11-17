@@ -5722,24 +5722,6 @@
     "memory": 5
   },
   {
-    "id": "w387",
-    "title": "けものParade",
-    "artist": "ふさ",
-    "keyLabel": "原曲キー",
-    "keyShift": 0,
-    "memo": "",
-    "jacket": "",
-    "addedAt": "2026-11-12",
-    "titleYomi": "けものParade",
-    "artistYomi": "ふさ",
-    "genres": [
-      "アニソン"
-    ],
-    "memory": 4,
-    "work": "けものフレンズ",
-    "workYomi": "けものふれんず"
-  },
-  {
     "id": "w391",
     "title": "おおかみは赤ずきんに恋をした",
     "artist": "ひとしずくP×やま△ feat.鏡音リン&鏡音レン",
