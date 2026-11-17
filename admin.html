@@ -478,7 +478,7 @@ body.has-bulk-float { padding-bottom:86px; }
 
 <section class="card" id="work-card">
 <h2>作品名一括設定</h2>
-<p class="desc">作品名と、その読みをまとめて直すための画面です。各行で直して「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。作品名を空欄にすると作品名なしに戻ります。読みを入れておくと、公開ページで作品名の読みからも検索できるようになります。入力すると今ある作品名や読みが候補で出て、作品名を候補から選ぶと、読みが空ならその作品の読みも入ります。行のチェックで曲を選んで、下の欄から同じ作品名をまとめて設定もできます（作品名の欄を空欄のまま設定すると、選んだ曲の作品名が消えます。読みの欄は入れた時だけ一緒に設定されます）。</p>
+<p class="desc">作品名と、その読みをまとめて直すための画面です。各行で直して「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。作品名を空欄にすると作品名なしに戻ります。読みを入れておくと、公開ページで作品名の読みからも検索できるようになります。入力すると今ある作品名や読みが候補で出て、作品名を候補から選ぶと、読みが空ならその作品の読みも入ります。行のチェックで曲を選んで、下の欄から同じ作品名や読みをまとめて設定もできます（下の欄は、入れた欄だけが設定されます）。</p>
 <div class="grid2">
 <div class="field">
 <label for="work-row-filter">絞り込み</label>
@@ -2118,17 +2118,17 @@ updateWorkSelUI();
 $("work-bulk-apply").addEventListener("click", function () {
 var v = $("work-bulk-value").value.trim();
 var yv = yomiHira($("work-bulk-yomi").value.trim());
+if (!v && !yv) { setStatus("work-status", "設定する作品名か読みのどちらかを入力してください。", false); return; }
 var n = 0;
 document.querySelectorAll("#work-rows .work-row").forEach(function (row) {
 if (!workSelected[row.getAttribute("data-id")]) return;
-var wi = row.querySelector('[data-work="1"]');
-if (wi.value.trim() !== v) wi.value = v;
+if (v) { var wi = row.querySelector('[data-work="1"]'); if (wi.value.trim() !== v) wi.value = v; }
 if (yv) { var wyi = row.querySelector('[data-workyomi="1"]'); if (yomiHira(wyi.value.trim()) !== yv) wyi.value = yv; }
 refreshWorkRowState(row);
 n++;
 });
 updateWorkSaveBtn();
-if (n) setStatus("work-status", n + "曲の作品名を「" + (v || "（なし）") + "」" + (yv ? "、読みを「" + yv + "」" : "") + "にしました。「変更をまとめて保存」を押すと反映されます。", true);
+if (n) setStatus("work-status", n + "曲に" + (v ? "作品名「" + v + "」" : "") + (v && yv ? "と" : "") + (yv ? "読み「" + yv + "」" : "") + "を設定しました。「変更をまとめて保存」を押すと反映されます。", true);
 else setStatus("work-status", "いま表示されている行には選択中の曲がありません。絞り込みを変えると選択は残ります。", false);
 });
 
