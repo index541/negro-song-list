@@ -142,8 +142,8 @@ body.has-bulk-float { padding-bottom:86px; }
 .key-ctl .kchip { font:inherit; font-size:12px; font-weight:700; border:1.5px solid var(--line); background:var(--surface); color:var(--ink-2); border-radius:999px; padding:5px 8px; cursor:pointer; flex:none; }
 .key-ctl .kchip.on { background:var(--accent); border-color:var(--accent); color:#fff; }
 .jk-row .key-ctl { display:grid; grid-template-columns:repeat(7,1fr); gap:5px; }
-.jk-row .key-ctl .kchip { width:100%; padding:6px 0; text-align:center; }
-@media (max-width:560px) { .jk-row { grid-template-columns:1fr; gap:8px; } .jk-row .key-ctl { gap:6px; } .jk-row .key-ctl .kchip { padding:9px 0; font-size:13.5px; } }
+.jk-row .key-ctl .kchip { width:100%; padding:6px 0; text-align:center; white-space:nowrap; }
+@media (max-width:560px) { .yomi-row.jk-row { grid-template-columns:1fr; gap:8px; } .jk-row .key-ctl { gap:6px; } .jk-row .key-ctl .kchip { padding:9px 0; font-size:13.5px; } }
 .names-row { grid-template-columns:minmax(0,1.05fr) repeat(4,minmax(0,1fr)); }
 .names-row .nrow-check { width:20px; height:20px; flex:none; padding:0; border:0; accent-color:var(--accent); cursor:pointer; }
 @media (max-width:560px) { .names-row { grid-template-columns:1fr 1fr; } }
