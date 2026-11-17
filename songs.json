@@ -1281,7 +1281,7 @@
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music3/v4/07/e4/1b/07e41b7c-3095-6c99-c92f-c2eb09bf853b/4511820-93342.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "じょうげんのつき",
-    "artistYomi": "ほわいとふれいむかいと",
+    "artistYomi": "ほわいとふれいむ黒うさPくろうさぴーかいと",
     "genres": [
       "ボカロ"
     ]
@@ -1486,7 +1486,7 @@
     "memo": "",
     "jacket": "",
     "addedAt": "2026-11-12",
-    "titleYomi": "たたりきみ～たたりくん～",
+    "titleYomi": "たたりくん～たたりくん～",
     "artistYomi": "まきしまむざほるもん",
     "genres": [
       "ロック"
@@ -1522,7 +1522,7 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/3f/06/9d/3f069d07-58b5-8c3b-4cb3-6280892649f2/mzaf_1612789739904268374.plus.aac.p.m4a",
     "titleYomi": "だんだんたかくなる",
-    "artistYomi": "40mPはつねみく",
+    "artistYomi": "よんじゅーめーとるぴーはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -1539,7 +1539,7 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/f5/03/ff/f503ff9f-f3af-3e38-c332-2a7fc90f4263/mzaf_10616080448014074031.plus.aac.p.m4a",
     "titleYomi": "だんだんはやくなる",
-    "artistYomi": "40mPはつねみく",
+    "artistYomi": "よんじゅーめーとるぴーはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -1639,8 +1639,8 @@
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music3/v4/98/7c/63/987c635d-0f44-0867-369f-5ff2d3db46b2/4511820-93273.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "titleYomi": "つんでこいうた",
-    "artistYomi": "れれれPかがみねれん",
+    "titleYomi": "つんでれんか",
+    "artistYomi": "れれれぴーかがみねれん",
     "genres": [
       "ボカロ"
     ],
@@ -1878,7 +1878,7 @@
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/9f/52/b6/mzi.zvhsqfzp.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/25/3a/cb/253acb43-25a0-a232-f7f4-4117d3042d56/mzaf_10382406965972541648.plus.aac.p.m4a",
-    "titleYomi": "爆竜戦たいあばれんじゃー",
+    "titleYomi": "ばくりゅうせんたいあばれんじゃー",
     "artistYomi": "えんどうまさあき",
     "work": "爆竜戦隊アバレンジャー",
     "genres": [
@@ -3641,7 +3641,7 @@
   {
     "id": "w097",
     "title": "天国へ行こう",
-    "artist": "きくお",
+    "artist": "きくお feat.初音ミク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -3649,7 +3649,7 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/af/6c/79/af6c79e1-d0f7-4909-a206-c223b5e3ba3e/mzaf_18186229429517674995.plus.aac.p.m4a",
     "titleYomi": "てんごくへいこう",
-    "artistYomi": "きくお",
+    "artistYomi": "きくおはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -3733,7 +3733,7 @@
     "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/51/ee/55/51ee5561-ac6f-e86e-f4cd-71e71122445d/5021732649928.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "titleYomi": "ちかいごと～すこしだけもういちど～",
+    "titleYomi": "ちかいごとすこしだけもういちど",
     "artistYomi": "いく",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7f/20/3e/7f203eeb-b30d-9295-1545-92a764a377ad/mzaf_4804051885826702154.plus.aac.p.m4a",
     "genres": [
@@ -3846,7 +3846,7 @@
   {
     "id": "w131",
     "title": "チルドレンレコード",
-    "artist": "じん",
+    "artist": "じん feat.IA",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -3854,7 +3854,7 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/73/3a/88/733a88f3-8467-d51f-5c04-b8de4a1a72e4/mzaf_17227035383564165877.plus.aac.p.m4a",
     "titleYomi": "ちるどれんれこーど",
-    "artistYomi": "じん",
+    "artistYomi": "じんいあ",
     "genres": [
       "ボカロ"
     ],
@@ -5208,14 +5208,14 @@
   {
     "id": "w333",
     "title": "たばこ",
-    "artist": "じろ",
+    "artist": "コレサワ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/ef/87/b3/ef87b3d6-89c1-d52e-0674-0fc8ef4368c9/NONPKG-00213.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "たばこ",
-    "artistYomi": "じろ",
+    "artistYomi": "これさわ",
     "genres": [
       "J-POP"
     ],
@@ -5730,14 +5730,14 @@
   {
     "id": "w392",
     "title": "チルノのすうがく教室",
-    "artist": "まっつん",
+    "artist": "eiki` feat.初音ミク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "",
     "addedAt": "2026-11-12",
     "titleYomi": "ちるののすうがくきょうしつ",
-    "artistYomi": "まっつん",
+    "artistYomi": "えいきはつねみく",
     "genres": [
       "東方Project"
     ],
@@ -5914,7 +5914,7 @@
   {
     "id": "w408",
     "title": "ダブルラリアット",
-    "artist": "アゴアニキ",
+    "artist": "アゴアニキ feat.巡音ルカ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -5922,7 +5922,7 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/97/e0/3a/97e03a85-711a-59b5-cbc7-b3641432e0c4/mzaf_13721405033809875647.plus.aac.p.m4a",
     "titleYomi": "だぶるらりあっと",
-    "artistYomi": "あごあにき",
+    "artistYomi": "あごあにきめぐりねるか",
     "genres": [
       "ボカロ"
     ],
@@ -5949,7 +5949,7 @@
   {
     "id": "w413",
     "title": "ダヴィンチの告白",
-    "artist": "りぶ",
+    "artist": "666 feat.GUMI",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -5957,7 +5957,7 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/06/bf/8e/06bf8e0e-7050-82e9-53b5-18156c0f7bc4/mzaf_7480808856573021395.plus.aac.p.m4a",
     "titleYomi": "だゔぃんちのこくはく",
-    "artistYomi": "りぶ",
+    "artistYomi": "ろくろくろくぐみ",
     "genres": [
       "ボカロ"
     ],
@@ -6470,7 +6470,7 @@
   {
     "id": "w481",
     "title": "ダスト",
-    "artist": "クワガタP",
+    "artist": "クワガタP feat.初音ミク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -6478,7 +6478,7 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/fe/ed/85/feed855f-82a9-7db2-ff45-891e76a81ad5/mzaf_3179751146094860189.plus.aac.p.m4a",
     "titleYomi": "だすと",
-    "artistYomi": "くわがたP",
+    "artistYomi": "くわがたぴーはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -6750,14 +6750,14 @@
   {
     "id": "w510",
     "title": "高らかにオナニー",
-    "artist": "ドラァグ・クイーン",
+    "artist": "After Dark",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "",
     "addedAt": "2026-11-12",
-    "titleYomi": "たからかにおなにー",
-    "artistYomi": "どらぁぐくいーん",
+    "titleYomi": "たからかにおなにーÅhNärNiTarSakenIEgnaHänderおーなーにとーしょーけんいいぐなへんでー",
+    "artistYomi": "あふたーだーく",
     "genres": [
       "ニコニコインディーズ"
     ],
@@ -7225,14 +7225,14 @@
   {
     "id": "w616",
     "title": "創聖のアクエリオン",
-    "artist": "ヒャダイン",
+    "artist": "AKINO from bless4",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/85/49/08/mzi.effwfupa.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "titleYomi": "そうひじりのあくえりおん",
-    "artistYomi": "ひゃだいん",
+    "titleYomi": "そうせいのあくえりおん",
+    "artistYomi": "あきのふろむぶれすふぉー",
     "work": "創聖のアクエリオン",
     "genres": [
       "アニソン"
@@ -7916,7 +7916,7 @@
   {
     "id": "w773",
     "title": "ゼロからの逆襲",
-    "artist": "上条当麻(阿部 敦)",
+    "artist": "上条当麻(CV:阿部 敦)",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -8135,14 +8135,14 @@
   {
     "id": "w815",
     "title": "ソーダライト",
-    "artist": "初音ミク",
+    "artist": "ANGL feat.初音ミク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/2b/f0/b0/2bf0b083-b93f-dd47-949d-43b176747299/4562250649676_cover.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "そーだらいと",
-    "artistYomi": "はつねみく",
+    "artistYomi": "あんぐるはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -8168,14 +8168,14 @@
   {
     "id": "w821",
     "title": "天使だと思っていたのに",
-    "artist": "初音ミク",
+    "artist": "鬱P feat.初音ミク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/db/62/2c/db622cd4-d3e1-a0ae-9c52-03846a6ec35f/PA00075846_0_158849_jacket.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "てんしだとおもっていたのに",
-    "artistYomi": "はつねみく",
+    "artistYomi": "うつぴーはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -8333,14 +8333,14 @@
   {
     "id": "w841",
     "title": "続・既成事実",
-    "artist": "初音ミク",
+    "artist": "デッドボールP loves 初音ミク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music7/v4/9a/8e/98/9a8e985e-8cff-d3cd-33b7-e9997804aca8/QWCE_10017_itunes.png/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "ぞくきせいじじつ",
-    "artistYomi": "はつねみく",
+    "artistYomi": "でっどぼーるぴーはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -8429,14 +8429,14 @@
   {
     "id": "w850",
     "title": "月の詩",
-    "artist": "初音ミク",
+    "artist": "くらP feat.初音ミク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/fd/53/7c/mzi.eqbfaiku.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "titleYomi": "つきのし",
-    "artistYomi": "はつねみく",
+    "titleYomi": "つきのうた",
+    "artistYomi": "くらぴーはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -8608,7 +8608,7 @@
   {
     "id": "w886",
     "title": "添い遂げたアンドロイドへ ver.向日葵",
-    "artist": "向日葵×Tinkle-POP",
+    "artist": "もふ@ feat.初音ミク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -8616,7 +8616,7 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/Music/v4/2b/cf/1d/2bcf1d4b-6459-e520-3b38-adb3e5f849ba/mzaf_7621154852228362936.plus.aac.p.m4a",
     "titleYomi": "そいとげたあんどろいどへver.ひまわり",
-    "artistYomi": "ひまわりかけるTinkle-POP",
+    "artistYomi": "もふはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -8725,16 +8725,16 @@
   },
   {
     "id": "w898",
-    "title": "世界の真ん中",
-    "artist": "天月-あまつき-",
+    "title": "世界の真ん中を歩く",
+    "artist": "夏代孝明 feat.初音ミク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/e5/bf/95/e5bf95dd-12d6-d45e-8f42-7d009d39d192/KICS-93077-1400-.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/36/43/da/3643daf7-524b-9cb3-183f-c64d445b5418/mzaf_3796265712890785089.plus.aac.p.m4a",
-    "titleYomi": "せかいのまんなか",
-    "artistYomi": "あまつき-あまつき-",
+    "titleYomi": "せかいのまんなかを歩く",
+    "artistYomi": "なつしろたかあきはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -9472,14 +9472,14 @@
   {
     "id": "w985",
     "title": "太陽系デスコ",
-    "artist": "田中ヒメ&鈴木ヒナ",
+    "artist": "ナユタン星人 feat.初音ミク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/ce/b9/ef/ceb9efb5-b429-4ea9-a28a-4eb845317c6a/4589686423649_cover.png/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "たいようけいですこ",
-    "artistYomi": "たなかひめすずきひな",
+    "artistYomi": "なゆたんせいじんはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -9720,14 +9720,14 @@
   {
     "id": "w1025",
     "title": "溜息の行方",
-    "artist": "蒼空とねす",
+    "artist": "40mP feat.初音ミク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/bb/6a/c2/bb6ac285-78d0-2a91-4ff3-86fae59c4f6c/4562251593770_cover.png/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "ためいきのゆくえ",
-    "artistYomi": "そうくうとねす",
+    "artistYomi": "よんじゅうめーとるぴーはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -9890,14 +9890,14 @@
   {
     "id": "w1039",
     "title": "想像フォレスト",
-    "artist": "じん",
+    "artist": "じん feat.IA",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f5/33/c3/f533c341-433a-b4e1-2c61-18cd3c9e15a2/cover.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "そうぞうふぉれすと",
-    "artistYomi": "じん",
+    "artistYomi": "じんいあ",
     "genres": [
       "ボカロ"
     ],
@@ -9954,8 +9954,8 @@
   },
   {
     "id": "w1045",
-    "title": "てんしょう　しょうてんしょう",
-    "artist": "きくお",
+    "title": "てんしょう しょうてんしょう",
+    "artist": "きくお feat.初音ミク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -9963,7 +9963,7 @@
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/e3/de/26/e3de26ca-e210-a12b-0a0a-3f47c15a9ae7/mzaf_10725206518778380915.plus.aac.p.m4a",
     "titleYomi": "てんしょうしょうてんしょう",
-    "artistYomi": "きくお",
+    "artistYomi": "きくおはつねみく",
     "genres": [
       "ボカロ"
     ],
@@ -10353,14 +10353,14 @@
   {
     "id": "w1082",
     "title": "千本桜",
-    "artist": "黒うさP",
+    "artist": "WhiteFlame feat.初音ミク",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/72/21/9e/72219e69-8be3-b67e-f357-1e60a552a7ab/21UM1IM44484.rgb.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
-    "titleYomi": "せんぼんさくら",
-    "artistYomi": "くろうさP",
+    "titleYomi": "せんぼんざくら",
+    "artistYomi": "ほわいとふれいむ黒うさPくろうさぴーはつねみく",
     "genres": [
       "ボカロ"
     ],
