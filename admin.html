@@ -152,7 +152,7 @@ body.has-bulk-float { padding-bottom:86px; }
 .genre-row .yr-name { display:flex; align-items:center; gap:8px; }
 .genre-row .yr-text { min-width:0; flex:1; }
 .genre-row .grow-check { width:20px; height:20px; flex:none; padding:0; border:0; accent-color:var(--accent); cursor:pointer; }
-.work-row { grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); }
+.work-row { grid-template-columns:minmax(0,1.2fr) repeat(2,minmax(0,1fr)); }
 .work-row .yr-name { display:flex; align-items:center; gap:8px; }
 .work-row .yr-text { min-width:0; flex:1; }
 .work-row .wrow-check { width:20px; height:20px; flex:none; padding:0; border:0; accent-color:var(--accent); cursor:pointer; }
@@ -272,6 +272,10 @@ body.has-bulk-float { padding-bottom:86px; }
 <label for="f-work">作品名</label>
 <input id="f-work" type="text" placeholder="化物語" />
 <datalist id="work-list"></datalist>
+</div>
+<div class="field">
+<label for="f-workyomi">作品名のよみがな</label>
+<input id="f-workyomi" type="text" placeholder="ばけものがたり" />
 </div>
 <div class="grid2">
 <div class="field">
@@ -474,7 +478,7 @@ body.has-bulk-float { padding-bottom:86px; }
 
 <section class="card" id="work-card">
 <h2>作品名一括設定</h2>
-<p class="desc">作品名をまとめて直すための画面です。各行の作品名を直して「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。空欄にすると作品名なしに戻ります。入力すると今ある作品名が候補で出ます。行のチェックで曲を選んで、下の欄から同じ作品名をまとめて設定もできます（下の欄を空欄のまま設定すると、選んだ曲の作品名が消えます）。</p>
+<p class="desc">作品名と、その読みをまとめて直すための画面です。各行で直して「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。作品名を空欄にすると作品名なしに戻ります。読みを入れておくと、公開ページで作品名の読みからも検索できるようになります。入力すると今ある作品名や読みが候補で出て、作品名を候補から選ぶと、読みが空ならその作品の読みも入ります。行のチェックで曲を選んで、下の欄から同じ作品名をまとめて設定もできます（作品名の欄を空欄のまま設定すると、選んだ曲の作品名が消えます。読みの欄は入れた時だけ一緒に設定されます）。</p>
 <div class="grid2">
 <div class="field">
 <label for="work-row-filter">絞り込み</label>
@@ -487,9 +491,15 @@ body.has-bulk-float { padding-bottom:86px; }
 <button type="button" class="btn primary" id="work-save" style="width:100%" disabled>変更をまとめて保存</button>
 </div>
 </div>
+<div class="grid2">
 <div class="field">
 <label for="work-bulk-value">選択した曲にまとめて設定する作品名</label>
 <input id="work-bulk-value" type="text" placeholder="作品名を入力" />
+</div>
+<div class="field">
+<label for="work-bulk-yomi">作品名の読み（入れた時だけ一緒に設定）</label>
+<input id="work-bulk-yomi" type="text" placeholder="よみがなを入力" />
+</div>
 </div>
 <div class="bulk-bar">
 <button type="button" class="mini" id="work-sel-all">表示中をすべて選択</button>
@@ -780,7 +790,7 @@ if (admState.todo === "nojacket" && s.jacket) return false;
 if (admState.todo === "yomieng" && !(s.artistYomi && /[A-Za-z]/.test(s.artistYomi) && (!/[ぁ-んァ-ヶ]/.test(s.artistYomi) || s.artistYomi === s.artist))) return false;
 if (admState.todo === "key0" && (s.keyShift || 0) !== 0) return false;
 if (admState.q) {
-var hay = kanaNorm((s.title + " " + s.artist + " " + genresOf(s).join(" ") + " " + (s.work || "") + " " + (s.memo || "") + " " + (s.titleYomi || "") + " " + (s.artistYomi || "")).toLowerCase());
+var hay = kanaNorm((s.title + " " + s.artist + " " + genresOf(s).join(" ") + " " + (s.work || "") + " " + (s.workYomi || "") + " " + (s.memo || "") + " " + (s.titleYomi || "") + " " + (s.artistYomi || "")).toLowerCase());
 var terms = admState.q.split(/\s+/).map(function (t) { return kanaNorm(t); });
 for (var i = 0; i < terms.length; i++) if (terms[i] && hay.indexOf(terms[i]) === -1) return false;
 }
@@ -1010,7 +1020,7 @@ function clearEditor() {
 var st = document.getElementById("sheet-title");
 if (st) st.textContent = "曲の編集";
 $("song-save-next").style.display = "none";
-$("f-id").value = ""; $("f-title").value = ""; $("f-titleyomi").value = ""; $("f-artist").value = ""; $("f-artistyomi").value = ""; $("f-work").value = ""; $("f-genre").value = ""; editingGenres = []; renderGenreChips();
+$("f-id").value = ""; $("f-title").value = ""; $("f-titleyomi").value = ""; $("f-artist").value = ""; $("f-artistyomi").value = ""; $("f-work").value = ""; $("f-workyomi").value = ""; $("f-genre").value = ""; editingGenres = []; renderGenreChips();
 $("f-keylabel").value = ""; $("f-memory").value = ""; $("f-memo").value = ""; $("f-jacket").value = "";
 $("f-ytlink").value = ""; $("f-ytstart").value = ""; $("f-ytend").value = "";
 $("f-import-url").value = ""; $("import-status").textContent = "";
@@ -1096,6 +1106,7 @@ songs.forEach(function (x) { if (x.id === id) s = x; });
 if (!s) return;
 $("f-id").value = s.id; $("f-title").value = s.title; $("f-titleyomi").value = s.titleYomi || ""; $("f-artist").value = s.artist; $("f-artistyomi").value = s.artistYomi || "";
 $("f-work").value = s.work || "";
+$("f-workyomi").value = s.workYomi || "";
 editingGenres = genresOf(s).slice(); renderGenreChips(); $("f-genre").value = ""; $("f-keylabel").value = s.keyLabel;
 $("f-memory").value = (s.memory === null || s.memory === undefined) ? "" : String(s.memory);
 $("f-memo").value = s.memo || ""; $("f-jacket").value = s.jacket || "";
@@ -1534,6 +1545,8 @@ var titleYomiV = yomiHira($("f-titleyomi").value.trim());
 var artistYomiV = yomiHira($("f-artistyomi").value.trim());
 if (titleYomiV) obj.titleYomi = titleYomiV;
 if (artistYomiV) obj.artistYomi = artistYomiV;
+var workYomiV = yomiHira($("f-workyomi").value.trim());
+if (workYomiV) obj.workYomi = workYomiV;
 var isNew = !id;
 if (id) {
 var old = null;
@@ -2019,7 +2032,7 @@ renderWorkFilterOptions();
 var box = $("work-rows"); if (!box) return;
 if (box.contains(document.activeElement) || workDirty) return;
 var filter = $("work-row-filter").value;
-var sig = filter + "|" + songs.map(function (s) { return s.id + ":" + (s.work || ""); }).join("|");
+var sig = filter + "|" + songs.map(function (s) { return s.id + ":" + (s.work || "") + ":" + (s.workYomi || ""); }).join("|");
 if (sig === workSig) return;
 workSig = sig;
 var arr = songs.slice().sort(cmpTitle);
@@ -2030,11 +2043,13 @@ if (!workRowMatch(s, filter)) return;
 shown++;
 var row = document.createElement("div");
 row.className = "yomi-row work-row"; row.setAttribute("data-id", s.id);
-row.innerHTML = '<div class="yr-name"><input type="checkbox" class="wrow-check" /><div class="yr-text"><b></b><span></span></div></div><div><label>作品名</label><input type="text" data-work="1" placeholder="作品名を入力（空欄でなし）" /></div>';
+row.innerHTML = '<div class="yr-name"><input type="checkbox" class="wrow-check" /><div class="yr-text"><b></b><span></span></div></div><div><label>作品名</label><input type="text" data-work="1" placeholder="作品名を入力（空欄でなし）" /></div><div><label>作品名の読み</label><input type="text" data-workyomi="1" placeholder="よみがな（空欄でなし）" /></div>';
 row.querySelector("b").textContent = s.title;
 row.querySelector("span").textContent = s.artist;
 var wi = row.querySelector('[data-work="1"]'); wi.value = s.work || "";
 wi.addEventListener("input", function () { refreshWorkRowState(row); updateWorkSaveBtn(); });
+var wyi = row.querySelector('[data-workyomi="1"]'); wyi.value = s.workYomi || "";
+wyi.addEventListener("input", function () { refreshWorkRowState(row); updateWorkSaveBtn(); });
 var cb = row.querySelector(".wrow-check"); cb.checked = !!workSelected[s.id];
 cb.addEventListener("change", function () { if (cb.checked) workSelected[s.id] = true; else delete workSelected[s.id]; updateWorkSelUI(); });
 box.appendChild(row);
@@ -2048,7 +2063,8 @@ var id = row.getAttribute("data-id");
 var s = null; songs.forEach(function (x) { if (x.id === id) s = x; });
 if (!s) return;
 var v = row.querySelector('[data-work="1"]').value.trim();
-row.classList.toggle("changed", v !== (s.work || ""));
+var y = yomiHira(row.querySelector('[data-workyomi="1"]').value.trim());
+row.classList.toggle("changed", v !== (s.work || "") || y !== (s.workYomi || ""));
 }
 function updateWorkSaveBtn() {
 var n = 0;
@@ -2072,6 +2088,8 @@ var s = null; songs.forEach(function (x) { if (x.id === id) s = x; });
 if (!s) return;
 var v = row.querySelector('[data-work="1"]').value.trim();
 if (v) s.work = v; else delete s.work;
+var y = yomiHira(row.querySelector('[data-workyomi="1"]').value.trim());
+if (y) s.workYomi = y; else delete s.workYomi;
 n++;
 });
 var btn = $("work-save"); btn.disabled = true;
@@ -2099,15 +2117,18 @@ updateWorkSelUI();
 });
 $("work-bulk-apply").addEventListener("click", function () {
 var v = $("work-bulk-value").value.trim();
+var yv = yomiHira($("work-bulk-yomi").value.trim());
 var n = 0;
 document.querySelectorAll("#work-rows .work-row").forEach(function (row) {
 if (!workSelected[row.getAttribute("data-id")]) return;
 var wi = row.querySelector('[data-work="1"]');
-if (wi.value.trim() !== v) { wi.value = v; refreshWorkRowState(row); }
+if (wi.value.trim() !== v) wi.value = v;
+if (yv) { var wyi = row.querySelector('[data-workyomi="1"]'); if (yomiHira(wyi.value.trim()) !== yv) wyi.value = yv; }
+refreshWorkRowState(row);
 n++;
 });
 updateWorkSaveBtn();
-if (n) setStatus("work-status", n + "曲の作品名を「" + (v || "（なし）") + "」にしました。「変更をまとめて保存」を押すと反映されます。", true);
+if (n) setStatus("work-status", n + "曲の作品名を「" + (v || "（なし）") + "」" + (yv ? "、読みを「" + yv + "」" : "") + "にしました。「変更をまとめて保存」を押すと反映されます。", true);
 else setStatus("work-status", "いま表示されている行には選択中の曲がありません。絞り込みを変えると選択は残ります。", false);
 });
 
@@ -2374,17 +2395,17 @@ var needle = sgNorm(q).trim();
 if (!needle) return [];
 var songHits = [], artists = {}, works = {};
 arr.forEach(function (s) {
-var t = sgNorm(s.title), ty = sgNorm(s.titleYomi), a = sgNorm(s.artist), ay = sgNorm(s.artistYomi), w = sgNorm(s.work);
+var t = sgNorm(s.title), ty = sgNorm(s.titleYomi), a = sgNorm(s.artist), ay = sgNorm(s.artistYomi), w = sgNorm(s.work), wy = sgNorm(s.workYomi);
 var score = -1;
 if (t.indexOf(needle) === 0) score = 0;
 else if (t.indexOf(needle) >= 0) score = 1;
 else if (ty.indexOf(needle) === 0) score = 1;
 else if (ty.indexOf(needle) >= 0) score = 2;
 else if (a.indexOf(needle) >= 0 || ay.indexOf(needle) >= 0) score = 3;
-else if (w && w.indexOf(needle) >= 0) score = 4;
+else if ((w && w.indexOf(needle) >= 0) || (wy && wy.indexOf(needle) >= 0)) score = 4;
 if (score >= 0) songHits.push({ s: s, score: score });
 if (a.indexOf(needle) >= 0 || ay.indexOf(needle) >= 0) artists[s.artist] = (artists[s.artist] || 0) + 1;
-if (s.work && w.indexOf(needle) >= 0) works[s.work] = (works[s.work] || 0) + 1;
+if (s.work && ((w && w.indexOf(needle) >= 0) || (wy && wy.indexOf(needle) >= 0))) works[s.work] = (works[s.work] || 0) + 1;
 });
 songHits.sort(function (x, y) { return x.score - y.score || x.s.title.localeCompare(y.s.title, "ja"); });
 var out = [];
@@ -2579,19 +2600,37 @@ return Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a] |
 .map(function (name) { return { name: name, node: sgTextNode(name, "", counts[name] + "曲") }; });
 }
 function pickGenre(c, close) { addGenreChip(c.name); sgSetValue($("f-genre"), ""); close(); }
+function workTopYomi(w) {
+var m = {};
+songs.forEach(function (s) { if (s.work === w && s.workYomi) m[s.workYomi] = (m[s.workYomi] || 0) + 1; });
+var ks = Object.keys(m); if (!ks.length) return "";
+var hira = ks.filter(function (y) { return /[ぁ-ん]/.test(y); });
+var pool = (hira.length ? hira : ks).sort(function (a, b) { return m[b] - m[a]; });
+return pool[0];
+}
 function collectWorkCands(v) {
 var needle = sgNorm(v).trim(); if (!needle) return [];
 var counts = {};
-songs.forEach(function (s) { if (s.work && sgNorm(s.work).indexOf(needle) >= 0) counts[s.work] = (counts[s.work] || 0) + 1; });
-return Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a] || a.localeCompare(b, "ja"); }).slice(0, 8)
-.map(function (name) { return { name: name, node: sgTextNode(name, "", counts[name] + "曲") }; });
+songs.forEach(function (s) { if (s.work) counts[s.work] = (counts[s.work] || 0) + 1; });
+return Object.keys(counts).filter(function (w) { var y = workTopYomi(w); return sgNorm(w).indexOf(needle) >= 0 || (y && sgNorm(y).indexOf(needle) >= 0); })
+.sort(function (a, b) { return counts[b] - counts[a] || a.localeCompare(b, "ja"); }).slice(0, 8)
+.map(function (name) { var y = workTopYomi(name); return { name: name, yomi: y, node: sgTextNode(name, y, counts[name] + "曲") }; });
 }
-function pickWork(c, close) { sgSetValue($("f-work"), c.name); close(); }
+function pickWork(c, close) { sgSetValue($("f-work"), c.name); var y = $("f-workyomi"); if (c.yomi && y && !y.value.trim()) sgSetValue(y, c.yomi); close(); }
+function collectWorkYomiCands(v) {
+var needle = sgNorm(String(v || "").trim());
+var name = $("f-work").value.trim();
+var counts = {};
+songs.forEach(function (s) { if (s.workYomi && (!needle || sgNorm(s.workYomi).indexOf(needle) >= 0)) counts[s.workYomi] = (counts[s.workYomi] || 0) + 1; });
+return Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a] || a.localeCompare(b, "ja"); }).slice(0, 8)
+.map(function (y) { return { yomi: y, node: sgTextNode(y, name ? "この作品名の読みの候補" : "", counts[y] + "曲") }; });
+}
 attachFieldSuggest($("f-title"), collectTitleCands, pickTitle);
 attachFieldSuggest($("f-artist"), collectArtistCands, pickArtist);
 attachFieldSuggest($("f-titleyomi"), function (v) { return collectYomiCands(v, "title"); }, pickYomiInto($("f-titleyomi")));
 attachFieldSuggest($("f-artistyomi"), function (v) { return collectYomiCands(v, "artist"); }, pickYomiInto($("f-artistyomi")));
 attachFieldSuggest($("f-work"), collectWorkCands, pickWork);
+attachFieldSuggest($("f-workyomi"), collectWorkYomiCands, function (c, close) { sgSetValue($("f-workyomi"), c.yomi); close(); });
 attachFieldSuggest($("f-genre"), collectGenreCands, pickGenre);
 </script>
 <script>
@@ -2806,6 +2845,25 @@ return function (c, close) { sgSetValue(input, genreSegOf(input).head.concat([c.
 function fillPickInto(input) {
 return function (c, close) { sgSetValue(input, c.value); close(); };
 }
+function bulkWorkYomiCollect(input) {
+return function (v) {
+var needle = sgNorm(String(v || "").trim());
+var row = input.closest(".work-row");
+var nameEl = row ? row.querySelector('[data-work="1"]') : null;
+var name = nameEl ? nameEl.value.trim() : "";
+var counts = {}, linked = {};
+songs.forEach(function (s) { if (s.workYomi && (!needle || sgNorm(s.workYomi).indexOf(needle) >= 0)) { counts[s.workYomi] = (counts[s.workYomi] || 0) + 1; if (name && s.work === name) linked[s.workYomi] = true; } });
+return Object.keys(counts).sort(function (a, b) { return (linked[b] ? 1 : 0) - (linked[a] ? 1 : 0) || counts[b] - counts[a] || a.localeCompare(b, "ja"); }).slice(0, 8)
+.map(function (y) { return { yomi: y, node: sgTextNode(y, linked[y] ? "この作品名の読み" : "", counts[y] + "曲") }; });
+};
+}
+function workYomiCandsAll(v) {
+var needle = sgNorm(String(v || "").trim()); if (!needle) return [];
+var counts = {};
+songs.forEach(function (s) { if (s.workYomi && sgNorm(s.workYomi).indexOf(needle) >= 0) counts[s.workYomi] = (counts[s.workYomi] || 0) + 1; });
+return Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a] || a.localeCompare(b, "ja"); }).slice(0, 8)
+.map(function (y) { return { yomi: y, node: sgTextNode(y, "", counts[y] + "曲") }; });
+}
 function attachBulkSuggests() {
 document.querySelectorAll('#yomi-rows [data-yomi="title"]').forEach(function (inp) {
 if (inp.dataset.sgDone) return; inp.dataset.sgDone = "1";
@@ -2830,7 +2888,11 @@ attachFieldSuggest(inp, bulkGenreCollect(inp), bulkGenrePick(inp));
 });
 document.querySelectorAll('#work-rows [data-work="1"]').forEach(function (inp) {
 if (inp.dataset.sgDone) return; inp.dataset.sgDone = "1";
-attachFieldSuggest(inp, collectWorkCands, fillPickInto(inp));
+attachFieldSuggest(inp, collectWorkCands, function (c, close) { sgSetValue(inp, c.name); var row = inp.closest(".work-row"); var yi = row ? row.querySelector('[data-workyomi="1"]') : null; if (yi && c.yomi && !yi.value.trim()) sgSetValue(yi, c.yomi); close(); });
+});
+document.querySelectorAll('#work-rows [data-workyomi="1"]').forEach(function (inp) {
+if (inp.dataset.sgDone) return; inp.dataset.sgDone = "1";
+attachFieldSuggest(inp, bulkWorkYomiCollect(inp), function (c, close) { sgSetValue(inp, c.yomi); close(); });
 });
 }
 var nba = $("name-bulk-artist");
@@ -2838,7 +2900,9 @@ if (nba) { nba.removeAttribute("list"); attachFieldSuggest(nba, bulkArtistCands,
 var gbv = $("genre-bulk-value");
 if (gbv) { gbv.removeAttribute("list"); attachFieldSuggest(gbv, bulkGenreCollect(gbv), bulkGenrePick(gbv)); }
 var wbv = $("work-bulk-value");
-if (wbv) attachFieldSuggest(wbv, collectWorkCands, fillPickInto(wbv));
+if (wbv) attachFieldSuggest(wbv, collectWorkCands, function (c, close) { sgSetValue(wbv, c.name); var y = $("work-bulk-yomi"); if (y && c.yomi && !y.value.trim()) sgSetValue(y, c.yomi); close(); });
+var wby = $("work-bulk-yomi");
+if (wby) attachFieldSuggest(wby, workYomiCandsAll, function (c, close) { sgSetValue(wby, c.yomi); close(); });
 ["renderYomiRows", "renderGenreRows", "renderWorkRows"].forEach(function (fname) {
 var orig = window[fname];
 if (typeof orig !== "function") return;

@@ -1209,7 +1209,7 @@ var arr = SONGS.filter(function (s) {
 if (state.genre !== "すべて" && genresOf(s).indexOf(state.genre) === -1) return false;
 if (state.artist && s.artist !== state.artist) return false;
 if (state.q) {
-var hay = kanaNorm((s.title + " " + s.artist + " " + (s.work || "") + " " + (s.titleYomi || "") + " " + (s.artistYomi || "")).toLowerCase());
+var hay = kanaNorm((s.title + " " + s.artist + " " + (s.work || "") + " " + (s.workYomi || "") + " " + (s.titleYomi || "") + " " + (s.artistYomi || "")).toLowerCase());
 var terms = state.q.split(/\s+/).map(function (t) { return kanaNorm(t); });
 for (var i = 0; i < terms.length; i++) if (terms[i] && hay.indexOf(terms[i]) === -1) return false;
 }
@@ -1644,17 +1644,17 @@ var needle = sgNorm(q).trim();
 if (!needle) return [];
 var songHits = [], artists = {}, works = {};
 arr.forEach(function (s) {
-var t = sgNorm(s.title), ty = sgNorm(s.titleYomi), a = sgNorm(s.artist), ay = sgNorm(s.artistYomi), w = sgNorm(s.work);
+var t = sgNorm(s.title), ty = sgNorm(s.titleYomi), a = sgNorm(s.artist), ay = sgNorm(s.artistYomi), w = sgNorm(s.work), wy = sgNorm(s.workYomi);
 var score = -1;
 if (t.indexOf(needle) === 0) score = 0;
 else if (t.indexOf(needle) >= 0) score = 1;
 else if (ty.indexOf(needle) === 0) score = 1;
 else if (ty.indexOf(needle) >= 0) score = 2;
 else if (a.indexOf(needle) >= 0 || ay.indexOf(needle) >= 0) score = 3;
-else if (w && w.indexOf(needle) >= 0) score = 4;
+else if ((w && w.indexOf(needle) >= 0) || (wy && wy.indexOf(needle) >= 0)) score = 4;
 if (score >= 0) songHits.push({ s: s, score: score });
 if (a.indexOf(needle) >= 0 || ay.indexOf(needle) >= 0) artists[s.artist] = (artists[s.artist] || 0) + 1;
-if (s.work && w.indexOf(needle) >= 0) works[s.work] = (works[s.work] || 0) + 1;
+if (s.work && ((w && w.indexOf(needle) >= 0) || (wy && wy.indexOf(needle) >= 0))) works[s.work] = (works[s.work] || 0) + 1;
 });
 songHits.sort(function (x, y) { return x.score - y.score || x.s.title.localeCompare(y.s.title, "ja"); });
 var out = [];
