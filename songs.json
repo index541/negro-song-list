@@ -9982,19 +9982,18 @@
     "id": "w1050",
     "title": "We miss you ～愛のテーマ～",
     "artist": "大貫妙子",
+    "work": "MOTHER3",
+    "genres": [
+      "ゲームソング"
+    ],
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
+    "memory": 5,
     "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music/d9/9a/8e/mzi.yzcbsyav.jpg/600x600bb.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "うぃーみすゆーあいのてーま",
     "artistYomi": "おおぬきたえこ",
-    "work": "MOTHER3",
-    "genres": [
-      "ゲームソング",
-      "アニソン"
-    ],
-    "memory": 5,
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/Music2/v4/53/20/55/532055c6-6406-2f63-4c74-6096aa25d5f2/mzaf_2763978430678322828.plus.aac.p.m4a"
   },
   {
