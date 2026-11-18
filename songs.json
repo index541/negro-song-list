@@ -629,7 +629,9 @@
     "genres": [
       "J-POP"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "1リットルの涙",
+    "workYomi": "いちりっとるのなみだ"
   },
   {
     "id": "u042",
@@ -1575,7 +1577,9 @@
     "genres": [
       "J-POP"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "プロジェクトX",
+    "workYomi": "ぷろじぇくとえっくす"
   },
   {
     "id": "u109",
@@ -1720,7 +1724,7 @@
     "id": "u119",
     "title": "となりのトトロ",
     "artist": "Scott Murphy",
-    "work": "",
+    "work": "となろのトトロ",
     "keyLabel": "原曲 −4",
     "keyShift": -4,
     "memo": "",
@@ -1732,7 +1736,8 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview118/v4/bc/7c/38/bc7c38ce-cafd-3112-4589-7b46e6acc0e1/mzaf_5701841872639828638.plus.aac.p.m4a",
     "genres": [
       "ロック"
-    ]
+    ],
+    "workYomi": "となりのととろ"
   },
   {
     "id": "u121",
@@ -1749,13 +1754,15 @@
     "genres": [
       "J-POP"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "オーイシ×加藤のニコ生☆音楽王",
+    "workYomi": "おーいしかとうのにこなまくそおんがくおう"
   },
   {
     "id": "u122",
     "title": "ドラマチック",
     "artist": "Base Ball Bear",
-    "work": "",
+    "work": "おおきく振りかぶって",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -1767,7 +1774,8 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/60/36/ed/6036ed99-77b9-0627-0171-cd65777ebaa2/mzaf_12858544415629907843.plus.aac.p.m4a",
     "genres": [
       "ロック"
-    ]
+    ],
+    "workYomi": "おおきくふりかぶって"
   },
   {
     "id": "u125",
@@ -1853,7 +1861,9 @@
     "genres": [
       "チルドレン・ミュージック"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "おかあさんといっしょ",
+    "workYomi": "おかあさんといっしょ"
   },
   {
     "id": "u131",
@@ -3866,7 +3876,7 @@
     "id": "w129",
     "title": "白日",
     "artist": "King Gnu",
-    "work": "",
+    "work": "イノセンス 冤罪弁護士",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -3878,7 +3888,8 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f8/29/17/f8291760-8541-ba79-ab63-368cc9699378/mzaf_2236334770837479513.plus.aac.p.m4a",
     "genres": [
       "J-POP"
-    ]
+    ],
+    "workYomi": "いのせんすえんざいべんごし"
   },
   {
     "id": "w130",
@@ -3913,7 +3924,9 @@
     "genres": [
       "ボカロ"
     ],
-    "memory": 4
+    "memory": 4,
+    "work": "メカクシティアクターズ",
+    "workYomi": "めかくしてぃあくたーず"
   },
   {
     "id": "w1081",
@@ -8201,7 +8214,9 @@
     "genres": [
       "ボカロ"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "コンパス 戦闘摂理解析システム",
+    "workYomi": "こんぱすせんとうせつりかいせきしすてむ"
   },
   {
     "id": "w823",
@@ -9683,7 +9698,9 @@
     "genres": [
       "ロック"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "ひぐらしのなく頃に",
+    "workYomi": "ひぐらしのなくころに"
   },
   {
     "id": "w1019",
@@ -9801,7 +9818,9 @@
     "genres": [
       "ロック"
     ],
-    "memory": 2
+    "memory": 2,
+    "work": "学園BASARA",
+    "workYomi": "がくえんばさら"
   },
   {
     "id": "w1032",
@@ -10970,7 +10989,9 @@
     "genres": [
       "ロック"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "革命機ヴァルヴレイヴ",
+    "workYomi": "かくめいきゔぁるゔれいゔ"
   },
   {
     "id": "w1139",
