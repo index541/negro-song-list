@@ -387,7 +387,7 @@
     "id": "u024",
     "title": "海の幽霊",
     "artist": "米津玄師",
-    "work": "",
+    "work": "海獣の子供",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -399,7 +399,8 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/a6/07/48/a607484f-f18e-7a0a-0f43-0aca780c96c7/mzaf_14043499628828254750.plus.aac.p.m4a",
     "genres": [
       "J-POP"
-    ]
+    ],
+    "workYomi": "かいじゅうのこども"
   },
   {
     "id": "u025",
@@ -485,7 +486,9 @@
     "genres": [
       "ロック"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "ドラゴンボールZ 復活の「F」",
+    "workYomi": "どらごんぼーるぜっとふっかつのえふ"
   },
   {
     "id": "u031",
@@ -502,7 +505,9 @@
     "genres": [
       "R&B／ソウル"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "リーブ21",
+    "workYomi": "りーぶにじゅういち"
   },
   {
     "id": "u032",
@@ -1066,7 +1071,7 @@
     "id": "u073",
     "title": "さぁ",
     "artist": "surface",
-    "work": "",
+    "work": "まもって守護月天!",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -1078,7 +1083,8 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/99/2f/45/992f453b-376d-a589-717c-7ab2980d319c/mzaf_2015169493028262660.plus.aac.p.m4a",
     "genres": [
       "ロック"
-    ]
+    ],
+    "workYomi": "まもってしゅごげってん"
   },
   {
     "id": "u074",
@@ -1271,7 +1277,7 @@
     "id": "u089",
     "title": "少年と魔法のロボット",
     "artist": "40mP feat.GUMI",
-    "work": "",
+    "work": "NHK みんなのうた",
     "keyLabel": "原曲 +4",
     "keyShift": 4,
     "memo": "",
@@ -1283,7 +1289,8 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ef/d7/14/efd7145c-b980-f12b-6778-8dd452348420/mzaf_1754788073475414848.plus.aac.p.m4a",
     "genres": [
       "ボカロ"
-    ]
+    ],
+    "workYomi": "えぬえいちけーみんなのうた"
   },
   {
     "id": "u090",
@@ -1354,7 +1361,9 @@
     "genres": [
       "J-POP"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "ONE PIECE THE MOVIE デッドエンドの冒険",
+    "workYomi": "わんぴーすざむーびーでっどえんどのぼうけん"
   },
   {
     "id": "u095",
@@ -1370,7 +1379,9 @@
     "genres": [
       "ロック"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "DEATHNOTE",
+    "workYomi": "ですのーと"
   },
   {
     "id": "u096",
@@ -1387,7 +1398,9 @@
     "genres": [
       "ロック"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "七つの大罪",
+    "workYomi": "ななつのたいざい"
   },
   {
     "id": "u098",
@@ -3035,7 +3048,7 @@
     "id": "w013",
     "title": "イチブトゼンブ",
     "artist": "B'z",
-    "work": "",
+    "work": "ブザー・ビート〜崖っぷちのヒーロー〜",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -3047,7 +3060,8 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview124/v4/c7/aa/3d/c7aa3d3e-751c-d327-ac23-d3c675e4978c/mzaf_14831380701399734923.plus.aac.p.m4a",
     "genres": [
       "ロック"
-    ]
+    ],
+    "workYomi": "ぶさーびーとがけっぷちのひーろー"
   },
   {
     "id": "w014",
@@ -3070,7 +3084,7 @@
     "id": "w015",
     "title": "恋はみずいろ",
     "artist": "BENI",
-    "work": "",
+    "work": "みずいろブラッド",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -3081,7 +3095,8 @@
     "artistYomi": "べに",
     "genres": [
       "ゲームソング"
-    ]
+    ],
+    "workYomi": "みずいろぶらっど"
   },
   {
     "id": "w017",
@@ -4328,7 +4343,7 @@
     "id": "w183",
     "title": "前前前世",
     "artist": "RADWIMPS",
-    "work": "",
+    "work": "君の名は。",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -4340,7 +4355,8 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/49/2d/08/492d08d6-5866-63e4-cd52-fdc77ac5d6b9/mzaf_14670771094430347853.plus.aac.p.m4a",
     "genres": [
       "ロック"
-    ]
+    ],
+    "workYomi": "きみのなは"
   },
   {
     "id": "w184",
@@ -4430,7 +4446,9 @@
     "genres": [
       "ロック"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "るろうに剣心明治剣客浪漫譚",
+    "workYomi": "るろうにけんしんめいじけんかくろまんたん"
   },
   {
     "id": "w196",
@@ -6931,7 +6949,9 @@
     "genres": [
       "J-POP"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "NANA",
+    "workYomi": "なな"
   },
   {
     "id": "w558",
@@ -7062,7 +7082,9 @@
     "genres": [
       "J-POP"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "Ns'あおい",
+    "workYomi": "なーすあおい"
   },
   {
     "id": "w589",
@@ -7838,7 +7860,9 @@
     "genres": [
       "ロック"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "メジャー",
+    "workYomi": "めじゃー"
   },
   {
     "id": "w768",
@@ -9708,7 +9732,9 @@
     "genres": [
       "ボカロ"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "コンパス 戦闘摂理解析システム",
+    "workYomi": "こんぱすせんとうせつりかいせきしすてむ"
   },
   {
     "id": "w1024",
@@ -9884,7 +9910,7 @@
     "id": "w1038",
     "title": "オツキミリサイタル",
     "artist": "じん feat.IA",
-    "work": "",
+    "work": "メカクシティアクターズ",
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
@@ -9896,7 +9922,8 @@
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ea/93/22/ea9322f2-e93d-c108-a26b-43f3d2d742aa/mzaf_16410644744063337932.plus.aac.p.m4a",
     "genres": [
       "ボカロ"
-    ]
+    ],
+    "workYomi": "めかくしてぃあくたーず"
   },
   {
     "id": "w1039",
@@ -9912,7 +9939,9 @@
     "genres": [
       "ボカロ"
     ],
-    "memory": 5
+    "memory": 5,
+    "work": "メカクシティアクターズ",
+    "workYomi": "めかくしてぃあくたーず"
   },
   {
     "id": "w1040",
