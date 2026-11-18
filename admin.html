@@ -27,6 +27,14 @@ h1 { margin:10px 0 8px; font-size:clamp(28px,6vw,40px); font-weight:900; line-he
 .card.collapsed > h2 { margin-bottom:0; }
 .card.collapsed > h2::after { transform:translateY(-50%) rotate(-45deg); }
 .card.collapsed > *:not(h2) { display:none !important; }
+.qr-bar { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin:14px 0 4px; }
+.qr-note { font-size:13px; color:var(--ink-2); font-weight:700; }
+.qr-modal { position:fixed; inset:0; background:rgba(22,20,15,.52); display:flex; align-items:center; justify-content:center; z-index:95; padding:16px; }
+.qr-modal[hidden] { display:none; }
+.qr-card { background:var(--surface); border-radius:18px; box-shadow:0 18px 44px rgba(0,0,0,.28); padding:22px; width:min(400px,100%); text-align:center; }
+.qr-title { margin:0 0 14px; font-size:17px; font-weight:900; }
+#qr-box svg { width:min(68vw,260px); height:auto; display:block; margin:0 auto; }
+.qr-url { margin:14px 0; font-size:13px; font-weight:700; color:var(--ink-2); word-break:break-all; }
 .modal-overlay { position:fixed; inset:0; background:rgba(22,20,15,.52); display:none; align-items:flex-end; justify-content:center; z-index:80; }
 .modal-overlay.open { display:flex; }
 .modal-sheet { background:var(--surface); width:100%; max-width:660px; max-height:92dvh; overflow-y:auto; border-radius:20px 20px 0 0; padding:18px 22px 30px; animation:sheetUp .3s cubic-bezier(.25,.9,.3,1.15); }
@@ -185,6 +193,19 @@ body.has-bulk-float { padding-bottom:86px; }
 <h1>曲リスト管理</h1>
 <p class="lead">このページは堅斗専用です。曲の追加・編集・削除には、堅斗の GitHub トークンが必要です。公開ページを見るだけの人は、ここで何も変更できません。</p>
 </header>
+
+<div class="qr-bar">
+<button type="button" class="btn primary" id="qr-show">公開リストのQRコードを表示</button>
+<span class="qr-note">人に読み取ってもらうと、公開リストが開きます。</span>
+</div>
+<div class="qr-modal" id="qr-modal" hidden>
+<div class="qr-card">
+<p class="qr-title">公開リストのQRコード</p>
+<div id="qr-box"></div>
+<p class="qr-url">https://index541.github.io/negro-song-list/</p>
+<button type="button" class="btn sub" id="qr-close">閉じる</button>
+</div>
+</div>
 
 <section class="card" id="token-card">
 <h2>1. トークンの設定（最初に1回だけ）</h2>
@@ -2911,6 +2932,28 @@ if (typeof orig !== "function") return;
 window[fname] = function () { orig(); attachBulkSuggests(); };
 });
 attachBulkSuggests();
+</script>
+<script src="qrcode.min.js"></script>
+<script>
+(function () {
+var modal = document.getElementById("qr-modal");
+var box = document.getElementById("qr-box");
+document.getElementById("qr-show").addEventListener("click", function () {
+if (!box.innerHTML) {
+if (typeof qrcode === "function") {
+var qr = qrcode(0, "M");
+qr.addData("https://index541.github.io/negro-song-list/");
+qr.make();
+box.innerHTML = qr.createSvgTag({ cellSize: 6, margin: 12, scalable: true });
+} else {
+box.innerHTML = '<p style="font-weight:700">QRコードを生成できませんでした。下のURLを直接伝えてください。</p>';
+}
+}
+modal.hidden = false;
+});
+document.getElementById("qr-close").addEventListener("click", function () { modal.hidden = true; });
+modal.addEventListener("click", function (e) { if (e.target === modal) modal.hidden = true; });
+})();
 </script>
 </body>
 </html>
