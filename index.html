@@ -126,6 +126,9 @@ img.thumb.ld { opacity: 1;}
 .tag.work { background: #5053f0; color: #ffffff;}
 .tag .k-label { font-size: 11px; font-weight: 700; opacity:.75; letter-spacing:.06em;}
 .tag.ext { background: var(--surface); border: 1.5px solid var(--line); color: var(--ink-2); text-decoration: none; cursor: pointer;}
+.tag.tap { cursor: pointer; }
+.tag.tap:active { transform: scale(.96); }
+.song-artist, .tile-artist, .sheet-artist { cursor: pointer; }
 .tag.ext:active { transform: scale(.96);}
 .pv-inrow { flex: none; align-self: center; white-space: nowrap;}
 .stars { color: var(--gold); letter-spacing: 2px; font-size: 13px;}
@@ -431,7 +434,7 @@ return GENRE_PALETTE[h % GENRE_PALETTE.length];
 }
 function genresOf(s) { if (s.genres && s.genres.length) return s.genres; return [s.genre || "その他"]; }
 function genreTag(s) {
-return genresOf(s).map(function (g) { return '<span class="tag genre" style="background:' + genreColor(g) + '">' + esc(g) + "</span>"; }).join("");
+return genresOf(s).map(function (g) { return '<span class="tag genre tap" data-fgenre="' + esc(g) + '" style="background:' + genreColor(g) + '">' + esc(g) + "</span>"; }).join("");
 }
 function ytSearchURL(s) { return "https://www.youtube.com/results?search_query=" + encodeURIComponent(s.title + " " + s.artist); }
 function nicoSearchURL(s) { return "https://www.nicovideo.jp/search/" + encodeURIComponent(s.title + " " + s.artist); }
@@ -1073,7 +1076,7 @@ function metaHTML(s) {
 var kl = String(s.keyLabel || "原曲キー").replace(/\s+/g, "").replace("+", "＋");
 return '<span class="tag key">' + esc(kl) + "</span>" +
 genreTag(s) +
-(s.work ? '<span class="tag work">' + esc(s.work) + "</span>" : "") +
+(s.work ? '<span class="tag work tap" data-fwork="' + esc(s.work) + '">' + esc(s.work) + "</span>" : "") +
 '<a class="tag ext" href="' + esc(ytSearchURL(s)) + '" target="_blank" rel="noopener">YouTube</a>' +
 '<a class="tag ext ext-app" data-pkg="jp.nicovideo.android" href="' + esc(nicoSearchURL(s)) + '" target="_blank" rel="noopener">ニコニコ</a>';
 }
@@ -1318,6 +1321,26 @@ gridEl.appendChild(t);
 document.getElementById("search").addEventListener("input", function (e) { state.q = e.target.value.trim().toLowerCase(); render(); });
 document.getElementById("sort").addEventListener("change", function (e) { state.sort = e.target.value; render(); });
 artistSel.addEventListener("change", function () { state.artist = artistSel.value; render(); });
+function applyTapFilter(kind, value) {
+if (sheetSongId) closeSheet();
+if (kind === "genre") { state.genre = value; genreSel.value = value; }
+else if (kind === "artist") { state.artist = value; artistSel.value = value; }
+else if (kind === "work") { state.q = value.toLowerCase(); document.getElementById("search").value = value; }
+render();
+var tb = document.querySelector(".toolbar");
+if (tb) tb.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+document.addEventListener("click", function (e) {
+if (!e.target.closest) return;
+var g = e.target.closest("[data-fgenre]");
+var w = g ? null : e.target.closest("[data-fwork]");
+var a = (g || w) ? null : e.target.closest(".song-artist, .tile-artist, .sheet-artist");
+if (!g && !w && !a) return;
+e.preventDefault(); e.stopPropagation();
+if (g) applyTapFilter("genre", g.getAttribute("data-fgenre"));
+else if (w) applyTapFilter("work", w.getAttribute("data-fwork"));
+else applyTapFilter("artist", a.textContent.trim());
+}, true);
 document.getElementById("view-list").addEventListener("click", function () { setView("list"); });
 document.getElementById("view-tile").addEventListener("click", function () { setView("tile"); });
 function setView(v) { state.view = v; try { localStorage.setItem("nsl.view", v); } catch (e) {} render(); }
