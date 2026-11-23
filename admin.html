@@ -193,6 +193,10 @@ body.has-bulk-float #save-float { bottom:calc(104px + env(safe-area-inset-bottom
 .sg-kind { flex:none; font-size:11px; font-weight:900; color:#fff; background:var(--accent); border-radius:99px; padding:3px 8px; }
 .sg-kind.work { background:#5053f0; }
 .sg-count { margin-left:auto; flex:none; font-size:12px; color:var(--ink-3); }
+.pv-row { grid-template-columns:minmax(0,1.05fr) minmax(0,1.2fr) auto; align-items:center; }
+.pv-btns { display:flex; gap:6px; flex-wrap:wrap; }
+.pv-badge { display:inline-block; background:var(--duet); color:#fff; font-size:10.5px; font-weight:900; border-radius:6px; padding:1px 6px; margin-left:6px; }
+@media (max-width:560px) { .yomi-row.pv-row { grid-template-columns:1fr; gap:6px; } }
 </style>
 </head>
 <body>
@@ -622,6 +626,36 @@ body.has-bulk-float #save-float { bottom:calc(104px + env(safe-area-inset-bottom
 <p class="status" id="jk-status"></p>
 <input type="file" id="jk-file-input" accept="image/*" style="display:none" />
 <div id="jk-rows"></div>
+</section>
+
+<section class="card" id="pv-card">
+<h2>試聴の一括設定</h2>
+<p class="desc">公式試聴（30秒）をまとめて直すための画面です。各行でURLを直したり、「自動で探す」で今の曲名・アーティストから探したり、「外す」で取り除いたりできます。「▶ 聴く」で、その場で音を確認できます。サビ（YouTube）を設定した曲は試聴よりサビが優先されるので、試聴は予備として残ります。</p>
+<div class="ctl-grid">
+<div class="field">
+<label for="pv-row-filter">絞り込み</label>
+<select id="pv-row-filter">
+<option value="nopreview">試聴なし</option>
+<option value="">すべての曲</option>
+<option value="haspreview">試聴あり</option>
+<option value="yt">サビ（YouTube）設定あり</option>
+</select>
+</div>
+<div class="field">
+<label>まとめて保存</label>
+<button type="button" class="btn primary" id="pv-save" style="width:100%" disabled>変更をまとめて保存</button>
+</div>
+</div>
+<div class="bulk-bar">
+<button type="button" class="mini" id="pv-find-missing">試聴なしを全部 自動で探す</button>
+<button type="button" class="mini" id="pv-find-sel" disabled>選択した曲を 自動で探す</button>
+<button type="button" class="mini" id="pv-cancel" hidden>中止</button>
+<span class="bulk-count" id="pv-sel-count">選択中 0曲</span>
+<button type="button" class="mini" id="pv-sel-all">表示中をすべて選択</button>
+<button type="button" class="mini" id="pv-sel-none">選択を解除</button>
+</div>
+<p class="status" id="pv-status"></p>
+<div id="pv-rows"></div>
 </section>
 
 <section class="card" id="artist-card">
@@ -3038,6 +3072,161 @@ window[fname] = function () { orig(); attachBulkSuggests(); };
 });
 attachBulkSuggests();
 </script>
+<script>
+// ===== 試聴の一括設定 =====
+var pvDirty = false, pvSig = "", pvSelected = {}, pvPrevFilter = "nopreview";
+var pvAuto = { running: false, cancel: false };
+var pvAudio = new Audio();
+var pvPlayBtn = null;
+pvAudio.addEventListener("ended", function () { if (pvPlayBtn) { pvPlayBtn.textContent = "▶ 聴く"; pvPlayBtn = null; } });
+function pvTogglePlay(btn, url) {
+if (!url) { setStatus("pv-status", "試聴URLが入っていません。", false); return; }
+if (pvPlayBtn === btn && !pvAudio.paused) { pvAudio.pause(); btn.textContent = "▶ 聴く"; pvPlayBtn = null; return; }
+if (pvPlayBtn) pvPlayBtn.textContent = "▶ 聴く";
+pvAudio.src = url;
+pvAudio.play().catch(function () { setStatus("pv-status", "再生できませんでした。URLを確認してください。", false); });
+pvPlayBtn = btn; btn.textContent = "⏸ 止める";
+}
+function pvRowMatch(s, f) {
+if (!f) return true;
+if (f === "nopreview") return !s.preview;
+if (f === "haspreview") return !!s.preview;
+if (f === "yt") return !!s.ytLink;
+return true;
+}
+function renderPvRows() {
+var box = $("pv-rows"); if (!box) return;
+if (box.contains(document.activeElement) || pvDirty || pvAuto.running) return;
+var filter = $("pv-row-filter").value;
+var sig = filter + "|" + songs.map(function (s) { return s.id + ":" + (s.preview || "") + ":" + (s.ytLink ? 1 : 0); }).join("|");
+if (sig === pvSig) return;
+pvSig = sig;
+var arr = songs.slice().sort(cmpTitle);
+box.innerHTML = "";
+var shown = 0;
+arr.forEach(function (s) {
+if (!pvRowMatch(s, filter)) return;
+shown++;
+var row = document.createElement("div");
+row.className = "yomi-row pv-row"; row.setAttribute("data-id", s.id);
+row.innerHTML = '<div class="yr-name"><input type="checkbox" class="mrow-check" /><div class="yr-text"><b></b><span></span></div></div>' +
+'<div><label>試聴URL</label><input type="text" data-pv="url" placeholder="試聴なし" /></div>' +
+'<div class="pv-btns"><button type="button" class="mini" data-act="play">▶ 聴く</button><button type="button" class="mini" data-act="find">自動で探す</button><button type="button" class="mini" data-act="clear">外す</button></div>';
+row.querySelector("b").textContent = s.title;
+row.querySelector("span").textContent = s.artist;
+if (s.ytLink) { var bd = document.createElement("span"); bd.className = "pv-badge"; bd.textContent = "サビ設定あり"; row.querySelector(".yr-text").appendChild(bd); }
+var ui = row.querySelector('[data-pv="url"]'); ui.value = s.preview || "";
+ui.addEventListener("input", function () { refreshPvRowState(row); updatePvSaveBtn(); });
+row.querySelector('[data-act="play"]').addEventListener("click", function () { pvTogglePlay(this, ui.value.trim()); });
+row.querySelector('[data-act="clear"]').addEventListener("click", function () { ui.value = ""; refreshPvRowState(row); updatePvSaveBtn(); });
+row.querySelector('[data-act="find"]').addEventListener("click", async function () {
+var b = this; b.disabled = true; b.textContent = "探しています…";
+var url = await findPreviewUrl(s.title, s.artist);
+b.disabled = false; b.textContent = "自動で探す";
+if (url) { ui.value = url; setStatus("pv-status", "「" + s.title + "」の試聴が見つかりました。", true); }
+else setStatus("pv-status", "「" + s.title + "」の試聴は見つかりませんでした。", false);
+refreshPvRowState(row); updatePvSaveBtn();
+});
+var cb = row.querySelector(".mrow-check"); cb.checked = !!pvSelected[s.id];
+cb.addEventListener("change", function () { if (cb.checked) pvSelected[s.id] = true; else delete pvSelected[s.id]; updatePvSelUI(); });
+box.appendChild(row);
+});
+if (!shown) box.innerHTML = '<p class="desc">この絞り込みの曲はありません。</p>';
+updatePvSaveBtn(); updatePvSelUI();
+}
+function refreshPvRowState(row) {
+var s = findSongById(row.getAttribute("data-id")); if (!s) return;
+var v = row.querySelector('[data-pv="url"]').value.trim();
+row.classList.toggle("changed", v !== (s.preview || ""));
+}
+function updatePvSaveBtn() {
+var n = 0;
+document.querySelectorAll("#pv-rows .pv-row.changed").forEach(function () { n++; });
+pvDirty = n > 0;
+var b = $("pv-save");
+b.disabled = n === 0;
+b.textContent = n ? "変更をまとめて保存（" + n + "件）" : "変更をまとめて保存";
+}
+function updatePvSelUI() {
+var n = Object.keys(pvSelected).length;
+$("pv-sel-count").textContent = "選択中 " + n + "曲";
+$("pv-find-sel").disabled = n === 0 || pvAuto.running;
+}
+$("pv-row-filter").addEventListener("change", function () {
+if (pvDirty && !confirm("保存していない試聴の変更があります。絞り込みを変えると変更が消えます。続けますか？")) { $("pv-row-filter").value = pvPrevFilter; return; }
+pvDirty = false; pvPrevFilter = $("pv-row-filter").value; pvSig = ""; renderPvRows();
+});
+$("pv-save").addEventListener("click", function () {
+var rows = document.querySelectorAll("#pv-rows .pv-row.changed");
+if (!rows.length) return;
+var n = 0;
+rows.forEach(function (row) {
+var s = findSongById(row.getAttribute("data-id")); if (!s) return;
+var v = row.querySelector('[data-pv="url"]').value.trim();
+if (v !== (s.preview || "")) { if (v) s.preview = v; else delete s.preview; }
+n++;
+});
+var btn = $("pv-save"); btn.disabled = true;
+setStatus("pv-status", "保存中…", null);
+commitSongs("試聴を一括設定（" + n + "件）")
+.then(function () { pvDirty = false; pvSig = ""; pvSelected = {}; setStatus("pv-status", "保存しました。公開ページへの反映は1分ほどかかります。", true); renderSongs(); toast("試聴を保存しました"); })
+.catch(function (e) { setStatus("pv-status", e.message || "保存に失敗しました。", false); updatePvSaveBtn(); });
+});
+$("pv-sel-all").addEventListener("click", function () {
+document.querySelectorAll("#pv-rows .pv-row").forEach(function (row) {
+pvSelected[row.getAttribute("data-id")] = true;
+var cb = row.querySelector(".mrow-check"); if (cb) cb.checked = true;
+});
+updatePvSelUI();
+});
+$("pv-sel-none").addEventListener("click", function () {
+pvSelected = {};
+document.querySelectorAll("#pv-rows .mrow-check").forEach(function (cb) { cb.checked = false; });
+updatePvSelUI();
+});
+async function pvFindRows(rows) {
+pvAuto.running = true; pvAuto.cancel = false;
+$("pv-cancel").hidden = false;
+$("pv-find-missing").disabled = true; $("pv-find-sel").disabled = true;
+var done = 0, found = 0;
+for (var i = 0; i < rows.length; i++) {
+if (pvAuto.cancel) break;
+var row = rows[i];
+var s = findSongById(row.getAttribute("data-id")); if (!s) continue;
+var ui = row.querySelector('[data-pv="url"]');
+if (!ui.value.trim()) {
+var url = await findPreviewUrl(s.title, s.artist);
+if (url) { ui.value = url; found++; refreshPvRowState(row); }
+}
+done++;
+setStatus("pv-status", "探しています… " + done + " / " + rows.length + "曲（見つかった " + found + "曲）", null);
+}
+pvAuto.running = false;
+$("pv-cancel").hidden = true;
+$("pv-find-missing").disabled = false;
+updatePvSaveBtn(); updatePvSelUI();
+setStatus("pv-status", (pvAuto.cancel ? "中止しました。" : "探し終わりました。") + done + "曲を確認して " + found + "曲見つかりました。「変更をまとめて保存」を押すと反映されます。", true);
+}
+$("pv-cancel").addEventListener("click", function () { pvAuto.cancel = true; });
+$("pv-find-sel").addEventListener("click", function () {
+var rows = [];
+document.querySelectorAll("#pv-rows .pv-row").forEach(function (row) { if (pvSelected[row.getAttribute("data-id")]) rows.push(row); });
+if (rows.length) pvFindRows(rows);
+});
+$("pv-find-missing").addEventListener("click", function () {
+if ($("pv-row-filter").value !== "nopreview") {
+if (pvDirty && !confirm("保存していない試聴の変更があります。絞り込みを変えると変更が消えます。続けますか？")) return;
+pvDirty = false; $("pv-row-filter").value = "nopreview"; pvPrevFilter = "nopreview"; pvSig = ""; renderPvRows();
+}
+var rows = [];
+document.querySelectorAll("#pv-rows .pv-row").forEach(function (row) { rows.push(row); });
+if (!rows.length) { setStatus("pv-status", "試聴なしの曲はありません。", true); return; }
+pvFindRows(rows);
+});
+var renderSongsPrevPv = renderSongs;
+renderSongs = function () { renderSongsPrevPv(); renderPvRows(); };
+renderPvRows();
+</script>
 <button type="button" id="save-float" disabled>変更を保存</button>
 <script src="qrcode.min.js"></script>
 <script>
@@ -3063,7 +3252,7 @@ modal.addEventListener("click", function (e) { if (e.target === modal) modal.hid
 </script>
 <script>
 (function () {
-var SAVE_IDS = ["yomi-save", "genre-save", "work-save", "memory-save", "jk-save"];
+var SAVE_IDS = ["yomi-save", "genre-save", "work-save", "memory-save", "jk-save", "pv-save"];
 var btn = document.getElementById("save-float");
 var saving = false;
 function pending() {
