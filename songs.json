@@ -5653,7 +5653,7 @@
     "keyLabel": "原曲 +2",
     "keyShift": 2,
     "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/6f/14/28/6f14289d-021c-a539-1759-4a83e5a3f767/4988064236091.jpg/600x600bb.jpg",
+    "jacket": "https://i.ytimg.com/vi/YxS_GiY148Q/sddefault.jpg?sqp=-oaymwEmCIAFEOAD8quKqQMa8AEB-AH-BIAC4AOKAgwIABABGFMgZShHMA8=&rs=AOn4CLCjXy_fBr0xCfOqnGToDlzqp-76Rg",
     "addedAt": "2026-11-12",
     "titleYomi": "ありす",
     "artistYomi": "ふるかわほんぽはつねみく",
@@ -5669,7 +5669,7 @@
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/6d/45/41/6d454147-dc5c-373b-4552-61654c09e3a8/4550796386865_cover.jpg/600x600bb.jpg",
+    "jacket": "https://pjsekai.com/?plugin=ref&page=Afterglow&src=Afterglow.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "あふたーぐろう",
     "artistYomi": "じみーさむぴーめぐりねるか",
@@ -7140,7 +7140,7 @@
     "keyLabel": "原曲 −4",
     "keyShift": -4,
     "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/5c/bc/27/5cbc27bb-0de2-bfd8-ff41-141d5a0696f0/4988017685150.jpg/600x600bb.jpg",
+    "jacket": "https://i.kfs.io/album/tw/329004,0v1/fit/500x500.jpg",
     "addedAt": "2026-11-12",
     "titleYomi": "あかひとは",
     "artistYomi": "ほわいとふれいむ黒うさPくろうさぴーめぐりねるか",
@@ -8134,7 +8134,8 @@
     "artistYomi": "さきはつねみく",
     "genres": [
       "ボカロ"
-    ]
+    ],
+    "jacketPos": "41% 48%"
   },
   {
     "id": "w809",
@@ -10005,7 +10006,7 @@
     "keyLabel": "原曲キー",
     "keyShift": 0,
     "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/59/b9/99/59b9994b-2f2c-50c6-8454-2966e1bea186/SCGA-00081.jpg/600x600bb.jpg",
+    "jacket": "https://i.ytimg.com/vi/vdibog6eOGQ/maxresdefault.jpg",
     "addedAt": "2026-11-12",
     "preview": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/00/24/84/00248417-97b1-ceb0-229c-0d344c1a3605/mzaf_3659207627876592160.plus.aac.p.m4a",
     "titleYomi": "あまのじゃく",
@@ -11136,7 +11137,7 @@
     "keyLabel": "原曲 −4",
     "keyShift": -4,
     "memo": "",
-    "jacket": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/ef/32/b7/ef32b7e6-7a16-f66b-5131-4fdc3f176741/TFCC-86687WW.jpg/600x600bb.jpg",
+    "jacket": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6MqfZtJNihFVEnaVuZbbSvYCrPrlfTxZBW7wVe6tQDw&s",
     "addedAt": "2026-11-12",
     "titleYomi": "あるかでぃあ",
     "artistYomi": "たんくとっぴーかがみねりんかがみねれん",
