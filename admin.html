@@ -105,6 +105,10 @@ details.howto ol { margin:8px 0 0; padding-left:1.4em; }
 .bulk-float .bf-edit { background:var(--duet); color:#ffffff; }
 .bulk-float .bf-del { background:var(--accent); color:var(--accent-ink); }
 body.has-bulk-float { padding-bottom:86px; }
+#save-float { position:fixed; right:14px; bottom:calc(14px + env(safe-area-inset-bottom)); z-index:65; font:inherit; font-size:15px; font-weight:900; border:0; border-radius:999px; padding:14px 22px; min-height:3.2rem; background:var(--surface-2); color:var(--ink-3); box-shadow:0 10px 26px rgba(0,0,0,.22); cursor:pointer; }
+#save-float.on { background:var(--accent); color:#ffffff; }
+#save-float:disabled { cursor:default; }
+body.has-bulk-float #save-float { bottom:calc(104px + env(safe-area-inset-bottom)); }
 .bulk-float { flex-direction:column; align-items:stretch; gap:10px; }
 .bf-row { display:flex; align-items:center; gap:8px; }
 .bf-fields[hidden] { display:none; }
@@ -2933,6 +2937,7 @@ window[fname] = function () { orig(); attachBulkSuggests(); };
 });
 attachBulkSuggests();
 </script>
+<button type="button" id="save-float" disabled>変更を保存</button>
 <script src="qrcode.min.js"></script>
 <script>
 (function () {
@@ -2953,6 +2958,50 @@ modal.hidden = false;
 });
 document.getElementById("qr-close").addEventListener("click", function () { modal.hidden = true; });
 modal.addEventListener("click", function (e) { if (e.target === modal) modal.hidden = true; });
+})();
+</script>
+<script>
+(function () {
+var SAVE_IDS = ["yomi-save", "genre-save", "work-save", "memory-save", "jk-save"];
+var btn = document.getElementById("save-float");
+var saving = false;
+function pending() {
+var any = false, total = 0;
+SAVE_IDS.forEach(function (id) {
+var b = document.getElementById(id);
+if (b && !b.disabled) { any = true; var m = /（(\d+)件）/.exec(b.textContent); if (m) total += parseInt(m[1], 10); }
+});
+return { any: any, total: total };
+}
+function refresh() {
+if (saving) return;
+var p = pending();
+btn.disabled = !p.any;
+btn.classList.toggle("on", p.any);
+btn.textContent = p.any ? ("変更を保存" + (p.total ? "（" + p.total + "件）" : "")) : "変更を保存";
+}
+function waitDisabled(b, timeout) {
+return new Promise(function (res) {
+var t0 = Date.now();
+var iv = setInterval(function () {
+if (b.disabled || Date.now() - t0 > timeout) { clearInterval(iv); res(); }
+}, 300);
+});
+}
+btn.addEventListener("click", async function () {
+if (saving) return;
+saving = true;
+btn.disabled = true;
+btn.textContent = "保存中…";
+for (var i = 0; i < SAVE_IDS.length; i++) {
+var b = document.getElementById(SAVE_IDS[i]);
+if (b && !b.disabled) { b.click(); await waitDisabled(b, 25000); }
+}
+saving = false;
+refresh();
+});
+setInterval(refresh, 700);
+refresh();
 })();
 </script>
 </body>
