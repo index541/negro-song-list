@@ -200,6 +200,13 @@ body.has-bulk-float #save-float { bottom:calc(104px + env(safe-area-inset-bottom
 .pv-range input { width:92px; }
 .pv-range-label { font-size:12.5px; font-weight:700; color:var(--ink-2); }
 .pv-open { text-decoration:none; display:inline-flex; align-items:center; }
+.pv-tune { flex-basis:100%; display:none; }
+.pv-tune.open { display:block; }
+.pv-frame { position:relative; aspect-ratio:16 / 9; background:#000; border-radius:10px; overflow:hidden; margin-top:8px; max-width:520px; }
+.pv-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+.pv-seek { width:100%; max-width:520px; margin-top:8px; }
+.pv-tune-btns { display:flex; gap:6px; flex-wrap:wrap; margin-top:6px; align-items:center; }
+.pv-cur { font-size:12.5px; color:var(--ink-2); font-weight:700; }
 @media (max-width:560px) { .yomi-row.pv-row { grid-template-columns:1fr; gap:6px; } }
 </style>
 </head>
@@ -634,7 +641,7 @@ body.has-bulk-float #save-float { bottom:calc(104px + env(safe-area-inset-bottom
 
 <section class="card" id="pv-card">
 <h2>試聴の一括設定</h2>
-<p class="desc">公式試聴（30秒）をまとめて直すための画面です。各行でURLを直したり、「自動で探す」で今の曲名・アーティストから探したり、「外す」で取り除いたりできます。「▶ 聴く」で、その場で音を確認できます。サビ（YouTube）を設定した曲は試聴よりサビが優先されるので、試聴は予備として残ります。YouTube・ニコニコのリンクを設定した曲は、サビの範囲（開始・終了の秒数）もこの画面で直せます。範囲を変えると、サビ音源は自動で作り直されます。</p>
+<p class="desc">公式試聴（30秒）をまとめて直すための画面です。各行でURLを直したり、「自動で探す」で今の曲名・アーティストから探したり、「外す」で取り除いたりできます。「▶ 聴く」で、その場で音を確認できます。サビ（YouTube）を設定した曲は試聴よりサビが優先されるので、試聴は予備として残ります。YouTube・ニコニコのリンクを設定した曲は、サビの範囲（開始・終了の秒数）もこの画面で直せます。YouTubeの曲は「位置を合わせる」を開くと動画を見ながらシークして、「今の位置を開始に／終了に」で細かく合わせられます。範囲を変えると、サビ音源は自動で作り直されます。</p>
 <div class="ctl-grid">
 <div class="field">
 <label for="pv-row-filter">絞り込み</label>
@@ -3091,6 +3098,47 @@ pvAudio.src = url;
 pvAudio.play().catch(function () { setStatus("pv-status", "再生できませんでした。URLを確認してください。", false); });
 pvPlayBtn = btn; btn.textContent = "⏸ 止める";
 }
+var pvTune = { id: null, player: null, timer: null };
+function pvDestroyTune() {
+if (pvTune.timer) { clearInterval(pvTune.timer); pvTune.timer = null; }
+if (pvTune.player && pvTune.player.destroy) { try { pvTune.player.destroy(); } catch (e) {} }
+pvTune.player = null; pvTune.id = null;
+document.querySelectorAll("#pv-rows .pv-tune.open").forEach(function (p) { p.classList.remove("open"); var f = p.querySelector(".pv-frame"); if (f) f.innerHTML = ""; });
+document.querySelectorAll('#pv-rows [data-act="tune"]').forEach(function (b) { b.textContent = "位置を合わせる"; });
+var tp = document.querySelector('#pv-rows [data-act="tplay"]'); if (tp) tp.textContent = "▶ 再生";
+}
+function pvOpenTune(row, s) {
+var panel = row.querySelector(".pv-tune");
+var btn = row.querySelector('[data-act="tune"]');
+if (!panel) return;
+if (pvTune.id === s.id) { pvDestroyTune(); return; }
+pvDestroyTune();
+pvTune.id = s.id;
+panel.classList.add("open");
+btn.textContent = "位置合わせを閉じる";
+var vid = ytIdFromUrl(s.ytLink);
+loadYtApi(function () {
+if (pvTune.id !== s.id) return;
+var holder = document.createElement("div");
+panel.querySelector(".pv-frame").appendChild(holder);
+pvTune.player = new YT.Player(holder, {
+videoId: vid, width: "100%", height: "100%",
+events: { onReady: function () {
+var dur = Math.floor(pvTune.player.getDuration() || 0);
+var seek = panel.querySelector(".pv-seek");
+seek.max = dur || 0;
+pvTune.timer = setInterval(function () {
+if (!pvTune.player || !pvTune.player.getCurrentTime) return;
+var cur = pvTune.player.getCurrentTime() || 0;
+if (document.activeElement !== seek) seek.value = Math.floor(cur);
+panel.querySelector(".pv-cur").textContent = fmtTime(cur) + " / " + fmtTime(dur);
+var pb = panel.querySelector('[data-act="tplay"]');
+if (pb) pb.textContent = pvTune.player.getPlayerState && pvTune.player.getPlayerState() === 1 ? "⏸ 一時停止" : "▶ 再生";
+}, 500);
+} }
+});
+});
+}
 function pvRowMatch(s, f) {
 if (!f) return true;
 if (f === "nopreview") return !s.preview;
@@ -3100,7 +3148,7 @@ return true;
 }
 function renderPvRows() {
 var box = $("pv-rows"); if (!box) return;
-if (box.contains(document.activeElement) || pvDirty || pvAuto.running) return;
+if (box.contains(document.activeElement) || pvDirty || pvAuto.running || pvTune.id) return;
 var filter = $("pv-row-filter").value;
 var sig = filter + "|" + songs.map(function (s) { return s.id + ":" + (s.preview || "") + ":" + (s.ytLink || "") + ":" + (s.ytStart == null ? "" : s.ytStart) + ":" + (s.ytEnd == null ? "" : s.ytEnd); }).join("|");
 if (sig === pvSig) return;
@@ -3116,7 +3164,8 @@ row.className = "yomi-row pv-row"; row.setAttribute("data-id", s.id);
 row.innerHTML = '<div class="yr-name"><input type="checkbox" class="mrow-check" /><div class="yr-text"><b></b><span></span></div></div>' +
 '<div><label>試聴URL</label><input type="text" data-pv="url" placeholder="試聴なし" /></div>' +
 '<div class="pv-btns"><button type="button" class="mini" data-act="play">▶ 聴く</button><button type="button" class="mini" data-act="find">自動で探す</button><button type="button" class="mini" data-act="clear">外す</button></div>' +
-(s.ytLink ? '<div class="pv-range"><span class="pv-range-label">サビ範囲（秒）</span><input type="number" data-pv="start" min="0" step="1" placeholder="開始" /><span>〜</span><input type="number" data-pv="end" min="0" step="1" placeholder="終了" /><a class="mini pv-open" target="_blank" rel="noopener">動画を開く</a></div>' : "");
+(s.ytLink ? '<div class="pv-range"><span class="pv-range-label">サビ範囲（秒）</span><input type="number" data-pv="start" min="0" step="1" placeholder="開始" /><span>〜</span><input type="number" data-pv="end" min="0" step="1" placeholder="終了" /><a class="mini pv-open" target="_blank" rel="noopener">動画を開く</a>' +
+(ytIdFromUrl(s.ytLink) ? '<button type="button" class="mini" data-act="tune">位置を合わせる</button><div class="pv-tune"><div class="pv-frame"></div><input type="range" class="pv-seek" min="0" max="0" value="0" step="1" /><div class="pv-tune-btns"><button type="button" class="mini" data-act="tplay">▶ 再生</button><span class="pv-cur">0:00 / 0:00</span><button type="button" class="mini" data-act="setstart">今の位置を開始に</button><button type="button" class="mini" data-act="setend">今の位置を終了に</button></div></div>' : "") + '</div>' : "");
 row.querySelector("b").textContent = s.title;
 row.querySelector("span").textContent = s.artist;
 if (s.ytLink) { var bd = document.createElement("span"); bd.className = "pv-badge"; bd.textContent = "サビ設定あり"; row.querySelector(".yr-text").appendChild(bd); }
@@ -3130,6 +3179,27 @@ var enEl = row.querySelector('[data-pv="end"]'); enEl.value = s.ytEnd == null ? 
 row.querySelector(".pv-open").href = s.ytLink;
 stEl.addEventListener("input", function () { refreshPvRowState(row); updatePvSaveBtn(); });
 enEl.addEventListener("input", function () { refreshPvRowState(row); updatePvSaveBtn(); });
+var tuneBtn = row.querySelector('[data-act="tune"]');
+if (tuneBtn) {
+tuneBtn.addEventListener("click", function () { pvOpenTune(row, s); });
+var panel = row.querySelector(".pv-tune");
+var seek = panel.querySelector(".pv-seek");
+seek.addEventListener("input", function () { if (pvTune.id === s.id && pvTune.player && pvTune.player.seekTo) pvTune.player.seekTo(parseInt(seek.value, 10) || 0, true); });
+panel.querySelector('[data-act="tplay"]').addEventListener("click", function () {
+if (pvTune.id !== s.id || !pvTune.player) return;
+if (pvTune.player.getPlayerState && pvTune.player.getPlayerState() === 1) pvTune.player.pauseVideo(); else pvTune.player.playVideo();
+});
+panel.querySelector('[data-act="setstart"]').addEventListener("click", function () {
+if (pvTune.id !== s.id || !pvTune.player || !pvTune.player.getCurrentTime) return;
+stEl.value = Math.floor(pvTune.player.getCurrentTime() || 0);
+refreshPvRowState(row); updatePvSaveBtn();
+});
+panel.querySelector('[data-act="setend"]').addEventListener("click", function () {
+if (pvTune.id !== s.id || !pvTune.player || !pvTune.player.getCurrentTime) return;
+enEl.value = Math.floor(pvTune.player.getCurrentTime() || 0);
+refreshPvRowState(row); updatePvSaveBtn();
+});
+}
 }
 row.querySelector('[data-act="find"]').addEventListener("click", async function () {
 var b = this; b.disabled = true; b.textContent = "探しています…";
@@ -3178,6 +3248,7 @@ $("pv-find-sel").disabled = n === 0 || pvAuto.running;
 }
 $("pv-row-filter").addEventListener("change", function () {
 if (pvDirty && !confirm("保存していない試聴の変更があります。絞り込みを変えると変更が消えます。続けますか？")) { $("pv-row-filter").value = pvPrevFilter; return; }
+pvDestroyTune();
 pvDirty = false; pvPrevFilter = $("pv-row-filter").value; pvSig = ""; renderPvRows();
 });
 $("pv-save").addEventListener("click", function () {
