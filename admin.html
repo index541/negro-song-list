@@ -196,6 +196,10 @@ body.has-bulk-float #save-float { bottom:calc(104px + env(safe-area-inset-bottom
 .pv-row { grid-template-columns:minmax(0,1.05fr) minmax(0,1.2fr) auto; align-items:center; }
 .pv-btns { display:flex; gap:6px; flex-wrap:wrap; }
 .pv-badge { display:inline-block; background:var(--duet); color:#fff; font-size:10.5px; font-weight:900; border-radius:6px; padding:1px 6px; margin-left:6px; }
+.pv-range { grid-column:1 / -1; display:flex; align-items:center; gap:8px; flex-wrap:wrap; background:var(--surface-2); border-radius:10px; padding:8px 10px; }
+.pv-range input { width:92px; }
+.pv-range-label { font-size:12.5px; font-weight:700; color:var(--ink-2); }
+.pv-open { text-decoration:none; display:inline-flex; align-items:center; }
 @media (max-width:560px) { .yomi-row.pv-row { grid-template-columns:1fr; gap:6px; } }
 </style>
 </head>
@@ -630,7 +634,7 @@ body.has-bulk-float #save-float { bottom:calc(104px + env(safe-area-inset-bottom
 
 <section class="card" id="pv-card">
 <h2>試聴の一括設定</h2>
-<p class="desc">公式試聴（30秒）をまとめて直すための画面です。各行でURLを直したり、「自動で探す」で今の曲名・アーティストから探したり、「外す」で取り除いたりできます。「▶ 聴く」で、その場で音を確認できます。サビ（YouTube）を設定した曲は試聴よりサビが優先されるので、試聴は予備として残ります。</p>
+<p class="desc">公式試聴（30秒）をまとめて直すための画面です。各行でURLを直したり、「自動で探す」で今の曲名・アーティストから探したり、「外す」で取り除いたりできます。「▶ 聴く」で、その場で音を確認できます。サビ（YouTube）を設定した曲は試聴よりサビが優先されるので、試聴は予備として残ります。YouTube・ニコニコのリンクを設定した曲は、サビの範囲（開始・終了の秒数）もこの画面で直せます。範囲を変えると、サビ音源は自動で作り直されます。</p>
 <div class="ctl-grid">
 <div class="field">
 <label for="pv-row-filter">絞り込み</label>
@@ -3098,7 +3102,7 @@ function renderPvRows() {
 var box = $("pv-rows"); if (!box) return;
 if (box.contains(document.activeElement) || pvDirty || pvAuto.running) return;
 var filter = $("pv-row-filter").value;
-var sig = filter + "|" + songs.map(function (s) { return s.id + ":" + (s.preview || "") + ":" + (s.ytLink ? 1 : 0); }).join("|");
+var sig = filter + "|" + songs.map(function (s) { return s.id + ":" + (s.preview || "") + ":" + (s.ytLink || "") + ":" + (s.ytStart == null ? "" : s.ytStart) + ":" + (s.ytEnd == null ? "" : s.ytEnd); }).join("|");
 if (sig === pvSig) return;
 pvSig = sig;
 var arr = songs.slice().sort(cmpTitle);
@@ -3111,7 +3115,8 @@ var row = document.createElement("div");
 row.className = "yomi-row pv-row"; row.setAttribute("data-id", s.id);
 row.innerHTML = '<div class="yr-name"><input type="checkbox" class="mrow-check" /><div class="yr-text"><b></b><span></span></div></div>' +
 '<div><label>試聴URL</label><input type="text" data-pv="url" placeholder="試聴なし" /></div>' +
-'<div class="pv-btns"><button type="button" class="mini" data-act="play">▶ 聴く</button><button type="button" class="mini" data-act="find">自動で探す</button><button type="button" class="mini" data-act="clear">外す</button></div>';
+'<div class="pv-btns"><button type="button" class="mini" data-act="play">▶ 聴く</button><button type="button" class="mini" data-act="find">自動で探す</button><button type="button" class="mini" data-act="clear">外す</button></div>' +
+(s.ytLink ? '<div class="pv-range"><span class="pv-range-label">サビ範囲（秒）</span><input type="number" data-pv="start" min="0" step="1" placeholder="開始" /><span>〜</span><input type="number" data-pv="end" min="0" step="1" placeholder="終了" /><a class="mini pv-open" target="_blank" rel="noopener">動画を開く</a></div>' : "");
 row.querySelector("b").textContent = s.title;
 row.querySelector("span").textContent = s.artist;
 if (s.ytLink) { var bd = document.createElement("span"); bd.className = "pv-badge"; bd.textContent = "サビ設定あり"; row.querySelector(".yr-text").appendChild(bd); }
@@ -3119,6 +3124,13 @@ var ui = row.querySelector('[data-pv="url"]'); ui.value = s.preview || "";
 ui.addEventListener("input", function () { refreshPvRowState(row); updatePvSaveBtn(); });
 row.querySelector('[data-act="play"]').addEventListener("click", function () { pvTogglePlay(this, ui.value.trim()); });
 row.querySelector('[data-act="clear"]').addEventListener("click", function () { ui.value = ""; refreshPvRowState(row); updatePvSaveBtn(); });
+if (s.ytLink) {
+var stEl = row.querySelector('[data-pv="start"]'); stEl.value = s.ytStart == null ? "" : s.ytStart;
+var enEl = row.querySelector('[data-pv="end"]'); enEl.value = s.ytEnd == null ? "" : s.ytEnd;
+row.querySelector(".pv-open").href = s.ytLink;
+stEl.addEventListener("input", function () { refreshPvRowState(row); updatePvSaveBtn(); });
+enEl.addEventListener("input", function () { refreshPvRowState(row); updatePvSaveBtn(); });
+}
 row.querySelector('[data-act="find"]').addEventListener("click", async function () {
 var b = this; b.disabled = true; b.textContent = "探しています…";
 var url = await findPreviewUrl(s.title, s.artist);
@@ -3134,10 +3146,22 @@ box.appendChild(row);
 if (!shown) box.innerHTML = '<p class="desc">この絞り込みの曲はありません。</p>';
 updatePvSaveBtn(); updatePvSelUI();
 }
+function pvRangeVal(row, name) {
+var el = row.querySelector('[data-pv="' + name + '"]');
+if (!el) return null;
+var v = el.value.trim();
+if (v === "") return null;
+var n = parseInt(v, 10);
+return isNaN(n) ? null : n;
+}
 function refreshPvRowState(row) {
 var s = findSongById(row.getAttribute("data-id")); if (!s) return;
 var v = row.querySelector('[data-pv="url"]').value.trim();
-row.classList.toggle("changed", v !== (s.preview || ""));
+var rangeChanged = false;
+if (row.querySelector('[data-pv="start"]')) {
+rangeChanged = pvRangeVal(row, "start") !== (s.ytStart == null ? null : s.ytStart) || pvRangeVal(row, "end") !== (s.ytEnd == null ? null : s.ytEnd);
+}
+row.classList.toggle("changed", v !== (s.preview || "") || rangeChanged);
 }
 function updatePvSaveBtn() {
 var n = 0;
@@ -3164,6 +3188,11 @@ rows.forEach(function (row) {
 var s = findSongById(row.getAttribute("data-id")); if (!s) return;
 var v = row.querySelector('[data-pv="url"]').value.trim();
 if (v !== (s.preview || "")) { if (v) s.preview = v; else delete s.preview; }
+if (row.querySelector('[data-pv="start"]')) {
+var st = pvRangeVal(row, "start"), en = pvRangeVal(row, "end");
+if (st === null) delete s.ytStart; else s.ytStart = st;
+if (en === null) delete s.ytEnd; else s.ytEnd = en;
+}
 n++;
 });
 var btn = $("pv-save"); btn.disabled = true;
