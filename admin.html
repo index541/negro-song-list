@@ -149,7 +149,12 @@ body.has-bulk-float #save-float { bottom:calc(104px + env(safe-area-inset-bottom
 .jk-row { grid-template-columns:minmax(0,1fr) minmax(0,1.05fr) minmax(0,1.25fr); align-items:start; }
 .jk-row .yr-name { display:flex; align-items:center; gap:8px; }
 .jk-row .yr-text { min-width:0; flex:1; }
-.jk-thumb { width:100px; height:100px; border-radius:12px; object-fit:cover; flex:none; background:var(--line); }
+.jk-thumb { width:100px; height:100px; border-radius:12px; object-fit:cover; flex:none; background:var(--line); cursor:pointer; }
+.jk-edit { grid-column:1 / -1; background:var(--surface-2); border-radius:12px; padding:12px; }
+.jk-edit[hidden] { display:none; }
+.jk-big { width:200px; height:200px; max-width:60vw; aspect-ratio:1; object-fit:cover; border-radius:12px; background:var(--line); cursor:grab; touch-action:none; display:block; }
+.jk-edit-btns { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:10px; }
+.jk-pos-label { font-size:12.5px; font-weight:700; color:var(--ink-2); }
 .key-ctl { display:grid; grid-template-columns:repeat(13,1fr); gap:4px; }
 .key-ctl .kchip { font:inherit; font-size:11.5px; font-weight:700; border:1.5px solid var(--line); background:var(--surface); color:var(--ink-2); border-radius:999px; padding:6px 0; cursor:pointer; width:100%; min-width:0; text-align:center; white-space:nowrap; }
 .key-ctl .kchip.on { background:var(--accent); border-color:var(--accent); color:#fff; }
@@ -578,7 +583,7 @@ body.has-bulk-float #save-float { bottom:calc(104px + env(safe-area-inset-bottom
 
 <section class="card" id="jk-card">
 <h2>ジャケット・キー一括設定</h2>
-<p class="desc">ジャケット画像のURLとキーをまとめて直すための画面です。キーはタップで選ぶだけです。各行で直して「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。ジャケットのURLを変えると、前に合わせた表示位置はリセットされます。行のチェックで曲を選んで、下のキーからまとめて設定もできます。</p>
+<p class="desc">ジャケット画像のURLとキーをまとめて直すための画面です。キーはタップで選ぶだけです。各行で直して「変更をまとめて保存」を押すと、1回の保存でまとめて反映されます。ジャケットのURLを変えると、前に合わせた表示位置はリセットされます。サムネイルを押すと、その行で表示位置の調整や、画像ファイルの選択・ドラッグ＆ドロップ・貼り付け（Ctrl+V）ができる欄が開きます。ファイルの画像は、保存のときに選んだ位置で正方形に切り取ってアップロードされます。行のチェックで曲を選んで、下のキーからまとめて設定もできます。</p>
 <div class="grid2">
 <div class="field">
 <label for="jk-row-filter">絞り込み</label>
@@ -615,6 +620,7 @@ body.has-bulk-float #save-float { bottom:calc(104px + env(safe-area-inset-bottom
 <button type="button" class="btn sub" id="jk-bulk-apply" disabled>選択した曲に設定</button>
 </div>
 <p class="status" id="jk-status"></p>
+<input type="file" id="jk-file-input" accept="image/*" style="display:none" />
 <div id="jk-rows"></div>
 </section>
 
@@ -2686,6 +2692,36 @@ ctl.querySelectorAll(".kchip").forEach(function (c) { c.classList.toggle("on", p
 function findSongById(id) { var s = null; songs.forEach(function (x) { if (x.id === id) s = x; }); return s; }
 
 // ---- ジャケット・キー ----
+var jkExtra = {};
+var jkFileTargetId = null;
+var jkLastRowId = null;
+function jkEx(id) { if (!jkExtra[id]) jkExtra[id] = { x: 50, y: 50, pending: null }; return jkExtra[id]; }
+function jkPosOf(s) { var m = String((s && s.jacketPos) || "").match(/(\d+(?:\.\d+)?)%\s+(\d+(?:\.\d+)?)%/); return m ? { x: parseFloat(m[1]), y: parseFloat(m[2]) } : { x: 50, y: 50 }; }
+function applyJkVis(row) {
+var ex = jkEx(row.getAttribute("data-id"));
+var ji = row.querySelector('[data-jk="jacket"]');
+var src = ex.pending ? ex.pending.dataUrl : ji.value.trim();
+var img = row.querySelector(".jk-thumb");
+var big = row.querySelector(".jk-big");
+if (src) { img.src = src; img.style.visibility = ""; big.src = src; big.style.display = ""; }
+else { img.style.visibility = "hidden"; big.style.display = "none"; }
+img.style.objectPosition = ex.x + "% " + ex.y + "%";
+big.style.objectPosition = ex.x + "% " + ex.y + "%";
+var lb = row.querySelector(".jk-pos-label"); if (lb) lb.textContent = "位置 " + Math.round(ex.x) + "% / " + Math.round(ex.y) + "%" + (ex.pending ? "（ファイル画像：保存時に切り取ってアップロード）" : "");
+}
+function jkAcceptFile(row, file) {
+if (!file || !file.type || file.type.indexOf("image/") !== 0) return false;
+var rd = new FileReader();
+rd.onload = function () {
+var ex = jkEx(row.getAttribute("data-id"));
+ex.pending = { dataUrl: String(rd.result) };
+ex.x = 50; ex.y = 50;
+row.querySelector(".jk-edit").hidden = false;
+applyJkVis(row); refreshJkRowState(row); updateJkSaveBtn();
+};
+rd.readAsDataURL(file);
+return true;
+}
 function jkRowMatch(s, filter) {
 if (!filter) return true;
 if (filter === "nojacket") return !s.jacket;
@@ -2697,7 +2733,7 @@ function renderJkRows() {
 var box = $("jk-rows"); if (!box) return;
 if (box.contains(document.activeElement) || jkDirty) return;
 var filter = $("jk-row-filter").value;
-var sig = filter + "|" + songs.map(function (s) { return s.id + ":" + (s.jacket || "") + ":" + (s.keyShift || 0); }).join("|");
+var sig = filter + "|" + songs.map(function (s) { return s.id + ":" + (s.jacket || "") + ":" + (s.jacketPos || "") + ":" + (s.keyShift || 0); }).join("|");
 if (sig === jkSig) return;
 jkSig = sig;
 var arr = songs.slice().sort(cmpTitle);
@@ -2708,19 +2744,39 @@ if (!jkRowMatch(s, filter)) return;
 shown++;
 var row = document.createElement("div");
 row.className = "yomi-row jk-row"; row.setAttribute("data-id", s.id);
-row.innerHTML = '<div class="yr-name"><input type="checkbox" class="mrow-check" /><img class="jk-thumb" alt="" /><div class="yr-text"><b></b><span></span></div></div><div><label>ジャケット画像URL</label><input type="text" data-jk="jacket" /></div><div><label>キー（タップで設定）</label><div class="key-ctl" data-jkkey="1"></div></div>';
+row.innerHTML = '<div class="yr-name"><input type="checkbox" class="mrow-check" /><img class="jk-thumb" alt="" title="押すと位置調整・画像の差し替えが開きます" /><div class="yr-text"><b></b><span></span></div></div><div><label>ジャケット画像URL</label><input type="text" data-jk="jacket" /></div><div><label>キー（タップで設定）</label><div class="key-ctl" data-jkkey="1"></div></div>' +
+'<div class="jk-edit" hidden><img class="jk-big" alt="" /><div class="jk-edit-btns"><button type="button" class="mini jk-file-btn">画像ファイルを選ぶ</button><button type="button" class="mini jk-pos-reset">中央に戻す</button><span class="jk-pos-label"></span></div><p class="desc" style="margin:8px 0 0">大きい画像をドラッグすると、正方形で見える位置を変えられます。この欄へのドラッグ＆ドロップや、コピーした画像の貼り付け（Ctrl+V）でも設定できます。</p></div>';
 row.querySelector("b").textContent = s.title;
 row.querySelector("span").textContent = s.artist;
+var ex0 = jkEx(s.id); var p0 = jkPosOf(s); ex0.x = p0.x; ex0.y = p0.y; ex0.pending = null;
 var img = row.querySelector(".jk-thumb");
-if (s.jacket) { img.src = s.jacket; if (s.jacketPos) img.style.objectPosition = s.jacketPos; img.addEventListener("error", function () { img.style.visibility = "hidden"; }); }
-else img.style.visibility = "hidden";
+img.addEventListener("error", function () { img.style.visibility = "hidden"; });
 var ji = row.querySelector('[data-jk="jacket"]'); ji.value = s.jacket || "";
 ji.addEventListener("input", function () {
-var v = ji.value.trim();
-if (v) { img.src = v; img.style.visibility = ""; img.style.objectPosition = ""; }
-else img.style.visibility = "hidden";
-refreshJkRowState(row); updateJkSaveBtn();
+var ex = jkEx(s.id); ex.pending = null; ex.x = 50; ex.y = 50;
+applyJkVis(row); refreshJkRowState(row); updateJkSaveBtn();
 });
+img.addEventListener("click", function () { var ed = row.querySelector(".jk-edit"); ed.hidden = !ed.hidden; });
+row.querySelector(".jk-file-btn").addEventListener("click", function () { jkFileTargetId = s.id; $("jk-file-input").click(); });
+row.querySelector(".jk-pos-reset").addEventListener("click", function () { var ex = jkEx(s.id); ex.x = 50; ex.y = 50; applyJkVis(row); refreshJkRowState(row); updateJkSaveBtn(); });
+(function () {
+var big = row.querySelector(".jk-big");
+var drag = null;
+big.addEventListener("pointerdown", function (e) { var ex = jkEx(s.id); drag = { x: e.clientX, y: e.clientY, px: ex.x, py: ex.y }; try { big.setPointerCapture(e.pointerId); } catch (err) {} e.preventDefault(); });
+big.addEventListener("pointermove", function (e) { if (!drag) return; var r = big.getBoundingClientRect(); if (!r.width || !r.height) return; var ex = jkEx(s.id); ex.x = Math.max(0, Math.min(100, drag.px - (e.clientX - drag.x) / r.width * 100)); ex.y = Math.max(0, Math.min(100, drag.py - (e.clientY - drag.y) / r.height * 100)); applyJkVis(row); refreshJkRowState(row); updateJkSaveBtn(); });
+big.addEventListener("pointerup", function () { drag = null; });
+big.addEventListener("pointercancel", function () { drag = null; });
+})();
+row.addEventListener("pointerdown", function () { jkLastRowId = s.id; });
+row.addEventListener("dragover", function (e) { e.preventDefault(); });
+row.addEventListener("drop", function (e) {
+e.preventDefault();
+var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+if (f) { row.querySelector(".jk-edit").hidden = false; jkAcceptFile(row, f); return; }
+var t = e.dataTransfer && e.dataTransfer.getData("text/plain");
+if (t && /^https?:\/\//.test(t.trim())) { ji.value = t.trim(); ji.dispatchEvent(new Event("input")); }
+});
+applyJkVis(row);
 var ctl = row.querySelector('[data-jkkey="1"]');
 buildKeyCtl(ctl, s.keyShift || 0, function (v) { keyCtlSet(ctl, v); refreshJkRowState(row); updateJkSaveBtn(); });
 keyCtlSet(ctl, s.keyShift || 0);
@@ -2735,7 +2791,10 @@ function refreshJkRowState(row) {
 var s = findSongById(row.getAttribute("data-id")); if (!s) return;
 var j = row.querySelector('[data-jk="jacket"]').value.trim();
 var k = parseInt(row.querySelector('[data-jkkey="1"]').getAttribute("data-val"), 10);
-row.classList.toggle("changed", j !== (s.jacket || "") || k !== (s.keyShift || 0));
+var ex = jkEx(s.id);
+var sp = jkPosOf(s);
+var posChanged = !ex.pending && j === (s.jacket || "") && !!s.jacket && (Math.round(ex.x) !== Math.round(sp.x) || Math.round(ex.y) !== Math.round(sp.y));
+row.classList.toggle("changed", !!ex.pending || j !== (s.jacket || "") || k !== (s.keyShift || 0) || posChanged);
 }
 function updateJkSaveBtn() {
 var n = 0;
@@ -2754,23 +2813,65 @@ $("jk-row-filter").addEventListener("change", function () {
 if (jkDirty && !confirm("保存していないジャケット・キーの変更があります。絞り込みを変えると変更が消えます。続けますか？")) { $("jk-row-filter").value = jkPrevFilter; return; }
 jkDirty = false; jkPrevFilter = $("jk-row-filter").value; jkSig = ""; renderJkRows();
 });
-$("jk-save").addEventListener("click", function () {
+$("jk-save").addEventListener("click", async function () {
 var rows = document.querySelectorAll("#jk-rows .jk-row.changed");
 if (!rows.length) return;
-var n = 0;
-rows.forEach(function (row) {
-var s = findSongById(row.getAttribute("data-id")); if (!s) return;
-var j = row.querySelector('[data-jk="jacket"]').value.trim();
-var k = parseInt(row.querySelector('[data-jkkey="1"]').getAttribute("data-val"), 10);
-if (j !== (s.jacket || "")) { if (j) s.jacket = j; else delete s.jacket; delete s.jacketPos; }
-if (k !== (s.keyShift || 0)) { s.keyShift = k; s.keyLabel = keyLabelFromShift(k); }
-n++;
-});
 var btn = $("jk-save"); btn.disabled = true;
 setStatus("jk-status", "保存中…", null);
-commitSongs("ジャケット・キーを一括設定（" + n + "件）")
-.then(function () { jkDirty = false; jkSig = ""; jkSelected = {}; setStatus("jk-status", "保存しました。公開ページへの反映は1分ほどかかります。", true); renderSongs(); toast("ジャケット・キーを保存しました"); })
-.catch(function (e) { setStatus("jk-status", e.message || "保存に失敗しました。", false); updateJkSaveBtn(); });
+try {
+var n = 0;
+for (var ri = 0; ri < rows.length; ri++) {
+var row = rows[ri];
+var s = findSongById(row.getAttribute("data-id")); if (!s) continue;
+var ex = jkEx(s.id);
+var j = row.querySelector('[data-jk="jacket"]').value.trim();
+var k = parseInt(row.querySelector('[data-jkkey="1"]').getAttribute("data-val"), 10);
+if (ex.pending) {
+setStatus("jk-status", "画像をアップロード中…（" + s.title + "）", null);
+var jpeg = await bakeJacket(ex.pending.dataUrl, { x: ex.x, y: ex.y });
+var path = await uploadJacket(s.id, s.title, jpeg);
+s.jacket = path; delete s.jacketPos; ex.pending = null;
+} else if (j !== (s.jacket || "")) {
+if (j) s.jacket = j; else delete s.jacket;
+delete s.jacketPos;
+} else if (s.jacket) {
+var rx = Math.round(ex.x), ry = Math.round(ex.y);
+if (rx === 50 && ry === 50) delete s.jacketPos; else s.jacketPos = rx + "% " + ry + "%";
+}
+if (k !== (s.keyShift || 0)) { s.keyShift = k; s.keyLabel = keyLabelFromShift(k); }
+n++;
+}
+await commitSongs("ジャケット・キーを一括設定（" + n + "件）");
+jkDirty = false; jkSig = ""; jkSelected = {}; jkExtra = {};
+setStatus("jk-status", "保存しました。公開ページへの反映は1分ほどかかります。", true);
+renderSongs(); toast("ジャケット・キーを保存しました");
+} catch (e) {
+setStatus("jk-status", (e && e.message) || "保存に失敗しました。", false);
+updateJkSaveBtn();
+}
+});
+$("jk-file-input").addEventListener("change", function () {
+var f = $("jk-file-input").files && $("jk-file-input").files[0];
+$("jk-file-input").value = "";
+if (!f || !jkFileTargetId) return;
+var row = document.querySelector('#jk-rows .jk-row[data-id="' + jkFileTargetId + '"]');
+if (row) jkAcceptFile(row, f);
+jkFileTargetId = null;
+});
+document.addEventListener("paste", function (e) {
+if (editorOverlay && editorOverlay.classList.contains("open")) return;
+var items = e.clipboardData && e.clipboardData.items;
+if (!items) return;
+var file = null;
+for (var i = 0; i < items.length; i++) { if (items[i].type.indexOf("image/") === 0) { file = items[i].getAsFile(); break; } }
+if (!file) return;
+var row = null;
+var ae = document.activeElement;
+if (ae && ae.closest) { var r = ae.closest("#jk-rows .jk-row"); if (r) row = r; }
+if (!row && jkLastRowId) row = document.querySelector('#jk-rows .jk-row[data-id="' + jkLastRowId + '"]');
+if (!row) return;
+row.querySelector(".jk-edit").hidden = false;
+if (jkAcceptFile(row, file)) e.preventDefault();
 });
 $("jk-sel-all").addEventListener("click", function () {
 document.querySelectorAll("#jk-rows .jk-row").forEach(function (row) {
