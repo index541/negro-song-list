@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<link rel="manifest" href="manifest.webmanifest" />
+<meta name="theme-color" content="#e83531" />
 <meta name="color-scheme" content="light dark" />
 <link rel="icon" href="data:," />
 <meta name="robots" content="noindex" />
@@ -254,6 +256,18 @@ body.has-bulk-float #save-float { bottom:calc(104px + env(safe-area-inset-bottom
 <li>「Generate token」で発行して、表示された文字列をここに貼る</li>
 </ol>
 </details>
+</section>
+
+<section class="card" id="req-card">
+<h2>リクエスト受信箱 <span id="req-badge" class="pv-badge" hidden></span></h2>
+<p class="desc">公開ページから届いたリクエストがここに溜まります。新着の取り込みは、セットアップ時に組んだ見張り役（AIアシスタントの定期チェック）が requests.json に書き込む形です。</p>
+<div class="bulk-bar">
+<button type="button" class="mini" id="req-reload">再読み込み</button>
+<button type="button" class="mini" id="req-read-all">全部を既読にする</button>
+<button type="button" class="mini" id="req-push-btn">この端末で通知を受け取る</button>
+</div>
+<p class="status" id="req-status"></p>
+<div id="req-rows"></div>
 </section>
 
 <section class="card" id="jacket-card">
@@ -3326,6 +3340,96 @@ pvFindRows(rows);
 var renderSongsPrevPv = renderSongs;
 renderSongs = function () { renderSongsPrevPv(); renderPvRows(); };
 renderPvRows();
+</script>
+<script>
+// ===== リクエスト受信箱（配布版） =====
+var reqList = null;
+function reqRender() {
+var box = $("req-rows"); if (!box) return;
+if (!reqList) { box.innerHTML = '<p class="desc">読み込み中…</p>'; return; }
+var unread = reqList.filter(function (r) { return !r.read; }).length;
+var bd = $("req-badge");
+if (unread) { bd.hidden = false; bd.textContent = "未読 " + unread + "件"; } else bd.hidden = true;
+if (!reqList.length) { box.innerHTML = '<p class="desc">まだリクエストはありません。</p>'; return; }
+box.innerHTML = "";
+reqList.slice().sort(function (x, y) { return (y.at || "").localeCompare(x.at || ""); }).forEach(function (r) {
+var row = document.createElement("div");
+row.className = "hist-row" + (r.read ? "" : " changed");
+row.innerHTML = '<div style="flex:1;min-width:200px"><b></b><div></div><div></div></div>';
+row.querySelector("b").textContent = r.song || "";
+row.children[0].children[1].textContent = [r.type, r.name, r.at ? String(r.at).replace("T", " ").slice(0, 16) : ""].filter(Boolean).join(" ／ ");
+row.children[0].children[2].textContent = r.message || "";
+if (!r.read) {
+var b = document.createElement("button");
+b.type = "button"; b.className = "mini"; b.textContent = "既読にする";
+b.addEventListener("click", function () { r.read = true; reqSave("リクエストを既読にした"); });
+row.appendChild(b);
+}
+box.appendChild(row);
+});
+}
+function reqLoad() {
+fetch("requests.json", { cache: "no-store" })
+.then(function (r) { if (!r.ok) throw new Error("none"); return r.json(); })
+.then(function (d) { reqList = Array.isArray(d) ? d : []; reqRender(); })
+.catch(function () { reqList = []; reqRender(); setStatus("req-status", "requests.json がまだありません。見張り役が最初のリクエストを取り込むと作られます。", null); });
+}
+function reqSave(message) {
+fetch("https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/requests.json", { headers: ghHeaders() })
+.then(function (r) { return r.ok ? r.json() : null; })
+.then(function (cur) {
+var body = { message: message, content: btoa(unescape(encodeURIComponent(JSON.stringify(reqList, null, 2) + "\n"))) };
+if (cur && cur.sha) body.sha = cur.sha;
+return fetch("https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/requests.json", { method: "PUT", headers: ghHeaders(), body: JSON.stringify(body) });
+})
+.then(function (r) { if (!r.ok) throw new Error("save"); reqRender(); setStatus("req-status", "保存しました。", true); })
+.catch(function () { setStatus("req-status", "保存に失敗しました。トークンを確認してください。", false); });
+}
+// ===== スマホ通知（Web Push） =====
+// VAPID公開鍵は、セットアップ時にAIアシスタントが生成して差し替える（SETUP.md フェーズ5）
+var VAPID_PUBLIC_KEY = "BJoWJHti6Y0BePBq2TIWv-Do9pn1ZscQ_SLUx0Noyk0M_8QRCxNqU2tpgPgaBMhAvl5NDrDYTfa0iumseh5SyFo";
+function vapidKeyToBytes(b64) {
+var pad = "=".repeat((4 - (b64.length % 4)) % 4);
+var base = (b64 + pad).replace(/-/g, "+").replace(/_/g, "/");
+var raw = atob(base);
+var arr = new Uint8Array(raw.length);
+for (var i = 0; i < raw.length; i++) arr[i] = raw.charCodeAt(i);
+return arr;
+}
+function saveRepoFile(path, contentText, message, done) {
+fetch("https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/" + path, { headers: ghHeaders() })
+.then(function (r) { return r.ok ? r.json() : null; })
+.then(function (cur) {
+var body = { message: message, content: btoa(unescape(encodeURIComponent(contentText))) };
+if (cur && cur.sha) body.sha = cur.sha;
+return fetch("https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/" + path, { method: "PUT", headers: ghHeaders(), body: JSON.stringify(body) });
+})
+.then(function (r) { done(r.ok); })
+.catch(function () { done(false); });
+}
+$("req-push-btn").addEventListener("click", function () {
+if (!("serviceWorker" in navigator) || !("PushManager" in window) || !("Notification" in window)) { setStatus("req-status", "このブラウザはプッシュ通知に対応していません。iPhoneの場合は、管理ページをホーム画面に追加してから開いてください。", false); return; }
+if (VAPID_PUBLIC_KEY.indexOf("__") === 0) { setStatus("req-status", "通知の鍵がまだ設定されていません。セットアップを担当したAIアシスタントに伝えてください。", false); return; }
+setStatus("req-status", "通知の準備中…", null);
+navigator.serviceWorker.register("sw.js")
+.then(function () { return navigator.serviceWorker.ready; })
+.then(function (reg) {
+return Notification.requestPermission().then(function (perm) {
+if (perm !== "granted") throw new Error("denied");
+return reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: vapidKeyToBytes(VAPID_PUBLIC_KEY) });
+});
+})
+.then(function (sub) {
+saveRepoFile("push-subscription.json", JSON.stringify(sub.toJSON(), null, 2) + "\n", "通知の購読を登録", function (ok) {
+if (ok) setStatus("req-status", "この端末で通知を受け取る設定ができました。新しいリクエストが来ると通知が届きます。", true);
+else setStatus("req-status", "購読の保存に失敗しました。トークンを確認してください。", false);
+});
+})
+.catch(function () { setStatus("req-status", "通知を設定できませんでした。通知の許可とブラウザを確認してください。", false); });
+});
+$("req-reload").addEventListener("click", reqLoad);
+$("req-read-all").addEventListener("click", function () { if (!reqList) return; reqList.forEach(function (r) { r.read = true; }); reqSave("リクエストを全部既読にした"); });
+reqLoad();
 </script>
 <button type="button" id="save-float" disabled>変更を保存</button>
 <script src="qrcode.min.js"></script>
