@@ -6,6 +6,6 @@
     "type": "歌ってほしい",
     "name": "通知テスト",
     "message": "",
-    "read": false
+    "read": true
   }
 ]
